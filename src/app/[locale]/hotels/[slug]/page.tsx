@@ -12,7 +12,7 @@ import { PhotoMarquee } from '@/components/hotel/PhotoMarquee';
 import { RoomGallery } from '@/components/hotel/RoomGallery';
 
 import { getHotel, hotels } from '@/content/hotels';
-import { getStay, type Feature, type RouteMode, type Season } from '@/content/hotelStay';
+import { getStay, type Feature, type PhotoCredit, type RouteMode, type Season } from '@/content/hotelStay';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, locales, localePath, t, type L10n, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
@@ -389,7 +389,10 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
                       <div className="relative aspect-[4/3] w-full">
                         {item.image ? (
-                          <Image src={item.image} alt={L(item.title)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                          <>
+                            <Image src={item.image} alt={L(item.title)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                            {item.credit && <Credit credit={item.credit} />}
+                          </>
                         ) : (
                           // No dish photo yet: a soft panel carrying the hotel's wordmark, as the reference's logo tiles.
                           <div className="flex h-full w-full flex-col items-center justify-center bg-[linear-gradient(160deg,#f6f6f6,#e4e4e4)] px-6 text-center">
@@ -418,13 +421,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <EnHeading en="SURROUNDINGS" sub={L(S.sightseeing)} />
         <p className="mx-auto mt-8 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.sightseeing.lead)}</p>
 
-        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
           {stay.sightseeing.spots.map((spot, i) => (
             <Reveal key={i} delay={(i % 6) * 0.05}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-black/10 bg-white">
-                <div className="relative aspect-[4/5] w-full">
+                <div className="relative aspect-[4/5] w-full md:aspect-[3/2]">
                   {spot.image ? (
-                    <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 640px) 50vw, 220px" className="object-cover" />
+                    <>
+                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" />
+                      {spot.credit && <Credit credit={spot.credit} />}
+                    </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-page-2 px-3 text-center">
                       <span className="text-[0.75rem] tracking-[0.1em] text-stone">{L(spot.name)}</span>
@@ -772,4 +778,18 @@ function ModeIcon({ mode }: { mode: RouteMode }): ReactNode {
         </svg>
       );
   }
+}
+
+/** Licence credit for a free-licence photo, small over the image's bottom edge. */
+function Credit({ credit }: { credit: PhotoCredit }) {
+  return (
+    <a
+      href={credit.source}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="absolute right-0 bottom-0 left-0 truncate bg-gradient-to-t from-black/55 to-transparent px-2 pt-4 pb-1 text-right text-[0.5625rem] leading-tight text-white/85 hover:text-white"
+    >
+      Photo: {credit.author} / {credit.license}
+    </a>
+  );
 }

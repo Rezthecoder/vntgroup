@@ -24,12 +24,16 @@ export type RoomType = {
   amenities?: L10n[];
 };
 
+/** Credit for a photo used under a free licence (Wikimedia Commons etc.). */
+export type PhotoCredit = { author: string; license: string; source: string };
+
 export type DiningItem = {
   title: L10n;
   /** Small label above the title, e.g. BREAKFAST. */
   label: string;
   body: L10n;
   image?: string;
+  credit?: PhotoCredit;
 };
 
 export type RouteMode = 'train' | 'car' | 'bus' | 'walk' | 'plane';
@@ -59,6 +63,7 @@ export type Spot = {
   time: L10n;
   body: L10n;
   image?: string;
+  credit?: PhotoCredit;
   /** Google Maps search text for the "view on map" link. */
   query: string;
   /** Official website. */
@@ -225,6 +230,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Local Food',
           title: { ja: '吉田のうどん', en: 'Yoshida udon' },
+          image: '/images/spots/fuji-udon.webp',
+          credit: { author: 'Ocdp', license: 'CC0', source: 'https://commons.wikimedia.org/wiki/File:Yoshida_udon_001.jpg' },
           body: {
             ja: '富士吉田を代表する郷土料理。コシの強い太麺に、キャベツや馬肉をのせるのが定番です。市内には多くの専門店があります。',
             en: 'Fujiyoshida’s signature dish: thick, firm noodles, traditionally topped with cabbage and horse meat. The town is full of udon shops.',
@@ -233,6 +240,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Local Food',
           title: { ja: 'ほうとう', en: 'Hoto' },
+          image: '/images/spots/fuji-hoto.webp',
+          credit: { author: 'Jungle', license: 'CC BY-SA 3.0', source: 'https://commons.wikimedia.org/wiki/File:Houtou.jpg' },
           body: {
             ja: '平打ち麺をかぼちゃや野菜と味噌で煮込んだ山梨の郷土料理。寒い季節の富士観光に、体の芯から温まる一杯をどうぞ。',
             en: 'Yamanashi’s flat noodles simmered in miso with pumpkin and vegetables — a bowl that warms you through on a cold day by Mt. Fuji.',
@@ -310,6 +319,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       spots: [
         {
           name: { ja: '新倉山浅間公園（忠霊塔）', en: 'Arakurayama Sengen Park (Chureito Pagoda)' },
+          image: '/images/spots/fuji-chureito.webp',
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '五重塔と富士山を一枚に収められる絶景スポット。春は桜、秋は紅葉と、季節ごとに表情を変えます。',
@@ -319,6 +329,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '北口本宮冨士浅間神社', en: 'Kitaguchi Hongu Fuji Sengen Shrine' },
+          image: '/images/spots/fuji-kitaguchi.webp',
           time: { ja: '車で約5分', en: 'About 5 min by car' },
           body: {
             ja: '富士山信仰の拠点として古くから崇敬を集める神社。杉並木の参道と荘厳な社殿が、静かな時間へと誘います。',
@@ -329,6 +340,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '忍野八海', en: 'Oshino Hakkai' },
+          image: '/images/spots/fuji-oshino.webp',
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '富士山の雪解け水が湧き出す八つの池。透き通った水面と茅葺き屋根の風景が広がります。',
@@ -338,6 +350,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '富士急ハイランド', en: 'Fuji-Q Highland' },
+          image: '/images/spots/fuji-fujiq.webp',
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '富士山を望む絶叫マシンで知られるテーマパーク。ご家族やグループでの旅行にもおすすめです。',
@@ -359,12 +372,53 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '山中湖', en: 'Lake Yamanaka' },
+          image: '/images/spots/fuji-yamanaka.webp',
           time: { ja: '車で約15分', en: 'About 15 min by car' },
           body: {
             ja: '富士五湖で最も大きな湖。湖畔からの富士山の眺めは格別で、冬には「ダイヤモンド富士」も見られます。',
             en: 'The largest of the Fuji Five Lakes, with a superb view of the mountain — and “Diamond Fuji” in winter.',
           },
           query: '山中湖',
+        },
+        {
+          name: { ja: '山中湖花の都公園', en: 'Hana no Miyako Park, Yamanakako' },
+          image: '/images/spots/fuji-hananomiyako.webp',
+          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          body: {
+            ja: '富士山を背景に、春から秋まで季節の花畑が広がる公園。夏のポピーやひまわりは特に見事です。',
+            en: 'Fields of seasonal flowers with Mt. Fuji behind them, spring to autumn — the summer poppies and sunflowers are a highlight.',
+          },
+          query: '山中湖花の都公園',
+        },
+        {
+          name: { ja: '山中湖のカバ（水陸両用バス）', en: 'KABA amphibious bus, Lake Yamanaka' },
+          image: '/images/spots/fuji-kaba.webp',
+          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          body: {
+            ja: 'バスのまま山中湖へ「ザブーン」と入水する水陸両用バス。湖上から富士山を眺める、ご家族に人気の体験です。',
+            en: 'An amphibious bus that drives straight into Lake Yamanaka — Mt. Fuji from the water, a family favourite.',
+          },
+          query: '山中湖のカバ',
+        },
+        {
+          name: { ja: '忍野 しのびの里', en: 'Oshino Shinobi no Sato (ninja village)' },
+          image: '/images/spots/fuji-shinobi.webp',
+          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          body: {
+            ja: '迫力ある忍者ショーや手裏剣体験が楽しめる忍者のテーマパーク。日本庭園越しの富士山も見どころです。',
+            en: 'A ninja theme park with live ninja shows and shuriken throwing, and Mt. Fuji beyond its Japanese garden.',
+          },
+          query: '忍野しのびの里',
+        },
+        {
+          name: { ja: '山梨県立富士湧水の里水族館', en: 'Fuji Wakimizu no Sato Aquarium' },
+          image: '/images/spots/fuji-aquarium.webp',
+          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          body: {
+            ja: '富士山の湧水で淡水魚を育てる「森の中の水族館」。澄んだ水の中を泳ぐ魚たちを間近に観察できます。',
+            en: 'The “aquarium in the forest”, raising freshwater fish in Mt. Fuji’s spring water — see them up close in crystal-clear tanks.',
+          },
+          query: '山梨県立富士湧水の里水族館',
         },
       ],
       events: [
@@ -496,6 +550,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Nagoya Meshi',
           title: { ja: '味噌カツ・ひつまぶし', en: 'Miso katsu & hitsumabushi' },
+          image: '/images/spots/nagoya-hitsumabushi.webp',
+          credit: { author: 'Kanesue', license: 'CC BY 2.0', source: 'https://commons.wikimedia.org/wiki/File:Hitsumabushi1.jpg' },
           body: {
             ja: '濃厚な八丁味噌のタレをかけた味噌カツや、三通りの食べ方で楽しむうなぎのひつまぶしは、名古屋を訪れたらぜひ味わいたい名物です。',
             en: 'Pork cutlet in rich Hatcho miso sauce, and eel hitsumabushi eaten three ways — must-tries on any Nagoya trip.',
@@ -560,6 +616,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       spots: [
         {
           name: { ja: '尾張大國霊神社（国府宮）', en: 'Owari Okunitama Shrine (Konomiya)' },
+          image: '/images/spots/nagoya-konomiya.webp',
+          credit: { author: 'Saigen Jiro', license: 'CC0', source: 'https://commons.wikimedia.org/wiki/File:Owari-okunitama-jinja,_shaden.jpg' },
           time: { ja: '徒歩約5分', en: 'About 5 min on foot' },
           body: {
             ja: '尾張の総社として知られる古社。毎年旧正月に行われる「はだか祭」は、多くの参拝者で賑わいます。',
@@ -569,6 +627,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '清洲城', en: 'Kiyosu Castle' },
+          image: '/images/spots/nagoya-kiyosu.webp',
+          credit: { author: 'Hyppolyte de Saint-Rambert', license: 'CC BY 4.0', source: 'https://commons.wikimedia.org/wiki/File:Kiyosu_Castle_(Kiyosu_Aichi)_VLux5_hdsr_39.jpg' },
           time: { ja: '車で約15分', en: 'About 15 min by car' },
           body: {
             ja: '織田信長ゆかりの城。天守からは五条川と尾張の街並みを一望できます。',
@@ -590,6 +650,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '熱田神宮', en: 'Atsuta Shrine' },
+          image: '/images/spots/nagoya-atsuta.webp',
+          credit: { author: 'Bariston', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Atsuta_Shrine.jpg' },
           time: { ja: '電車で約40分', en: 'About 40 min by train' },
           body: {
             ja: '三種の神器のひとつ「草薙神剣」を祀る、由緒ある神宮。緑豊かな境内は都会の中の静かな森です。',
@@ -600,6 +662,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '徳川美術館', en: 'Tokugawa Art Museum' },
+          image: '/images/spots/nagoya-tokugawa.webp',
+          credit: { author: 'Asturio Cantabrio', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Tokugawa_Art_Museum_New_Building_ac.jpg' },
           time: { ja: '車で約35分', en: 'About 35 min by car' },
           body: {
             ja: '尾張徳川家に伝わる大名道具を収蔵。国宝「源氏物語絵巻」をはじめ、貴重な名品を所蔵しています。',
@@ -718,6 +782,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Kyoto Cuisine',
           title: { ja: '京の味', en: 'Tastes of Kyoto' },
+          image: '/images/spots/toji-kaiseki.webp',
+          credit: { author: 'Donatingpictures', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Kaiseki_-_Kyoto.jpg' },
           body: {
             ja: '湯葉や京漬物、おばんざいなど、京都ならではの味わいを。京都駅周辺には老舗から新しいお店まで揃っています。',
             en: 'Yuba, Kyoto pickles, obanzai home cooking — from old houses to new restaurants around Kyoto Station.',
@@ -801,6 +867,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '京都水族館・梅小路公園', en: 'Kyoto Aquarium & Umekoji Park' },
+          image: '/images/spots/toji-umekoji.webp',
+          credit: { author: '＋－', license: 'CC BY-SA 3.0', source: 'https://commons.wikimedia.org/wiki/File:梅小路公園_芝生広場.jpg' },
           time: { ja: '徒歩約15分', en: 'About 15 min on foot' },
           body: {
             ja: '京都の川や海の生きものに出会える水族館と、鉄道博物館もある広大な公園。ご家族連れにおすすめです。',
@@ -811,6 +879,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '伏見稲荷大社', en: 'Fushimi Inari Taisha' },
+          image: '/images/spots/toji-inari.webp',
+          credit: { author: 'Basile Morin', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg' },
           time: { ja: '電車・車で約15分', en: 'About 15 min by train or car' },
           body: {
             ja: '朱色の鳥居が山へと続く「千本鳥居」で知られる、全国の稲荷神社の総本宮です。',
@@ -832,6 +902,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '西本願寺', en: 'Nishi Hongan-ji' },
+          image: '/images/spots/toji-nishihongan.webp',
+          credit: { author: '663highland', license: 'CC BY 2.5', source: 'https://commons.wikimedia.org/wiki/File:170216_Nishi_Honganji_Kyoto_Japan06n.jpg' },
           time: { ja: '徒歩約20分', en: 'About 20 min on foot' },
           body: {
             ja: '浄土真宗本願寺派の本山で、世界遺産。国宝の唐門や御影堂など、桃山文化の華やかな建築が見られます。',
