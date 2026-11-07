@@ -43,24 +43,25 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
           scrolled && !open && 'shadow-[0_2px_12px_rgba(0,0,0,0.08)]',
         )}
       >
-        <div className="flex h-(--header-h) items-center justify-between gap-6 px-5 md:px-10">
-          <Link href={localePath(locale)} aria-label="VNT GROUP" className="text-brand transition-opacity hover:opacity-75">
+        {/* PC: logo | links centred on the page | contact. Smaller screens: logo | contact + menu. */}
+        <div className="flex h-(--header-h) items-center justify-between gap-6 px-5 md:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+          <Link href={localePath(locale)} aria-label="VNT GROUP" className="justify-self-start text-brand transition-opacity hover:opacity-75">
             <Wordmark className="h-6 w-auto md:h-7" />
           </Link>
 
-          <div className="flex items-center gap-7">
-            <nav className="hidden items-center gap-6 lg:flex">
-              {headerNav.map((item) => (
-                <Link
-                  key={item.href + item.label.ja}
-                  href={localePath(locale, item.href)}
-                  className="text-[0.9375rem] font-bold text-black transition-colors hover:text-brand"
-                >
-                  {t(item.label, locale)}
-                </Link>
-              ))}
-            </nav>
+          <nav className="hidden items-center gap-7 lg:flex">
+            {headerNav.map((item) => (
+              <Link
+                key={item.href + item.label.ja}
+                href={localePath(locale, item.href)}
+                className="text-[0.9375rem] font-bold text-black transition-colors hover:text-brand"
+              >
+                {t(item.label, locale)}
+              </Link>
+            ))}
+          </nav>
 
+          <div className="flex items-center gap-7 justify-self-end">
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 href={localePath(locale, '/contact')}
