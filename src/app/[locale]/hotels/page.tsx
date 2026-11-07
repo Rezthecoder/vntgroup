@@ -5,10 +5,9 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
-import { GroupBookingCTA } from '@/components/sections/GroupBookingCTA';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
-import { ArrowLink, ButtonLink } from '@/components/ui/ArrowLink';
+import { ArrowLink } from '@/components/ui/ArrowLink';
 import { hotels, hubOrder } from '@/content/hotels';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
@@ -35,14 +34,6 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
   return (
     <>
       <PageHero eyebrow="Premium Hotel" title={'PREMIUM\nHOTEL'} lead={INTRO[active]} image="/images/toji/toji-01.webp" />
-
-      <section className="border-b border-ink/10 bg-page-2">
-        <div className="shell flex justify-center py-10">
-          <ButtonLink href={localePath(active, '/reservation')} variant="brass">
-            {dict.hotel.groupEnquiry}
-          </ButtonLink>
-        </div>
-      </section>
 
       {ordered.map((hotel, i) => (
         <Fragment key={hotel.slug}>
@@ -106,7 +97,6 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
         </Fragment>
       ))}
 
-      <GroupBookingCTA locale={active} body={dict.home.groupHotel} />
     </>
   );
 }

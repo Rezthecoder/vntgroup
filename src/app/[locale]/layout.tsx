@@ -107,7 +107,6 @@ export default async function LocaleLayout({
           labels={{
             menu: dict.common.menu,
             close: dict.common.close,
-            reserve: dict.common.facilityReserve,
             contact: dict.common.contact,
           }}
         />
@@ -118,7 +117,7 @@ export default async function LocaleLayout({
 
         <MobileActionBar
           locale={locale}
-          labels={{ call: dict.common.groupDesk, reserve: dict.reservation.byForm }}
+          labels={{ call: dict.common.groupDesk, contact: dict.contact.title }}
         />
       </body>
     </html>

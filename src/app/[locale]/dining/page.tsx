@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
-import { GroupBookingCTA } from '@/components/sections/GroupBookingCTA';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { ArrowLink } from '@/components/ui/ArrowLink';
@@ -98,7 +97,6 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      <GroupBookingCTA locale={active} body={dict.home.groupDining} />
     </>
   );
 }

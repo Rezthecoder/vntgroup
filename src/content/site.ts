@@ -66,13 +66,8 @@ export const navigation: NavItem[] = [
     ],
   },
   {
-    href: '/reservation',
-    index: '05',
-    label: { ja: '施設予約', en: 'Reservations' },
-  },
-  {
     href: '/contact',
-    index: '06',
+    index: '05',
     label: { ja: 'お問い合わせ', en: 'Contact' },
   },
 ];

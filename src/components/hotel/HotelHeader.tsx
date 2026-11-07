@@ -22,7 +22,6 @@ export function HotelHeader({
   nameJa,
   stars,
   links,
-  reserveHref,
   contactHref,
   homeHref,
 }: {
@@ -30,7 +29,6 @@ export function HotelHeader({
   nameJa: string;
   stars: number;
   links: HotelNavLink[];
-  reserveHref: string;
   contactHref: string;
   homeHref: string;
 }) {
@@ -93,10 +91,7 @@ export function HotelHeader({
       </div>
 
       <header className="sticky top-0 z-[130] border-y border-black/10 bg-white/95 backdrop-blur-sm">
-        <div className="flex items-center justify-between px-5 md:hidden">
-          <a href={reserveHref} target="_blank" rel="noopener noreferrer" className="py-3 text-[0.8125rem] font-medium text-brass">
-            予約する
-          </a>
+        <div className="flex items-center justify-end px-5 md:hidden">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -111,11 +106,6 @@ export function HotelHeader({
         {/* Desktop: one centred row of links. */}
         <nav aria-label="Page sections" className="hidden px-5 md:block">
           <ul className="flex flex-row justify-center gap-7 lg:gap-9">
-            <li>
-              <a href={reserveHref} target="_blank" rel="noopener noreferrer" className={cn(linkClass, 'font-medium text-brass hover:text-brass')}>
-                予約する
-              </a>
-            </li>
             {links.map((link) => (
               <li key={link.id}>
                 <a
@@ -180,16 +170,6 @@ export function HotelHeader({
                 </button>
               </div>
               <ul className="flex flex-col">
-                <li>
-                  <a
-                    href={reserveHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(drawerLink, 'font-medium text-brass')}
-                  >
-                    予約する
-                  </a>
-                </li>
                 {links.map((link) => (
                   <li key={link.id}>
                     <a

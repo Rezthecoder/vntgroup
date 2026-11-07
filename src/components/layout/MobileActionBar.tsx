@@ -8,9 +8,9 @@ import { site } from '@/content/site';
 import { localePath, type Locale } from '@/lib/i18n';
 
 /**
- * Phone and reservation stay one thumb away on small screens, where the
+ * Phone and the enquiry form stay one thumb away on small screens, where the
  * header's desktop CTAs are hidden. Slides in once the hero is behind you,
- * and stays out of the way on the reservation form itself.
+ * and stays out of the way on the contact form itself.
  *
  * Not shown on the home page: the live vntgroup.co.jp home has no such bar
  * (the home page is a 1:1 match of live), it only helps on the hotel /
@@ -21,7 +21,7 @@ export function MobileActionBar({
   labels,
 }: {
   locale: Locale;
-  labels: { call: string; reserve: string };
+  labels: { call: string; contact: string };
 }) {
   const [shown, setShown] = useState(false);
   const { scrollY } = useScroll();
@@ -30,7 +30,7 @@ export function MobileActionBar({
   useMotionValueEvent(scrollY, 'change', (y) => setShown(y > 520));
 
   const isHome = /^\/(ja|en)\/?$/.test(pathname) || pathname === '/';
-  if (isHome || pathname.endsWith('/reservation')) return null;
+  if (isHome || pathname.endsWith('/contact')) return null;
 
   return (
     <motion.div
@@ -48,11 +48,11 @@ export function MobileActionBar({
       </a>
 
       <Link
-        href={localePath(locale, '/reservation')}
+        href={localePath(locale, '/contact')}
         className="flex flex-col items-center justify-center gap-1 bg-brass py-3.5"
       >
         <span className="text-[0.5625rem] tracking-[0.24em] text-page/70 uppercase">Form</span>
-        <span className="text-[0.8125rem] tracking-[0.12em] text-page">{labels.reserve}</span>
+        <span className="text-[0.8125rem] tracking-[0.12em] text-page">{labels.contact}</span>
       </Link>
     </motion.div>
   );

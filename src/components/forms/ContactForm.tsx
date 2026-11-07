@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 
 import { Checkbox, Field, Select, TextArea, TextInput } from './Field';
-import { SuccessPanel } from './ReservationForm';
+import { SuccessPanel } from './SuccessPanel';
 import { contactSchema } from '@/lib/schemas';
 import { getDictionary } from '@/content/dictionary';
 import type { Locale } from '@/lib/i18n';
