@@ -25,9 +25,14 @@ success state, so nothing breaks in preview environments.
 
 | Variable | Purpose |
 | --- | --- |
-| `RESEND_API_KEY` | Transactional email via [Resend](https://resend.com). Absent → log only. |
-| `MAIL_FROM` | Verified sender on your Resend domain. |
+| `SMTP_USER` | Google account the site sends from (e.g. `netadmin@vntgroup.co.jp`). |
+| `SMTP_PASS` | A Google **app password** for that account (needs 2-Step Verification) — not the real password. Absent → log only. |
 | `MAIL_TO` | Where enquiries land. Comma-separate for several recipients. |
+| `SMTP_HOST` / `SMTP_PORT` | Optional; default `smtp.gmail.com` / `465`. |
+
+Mail is sent with Nodemailer over the company's own Google SMTP, so no
+third-party mail service or extra DNS records are needed. Staff replies go
+straight to the visitor (the visitor's address is set as reply-to).
 
 ## Structure
 
@@ -104,5 +109,5 @@ Built for Vercel (`npm run build`, zero config). Any Node host works — the
 middleware and the two API routes need a running server, so a fully static
 export would mean moving the forms to an external endpoint.
 
-Set the three mail variables in the host's environment before launch, and point
+Set `SMTP_USER`, `SMTP_PASS` and `MAIL_TO` in the host's environment before launch, and point
 `site.url` in `src/content/site.ts` at the production domain if it changes.
