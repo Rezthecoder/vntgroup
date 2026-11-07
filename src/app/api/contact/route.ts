@@ -36,8 +36,9 @@ export async function POST(request: Request) {
 
   const result = await sendNotification(`【お問い合わせ】${data.category} — ${data.company}`, rows, data.email);
 
-  if (!result.delivered && result.reason === 'send-failed') {
-    return NextResponse.json({ error: 'send-failed' }, { status: 502 });
+  // Never tell the visitor "sent" unless the mail actually went out.
+  if (!result.delivered) {
+    return NextResponse.json({ error: result.reason ?? 'send-failed' }, { status: result.reason === 'not-configured' ? 503 : 502 });
   }
 
   return NextResponse.json({ ok: true });

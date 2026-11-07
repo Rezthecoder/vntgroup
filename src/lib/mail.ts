@@ -1,29 +1,38 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const apiKey = process.env.RESEND_API_KEY;
-const from = process.env.MAIL_FROM ?? 'VNT GROUP <noreply@vntgroup.co.jp>';
+/**
+ * Mail goes out directly through the company's own Google account over SMTP —
+ * no third-party mail service. SMTP_PASS is a Google *app password* (needs
+ * 2-Step Verification on the account), never the account's real password.
+ */
+const user = process.env.SMTP_USER;
+const pass = process.env.SMTP_PASS;
+const host = process.env.SMTP_HOST ?? 'smtp.gmail.com';
+const port = Number(process.env.SMTP_PORT ?? 465);
 const to = (process.env.MAIL_TO ?? 'sales-1@vntgroup.co.jp').split(',').map((s) => s.trim());
 
-const resend = apiKey ? new Resend(apiKey) : null;
+const transport =
+  user && pass ? nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass } }) : null;
 
 export type MailResult = { delivered: boolean; reason?: string };
 
 /**
- * Sends a notification to the office inbox. Without RESEND_API_KEY configured
- * the payload is logged instead of dropped, so local and preview environments
- * still show what would have gone out.
+ * Sends a notification to the office inbox. Without SMTP_USER / SMTP_PASS the
+ * payload is only logged, and the caller reports the form as not sent, so an
+ * enquiry is never silently dropped.
  */
 export async function sendNotification(subject: string, rows: [string, string][], replyTo?: string): Promise<MailResult> {
   const text = rows.map(([label, value]) => `${label}: ${value}`).join('\n');
 
-  if (!resend) {
-    console.warn(`[mail] RESEND_API_KEY not set — not sending.\nSubject: ${subject}\n${text}`);
+  if (!transport) {
+    console.warn(`[mail] SMTP_USER / SMTP_PASS not set — not sending.\nSubject: ${subject}\n${text}`);
     return { delivered: false, reason: 'not-configured' };
   }
 
   try {
-    await resend.emails.send({
-      from,
+    await transport.sendMail({
+      // Gmail only sends as the signed-in account, so the sender is SMTP_USER.
+      from: { name: 'VNT GROUP', address: user! },
       to,
       subject,
       replyTo,
