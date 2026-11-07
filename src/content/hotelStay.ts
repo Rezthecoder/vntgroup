@@ -331,7 +331,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '北口本宮冨士浅間神社', en: 'Kitaguchi Hongu Fuji Sengen Shrine' },
           image: '/images/spots/fuji-kitaguchi.webp',
-          credit: { author: '江戸村のとくぞう', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Kitaguchi_Hongu_Fuji_Sengen_jinja_Torii.jpg' },
           time: { ja: '車で約5分', en: 'About 5 min by car' },
           body: {
             ja: '富士山信仰の拠点として古くから崇敬を集める神社。杉並木の参道と荘厳な社殿が、静かな時間へと誘います。',
@@ -343,7 +342,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '忍野八海', en: 'Oshino Hakkai' },
           image: '/images/spots/fuji-oshino.webp',
-          credit: { author: 'MaedaAkihiko', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Oshino-Hakkai-Nakaike.jpg' },
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '富士山の雪解け水が湧き出す八つの池。透き通った水面と茅葺き屋根の風景が広がります。',
@@ -354,7 +352,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '富士急ハイランド', en: 'Fuji-Q Highland' },
           image: '/images/spots/fuji-fujiq.webp',
-          credit: { author: 'Vantey', license: 'Public domain', source: 'https://commons.wikimedia.org/wiki/File:Eejanaika_1.jpg' },
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '富士山を望む絶叫マシンで知られるテーマパーク。ご家族やグループでの旅行にもおすすめです。',
@@ -377,13 +374,52 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '山中湖', en: 'Lake Yamanaka' },
           image: '/images/spots/fuji-yamanaka.webp',
-          credit: { author: 'hoge asdf', license: 'CC BY 2.0', source: 'https://commons.wikimedia.org/wiki/File:Mount_Fuji_and_Lake_Yamanaka_(5767436265).jpg' },
           time: { ja: '車で約15分', en: 'About 15 min by car' },
           body: {
             ja: '富士五湖で最も大きな湖。湖畔からの富士山の眺めは格別で、冬には「ダイヤモンド富士」も見られます。',
             en: 'The largest of the Fuji Five Lakes, with a superb view of the mountain — and “Diamond Fuji” in winter.',
           },
           query: '山中湖',
+        },
+        {
+          name: { ja: '山中湖花の都公園', en: 'Hana no Miyako Park, Yamanakako' },
+          image: '/images/spots/fuji-hananomiyako.webp',
+          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          body: {
+            ja: '富士山を背景に、春から秋まで季節の花畑が広がる公園。夏のポピーやひまわりは特に見事です。',
+            en: 'Fields of seasonal flowers with Mt. Fuji behind them, spring to autumn — the summer poppies and sunflowers are a highlight.',
+          },
+          query: '山中湖花の都公園',
+        },
+        {
+          name: { ja: '山中湖のカバ（水陸両用バス）', en: 'KABA amphibious bus, Lake Yamanaka' },
+          image: '/images/spots/fuji-kaba.webp',
+          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          body: {
+            ja: 'バスのまま山中湖へ「ザブーン」と入水する水陸両用バス。湖上から富士山を眺める、ご家族に人気の体験です。',
+            en: 'An amphibious bus that drives straight into Lake Yamanaka — Mt. Fuji from the water, a family favourite.',
+          },
+          query: '山中湖のカバ',
+        },
+        {
+          name: { ja: '忍野 しのびの里', en: 'Oshino Shinobi no Sato (ninja village)' },
+          image: '/images/spots/fuji-shinobi.webp',
+          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          body: {
+            ja: '迫力ある忍者ショーや手裏剣体験が楽しめる忍者のテーマパーク。日本庭園越しの富士山も見どころです。',
+            en: 'A ninja theme park with live ninja shows and shuriken throwing, and Mt. Fuji beyond its Japanese garden.',
+          },
+          query: '忍野しのびの里',
+        },
+        {
+          name: { ja: '山梨県立富士湧水の里水族館', en: 'Fuji Wakimizu no Sato Aquarium' },
+          image: '/images/spots/fuji-aquarium.webp',
+          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          body: {
+            ja: '富士山の湧水で淡水魚を育てる「森の中の水族館」。澄んだ水の中を泳ぐ魚たちを間近に観察できます。',
+            en: 'The “aquarium in the forest”, raising freshwater fish in Mt. Fuji’s spring water — see them up close in crystal-clear tanks.',
+          },
+          query: '山梨県立富士湧水の里水族館',
         },
       ],
       events: [
