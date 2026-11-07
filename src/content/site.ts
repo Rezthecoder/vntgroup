@@ -58,16 +58,21 @@ export const navigation: NavItem[] = [
   {
     href: '/dining',
     index: '04',
-    label: { ja: '飲食・販売店', en: 'Food & Shop' },
+    label: { ja: '飲食店', en: 'Dining' },
     children: [
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
       { href: '/dining', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
-      { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
     ],
   },
   {
-    href: '/contact',
+    href: '/retail',
     index: '05',
+    label: { ja: '販売店', en: 'Shop' },
+    children: [{ href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } }],
+  },
+  {
+    href: '/contact',
+    index: '06',
     label: { ja: 'お問い合わせ', en: 'Contact' },
   },
 ];
@@ -77,7 +82,8 @@ export const navigation: NavItem[] = [
 export const headerNav: { href: string; label: L10n }[] = [
   { href: '/business', label: { ja: '事業', en: 'Business' } },
   { href: '/hotels', label: { ja: 'ホテル', en: 'Hotels' } },
-  { href: '/dining', label: { ja: '飲食・販売店', en: 'Food & Shop' } },
+  { href: '/dining', label: { ja: '飲食店', en: 'Dining' } },
+  { href: '/retail', label: { ja: '販売店', en: 'Shop' } },
   { href: '/contact', label: { ja: '採用', en: 'Careers' } },
   { href: '/company', label: { ja: '会社概要', en: 'Company' } },
 ];
