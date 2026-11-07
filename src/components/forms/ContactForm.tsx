@@ -14,7 +14,7 @@ import type { Locale } from '@/lib/i18n';
  * them to the inbox the access key was created for (sales-1@vntgroup.co.jp).
  * The access key is public by design; it can only deliver to that inbox.
  */
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '3dfcf2bd-a9b6-4435-a133-d55db0eed069';
 
 type Values = {
   category: string;

@@ -25,13 +25,13 @@ success state, so nothing breaks in preview environments.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key for the contact form. Create it at web3forms.com with `sales-1@vntgroup.co.jp`; enquiries are emailed there. |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Optional. Overrides the built-in Web3Forms access key (which delivers to `sales-1@vntgroup.co.jp`). |
 
 The contact form posts straight from the browser to Web3Forms, so the site
 needs no mail server, password or DNS records. The key is public by design: it
 can only deliver to the inbox it was created for. The visitor's address is the
-reply-to, so replying answers the customer. Without the key the form shows an
-error rather than claiming it was sent.
+reply-to, so replying answers the customer. If Web3Forms doesn't confirm
+delivery, the form shows an error rather than claiming it was sent.
 
 ## Structure
 
