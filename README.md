@@ -25,16 +25,13 @@ success state, so nothing breaks in preview environments.
 
 | Variable | Purpose |
 | --- | --- |
-| `SMTP_USER` | Google account the site sends from (e.g. `netadmin@vntgroup.co.jp`). |
-| `SMTP_PASS` | A Google **app password** for that account (needs 2-Step Verification), not the real password. |
-| `MAIL_TO` | Where enquiries land (default `sales-1@vntgroup.co.jp`). Comma-separate for several recipients. |
-| `SMTP_HOST` / `SMTP_PORT` | Optional; default `smtp.gmail.com` / `465`. |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Optional. Overrides the built-in Web3Forms access key (which delivers to `sales-1@vntgroup.co.jp`). |
 
-Mail is sent directly with Nodemailer over the company's own Google SMTP, so
-no third-party mail service or extra DNS records are needed. Staff replies go
-straight to the visitor (the visitor's address is set as reply-to). Without
-`SMTP_USER` / `SMTP_PASS` the form shows an error rather than claiming it was
-sent.
+The contact form posts straight from the browser to Web3Forms, so the site
+needs no mail server, password or DNS records. The key is public by design: it
+can only deliver to the inbox it was created for. The visitor's address is the
+reply-to, so replying answers the customer. If Web3Forms doesn't confirm
+delivery, the form shows an error rather than claiming it was sent.
 
 ## Structure
 
@@ -42,7 +39,6 @@ sent.
 src/
   app/
     [locale]/            root layout + every page (ja | en)
-    api/                 contact handler
     sitemap.ts robots.ts icon.svg
   components/
     layout/              header, fullscreen menu, footer, mobile action bar

@@ -9,6 +9,13 @@ import { contactSchema } from '@/lib/schemas';
 import { getDictionary } from '@/content/dictionary';
 import type { Locale } from '@/lib/i18n';
 
+/**
+ * Enquiries go straight from the visitor's browser to Web3Forms, which emails
+ * them to the inbox the access key was created for (sales-1@vntgroup.co.jp).
+ * The access key is public by design; it can only deliver to that inbox.
+ */
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '3dfcf2bd-a9b6-4435-a133-d55db0eed069';
+
 type Values = {
   category: string;
   name: string;
@@ -69,14 +76,40 @@ export function ContactForm({ locale }: { locale: Locale }) {
       return;
     }
 
+    // Honeypot: real people never fill this in. Pretend it worked.
+    if (parsed.data.website) {
+      setStatus('sent');
+      return;
+    }
+
+    // No key configured: say so rather than pretend the enquiry was sent.
+    if (!WEB3FORMS_KEY) {
+      setStatus('error');
+      return;
+    }
+
     setStatus('sending');
     try {
-      const res = await fetch('/api/contact', {
+      const d = parsed.data;
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(parsed.data),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `【お問い合わせ】${d.category} — ${d.company}`,
+          from_name: 'VNT GROUP ウェブサイト',
+          // Web3Forms sets reply-to from the "email" field, so replying answers the visitor.
+          email: d.email,
+          'お問い合わせ種別': d.category,
+          'お名前': d.name,
+          '会社名': d.company,
+          '電話番号': d.phone,
+          'お問い合わせ内容': d.detail,
+          botcheck: '',
+        }),
       });
-      setStatus(res.ok ? 'sent' : 'error');
+      const json = (await res.json().catch(() => null)) as { success?: boolean } | null;
+      setStatus(res.ok && json?.success ? 'sent' : 'error');
     } catch {
       setStatus('error');
     }
