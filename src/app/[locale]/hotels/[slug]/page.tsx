@@ -421,14 +421,14 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <EnHeading en="SURROUNDINGS" sub={L(S.sightseeing)} />
         <p className="mx-auto mt-8 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.sightseeing.lead)}</p>
 
-        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
           {stay.sightseeing.spots.map((spot, i) => (
             <Reveal key={i} delay={(i % 6) * 0.05}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-black/10 bg-white">
-                <div className="relative aspect-[4/5] w-full">
+                <div className="relative aspect-[4/5] w-full md:aspect-[3/2]">
                   {spot.image ? (
                     <>
-                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 640px) 50vw, 220px" className="object-cover" />
+                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" />
                       {spot.credit && <Credit credit={spot.credit} />}
                     </>
                   ) : (

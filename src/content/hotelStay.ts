@@ -320,7 +320,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '新倉山浅間公園（忠霊塔）', en: 'Arakurayama Sengen Park (Chureito Pagoda)' },
           image: '/images/spots/fuji-chureito.webp',
-          credit: { author: 'Dang Son', license: 'CC0', source: 'https://commons.wikimedia.org/wiki/File:12-Chureito-pagoda-and-Mount-Fuji-Japan_(29677439878).jpg' },
           time: { ja: '車で約10分', en: 'About 10 min by car' },
           body: {
             ja: '五重塔と富士山を一枚に収められる絶景スポット。春は桜、秋は紅葉と、季節ごとに表情を変えます。',
