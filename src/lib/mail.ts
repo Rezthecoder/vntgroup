@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 
 const apiKey = process.env.RESEND_API_KEY;
 const from = process.env.MAIL_FROM ?? 'VNT GROUP <noreply@vntgroup.co.jp>';
-const to = (process.env.MAIL_TO ?? 'info@vntgroup.co.jp').split(',').map((s) => s.trim());
+const to = (process.env.MAIL_TO ?? 'sales-1@vntgroup.co.jp').split(',').map((s) => s.trim());
 
 const resend = apiKey ? new Resend(apiKey) : null;
 

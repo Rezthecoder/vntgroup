@@ -27,7 +27,7 @@ success state, so nothing breaks in preview environments.
 | --- | --- |
 | `RESEND_API_KEY` | Transactional email via [Resend](https://resend.com). Absent → log only. |
 | `MAIL_FROM` | Verified sender on your Resend domain. |
-| `MAIL_TO` | Where enquiries land. Comma-separate for several recipients. |
+| `MAIL_TO` | Where enquiries land (default `sales-1@vntgroup.co.jp`). Comma-separate for several recipients. |
 
 ## Structure
 
