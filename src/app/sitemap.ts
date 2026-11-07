@@ -11,7 +11,6 @@ const staticPaths = [
   '/hotels',
   '/dining',
   '/retail',
-  '/reservation',
   '/contact',
   '/news',
 ];

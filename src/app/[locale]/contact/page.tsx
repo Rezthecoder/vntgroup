@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -9,7 +8,7 @@ import { MapEmbed } from '@/components/ui/MapEmbed';
 
 import { getDictionary } from '@/content/dictionary';
 import { site } from '@/content/site';
-import { isLocale, localePath, type Locale } from '@/lib/i18n';
+import { isLocale, type Locale } from '@/lib/i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -36,15 +35,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         image="/images/brand/hero-main.webp"
         height="h-[52vh] min-h-[20rem] md:h-[62vh]"
       />
-
-      <div className="border-b border-ink/10 bg-page-2">
-        <div className="shell flex flex-wrap items-center gap-x-3 gap-y-1 py-5 text-[0.8125rem] text-ink/60">
-          <span>{dict.contact.switchToReservation}</span>
-          <Link href={localePath(active, '/reservation')} className="text-brass underline-offset-4 hover:underline">
-            {dict.contact.here}
-          </Link>
-        </div>
-      </div>
 
       <section className="relative py-20 md:py-28">
         <div className="shell">

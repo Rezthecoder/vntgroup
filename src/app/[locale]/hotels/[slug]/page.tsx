@@ -79,7 +79,6 @@ const S = {
   routeGuide: { ja: 'ルート案内', en: 'Route guide' },
   services: { ja: 'サービス内容', en: 'Services' },
   amenities: { ja: '客室設備', en: 'In the room' },
-  book: { ja: '予約する', en: 'Reserve' },
   telLabel: { ja: '電話', en: 'Tel' },
   faxLabel: { ja: 'FAX', en: 'Fax' },
   checkIn: { ja: 'チェックイン', en: 'Check-in' },
@@ -114,8 +113,6 @@ const MODE_LABEL: Record<RouteMode, L10n> = {
 
 const mapsUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
-/** Filled button, the reference's 予約する. */
-const BTN = 'inline-flex items-center justify-center rounded-md bg-brass px-10 py-3 text-[0.875rem] tracking-[0.1em] text-white transition-opacity hover:opacity-80';
 /** Thin outline button (周辺観光をもっと見る / アクセス情報). */
 const BTN_LINE = 'inline-flex items-center justify-center border px-8 py-3 text-[0.8125rem] tracking-[0.1em] transition-colors';
 
@@ -145,7 +142,6 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
   const stay = getStay(hotel.slug);
   const L = (v: L10n) => t(v, active);
 
-  const reserveHref = hotel.booking?.[0]?.href ?? localePath(active, '/reservation');
   const contactHref = localePath(active, '/contact');
   const slides = stay.heroSlides ?? [hotel.hero, ...hotel.gallery].slice(0, 3);
   const pool = Array.from(new Set([hotel.hero, ...hotel.gallery, hotel.hub.image, ...hotel.highlights.map((b) => b.image), ...hotel.special.blocks.map((b) => b.image)]));
@@ -194,7 +190,6 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         nameJa={hotel.nameJa}
         stars={hotel.stars}
         links={links}
-        reserveHref={reserveHref}
         contactHref={contactHref}
         homeHref={localePath(active)}
       />
@@ -362,11 +357,6 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     </dl>
                   )}
 
-                  <div className="mt-4 rounded-lg bg-page-3 p-5 text-center">
-                    <a href={reserveHref} target={hotel.booking ? '_blank' : undefined} rel="noopener noreferrer" className={BTN}>
-                      {L(S.book)}
-                    </a>
-                  </div>
                 </Reveal>
               </div>
             </article>

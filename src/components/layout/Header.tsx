@@ -19,7 +19,7 @@ const OWN_HEADER = /^\/(ja|en)\/hotels\/[^/]+\/?$/;
  * (red fill). Sticky, so it stays reachable on long pages; the live one
  * scrolls away.
  */
-export function Header({ locale, labels }: { locale: Locale; labels: { menu: string; close: string; reserve: string; contact: string } }) {
+export function Header({ locale, labels }: { locale: Locale; labels: { menu: string; close: string; contact: string } }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -62,12 +62,6 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
             </nav>
 
             <div className="hidden items-center gap-3 md:flex">
-              <Link
-                href={localePath(locale, '/reservation')}
-                className="rounded-lg border-2 border-brand px-6 py-3 text-[0.9375rem] font-bold text-brand transition-colors hover:bg-brand hover:text-white"
-              >
-                {labels.reserve}
-              </Link>
               <Link
                 href={localePath(locale, '/contact')}
                 className="rounded-lg bg-brand px-6 py-3.5 text-[0.9375rem] font-bold text-white shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"

@@ -59,7 +59,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <GroupNote
           body={dict.home.groupHotel}
           more={{ href: localePath(locale, '/hotels'), label: dict.common.viewMore }}
-          contact={{ href: localePath(locale, '/reservation'), label: dict.contact.title }}
+          contact={{ href: localePath(locale, '/contact'), label: dict.contact.title }}
         />
       </section>
 

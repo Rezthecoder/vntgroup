@@ -2,7 +2,7 @@
 
 A rebuild of [vntgroup.co.jp](https://vntgroup.co.jp) (previously a STUDIO/Nuxt
 no-code site) as a Next.js application: bilingual (JA/EN), animation-led, with a
-multi-step group reservation flow and a general enquiry form.
+general enquiry form.
 
 ## Running it
 
@@ -35,12 +35,12 @@ success state, so nothing breaks in preview environments.
 src/
   app/
     [locale]/            root layout + every page (ja | en)
-    api/                 contact + reservation handlers
+    api/                 contact handler
     sitemap.ts robots.ts icon.svg
   components/
     layout/              header, fullscreen menu, footer, mobile action bar
     motion/              smooth scroll, reveals, split text, parallax, preloader, cursor
-    forms/               field primitives, calendar, contact + reservation forms
+    forms/               field primitives and the contact form
     ui/                  buttons, headings, gallery + lightbox, map, video facade
     home/ company/       page-specific pieces
   content/               ALL copy and data (see below)

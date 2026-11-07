@@ -4,14 +4,12 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
-import { GroupBookingCTA } from '@/components/sections/GroupBookingCTA';
 import { Reveal, RevealImage } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Gallery } from '@/components/ui/Gallery';
 import { MapEmbed } from '@/components/ui/MapEmbed';
 import { VideoEmbed } from '@/components/ui/VideoEmbed';
-import { ButtonLink } from '@/components/ui/ArrowLink';
 
 import { getVenue, venues } from '@/content/dining';
 import { getDictionary } from '@/content/dictionary';
@@ -95,14 +93,6 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* Geisha-tei's page carries its own group-booking button under the intro. */}
-      {venue.slug === 'geisyatei' && (
-        <Reveal className="-mt-8 pb-20 text-center md:-mt-12 md:pb-24">
-          <ButtonLink href={localePath(active, '/contact')} variant="brass">
-            {dict.dining.groupApply}
-          </ButtonLink>
-        </Reveal>
-      )}
 
       {/* Film ------------------------------------------------------------- */}
       {venue.youtubeId && (
@@ -150,32 +140,6 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
         </section>
       )}
 
-      {/* 団体予約 大歓迎です ------------------------------------------------ */}
-      {venue.group && (
-        <section className="relative border-b border-ink/10 py-20 md:py-28">
-          <div className="shell">
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
-              <SplitText
-                as="h2"
-                text={active === 'ja' ? '団体予約\n大歓迎です' : 'Group bookings\nwelcome'}
-                className="type-display text-[clamp(1.4rem,3vw,2.25rem)] text-ink"
-              />
-              <div>
-                {venue.group.note && (
-                  <Reveal delay={0.14}>
-                    <p className="type-body">{t(venue.group.note, active)}</p>
-                  </Reveal>
-                )}
-                <Reveal delay={0.2} className={venue.group.note ? 'mt-8' : ''}>
-                  <ButtonLink href={localePath(active, '/contact')} variant="brass">
-                    {dict.common.reserve}
-                  </ButtonLink>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Gallery ---------------------------------------------------------- */}
       <section className="relative py-24 md:py-32">
@@ -272,7 +236,6 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      <GroupBookingCTA locale={active} body={dict.home.groupDining} />
     </>
   );
 }

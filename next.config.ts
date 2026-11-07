@@ -24,7 +24,8 @@ const nextConfig: NextConfig = {
       { source: '/product', destination: '/ja/business', permanent: true },
       { source: '/company', destination: '/ja/company', permanent: true },
       { source: '/contact', destination: '/ja/contact', permanent: true },
-      { source: '/reservation', destination: '/ja/reservation', permanent: true },
+      { source: '/reservation', destination: '/ja/contact', permanent: true },
+      { source: '/:locale(ja|en)/reservation', destination: '/:locale/contact', permanent: true },
       { source: '/news', destination: '/ja/news', permanent: true },
     ];
   },
