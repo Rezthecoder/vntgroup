@@ -452,7 +452,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             return (
             <Reveal key={i} delay={(i % 6) * 0.05} className={cn(shape.mobileFull && 'col-span-2', shape.wide ? 'md:col-span-3' : 'md:col-span-2')}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-ink/10 bg-page">
-                <div className={cn('relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
+                <div className={cn('reveal-color relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
                   {spot.image ? (
                     <>
                       <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
