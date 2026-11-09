@@ -63,6 +63,8 @@ export type Spot = {
   time: L10n;
   body: L10n;
   image?: string;
+  /** CSS object-position for the crop, e.g. 'center 25%' to keep a castle roof in frame. */
+  focus?: string;
   credit?: PhotoCredit;
   /** Google Maps search text for the "view on map" link. */
   query: string;
@@ -230,7 +232,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Local Food',
           title: { ja: '吉田のうどん', en: 'Yoshida udon' },
-          image: '/images/spots/fuji-udon.webp',
+          image: '/images/spots/fuji-udon-v2.webp',
           body: {
             ja: '富士吉田を代表する郷土料理。コシの強い太麺に、キャベツや馬肉をのせるのが定番です。市内には多くの専門店があります。',
             en: 'Fujiyoshida’s signature dish: thick, firm noodles, traditionally topped with cabbage and horse meat. The town is full of udon shops.',
@@ -239,7 +241,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Local Food',
           title: { ja: 'ほうとう', en: 'Hoto' },
-          image: '/images/spots/fuji-hoto.webp',
+          image: '/images/spots/fuji-hoto-v2.webp',
           body: {
             ja: '平打ち麺をかぼちゃや野菜と味噌で煮込んだ山梨の郷土料理。寒い季節の富士観光に、体の芯から温まる一杯をどうぞ。',
             en: 'Yamanashi’s flat noodles simmered in miso with pumpkin and vegetables — a bowl that warms you through on a cold day by Mt. Fuji.',
@@ -559,8 +561,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           label: 'Nagoya Meshi',
           title: { ja: '味噌カツ・ひつまぶし', en: 'Miso katsu & hitsumabushi' },
-          image: '/images/spots/nagoya-hitsumabushi.webp',
-          credit: { author: 'Kanesue', license: 'CC BY 2.0', source: 'https://commons.wikimedia.org/wiki/File:Hitsumabushi1.jpg' },
+          image: '/images/spots/nagoya-hitsumabushi-v2.webp',
           body: {
             ja: '濃厚な八丁味噌のタレをかけた味噌カツや、三通りの食べ方で楽しむうなぎのひつまぶしは、名古屋を訪れたらぜひ味わいたい名物です。',
             en: 'Pork cutlet in rich Hatcho miso sauce, and eel hitsumabushi eaten three ways — must-tries on any Nagoya trip.',
@@ -625,8 +626,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       spots: [
         {
           name: { ja: '尾張大國霊神社（国府宮）', en: 'Owari Okunitama Shrine (Konomiya)' },
-          image: '/images/spots/nagoya-konomiya.webp',
-          credit: { author: 'Saigen Jiro', license: 'CC0', source: 'https://commons.wikimedia.org/wiki/File:Owari-okunitama-jinja,_shaden.jpg' },
+          image: '/images/spots/nagoya-konomiya-v2.webp',
+          focus: 'center 55%',
           time: { ja: '徒歩約5分', en: 'About 5 min on foot' },
           body: {
             ja: '尾張の総社として知られる古社。毎年旧正月に行われる「はだか祭」は、多くの参拝者で賑わいます。',
@@ -636,8 +637,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '清洲城', en: 'Kiyosu Castle' },
-          image: '/images/spots/nagoya-kiyosu.webp',
-          credit: { author: 'Hyppolyte de Saint-Rambert', license: 'CC BY 4.0', source: 'https://commons.wikimedia.org/wiki/File:Kiyosu_Castle_(Kiyosu_Aichi)_VLux5_hdsr_39.jpg' },
+          image: '/images/spots/nagoya-kiyosu-v2.webp',
+          focus: 'center 22%',
           time: { ja: '車で約15分', en: 'About 15 min by car' },
           body: {
             ja: '織田信長ゆかりの城。天守からは五条川と尾張の街並みを一望できます。',
@@ -659,8 +660,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '熱田神宮', en: 'Atsuta Shrine' },
-          image: '/images/spots/nagoya-atsuta.webp',
-          credit: { author: 'Bariston', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Atsuta_Shrine.jpg' },
+          image: '/images/spots/nagoya-atsuta-v2.webp',
           time: { ja: '電車で約40分', en: 'About 40 min by train' },
           body: {
             ja: '三種の神器のひとつ「草薙神剣」を祀る、由緒ある神宮。緑豊かな境内は都会の中の静かな森です。',
@@ -671,8 +671,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '徳川美術館', en: 'Tokugawa Art Museum' },
-          image: '/images/spots/nagoya-tokugawa.webp',
-          credit: { author: 'Asturio Cantabrio', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Tokugawa_Art_Museum_New_Building_ac.jpg' },
+          image: '/images/spots/nagoya-tokugawa-v2.webp',
           time: { ja: '車で約35分', en: 'About 35 min by car' },
           body: {
             ja: '尾張徳川家に伝わる大名道具を収蔵。国宝「源氏物語絵巻」をはじめ、貴重な名品を所蔵しています。',

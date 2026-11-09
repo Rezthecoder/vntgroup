@@ -437,7 +437,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <div className="relative aspect-[4/5] w-full md:aspect-[3/2]">
                   {spot.image ? (
                     <>
-                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" />
+                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
                       {spot.credit && <Credit credit={spot.credit} />}
                     </>
                   ) : (
