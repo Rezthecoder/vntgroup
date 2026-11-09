@@ -218,7 +218,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
         <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-12 md:mt-16 md:grid-cols-[1fr_1.1fr] md:gap-16">
           {/* Two overlapping photos, as the reference's collage. */}
-          <Reveal className="relative mx-auto aspect-[4/4.4] w-full max-w-[27rem]">
+          <Reveal from="left" duration={1.1} className="relative mx-auto aspect-[4/4.4] w-full max-w-[27rem]">
             <div className="absolute top-0 left-0 h-[62%] w-[72%] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
               <Image src={collage[0]} alt="" fill sizes="(max-width: 768px) 70vw, 320px" className="object-cover" />
             </div>
@@ -274,7 +274,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="grid grid-cols-[1fr_1.7fr] gap-3 md:gap-4">
+          <Reveal from="right" duration={1.1} delay={0.08} className="grid grid-cols-[1fr_1.7fr] gap-3 md:gap-4">
             <div className="grid gap-3 md:gap-4">
               {groupGrid.slice(0, 3).map((src, i) => (
                 <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -300,7 +300,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             // 3 / 2 / 3 rhythm on desktop, as the reference grid.
             const wide = i === 3 || i === 4;
             return (
-              <Reveal key={i} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
+              <Reveal key={i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
                 <article
                   className={cn(
                     'group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
@@ -361,7 +361,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
               </Reveal>
 
               <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-                <Reveal className="overflow-hidden rounded-xl">
+                <Reveal from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} className="overflow-hidden rounded-xl">
                   <RoomGallery images={[room.image, ...(room.gallery ?? [])]} alt={L(room.name)} />
                 </Reveal>
 
@@ -410,7 +410,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   rather than against the left edge. */}
               <div className="mt-5 flex flex-wrap justify-center gap-5">
                 {group.items.map((item, i) => (
-                  <Reveal key={i} delay={(i % 3) * 0.06} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]">
+                  <Reveal key={i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 3) * 0.06} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]">
                     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-page shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
                       <div className="relative aspect-[4/3] w-full">
                         {item.image ? (
@@ -450,7 +450,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           {stay.sightseeing.spots.map((spot, i) => {
             const shape = spotShape(i, stay.sightseeing.spots.length);
             return (
-            <Reveal key={i} delay={(i % 6) * 0.05} className={cn(shape.mobileFull && 'col-span-2', shape.wide ? 'md:col-span-3' : 'md:col-span-2')}>
+            <Reveal key={i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 6) * 0.05} className={cn(shape.mobileFull && 'col-span-2', shape.wide ? 'md:col-span-3' : 'md:col-span-2')}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-ink/10 bg-page">
                 <div className={cn('reveal-color relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
                   {spot.image ? (

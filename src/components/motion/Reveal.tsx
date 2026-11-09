@@ -23,17 +23,23 @@ export function Reveal({
   amount = 0.25,
   once = true,
   as = 'div',
+  from,
+  distance = 90,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
   duration?: number;
   direction?: Direction;
+  /** Slide in sideways from this edge (overrides `direction`), for photos. */
+  from?: 'left' | 'right';
+  /** Slide distance in px for `from`. */
+  distance?: number;
   amount?: number;
   once?: boolean;
   as?: 'div' | 'section' | 'li' | 'article' | 'span';
 }) {
-  const { x, y } = offsets[direction];
+  const { x, y } = from ? { x: from === 'left' ? -distance : distance, y: 0 } : offsets[direction];
   const Comp = motion[as];
 
   return (

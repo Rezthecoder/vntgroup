@@ -49,10 +49,11 @@ export function BusinessCards({ locale, viewMore }: { locale: Locale; viewMore: 
         return (
           <motion.li
             key={area.id}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            // Cards slide in from alternate sides.
+            initial={{ opacity: 0, x: i % 2 === 0 ? -90 : 90 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, delay: (i % 3) * 0.08 }}
+            transition={{ duration: 1.1, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
             {area.href ? (
               <Link href={localePath(locale, area.href)} className="group block">

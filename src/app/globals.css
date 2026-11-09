@@ -120,6 +120,8 @@
 
   html {
     scroll-behavior: auto;
+    /* Photos slide in from the sides; never let them widen the page. */
+    overflow-x: clip;
   }
 
   body {
