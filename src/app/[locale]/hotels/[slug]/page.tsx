@@ -97,6 +97,18 @@ const SEASON: Record<Season, string> = { spring: '春', summer: '夏', autumn: '
 /** Traditional seasonal tones: 桜 (sakura), 藍 (indigo), 紅葉 (maple), 銀鼠 (snow grey). */
 const SEASON_COLOR: Record<Season, string> = { spring: '#c95b7e', summer: '#2a6f93', autumn: '#c0532b', winter: '#5b6b88' };
 
+/**
+ * Spot-card layout so no row is left with a lone card. On tablet/desktop the
+ * grid has 6 columns: rows of three (span 2), and the last row(s) of two
+ * wider cards (span 3) when the count does not divide by three — 5 → 3+2,
+ * 10 → 3+3+2+2. On phones (2 columns) an odd last card spans the full width.
+ */
+function spotShape(i: number, n: number) {
+  const r = n % 3;
+  const wideFrom = r === 2 ? n - 2 : r === 1 ? (n >= 4 ? n - 4 : 0) : n;
+  return { wide: i >= wideFrom, mobileFull: n % 2 === 1 && i === n - 1 };
+}
+
 const DINING_GROUP: Record<string, L10n> = {
   Breakfast: { ja: 'ご朝食', en: 'Breakfast' },
   'Local Food': { ja: '地元グルメ', en: 'Local food' },
@@ -432,14 +444,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <EnHeading en="SURROUNDINGS" sub={L(S.sightseeing)} />
         <p className="mx-auto mt-8 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.sightseeing.lead)}</p>
 
-        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
-          {stay.sightseeing.spots.map((spot, i) => (
-            <Reveal key={i} delay={(i % 6) * 0.05}>
+        <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-6 md:gap-5">
+          {stay.sightseeing.spots.map((spot, i) => {
+            const shape = spotShape(i, stay.sightseeing.spots.length);
+            return (
+            <Reveal key={i} delay={(i % 6) * 0.05} className={cn(shape.mobileFull && 'col-span-2', shape.wide ? 'md:col-span-3' : 'md:col-span-2')}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-ink/10 bg-page">
-                <div className="relative aspect-[4/5] w-full md:aspect-[3/2]">
+                <div className={cn('relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
                   {spot.image ? (
                     <>
-                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
+                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
                       {spot.credit && <Credit credit={spot.credit} />}
                     </>
                   ) : (
@@ -465,7 +479,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 </div>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
         <p className="mx-auto mt-3 max-w-[76rem] text-right text-[0.875rem] md:text-[0.8125rem] text-stone">{L(S.timeNote)}</p>
 
