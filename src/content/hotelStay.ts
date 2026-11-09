@@ -231,7 +231,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           label: 'Local Food',
           title: { ja: '吉田のうどん', en: 'Yoshida udon' },
           image: '/images/spots/fuji-udon.webp',
-          credit: { author: 'Ocdp', license: 'CC0', source: 'https://commons.wikimedia.org/wiki/File:Yoshida_udon_001.jpg' },
           body: {
             ja: '富士吉田を代表する郷土料理。コシの強い太麺に、キャベツや馬肉をのせるのが定番です。市内には多くの専門店があります。',
             en: 'Fujiyoshida’s signature dish: thick, firm noodles, traditionally topped with cabbage and horse meat. The town is full of udon shops.',
@@ -241,7 +240,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           label: 'Local Food',
           title: { ja: 'ほうとう', en: 'Hoto' },
           image: '/images/spots/fuji-hoto.webp',
-          credit: { author: 'Jungle', license: 'CC BY-SA 3.0', source: 'https://commons.wikimedia.org/wiki/File:Houtou.jpg' },
           body: {
             ja: '平打ち麺をかぼちゃや野菜と味噌で煮込んだ山梨の郷土料理。寒い季節の富士観光に、体の芯から温まる一杯をどうぞ。',
             en: 'Yamanashi’s flat noodles simmered in miso with pumpkin and vegetables — a bowl that warms you through on a cold day by Mt. Fuji.',

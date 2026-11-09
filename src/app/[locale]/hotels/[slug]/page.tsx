@@ -157,8 +157,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       ...stay.rooms.items.map((r, i) => ({ title: r.name, body: r.body, image: r.image ?? pick(i) })),
     ].slice(0, 8);
 
+  // Dishes with a photo become cards; one without (breakfast, until the hotel
+  // sends a photo) is a short note under the lead instead of an empty tile.
+  const diningNotes = stay.dining.items.filter((item) => !item.image);
   const diningGroups = Array.from(
-    stay.dining.items.reduce((map, item) => {
+    stay.dining.items.filter((item) => item.image).reduce((map, item) => {
       if (!map.has(item.label)) map.set(item.label, []);
       map.get(item.label)!.push(item);
       return map;
@@ -369,6 +372,12 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <JpBand title={L(S.dining)} sub={L(S.diningSub)} />
         <div className="mx-auto max-w-[76rem] px-5">
           <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.dining.lead)}</p>
+          {diningNotes.map((note, i) => (
+            <p key={i} className="mx-auto mt-6 max-w-[40rem] rounded-xl border border-gold/40 bg-page-2 px-5 py-4 text-center text-[0.9375rem] leading-[1.9] text-ink-mute">
+              <span className="mr-2 font-medium text-brass">{L(note.title)}</span>
+              {L(note.body)}
+            </p>
+          ))}
 
           {diningGroups.map((group, g) => (
             <div key={g} className="mt-12">
