@@ -225,7 +225,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="group relative overflow-hidden bg-brass px-12 py-4 text-[0.6875rem] tracking-[0.22em] text-page uppercase disabled:opacity-60"
+          className="group relative overflow-hidden bg-brass px-12 py-4 text-[0.75rem] md:text-[0.6875rem] tracking-[0.22em] text-page uppercase disabled:opacity-60"
         >
           <span className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-y-100" />
           <span className="relative transition-colors duration-300 group-hover:text-page">

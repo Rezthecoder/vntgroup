@@ -79,7 +79,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
             <div key={i} className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
               <div>
                 <Reveal>
-                  <p className="type-display text-[0.6875rem] tracking-[0.26em] text-brass">
+                  <p className="type-display text-[0.75rem] md:text-[0.6875rem] tracking-[0.26em] text-brass">
                     {block.eyebrow ?? String(i + 1).padStart(2, '0')}
                   </p>
                 </Reveal>
@@ -216,7 +216,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
               <Reveal delay={0.16}>
                 <dl className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
                   <div className="grid grid-cols-[7rem_1fr] gap-4 py-4 md:grid-cols-[9rem_1fr]">
-                    <dt className="text-[0.6875rem] tracking-[0.2em] text-stone uppercase">{dict.common.address}</dt>
+                    <dt className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone uppercase">{dict.common.address}</dt>
                     <dd className="text-sm leading-relaxed whitespace-pre-line text-ink/80">
                       {t(venue.info.address, active)}
                       {venue.info.addressEnOnJa && active === 'ja' && (
@@ -226,7 +226,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
                   </div>
                   {venue.info.tel && (
                     <div className="grid grid-cols-[7rem_1fr] gap-4 py-4 md:grid-cols-[9rem_1fr]">
-                      <dt className="text-[0.6875rem] tracking-[0.2em] text-stone uppercase">
+                      <dt className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone uppercase">
                         {venue.info.telLabel ? t(venue.info.telLabel, active) : dict.common.tel}
                       </dt>
                       <dd className="text-sm text-ink/80">

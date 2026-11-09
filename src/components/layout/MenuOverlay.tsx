@@ -64,7 +64,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
                       key={child.href}
                       href={localePath(locale, child.href)}
                       onClick={onClose}
-                      className="text-[0.6875rem] leading-snug tracking-[0.04em] text-ink-mute"
+                      className="text-[0.75rem] md:text-[0.6875rem] leading-snug tracking-[0.04em] text-ink-mute"
                     >
                       {t(child.label, locale)}
                     </Link>
@@ -75,7 +75,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
           ))}
         </ul>
 
-        <div className="mt-6 flex flex-col gap-2 text-[0.6875rem] tracking-[0.04em] break-all">
+        <div className="mt-6 flex flex-col gap-2 text-[0.75rem] md:text-[0.6875rem] tracking-[0.04em] break-all">
           <a href={`tel:${site.telGroup.replace(/-/g, '')}`} className="text-brand">
             {site.telGroup}
           </a>

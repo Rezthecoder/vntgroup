@@ -74,7 +74,7 @@ export function MapEmbed({
             <span className="h-2.5 w-2.5 rounded-full bg-brass" />
           </motion.span>
           <span className="relative type-mincho text-sm text-ink/80">{address}</span>
-          <span className="relative text-[0.6875rem] tracking-[0.28em] text-brass uppercase">{cta}</span>
+          <span className="relative text-[0.75rem] md:text-[0.6875rem] tracking-[0.28em] text-brass uppercase">{cta}</span>
         </button>
       )}
     </div>

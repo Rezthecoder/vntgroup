@@ -65,7 +65,7 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
                     className="type-display mt-5 text-[clamp(1.5rem,3.6vw,2.75rem)] text-ink"
                   />
                   <Reveal delay={0.12}>
-                    <p aria-label={`${hotel.stars} star`} className="mt-4 text-[0.75rem] tracking-[0.34em] text-brass">
+                    <p aria-label={`${hotel.stars} star`} className="mt-4 text-[0.8125rem] md:text-[0.75rem] tracking-[0.34em] text-brass">
                       {'★'.repeat(hotel.stars)}
                     </p>
                   </Reveal>

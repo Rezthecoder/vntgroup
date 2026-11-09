@@ -52,7 +52,7 @@ export function VideoEmbed({
             />
           </motion.span>
 
-          <span className="absolute bottom-6 left-6 text-[0.6875rem] tracking-[0.28em] text-washi/75 uppercase">
+          <span className="absolute bottom-6 left-6 text-[0.75rem] md:text-[0.6875rem] tracking-[0.28em] text-washi/75 uppercase">
             {label}
           </span>
         </button>

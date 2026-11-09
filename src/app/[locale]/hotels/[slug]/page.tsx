@@ -294,7 +294,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:px-6">
                     <h3 className="text-[1.35rem] tracking-[0.06em] md:text-[1.6rem]">{L(f.title)}</h3>
-                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.75rem] leading-[1.7] text-pretty whitespace-pre-line">{L(f.body)}</p>
+                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.8125rem] md:text-[0.75rem] leading-[1.7] text-pretty whitespace-pre-line">{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>
@@ -316,7 +316,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 {stay.rooms.services.map((item, i) => (
                   <li key={i} className="rounded-lg border border-ink/10 bg-page p-4">
                     <p className="border-l-[3px] border-brass pl-2.5 text-[0.875rem] font-medium text-ink">{L(item.title)}</p>
-                    <p className="mt-2.5 text-[0.75rem] leading-[1.9] whitespace-pre-line text-ink-mute">{L(item.body)}</p>
+                    <p className="mt-2.5 text-[0.8125rem] md:text-[0.75rem] leading-[1.9] whitespace-pre-line text-ink-mute">{L(item.body)}</p>
                   </li>
                 ))}
               </ul>
@@ -341,7 +341,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <Reveal delay={0.08}>
                   <p className="text-[1rem] leading-[1.9] text-ink">{L(room.body)}</p>
                   {room.amenities && (
-                    <ul className="mt-4 space-y-1 text-[0.75rem] leading-[1.9] text-ink-mute">
+                    <ul className="mt-4 space-y-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.9] text-ink-mute">
                       <li>・{L(S.amenities)}｜{room.amenities.map((a) => L(a)).join('、')}</li>
                     </ul>
                   )}
@@ -387,7 +387,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                           // No dish photo yet: a soft panel carrying the hotel's wordmark, as the reference's logo tiles.
                           <div className="flex h-full w-full flex-col items-center justify-center bg-[linear-gradient(160deg,#f6f6f6,#e4e4e4)] px-6 text-center">
                             <span className="font-latin text-[1rem] tracking-[0.2em] text-ink-mute">{title}</span>
-                            <span className="mt-1 text-[0.75rem] tracking-[0.2em] text-star">{'★'.repeat(hotel.stars)}</span>
+                            <span className="mt-1 text-[0.8125rem] md:text-[0.75rem] tracking-[0.2em] text-star">{'★'.repeat(hotel.stars)}</span>
                           </div>
                         )}
                       </div>
@@ -423,15 +423,15 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-page-2 px-3 text-center">
-                      <span className="text-[0.75rem] tracking-[0.1em] text-stone">{L(spot.name)}</span>
+                      <span className="text-[0.8125rem] md:text-[0.75rem] tracking-[0.1em] text-stone">{L(spot.name)}</span>
                     </div>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-3">
                   <h3 className="text-[0.9375rem] leading-snug font-medium text-pretty text-ink">{L(spot.name)}</h3>
-                  <p className="mt-1 text-[0.6875rem] text-stone">{L(S.fromHotel)}{L(spot.time)}</p>
+                  <p className="mt-1 text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.fromHotel)}{L(spot.time)}</p>
                   <p className="mt-2 flex-1 text-[0.75rem] leading-[1.8] text-pretty text-ink-mute md:text-[0.6875rem]">{L(spot.body)}</p>
-                  <p className="mt-2 flex flex-wrap gap-x-3 text-[0.6875rem]">
+                  <p className="mt-2 flex flex-wrap gap-x-3 text-[0.75rem] md:text-[0.6875rem]">
                     <a href={mapsUrl(spot.query)} target="_blank" rel="noopener noreferrer" className="border-b border-ink text-ink hover:opacity-60">
                       {L(S.viewMap)}
                     </a>
@@ -446,7 +446,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </Reveal>
           ))}
         </div>
-        <p className="mx-auto mt-3 max-w-[76rem] text-right text-[0.6875rem] text-stone">{L(S.timeNote)}</p>
+        <p className="mx-auto mt-3 max-w-[76rem] text-right text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.timeNote)}</p>
 
         {stay.sightseeing.events && (
           <div className="mx-auto mt-16 max-w-[76rem]">
@@ -460,20 +460,20 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                       {SEASON[event.season]}
                     </span>
                     <h4 className="mt-3 text-[0.9375rem] font-medium text-ink">{L(event.name)}</h4>
-                    <p className="mt-2 text-[0.6875rem] leading-[1.8] text-ink-mute">
+                    <p className="mt-2 text-[0.75rem] md:text-[0.6875rem] leading-[1.8] text-ink-mute">
                       {L(S.when)}{L(event.when)}
                       <br />
                       {L(S.where)}{L(event.place)}
                     </p>
-                    <p className="mt-2 flex-1 text-[0.75rem] leading-[1.8] text-pretty text-ink-mute">{L(event.body)}</p>
-                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-ink text-[0.6875rem] text-ink hover:opacity-60">
+                    <p className="mt-2 flex-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.8] text-pretty text-ink-mute">{L(event.body)}</p>
+                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-ink text-[0.75rem] md:text-[0.6875rem] text-ink hover:opacity-60">
                       {L(S.viewMap)}
                     </a>
                   </article>
                 </Reveal>
               ))}
             </div>
-            <p className="mt-3 text-right text-[0.6875rem] text-stone">{L(S.eventsNote)}</p>
+            <p className="mt-3 text-right text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.eventsNote)}</p>
           </div>
         )}
 
@@ -486,9 +486,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   <article className="h-full rounded-md border border-ink/10 bg-page p-5">
                     <p className="border-b border-ink/10 pb-2 text-[0.9375rem] font-medium text-ink">{L(item.kind)}</p>
                     <p className="mt-3 text-[0.875rem] font-medium text-ink">{L(item.name)}</p>
-                    {item.address && <p className="mt-1 text-[0.75rem] leading-[1.8] text-ink-mute">{L(S.addressLabel)}：{item.address}</p>}
-                    {item.hours && <p className="mt-1 text-[0.75rem] text-ink-mute">{L(S.hours)}：{L(item.hours)}</p>}
-                    <p className="mt-2 text-[0.75rem] text-stone">{L(S.fromHotel)}{L(item.time)}</p>
+                    {item.address && <p className="mt-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.8] text-ink-mute">{L(S.addressLabel)}：{item.address}</p>}
+                    {item.hours && <p className="mt-1 text-[0.8125rem] md:text-[0.75rem] text-ink-mute">{L(S.hours)}：{L(item.hours)}</p>}
+                    <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] text-stone">{L(S.fromHotel)}{L(item.time)}</p>
                   </article>
                 </Reveal>
               ))}
@@ -537,7 +537,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
           <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <p className="text-[0.6875rem] tracking-[0.2em] text-stone">{L(S.hotelInfo)}</p>
+              <p className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone">{L(S.hotelInfo)}</p>
               <h3 className="mt-2 text-[1.5rem] font-medium tracking-[0.06em] text-ink">{hotel.nameJa}</h3>
               <p className="mt-4 text-[0.9375rem] text-ink">{L(hotel.info.address)}</p>
               <ul className="mt-4 space-y-2.5 text-[0.875rem] text-ink-mute">
@@ -611,7 +611,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                                 <span className="relative flex size-7 shrink-0 items-center justify-center rounded-full bg-ink text-page">
                                   <ModeIcon mode={step.leg.mode} />
                                 </span>
-                                <span className="relative text-[0.75rem] leading-snug whitespace-nowrap text-ink-mute md:text-center">{L(step.leg.text)}</span>
+                                <span className="relative text-[0.8125rem] md:text-[0.75rem] leading-snug whitespace-nowrap text-ink-mute md:text-center">{L(step.leg.text)}</span>
                               </li>
                             )}
                           </Fragment>
@@ -630,7 +630,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section className="bg-[#1c1c1c] px-5 py-16 text-center text-washi md:py-20">
         <p className="font-latin text-[1.5rem] tracking-[0.22em] md:text-[1.9rem]">{title}</p>
         <p className="mt-1 text-[0.9375rem] tracking-[0.3em] text-star">{'★'.repeat(hotel.stars)}</p>
-        <p className="mt-2 text-[0.75rem] tracking-[0.3em] text-washi/70">{hotel.nameJa}</p>
+        <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] tracking-[0.3em] text-washi/70">{hotel.nameJa}</p>
         {geo && (
           <p className="mt-6 text-[0.8125rem] tracking-[0.05em]">
             北緯{geo.lat}° 東経{geo.lng}°
@@ -644,7 +644,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           <br />
           {L(S.frontDesk)}
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.75rem] text-washi/70">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.8125rem] md:text-[0.75rem] text-washi/70">
           {links.map((l) => (
             <a key={l.id} href={`#${l.id}`} className="hover:text-washi">
               {l.label}
@@ -668,7 +668,7 @@ function EnHeading({ en, sub, small }: { en: string; sub?: string; small?: boole
       <h2 className={cn('font-latin tracking-[0.18em] text-ink', small ? 'text-[1.25rem] md:text-[1.5rem]' : 'text-[clamp(1.4rem,2.6vw,2.1rem)]')}>
         {en}
       </h2>
-      {sub && <p className="mt-2 text-[0.75rem] tracking-[0.1em] text-stone">{sub}</p>}
+      {sub && <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] tracking-[0.1em] text-stone">{sub}</p>}
     </Reveal>
   );
 }
@@ -705,7 +705,7 @@ function Rule({ inline }: { inline?: boolean }) {
   return (
     <div aria-hidden className={cn('relative mx-auto', inline ? 'max-w-[60rem]' : 'max-w-[76rem] px-5')}>
       <span className="block h-px w-full bg-ink/12" />
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-page px-2 text-[0.75rem] text-stone-dim">✦</span>
+      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-page px-2 text-[0.8125rem] md:text-[0.75rem] text-stone-dim">✦</span>
     </div>
   );
 }

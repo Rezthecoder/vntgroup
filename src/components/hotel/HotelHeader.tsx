@@ -87,7 +87,7 @@ export function HotelHeader({
             {name}
           </span>
           <span className="mt-1 block text-[1rem] tracking-[0.3em] text-star">{'★'.repeat(stars)}</span>
-          <span className="mt-2 block text-[0.75rem] tracking-[0.3em] text-stone">{nameJa}</span>
+          <span className="mt-2 block text-[0.8125rem] md:text-[0.75rem] tracking-[0.3em] text-stone">{nameJa}</span>
         </a>
       </div>
 

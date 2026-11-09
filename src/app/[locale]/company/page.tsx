@@ -79,7 +79,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
           <RevealGroup as="ul" className="mt-14 divide-y divide-ink/10 border-y border-ink/10" stagger={0.05}>
             {companyFacts.map((fact, i) => (
               <RevealItem key={i} as="li" className="grid gap-2 py-5 md:grid-cols-[14rem_1fr] md:gap-6">
-                <span className="text-[0.6875rem] tracking-[0.22em] text-stone uppercase">
+                <span className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.22em] text-stone uppercase">
                   {t(fact.label, active)}
                 </span>
                 <span className="text-sm leading-relaxed text-ink/85">{t(fact.value, active)}</span>
@@ -110,7 +110,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
             <RevealGroup as="ul" className="mt-10 space-y-4" stagger={0.04}>
               {businessScope.map((item, i) => (
                 <RevealItem key={i} as="li" className="flex gap-4">
-                  <span className="type-display shrink-0 text-[0.6875rem] tracking-[0.16em] text-brass/70">
+                  <span className="type-display shrink-0 text-[0.75rem] md:text-[0.6875rem] tracking-[0.16em] text-brass/70">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="text-[0.8125rem] leading-relaxed text-ink/70">{t(item, active)}</span>

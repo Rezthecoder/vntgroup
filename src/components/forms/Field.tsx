@@ -28,7 +28,7 @@ export function Field({
   return (
     <div className={cn('group', className)}>
       <label htmlFor={htmlFor} className="flex items-baseline gap-3">
-        <span className="text-[0.6875rem] tracking-[0.2em] text-stone uppercase">{label}</span>
+        <span className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone uppercase">{label}</span>
         {required && (
           <span className="text-[0.5625rem] tracking-[0.16em] text-brass uppercase">{requiredLabel ?? '*'}</span>
         )}

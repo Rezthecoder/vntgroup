@@ -1,6 +1,20 @@
 @import 'tailwindcss';
 
 /* Dark mode is opt-in: the header toggle sets data-theme="dark" on <html>. */
+/* Cormorant Garamond, self-hosted (Latin subset, variable 300–700) so it can
+   carry size-adjust: its small x-height is lifted 16% to sit with the
+   Japanese faces. Only Latin glyphs use it; Japanese falls through to
+   Zen Old Mincho at full size. */
+@font-face {
+  font-family: 'Cormorant VNT';
+  src: url('/fonts/cormorant-garamond-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 116%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-2199, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 /* ------------------------------------------------------------------
@@ -48,14 +62,14 @@
      titles); Japanese headings fall through to Zen Old Mincho; body copy is
      Zen Kaku Gothic New. The old token names (--font-tenor etc.) are kept
      so every existing usage picks up the new faces. */
-  --font-tenor: 'Cormorant Garamond';
+  --font-tenor: 'Cormorant VNT';
   --font-shippori: 'Zen Old Mincho';
   --font-noto-sans: 'Zen Kaku Gothic New';
-  --font-montserrat: 'Cormorant Garamond';
-  --font-display: 'Cormorant Garamond', 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-montserrat: 'Cormorant VNT';
+  --font-display: 'Cormorant VNT', 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --font-mincho: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --font-sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', system-ui, sans-serif;
-  --font-section: 'Cormorant Garamond', 'Zen Old Mincho', serif;
+  --font-section: 'Cormorant VNT', 'Zen Old Mincho', serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
@@ -66,6 +80,18 @@
   :root {
     color-scheme: light;
     --header-h: 5rem;
+  }
+
+  /* Phones: every rem-based size goes up 12.5% (11–13px captions become
+     12.5–14.5px, body copy ~17px) so text reads comfortably on an iPhone.
+     The header keeps roughly its old height. */
+  @media (max-width: 47.99rem) {
+    html {
+      font-size: 112.5%;
+    }
+    :root {
+      --header-h: 4.5rem;
+    }
   }
 
   /* Dark theme: the paper turns to charcoal and the ink to off-white.
@@ -111,6 +137,10 @@
     font-family: var(--font-mincho);
     font-weight: 500;
     font-feature-settings: 'palt' 1;
+    /* Even line lengths, and Japanese breaks at phrase boundaries where the
+       browser supports it, so a heading never strands one word (…ひと／とき). */
+    text-wrap: balance;
+    word-break: auto-phrase;
   }
 
   ::selection {
@@ -192,9 +222,6 @@
     font-weight: 500;
     letter-spacing: 0.06em;
     line-height: 1.35;
-    /* Cormorant's small x-height reads a size smaller than the old face;
-       lift it so the Latin names keep their presence. */
-    font-size-adjust: 0.46;
     /* Proportional kana spacing for Japanese headings. */
     font-feature-settings: 'palt' 1;
   }
@@ -210,13 +237,11 @@
   /* Latin names set in Cormorant (hotel names, room names, section titles). */
   .font-latin {
     font-family: var(--font-display);
-    font-size-adjust: 0.46;
   }
 
   /* Montserrat light, the home page's BUSINESS / HOTEL / FOOD & SHOP titles. */
   .type-section {
     font-family: var(--font-section);
-    font-size-adjust: 0.46;
     font-weight: 400;
     letter-spacing: 0.12em;
     line-height: 1.2;
@@ -225,7 +250,6 @@
   /* Small Tenor caps with the short rule beneath (WHATS SPECIAL, ABOUT ...). */
   .type-eyebrow {
     font-family: var(--font-display);
-    font-size-adjust: 0.46;
     font-size: 0.8125rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
@@ -235,7 +259,6 @@
 
   .type-eyebrow-lit {
     font-family: var(--font-display);
-    font-size-adjust: 0.46;
     font-size: 0.8125rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;

@@ -16,7 +16,7 @@ export function RevenueChart({ data, locale }: { data: { label: string; value: n
       {data.map((item, i) => (
         <li key={item.label}>
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <span className="text-[0.75rem] tracking-[0.18em] text-stone">{item.label}</span>
+            <span className="text-[0.8125rem] md:text-[0.75rem] tracking-[0.18em] text-stone">{item.label}</span>
             <span className="type-display text-[clamp(1.1rem,2.6vw,1.75rem)] text-ink">{format(item.value)}</span>
           </div>
 
