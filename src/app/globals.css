@@ -312,6 +312,20 @@
   .ornament-on-2::after {
     box-shadow: 0 0 0 4px var(--color-page-2);
   }
+  /* Over photographs: a brighter gold line, the lozenge without a halo. */
+  .ornament-lit {
+    width: 5.5rem;
+    margin-top: 0.7rem;
+  }
+  .ornament-lit::before {
+    background: linear-gradient(90deg, transparent, #d9b77c 25%, #d9b77c 75%, transparent);
+  }
+  .ornament-lit::after {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: #d23a3a;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
+  }
 
   /* Seigaiha (青海波) waves in faint gold, for title bands. */
   .bg-seigaiha {

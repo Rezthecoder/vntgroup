@@ -287,17 +287,27 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             const wide = i === 3 || i === 4;
             return (
               <Reveal key={i} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
-                <article className={cn('group relative overflow-hidden rounded-xl bg-sumi', wide ? 'aspect-[16/8]' : 'aspect-[4/3]')}>
+                <article
+                  className={cn(
+                    'group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
+                    wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
+                  )}
+                >
                   <Image
                     src={f.image}
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
-                    className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:px-6">
+                  {/* Warm scrim from the bottom: the photo stays bright up top, the copy sits on shade. */}
+                  <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,rgba(20,12,8,0.85)_0%,rgba(20,12,8,0.6)_50%,rgba(20,12,8,0.12)_88%)]" />
+                  {/* Faint gold edge on hover (pointer devices). */}
+                  <div aria-hidden className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-[#d9b77c]/0 transition duration-500 ring-inset group-hover:ring-[#d9b77c]/70" />
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-5 pb-6 text-center text-washi [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:px-6 md:pb-7">
                     <h3 className="text-[1.5rem] tracking-[0.06em] md:text-[1.75rem]">{L(f.title)}</h3>
-                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.9375rem] md:text-[0.875rem] leading-[1.95] text-pretty whitespace-pre-line">{L(f.body)}</p>
+                    <span aria-hidden className="ornament ornament-lit" />
+                    <p className="mx-auto mt-2.5 line-clamp-3 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]">{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>
@@ -427,7 +437,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <div className="relative aspect-[4/5] w-full md:aspect-[3/2]">
                   {spot.image ? (
                     <>
-                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" />
+                      <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 300px" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
                       {spot.credit && <Credit credit={spot.credit} />}
                     </>
                   ) : (
