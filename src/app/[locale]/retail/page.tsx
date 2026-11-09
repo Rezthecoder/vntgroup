@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
 import { SupplierCall } from '@/components/sections/SupplierCall';
+import { ShopLinks } from '@/components/sections/ShopPage';
+import { retailShops } from '@/content/shops';
 import { Reveal } from '@/components/motion/Reveal';
 import { Parallax } from '@/components/motion/Parallax';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -87,6 +89,8 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
           </Reveal>
         </div>
       </section>
+
+      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title="その他の店舗" />
 
       <SupplierCall locale={active} />
     </>

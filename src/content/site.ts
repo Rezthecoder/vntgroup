@@ -62,13 +62,19 @@ export const navigation: NavItem[] = [
     children: [
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
       { href: '/dining', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
+      { href: '/dining/sakai-kagetsu', label: { ja: '堺花月', en: 'Sakai Kagetsu' } },
     ],
   },
   {
     href: '/retail',
     index: '05',
     label: { ja: '販売店', en: 'Shop' },
-    children: [{ href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } }],
+    children: [
+      { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
+      { href: '/retail/kyosaido-kimono', label: { ja: '京彩堂（着物レンタル）', en: 'Kyosaido (Kimono rental)' } },
+      { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
+      { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
+    ],
   },
   {
     href: '/contact',
@@ -125,7 +131,11 @@ export const footerNav: {
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
       // One entry for both Warakutei rooms, as on the original; the hub lists both.
       { href: '/dining', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
+      { href: '/dining/sakai-kagetsu', label: { ja: '堺花月', en: 'Sakai Kagetsu' } },
       { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
+      { href: '/retail/kyosaido-kimono', label: { ja: '京彩堂（着物レンタル）', en: 'Kyosaido (Kimono rental)' } },
+      { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
+      { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
     ],
   },
   corporate: [
