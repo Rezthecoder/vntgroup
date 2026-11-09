@@ -406,9 +406,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           {diningGroups.map((group, g) => (
             <div key={g} className="mt-12">
               <h3 className="border-l-4 border-brass pl-3 text-[1.1875rem] font-medium tracking-[0.04em] text-ink">{group.title}</h3>
-              <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Flex instead of grid so a group of one or two cards sits centred
+                  rather than against the left edge. */}
+              <div className="mt-5 flex flex-wrap justify-center gap-5">
                 {group.items.map((item, i) => (
-                  <Reveal key={i} delay={(i % 3) * 0.06}>
+                  <Reveal key={i} delay={(i % 3) * 0.06} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]">
                     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-page shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
                       <div className="relative aspect-[4/3] w-full">
                         {item.image ? (
