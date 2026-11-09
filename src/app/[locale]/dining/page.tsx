@@ -95,7 +95,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
               href={localePath(active, '/retail')}
               image={ikegami.image}
               name={t(ikegami.name, active)}
-              ratio="aspect-4/3"
+              ratio="aspect-[1000/601]"
             />
           </div>
         </div>
