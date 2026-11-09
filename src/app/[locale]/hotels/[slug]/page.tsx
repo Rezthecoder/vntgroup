@@ -94,6 +94,8 @@ const S = {
 } satisfies Record<string, L10n>;
 
 const SEASON: Record<Season, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+/** Traditional seasonal tones: 桜 (sakura), 藍 (indigo), 紅葉 (maple), 銀鼠 (snow grey). */
+const SEASON_COLOR: Record<Season, string> = { spring: '#c95b7e', summer: '#2a6f93', autumn: '#c0532b', winter: '#5b6b88' };
 
 const DINING_GROUP: Record<string, L10n> = {
   Breakfast: { ja: 'ご朝食', en: 'Breakfast' },
@@ -474,10 +476,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {stay.sightseeing.events.map((event, i) => (
                 <Reveal key={i} delay={(i % 4) * 0.06}>
-                  <article className="flex h-full flex-col rounded-md border border-ink/10 bg-page p-5">
-                    <span className="type-mincho flex size-9 items-center justify-center rounded-full border border-ink text-[1.0625rem] text-ink">
-                      {SEASON[event.season]}
-                    </span>
+                  <article
+                    style={{ '--season': SEASON_COLOR[event.season] } as React.CSSProperties}
+                    className="flex h-full flex-col overflow-hidden rounded-md border border-ink/10 border-t-[3px] border-t-[var(--season)] bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--season)_11%,var(--color-page)),var(--color-page)_55%)] p-5 transition-shadow duration-300 hover:shadow-[0_10px_28px_-14px_var(--season)]"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="type-mincho flex size-10 items-center justify-center rounded-full bg-[var(--season)] text-[1.125rem] text-white shadow-[0_4px_12px_-4px_var(--season)]">
+                        {SEASON[event.season]}
+                      </span>
+                      <span className="font-latin text-[0.9375rem] tracking-[0.22em] text-[var(--season)] uppercase dark:text-[color-mix(in_srgb,var(--season)_55%,white)]">{event.season}</span>
+                    </div>
                     <h4 className="mt-3 text-[1.0625rem] font-medium text-ink">{L(event.name)}</h4>
                     <p className="mt-2 text-[0.875rem] md:text-[0.8125rem] leading-[2] text-ink-mute">
                       {L(S.when)}{L(event.when)}
@@ -485,7 +493,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                       {L(S.where)}{L(event.place)}
                     </p>
                     <p className="mt-2 flex-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-pretty text-ink-mute">{L(event.body)}</p>
-                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-ink text-[0.875rem] md:text-[0.8125rem] text-ink hover:opacity-60">
+                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-[var(--season)] text-[0.875rem] text-[var(--season)] hover:opacity-70 md:text-[0.8125rem] dark:border-[color-mix(in_srgb,var(--season)_55%,white)] dark:text-[color-mix(in_srgb,var(--season)_55%,white)]">
                       {L(S.viewMap)}
                     </a>
                   </article>
