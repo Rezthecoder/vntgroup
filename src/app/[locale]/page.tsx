@@ -96,7 +96,7 @@ function PhotoStrip({ items, locale }: { items: Strip[]; locale: Locale }) {
         <Link
           key={item.href}
           href={localePath(locale, item.href)}
-          className="reveal-color group relative block h-[15rem] overflow-hidden border-page md:h-[min(25vw,22.5rem)] md:border-l first:md:border-l-0"
+          className="group relative block h-[15rem] overflow-hidden border-page md:h-[min(25vw,22.5rem)] md:border-l first:md:border-l-0"
         >
           <Image src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
           <span className="absolute inset-0 bg-sumi/35 transition-colors duration-500 group-hover:bg-sumi/50" />
