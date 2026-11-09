@@ -2,33 +2,41 @@
 
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Wordmark } from '@/components/brand/Wordmark';
+import { FlagWordmark } from '@/components/brand/FlagWordmark';
 
 const SESSION_KEY = 'vnt:intro-played';
 
 /**
- * A single brass-rule curtain that lifts once per session. Skipping repeats
- * keeps internal navigation quick without losing the arrival moment.
+ * Runs before first paint (inline in <head>): when the intro has already
+ * played this session, or the visitor prefers reduced motion, the preloader
+ * is hidden by CSS straight away, so it never flashes.
+ */
+export const introInitScript = `try{if(sessionStorage.getItem('${SESSION_KEY}')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-skip')}catch(e){document.documentElement.classList.add('intro-skip')}`;
+
+/**
+ * Arrival screen, once per session: the VNT wordmark waves like a flag with a
+ * gold rule drawing beneath it, then the curtain lifts. Rendered on the server
+ * so it covers the page from the first frame.
  */
 export default function Preloader({ tagline }: { tagline: string }) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (sessionStorage.getItem(SESSION_KEY)) return;
-
-    setVisible(true);
-    document.body.style.overflow = 'hidden';
-
-    const timer = window.setTimeout(() => {
-      sessionStorage.setItem(SESSION_KEY, '1');
+    if (document.documentElement.classList.contains('intro-skip')) {
       setVisible(false);
-      document.body.style.overflow = '';
-    }, 2100);
-
+      return;
+    }
+    document.documentElement.style.overflow = 'hidden';
+    const timer = window.setTimeout(() => {
+      try {
+        sessionStorage.setItem(SESSION_KEY, '1');
+      } catch {}
+      setVisible(false);
+      document.documentElement.style.overflow = '';
+    }, 2600);
     return () => {
       window.clearTimeout(timer);
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, []);
 
@@ -37,31 +45,31 @@ export default function Preloader({ tagline }: { tagline: string }) {
       {visible && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-page"
+          className="vnt-preloader fixed inset-0 z-[200] flex flex-col items-center justify-center bg-page"
           exit={{ y: '-100%' }}
           transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] }}
         >
           <motion.div
-            className="w-[min(60vw,22rem)] text-brand"
-            initial={{ opacity: 0, y: 14, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-[min(68vw,24rem)] text-brand"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Wordmark />
+            <FlagWordmark />
           </motion.div>
 
           <motion.div
-            className="mt-6 h-px w-[min(60vw,26rem)] origin-left bg-brass"
+            className="mt-4 h-px w-[min(60vw,22rem)] origin-left bg-[linear-gradient(90deg,var(--color-brand),var(--color-gold))]"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.2, ease: [0.83, 0, 0.17, 1] }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.83, 0, 0.17, 1] }}
           />
 
           <motion.p
-            className="mt-6 text-sm tracking-[0.3em] text-stone uppercase"
+            className="font-latin mt-5 px-6 text-center text-[0.75rem] tracking-[0.2em] text-stone uppercase sm:text-[0.875rem] sm:tracking-[0.3em]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
             {tagline}
           </motion.p>

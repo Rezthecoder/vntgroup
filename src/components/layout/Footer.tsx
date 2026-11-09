@@ -4,6 +4,7 @@ import { footerNav, site, type FooterLink } from '@/content/site';
 import { getDictionary } from '@/content/dictionary';
 import { localePath, t, type Locale } from '@/lib/i18n';
 import { Reveal } from '@/components/motion/Reveal';
+import { Wordmark } from '@/components/brand/Wordmark';
 
 /**
  * Mirrors the live site's footer item for item: VNT GROUP, PREMIUM HOTEL with
@@ -14,10 +15,18 @@ export function Footer({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
-    <footer className="relative overflow-hidden bg-sumi text-washi">
+    <footer className="relative overflow-hidden bg-[#1a1715] text-washi">
+      {/* VNT red line with a touch of gold at its centre. */}
+      <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#b72929,#b08d57_50%,#b72929)]" />
+      {/* Faint warm glow behind the columns. */}
+      <span aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(183,41,41,0.16),transparent)]" />
 
       {/* Extra bottom padding on mobile clears the fixed action bar. */}
       <div className="shell relative pt-16 pb-28 md:pt-20 md:pb-12">
+        <Link href={localePath(locale)} aria-label="VNT GROUP" className="mb-12 inline-flex flex-col items-start gap-2.5 transition-opacity hover:opacity-80">
+          <Wordmark className="h-7 w-auto text-[#d23a3a] md:h-8" />
+          <span className="font-latin text-[0.75rem] tracking-[0.18em] text-[#d9b77c] uppercase md:text-[0.875rem] md:tracking-[0.3em]">Beyond. Connected. To the World.</span>
+        </Link>
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-6 md:gap-10">
           {/* VNT GROUP ------------------------------------------------------ */}
           <Reveal>
@@ -46,7 +55,7 @@ export function Footer({ locale }: { locale: Locale }) {
               ))}
             </ul>
 
-            <span aria-hidden className="mt-2 block h-px w-full max-w-[16rem] bg-page/70" />
+            <span aria-hidden className="mt-2 block h-px w-full max-w-[16rem] bg-[#d9b77c]/60" />
 
             <address className="mt-6 text-[1rem] leading-[1.95] text-washi not-italic">
               <p>{site.address.postal}</p>
@@ -62,13 +71,13 @@ export function Footer({ locale }: { locale: Locale }) {
 
             <dl className="mt-5 space-y-2.5 text-[1rem]">
               <ContactRow label={dict.footer.tel}>
-                <a href={`tel:${site.tel.replace(/-/g, '')}`} className="hover:opacity-70">
+                <a href={`tel:${site.tel.replace(/-/g, '')}`} className="transition-colors hover:text-[#e0605a]">
                   {site.tel}
                 </a>
               </ContactRow>
               <ContactRow label={dict.footer.fax}>{site.fax}</ContactRow>
               <ContactRow label={dict.footer.email}>
-                <a href={`mailto:${site.email}`} className="hover:opacity-70">
+                <a href={`mailto:${site.email}`} className="transition-colors hover:text-[#e0605a]">
                   {site.email}
                 </a>
               </ContactRow>
@@ -76,7 +85,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
 
-        <p className="mt-16 text-center text-[0.9375rem] text-washi/35">
+        <p className="mt-16 border-t border-washi/10 pt-6 text-center text-[0.9375rem] text-washi/45">
           {dict.footer.rights}
         </p>
       </div>
@@ -87,7 +96,7 @@ export function Footer({ locale }: { locale: Locale }) {
 /** Column heading with the short underline the original uses. */
 function Heading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="inline-block border-b border-washi/80 -ml-1 pl-1 pr-3 pb-1 text-[1.0625rem] text-washi uppercase">
+    <h3 className="font-latin inline-block border-b border-[#d9b77c] -ml-1 pl-1 pr-3 pb-1 text-[1.125rem] tracking-[0.12em] text-[#d9b77c] uppercase">
       {children}
     </h3>
   );
@@ -107,7 +116,7 @@ function LinkList({ links, locale }: { links: FooterLink[]; locale: Locale }) {
 
 function FooterAnchor({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="text-[1rem] text-washi transition-colors duration-300 hover:opacity-70">
+    <Link href={href} className="text-[1rem] text-washi/90 transition-colors duration-300 hover:text-[#e0605a]">
       {children}
     </Link>
   );

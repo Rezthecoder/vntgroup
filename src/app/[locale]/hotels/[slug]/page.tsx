@@ -665,7 +665,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Dark hotel footer, as the reference ------------------------------ */}
-      <section className="bg-[#1c1c1c] px-5 py-20 text-center text-washi md:py-24">
+      <section className="relative bg-[#1a1715] px-5 py-20 text-center text-washi md:py-24">
+        <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#b72929,#b08d57_50%,#b72929)]" />
         <p className="font-latin text-[1.625rem] tracking-[0.22em] md:text-[2rem]">{title}</p>
         <p className="mt-1 text-[1.0625rem] tracking-[0.3em] text-star">{'★'.repeat(hotel.stars)}</p>
         <p className="mt-2 text-[0.9375rem] md:text-[0.875rem] tracking-[0.3em] text-washi/85">{hotel.nameJa}</p>
