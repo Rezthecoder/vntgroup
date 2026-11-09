@@ -21,7 +21,7 @@ export function BusinessCards({ locale, viewMore }: { locale: Locale; viewMore: 
         const image = area.image ?? FALLBACK_IMAGE[area.id];
         const body = (
           <>
-            <div className="relative aspect-[378/250] w-full overflow-hidden bg-page-2">
+            <div className="reveal-color relative aspect-[378/250] w-full overflow-hidden bg-page-2">
               {image && (
                 <Image
                   src={image}

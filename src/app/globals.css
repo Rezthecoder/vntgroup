@@ -483,6 +483,18 @@
   }
 }
 
+/* Black-and-white photos that turn to colour on scroll / touch (ColorReveal). */
+.reveal-color img {
+  filter: grayscale(1) contrast(1.05);
+  transition:
+    filter 1.4s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+}
+.reveal-color.is-colored img,
+.reveal-color-off .reveal-color img {
+  filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

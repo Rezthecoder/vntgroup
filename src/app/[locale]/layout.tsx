@@ -1,4 +1,5 @@
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
+import { ColorReveal } from '@/components/motion/ColorReveal';
 import { themeInitScript } from '@/components/layout/ThemeToggle';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
@@ -104,6 +105,7 @@ export default async function LocaleLayout({
         />
 
         <SmoothScroll />
+        <ColorReveal />
         <ScrollToTop label={locale === 'ja' ? 'ページの先頭へ' : 'Back to top'} />
 
         <Header

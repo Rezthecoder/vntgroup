@@ -303,7 +303,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
               <Reveal key={i} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
                 <article
                   className={cn(
-                    'group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
+                    'reveal-color group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
                     wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
                   )}
                 >
@@ -412,7 +412,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 {group.items.map((item, i) => (
                   <Reveal key={i} delay={(i % 3) * 0.06} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]">
                     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-page shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-                      <div className="relative aspect-[4/3] w-full">
+                      <div className="reveal-color relative aspect-[4/3] w-full">
                         {item.image ? (
                           <>
                             <Image src={item.image} alt={L(item.title)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
@@ -452,7 +452,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             return (
             <Reveal key={i} delay={(i % 6) * 0.05} className={cn(shape.mobileFull && 'col-span-2', shape.wide ? 'md:col-span-3' : 'md:col-span-2')}>
               <article className="flex h-full flex-col overflow-hidden rounded-md border border-ink/10 bg-page">
-                <div className={cn('relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
+                <div className={cn('reveal-color relative w-full', shape.mobileFull ? 'aspect-[3/2]' : 'aspect-[4/5]', shape.wide ? 'md:aspect-[2/1]' : 'md:aspect-[3/2]')}>
                   {spot.image ? (
                     <>
                       <Image src={spot.image} alt={L(spot.name)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={spot.focus ? { objectPosition: spot.focus } : undefined} />
