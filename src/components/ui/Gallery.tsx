@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { RevealImage } from '@/components/motion/Reveal';
+import { Reveal } from '@/components/motion/Reveal';
 
 /** `caption` is optional: photos taken from the live site carry no captions. */
 export type GalleryItem = { src: string; alt?: string; caption?: string };
@@ -38,7 +38,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
     <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
         {items.map((item, i) => (
-          <RevealImage key={item.src + i} delay={(i % 4) * 0.08} className="group">
+          <Reveal key={item.src + i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 4) * 0.06} className="group">
             <button
               type="button"
               onClick={() => setOpen(i)}
@@ -61,7 +61,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
                 </>
               )}
             </button>
-          </RevealImage>
+          </Reveal>
         ))}
       </div>
 

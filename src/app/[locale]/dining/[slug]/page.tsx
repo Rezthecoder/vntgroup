@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
-import { Reveal, RevealImage } from '@/components/motion/Reveal';
+import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Gallery } from '@/components/ui/Gallery';
@@ -95,7 +95,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
                 )}
               </div>
               <div>
-                <Reveal delay={0.14}>
+                <Reveal delay={0.14} from={i % 2 === 0 ? 'right' : 'left'} distance={70}>
                   <p className="type-body whitespace-pre-line">{t(block.body, active)}</p>
                 </Reveal>
                 {/* The live page prints the English under the Japanese. */}
@@ -115,14 +115,14 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       {venue.youtubeId && (
         <section className="relative border-y border-ink/10">
           <div className="shell-wide py-20 md:py-28">
-            <RevealImage>
+            <Reveal from="left" duration={1.2}>
               <VideoEmbed
                 id={venue.youtubeId}
                 poster={venue.gallery[0] ?? venue.hero}
                 label={active === 'ja' ? '動画を再生' : 'Play film'}
                 title={name}
               />
-            </RevealImage>
+            </Reveal>
           </div>
         </section>
       )}

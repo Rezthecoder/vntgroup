@@ -41,16 +41,19 @@ export function VideoEmbed({
           <Image src={poster} alt="" fill sizes="100vw" className="object-cover" />
           <span className="absolute inset-0 bg-sumi/45 transition-colors duration-500 group-hover:bg-sumi/30" />
 
-          <motion.span
-            className="absolute top-1/2 left-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass-lit/70 bg-sumi/40 backdrop-blur-sm md:h-24 md:w-24"
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span
-              aria-hidden
-              className="ml-1 block h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-brass-lit"
-            />
-          </motion.span>
+          {/* Play button with a heartbeat and ripples spreading out from it. */}
+          <span className="absolute top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 md:h-24 md:w-24">
+            <span aria-hidden className="play-ripple absolute inset-0 rounded-full border-2 border-[#e0605a]" />
+            <span aria-hidden className="play-ripple absolute inset-0 rounded-full border-2 border-[#d9b77c] [animation-delay:0.9s]" />
+            <motion.span
+              className="play-beat relative flex h-full w-full items-center justify-center rounded-full bg-[#b72929] shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_10px_30px_-6px_rgba(183,41,41,0.75)]"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span aria-hidden className="ml-1.5 block h-0 w-0 border-y-[11px] border-l-[18px] border-y-transparent border-l-white" />
+            </motion.span>
+          </span>
 
           <span className="absolute bottom-6 left-6 text-[0.875rem] md:text-[0.8125rem] tracking-[0.28em] text-washi/90 uppercase">
             {label}
