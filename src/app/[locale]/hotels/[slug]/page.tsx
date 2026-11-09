@@ -509,17 +509,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       {/* ACCESS banner ---------------------------------------------------- */}
       <section id="access" className={cn('relative overflow-hidden bg-sumi text-washi', ANCHOR)}>
-        <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover opacity-55" />
-        <div className="relative mx-auto max-w-[60rem] px-5 py-16 text-center md:py-28">
+        <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover opacity-85" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-sumi/50 via-sumi/10 to-sumi/30" />
+        <div className="relative mx-auto max-w-[60rem] px-5 py-24 text-center [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] md:py-40">
           <p className="font-latin text-[1.75rem] tracking-[0.2em] md:text-[2.25rem]">ACCESS</p>
           <p className="mt-1 text-[0.8125rem] tracking-[0.15em]">{L(S.accessSub)}</p>
-          <div className="mt-8 space-y-4 text-[0.9375rem] leading-[1.8] tracking-[0.04em] text-pretty [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:text-[clamp(1rem,1.5vw,1.25rem)] md:mt-10 md:space-y-6">
-            {stay.access.routes.map((route, i) => (
-              <p key={i}>
-                {L(route.from)}より{L(route.detail)}。
-              </p>
-            ))}
-          </div>
           <a href="#access-detail" className={cn(BTN_LINE, 'mt-10 border-washi text-washi hover:bg-washi hover:text-sumi')}>
             {L(S.accessInfo)}
           </a>
