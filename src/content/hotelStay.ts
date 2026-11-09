@@ -568,6 +568,24 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           },
         },
         {
+          label: 'Nagoya Meshi',
+          title: { ja: '手羽先', en: 'Tebasaki chicken wings' },
+          image: '/images/spots/nagoya-tebasaki.webp',
+          body: {
+            ja: '甘辛いタレとごま、こしょうをまとった名古屋名物の手羽先。カリッと香ばしく、ビールのお供にも欠かせない一品です。',
+            en: 'Nagoya’s famous wings, glazed in a sweet-savoury sauce with sesame and pepper — crisp, fragrant and made for a cold beer.',
+          },
+        },
+        {
+          label: 'Nagoya Meshi',
+          title: { ja: '味噌煮込みうどん', en: 'Miso nikomi udon' },
+          image: '/images/spots/nagoya-misonikomi.webp',
+          body: {
+            ja: 'コシの強い麺を土鍋で豆味噌のだしと煮込む、名古屋の冬の定番。卵や油揚げを添えて、熱々のままお楽しみください。',
+            en: 'Firm udon simmered in a clay pot of soybean-miso broth with egg and fried tofu — a Nagoya winter classic, best eaten piping hot.',
+          },
+        },
+        {
           label: 'Neighbourhood',
           title: { ja: '国府宮周辺のお店', en: 'Around Konomiya' },
           body: {
