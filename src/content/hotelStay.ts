@@ -816,6 +816,15 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           },
         },
         {
+          label: 'Kyoto Cuisine',
+          title: { ja: '抹茶スイーツ', en: 'Matcha sweets' },
+          image: '/images/spots/toji-matcha.webp',
+          body: {
+            ja: '宇治抹茶を使ったゼリーやパフェ、わらび餅など、京都ならではの甘味。京都駅周辺にも茶房が多く、観光の合間のひと休みにぴったりです。',
+            en: 'Uji matcha jellies, parfaits and warabi-mochi — sweets that taste of Kyoto. Tea rooms around Kyoto Station make an easy break between sights.',
+          },
+        },
+        {
           label: 'Neighbourhood',
           title: { ja: '東寺周辺', en: 'Around Toji' },
           body: {
