@@ -61,7 +61,7 @@ export const navigation: NavItem[] = [
     label: { ja: '飲食店', en: 'Dining' },
     children: [
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
-      { href: '/dining', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
+      { href: '/dining/warakutei', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
     ],
   },
   {
@@ -123,8 +123,8 @@ export const footerNav: {
     title: 'FOOD & SHOP',
     links: [
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
-      // One entry for both Warakutei rooms, as on the original; the hub lists both.
-      { href: '/dining', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
+      // One entry for both Warakutei restaurants, as on the original (/restaurant).
+      { href: '/dining/warakutei', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
       { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
     ],
   },
