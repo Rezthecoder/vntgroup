@@ -1,3 +1,4 @@
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { themeInitScript } from '@/components/layout/ThemeToggle';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
@@ -103,6 +104,7 @@ export default async function LocaleLayout({
         />
 
         <SmoothScroll />
+        <ScrollToTop label={locale === 'ja' ? 'ページの先頭へ' : 'Back to top'} />
 
         <Header
           locale={locale}

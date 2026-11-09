@@ -22,6 +22,9 @@ export default function SmoothScroll() {
       wheelMultiplier: 0.9,
     });
 
+    // Shared so other controls (the back-to-top button) glide with the same easing.
+    (window as Window & { __lenis?: Lenis }).__lenis = lenis;
+
     let frame = 0;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -44,6 +47,7 @@ export default function SmoothScroll() {
     return () => {
       document.removeEventListener('click', onClick);
       cancelAnimationFrame(frame);
+      delete (window as Window & { __lenis?: Lenis }).__lenis;
       lenis.destroy();
     };
   }, []);
