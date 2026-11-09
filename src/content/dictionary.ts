@@ -120,7 +120,7 @@ const ja = {
     submit: '送信',
   },
   footer: {
-    rights: '© 2025 VNT GROUP',
+    rights: `© ${new Date().getFullYear()} VNT GROUP`,
     tel: '電話',
     fax: 'FAX',
     email: 'メール',
@@ -251,7 +251,7 @@ const en: Dict = {
     submit: 'Send',
   },
   footer: {
-    rights: '© 2025 VNT GROUP',
+    rights: `© ${new Date().getFullYear()} VNT GROUP`,
     tel: 'Tel',
     fax: 'Fax',
     email: 'Email',

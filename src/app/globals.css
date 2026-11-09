@@ -534,6 +534,28 @@
   }
 }
 
+/* Arrival screen: hidden before first paint when it has already played. */
+.intro-skip .vnt-preloader {
+  display: none;
+}
+/* VNT wordmark waving like a flag (FlagWordmark): each strip bobs a little
+   later than the one to its left; the pole edge stays still. */
+.flag-strip {
+  animation: flag-wave 1.7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.075s);
+}
+@keyframes flag-wave {
+  0%,
+  100% {
+    transform: translateY(calc(var(--amp) * -18px));
+    opacity: calc(1 - var(--amp) * 0.12);
+  }
+  50% {
+    transform: translateY(calc(var(--amp) * 18px));
+    opacity: 1;
+  }
+}
+
 /* Black-and-white photos that turn to colour on scroll / touch (ColorReveal). */
 .reveal-color img {
   filter: grayscale(1) contrast(1.05);

@@ -1,5 +1,6 @@
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { ColorReveal } from '@/components/motion/ColorReveal';
+import Preloader, { introInitScript } from '@/components/motion/Preloader';
 import { themeInitScript } from '@/components/layout/ThemeToggle';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
@@ -94,6 +95,7 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: introInitScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href={GOOGLE_FONTS_CSS} />
@@ -104,6 +106,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organisation) }}
         />
 
+        <Preloader tagline="Beyond. Connected. To the World." />
         <SmoothScroll />
         <ColorReveal />
         <ScrollToTop label={locale === 'ja' ? 'ページの先頭へ' : 'Back to top'} />
