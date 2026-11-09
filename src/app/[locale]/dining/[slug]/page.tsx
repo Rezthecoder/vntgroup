@@ -12,11 +12,16 @@ import { MapEmbed } from '@/components/ui/MapEmbed';
 import { VideoEmbed } from '@/components/ui/VideoEmbed';
 
 import { getVenue, venues } from '@/content/dining';
+import { diningShops, getShop } from '@/content/shops';
+import { ShopPage } from '@/components/sections/ShopPage';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, locales, localePath, t, type Locale } from '@/lib/i18n';
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) => venues.map((v) => ({ locale, slug: v.slug })));
+  return locales.flatMap((locale) => [
+    ...venues.map((v) => ({ locale, slug: v.slug })),
+    ...diningShops.map((s) => ({ locale, slug: s.slug })),
+  ]);
 }
 
 export async function generateMetadata({
@@ -25,9 +30,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const active: Locale = isLocale(locale) ? locale : 'ja';
+  const shop = getShop(slug, 'dining');
+  if (shop) {
+    return {
+      title: `${t(shop.name, active)}（${t(shop.category, active)}）`,
+      robots: shop.draft ? { index: false, follow: true } : undefined,
+    };
+  }
   const venue = getVenue(slug);
   if (!venue) return {};
-  const active: Locale = isLocale(locale) ? locale : 'ja';
   const title = venue.slug === 'geisyatei' ? t(venue.name, active) : `${t(venue.name, active)} | 和楽亭`;
 
   return {
@@ -40,6 +52,9 @@ export async function generateMetadata({
 export default async function VenuePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
+  // New restaurants from content/shops.ts share this URL space (/dining/<slug>).
+  const shop = getShop(slug, 'dining');
+  if (shop) return <ShopPage shop={shop} locale={locale as Locale} />;
   const venue = getVenue(slug);
   if (!venue) notFound();
 
