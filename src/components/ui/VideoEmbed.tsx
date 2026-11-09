@@ -39,10 +39,10 @@ export function VideoEmbed({
           aria-label={label}
         >
           <Image src={poster} alt="" fill sizes="100vw" className="object-cover" />
-          <span className="absolute inset-0 bg-ink/45 transition-colors duration-500 group-hover:bg-ink/30" />
+          <span className="absolute inset-0 bg-sumi/45 transition-colors duration-500 group-hover:bg-sumi/30" />
 
           <motion.span
-            className="absolute top-1/2 left-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass-lit/70 bg-ink/40 backdrop-blur-sm md:h-24 md:w-24"
+            className="absolute top-1/2 left-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass-lit/70 bg-sumi/40 backdrop-blur-sm md:h-24 md:w-24"
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >

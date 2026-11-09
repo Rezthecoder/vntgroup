@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/sections/PageHero';
+import { ShopLinks } from '@/components/sections/ShopPage';
+import { diningShops, retailShops } from '@/content/shops';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { ArrowLink } from '@/components/ui/ArrowLink';
@@ -82,6 +84,8 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
         </section>
       ))}
 
+      <ShopLinks shops={diningShops} locale={active} eyebrow="More Restaurants" title="その他の飲食店" />
+
       {/* Retail ----------------------------------------------------------- */}
       <section className="relative border-t border-ink/10 py-24 md:py-32">
         <div className="shell-wide">
@@ -91,11 +95,13 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
               href={localePath(active, '/retail')}
               image={ikegami.image}
               name={t(ikegami.name, active)}
-              ratio="aspect-4/3"
+              ratio="aspect-[1000/601]"
             />
           </div>
         </div>
       </section>
+
+      <ShopLinks shops={retailShops} locale={active} eyebrow="More Shops" title="その他の販売店" />
 
     </>
   );

@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       { source: '/fuji-premium-hotel', destination: '/ja/hotels/fuji', permanent: true },
       { source: '/nagoya-premium-hotel', destination: '/ja/hotels/nagoya', permanent: true },
       { source: '/premium-toji', destination: '/ja/hotels/toji', permanent: true },
-      { source: '/restaurant', destination: '/ja/dining', permanent: true },
+      { source: '/restaurant', destination: '/ja/dining/warakutei', permanent: true },
       { source: '/geisyatei', destination: '/ja/dining/geisyatei', permanent: true },
       { source: '/warakutei-yakiniku', destination: '/ja/dining/warakutei-yakiniku', permanent: true },
       { source: '/warakutei-yakitori', destination: '/ja/dining/warakutei-yakitori', permanent: true },

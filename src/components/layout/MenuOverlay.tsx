@@ -30,7 +30,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
         type="button"
         aria-label={closeLabel}
         onClick={onClose}
-        className="absolute inset-0 bg-black/35"
+        className="absolute inset-0 bg-sumi/35"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -38,24 +38,24 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
       />
       <motion.nav
         aria-label="Menu"
-        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[10rem] flex-col overflow-y-auto overscroll-contain bg-white px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
+        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[10rem] flex-col overflow-y-auto overscroll-contain bg-page px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
         initial={{ x: '100%' }}
         animate={{ x: '0%' }}
         exit={{ x: '100%' }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex items-center justify-end border-b border-black/10">
-          <button type="button" onClick={onClose} className="py-3 text-[0.8125rem] tracking-[0.1em] text-black">
+        <div className="flex items-center justify-end border-b border-ink/10">
+          <button type="button" onClick={onClose} className="py-3 text-[0.8125rem] tracking-[0.1em] text-ink">
             {closeLabel}
           </button>
         </div>
 
         <ul className="flex flex-col">
           {navigation.map((item) => (
-            <li key={item.href} className="border-b border-black/10">
+            <li key={item.href} className="border-b border-ink/10">
               <Link href={localePath(locale, item.href)} onClick={onClose} className="flex items-baseline gap-2 py-3.5">
                 <span className="text-[0.625rem] tracking-[0.16em] text-brand">{item.index}</span>
-                <span className="text-[0.9375rem] font-medium tracking-[0.04em] text-black">{t(item.label, locale)}</span>
+                <span className="text-[0.9375rem] font-medium tracking-[0.04em] text-ink">{t(item.label, locale)}</span>
               </Link>
               {item.children && (
                 <div className="flex flex-col gap-1.5 pb-3 pl-5">

@@ -10,6 +10,7 @@ const staticPaths = [
   '/business',
   '/hotels',
   '/dining',
+  '/dining/warakutei',
   '/retail',
   '/contact',
   '/news',

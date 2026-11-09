@@ -42,7 +42,7 @@ export function PropertyCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-108"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/60 to-ink/5" />
+          <div className="absolute inset-0 bg-linear-to-t from-sumi via-sumi/60 to-sumi/5" />
 
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
             {meta && (

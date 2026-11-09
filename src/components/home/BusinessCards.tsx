@@ -33,7 +33,7 @@ export function BusinessCards({ locale, viewMore }: { locale: Locale; viewMore: 
               )}
             </div>
 
-            <h3 className="type-mincho mt-6 text-[1.375rem] text-black">{t(area.title, locale)}</h3>
+            <h3 className="type-mincho mt-6 text-[1.375rem] text-ink">{t(area.title, locale)}</h3>
             <p className="mt-3 text-[0.9375rem] leading-[1.7] tracking-[0.03em] text-ink-mute">{t(area.summary, locale)}</p>
 
             {area.href && (

@@ -28,12 +28,12 @@ export function PageHero({
   align?: 'left' | 'center';
 }) {
   return (
-    <section className={cn('relative w-full overflow-hidden bg-ink', height)}>
+    <section className={cn('relative w-full overflow-hidden bg-sumi', height)}>
       <ScrollFadeOut className="absolute inset-0">
         <div className="relative h-full w-full">
           <Image src={image} alt={alt} fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-ink/45" />
-          <div className="absolute inset-0 bg-linear-to-t from-ink/75 via-ink/15 to-ink/35" />
+          <div className="absolute inset-0 bg-sumi/45" />
+          <div className="absolute inset-0 bg-linear-to-t from-sumi/75 via-sumi/15 to-sumi/35" />
         </div>
       </ScrollFadeOut>
 
