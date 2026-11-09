@@ -297,7 +297,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:px-6">
                     <h3 className="text-[1.5rem] tracking-[0.06em] md:text-[1.75rem]">{L(f.title)}</h3>
-                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.9375rem] md:text-[0.875rem] leading-[1.95] text-pretty whitespace-pre-line">{L(f.body)}</p>
+                    <p className="mx-auto mt-2 line-clamp-3 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]">{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>

@@ -125,7 +125,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     features: [
       { title: { ja: '富士山ビュー客室', en: 'Mt. Fuji view rooms' }, body: { ja: '全50室から、四季折々の富士山を望む', en: 'Mt. Fuji from all 50 rooms, in every season' }, image: '/images/fuji/fuji-01.webp' },
       { title: { ja: '麦飯石温泉大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '天然の麦飯石を使用した人工温泉。ご宿泊者専用', en: 'Hot-spring style bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
-      { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーに。団体受付 080-4097-9552', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
+      { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
       { title: { ja: 'ご朝食', en: 'Breakfast' }, body: { ja: '朝食の有無・内容はご宿泊プランによります', en: 'Depends on your plan' }, image: '/images/live/fuji/about-2.webp' },
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
       { title: { ja: '24時間フロント', en: '24-hour front desk' }, body: { ja: '深夜のご到着・早朝のご出発も安心', en: 'Late arrivals and early departures made easy' }, image: '/images/live/fuji/building.webp' },
@@ -457,6 +457,17 @@ const stays: Record<Hotel['slug'], HotelStay> = {
   },
 
   nagoya: {
+    // Short cards for WHATS SPECIAL (the live About copy is too long to sit on a photo).
+    features: [
+      { title: { ja: '駅から徒歩約5分', en: '5 min from the station' }, body: { ja: '名鉄「国府宮駅」から徒歩約5分。名古屋駅へ急行約15分', en: '5 min walk from Konomiya; 15 min express to Nagoya' }, image: '/images/nagoya/nagoya-02.webp' },
+      { title: { ja: '全33室の静かな客室', en: '33 quiet rooms' }, body: { ja: '静けさと快適さを大切にした客室', en: 'Rooms designed for quiet and comfort' }, image: '/images/nagoya/nagoya-01.webp' },
+      { title: { ja: '3タイプの客室', en: 'Three room types' }, body: { ja: 'ダブル・ツイン・トリプル。一人旅からご家族まで', en: 'Double, twin and triple — solo trips to families' }, image: '/images/nagoya/room-03.webp' },
+      { title: { ja: '天然麦飯石の大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '宿泊者だけが利用できる癒しの空間', en: 'A large bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
+      { title: { ja: '名古屋観光の拠点', en: 'A base for Nagoya' }, body: { ja: '名古屋城・熱田神宮・徳川美術館へ', en: 'Nagoya Castle, Atsuta Shrine, Tokugawa Art Museum' }, image: '/images/nagoya/castle-01.webp' },
+      { title: { ja: 'ビジネスにも', en: 'For business too' }, body: { ja: '観光にもビジネスにも便利な立地', en: 'Convenient for sightseeing and work alike' }, image: '/images/nagoya/nagoya-05.webp' },
+      { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/nagoya/room-02.webp' },
+      { title: { ja: '空港からも便利', en: 'Easy from the airport' }, body: { ja: '中部国際空港から名鉄で約1時間', en: 'About 1 h from Centrair on the Meitetsu line' }, image: '/images/nagoya/room-01.webp' },
+    ],
     rooms: {
       lead: {
         ja: '客室は、一人旅のお客様からご家族・団体でのご利用まで、さまざまなスタイルに寄り添えるよう設計されています。',
@@ -709,6 +720,16 @@ const stays: Record<Hotel['slug'], HotelStay> = {
   },
 
   toji: {
+    features: [
+      { title: { ja: '世界遺産・東寺の目の前', en: 'Facing World Heritage Toji' }, body: { ja: '1200年の歴史を刻む東寺のすぐ前に', en: 'Right in front of 1,200-year-old Toji' }, image: '/images/toji/toji-01.webp' },
+      { title: { ja: '五重塔を望む客室', en: 'Rooms with a pagoda view' }, body: { ja: '一部の客室から東寺の五重塔を望めます', en: 'Some rooms look out on Toji’s five-storey pagoda' }, image: '/images/toji/toji-04.webp' },
+      { title: { ja: '15室のスモールホテル', en: 'A small hotel of 15 rooms' }, body: { ja: 'ひとりひとりが落ち着いて過ごせる空間', en: 'Space for every guest to settle in' }, image: '/images/toji/toji-05.webp' },
+      { title: { ja: '京都駅から約5分', en: '5 min from Kyoto Station' }, body: { ja: '八条口からタクシーで約5分。観光にも移動にも', en: 'About 5 min by taxi from the Hachijo exit' }, image: '/images/toji/toji-07.webp' },
+      { title: { ja: '光で変わる東寺', en: 'Toji in changing light' }, body: { ja: '朝の光、夕暮れ、夜のライトアップ', en: 'Morning light, dusk and the evening illumination' }, image: '/images/toji/toji-06.webp' },
+      { title: { ja: '和のツインルーム', en: 'Japanese-accent twins' }, body: { ja: '静かな京都の夜をゆっくりと', en: 'Quiet Kyoto nights, at your own pace' }, image: '/images/toji/toji-08.webp' },
+      { title: { ja: '朝夕の散策に', en: 'Morning and evening walks' }, body: { ja: '目の前の東寺へ、気軽に立ち寄れる距離', en: 'Toji is just across the street' }, image: '/images/toji/toji-03.webp' },
+      { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/toji/toji-02.webp' },
+    ],
     rooms: {
       lead: {
         ja: '客室数をあえて15室に限定したスモールホテル。一部の客室からは、世界遺産・東寺の五重塔を望みます。',
