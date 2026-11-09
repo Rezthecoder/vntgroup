@@ -14,7 +14,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
-    <footer className="relative overflow-hidden bg-black text-white">
+    <footer className="relative overflow-hidden bg-sumi text-washi">
 
       {/* Extra bottom padding on mobile clears the fixed action bar. */}
       <div className="shell relative pt-16 pb-28 md:pt-20 md:pb-12">
@@ -46,9 +46,9 @@ export function Footer({ locale }: { locale: Locale }) {
               ))}
             </ul>
 
-            <span aria-hidden className="mt-2 block h-px w-full max-w-[16rem] bg-white/70" />
+            <span aria-hidden className="mt-2 block h-px w-full max-w-[16rem] bg-page/70" />
 
-            <address className="mt-6 text-[0.875rem] leading-[1.75] text-white not-italic">
+            <address className="mt-6 text-[0.875rem] leading-[1.75] text-washi not-italic">
               <p>{site.address.postal}</p>
               {locale === 'ja' ? (
                 <>
@@ -76,7 +76,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
 
-        <p className="mt-16 text-center text-[0.8125rem] text-white/35">
+        <p className="mt-16 text-center text-[0.8125rem] text-washi/35">
           {dict.footer.rights}
         </p>
       </div>
@@ -87,7 +87,7 @@ export function Footer({ locale }: { locale: Locale }) {
 /** Column heading with the short underline the original uses. */
 function Heading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="inline-block border-b border-white/80 -ml-1 pl-1 pr-3 pb-1 text-[0.9375rem] text-white uppercase">
+    <h3 className="inline-block border-b border-washi/80 -ml-1 pl-1 pr-3 pb-1 text-[0.9375rem] text-washi uppercase">
       {children}
     </h3>
   );
@@ -107,7 +107,7 @@ function LinkList({ links, locale }: { links: FooterLink[]; locale: Locale }) {
 
 function FooterAnchor({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="text-[0.875rem] text-white transition-colors duration-300 hover:opacity-70">
+    <Link href={href} className="text-[0.875rem] text-washi transition-colors duration-300 hover:opacity-70">
       {children}
     </Link>
   );
@@ -115,7 +115,7 @@ function FooterAnchor({ href, children }: { href: string; children: ReactNode })
 
 function ContactRow({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex gap-4 text-white">
+    <div className="flex gap-4 text-washi">
       <dt className="shrink-0">{label}</dt>
       <dd>{children}</dd>
     </div>

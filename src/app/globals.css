@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Dark mode is opt-in: the header toggle sets data-theme="dark" on <html>. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /* ------------------------------------------------------------------
    VNT GROUP — design tokens
 
@@ -22,6 +25,10 @@
 
   --color-washi: #ffffff;
   --color-washi-dim: #eeeeee;
+
+  /* Always black, in both themes: scrims over photographs and the sections
+     that stay dark (footer, hotel access banner). */
+  --color-sumi: #000000;
 
   --color-stone: #666666;
   --color-stone-dim: #999999;
@@ -54,6 +61,23 @@
   :root {
     color-scheme: light;
     --header-h: 5rem;
+  }
+
+  /* Dark theme: the paper turns to charcoal and the ink to off-white.
+     washi (white over photos) and sumi (black scrims) keep their meaning. */
+  [data-theme='dark'] {
+    color-scheme: dark;
+    --color-page: #121212;
+    --color-page-2: #1b1b1b;
+    --color-page-3: #171717;
+    --color-ink: #ededed;
+    --color-ink-soft: #dcdcdc;
+    --color-ink-mute: #c4c4c4;
+    --color-stone: #a3a3a3;
+    --color-stone-dim: #7d7d7d;
+    /* The VNT red, lifted so small red text stays readable on charcoal. */
+    --color-brass: #e0605a;
+    --color-vermilion: #e0605a;
   }
 
   * {
@@ -214,8 +238,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
-    color: #000;
+    background: var(--color-page);
+    color: var(--color-ink);
     padding: 0.85rem 1.75rem;
     font-size: 0.875rem;
     letter-spacing: 0.05em;
@@ -243,9 +267,16 @@
   .btn-pill:hover {
     background: #dddddd;
   }
+  [data-theme='dark'] .btn-pill {
+    background: #2a2a2a;
+    color: var(--color-ink);
+  }
+  [data-theme='dark'] .btn-pill:hover {
+    background: #363636;
+  }
   .rule {
     height: 1px;
-    background: rgba(0, 0, 0, 0.12);
+    background: color-mix(in srgb, var(--color-ink) 12%, transparent);
   }
 }
 

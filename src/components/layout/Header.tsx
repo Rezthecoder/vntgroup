@@ -1,5 +1,6 @@
 'use client';
 
+import { ThemeToggle } from './ThemeToggle';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -39,7 +40,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
     <>
       <header
         className={cn(
-          'sticky top-0 z-[130] bg-white transition-shadow duration-300',
+          'sticky top-0 z-[130] bg-page transition-shadow duration-300',
           scrolled && !open && 'shadow-[0_2px_12px_rgba(0,0,0,0.08)]',
         )}
       >
@@ -54,18 +55,19 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
               <Link
                 key={item.href + item.label.ja}
                 href={localePath(locale, item.href)}
-                className="text-[0.9375rem] font-bold text-black transition-colors hover:text-brand"
+                className="text-[0.9375rem] font-bold text-ink transition-colors hover:text-brand"
               >
                 {t(item.label, locale)}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-7 justify-self-end">
+          <div className="flex items-center gap-4 justify-self-end md:gap-6">
+            <ThemeToggle />
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 href={localePath(locale, '/contact')}
-                className="rounded-lg bg-brand px-6 py-3.5 text-[0.9375rem] font-bold text-white shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
+                className="rounded-lg bg-brand px-6 py-3.5 text-[0.9375rem] font-bold text-washi shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
               >
                 {labels.contact}
               </Link>
@@ -82,7 +84,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
                 {[0, 1, 2].map((i) => (
                   <motion.span
                     key={i}
-                    className="absolute left-0 block h-[2px] w-full bg-black"
+                    className="absolute left-0 block h-[2px] w-full bg-ink"
                     animate={
                       open
                         ? { top: '50%', rotate: i === 1 ? 0 : i === 0 ? 45 : -45, opacity: i === 1 ? 0 : 1 }

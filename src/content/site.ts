@@ -129,7 +129,7 @@ export const footerNav: {
     title: 'FOOD & SHOP',
     links: [
       { href: '/dining/geisyatei', label: { ja: '芸者亭', en: 'Geisha-tei' } },
-      // One entry for both Warakutei rooms, as on the original; the hub lists both.
+      // One entry for both Warakutei restaurants, as on the original (/restaurant).
       { href: '/dining/warakutei', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
       { href: '/dining/sakai-kagetsu', label: { ja: '堺花月', en: 'Sakai Kagetsu' } },
       { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },

@@ -169,7 +169,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       {/* Warakutei band: the group logo and both Ariake shops, as on the
           live yakiniku and yakitori pages. */}
       {venue.slug.startsWith('warakutei') && (
-        <section className="relative bg-ink py-16 md:py-20">
+        <section className="relative bg-sumi py-16 md:py-20">
           <div className="shell flex flex-col items-center text-center">
             <Reveal direction="none">
               <Image

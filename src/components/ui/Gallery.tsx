@@ -54,7 +54,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
               />
               {item.caption && (
                 <>
-                  <span className="absolute inset-0 bg-linear-to-t from-ink/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
+                  <span className="absolute inset-0 bg-linear-to-t from-sumi/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
                   <span className="absolute right-4 bottom-4 left-4 text-left text-[0.6875rem] tracking-[0.18em] text-washi/85 uppercase">
                     {item.caption}
                   </span>
@@ -68,7 +68,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
       <AnimatePresence>
         {open !== null && (
           <motion.div
-            className="fixed inset-0 z-[160] flex items-center justify-center bg-ink/96 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[160] flex items-center justify-center bg-sumi/96 p-4 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -58,8 +58,9 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
         alt="和楽亭"
       />
 
+      {/* The group logo is white artwork: shown inverted (black) on the light page. */}
       <div className="flex justify-center pt-16 md:pt-24">
-        <Image src="/images/warakutei/logo-group.webp" alt="和楽亭" width={900} height={307} className="h-auto w-56 md:w-72" />
+        <Image src="/images/warakutei/logo-group.webp" alt="和楽亭" width={900} height={307} className="h-auto w-56 invert md:w-72 dark:invert-0" />
       </div>
 
       {SECTIONS.map((section, i) => {
@@ -86,7 +87,8 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
 
                 <div>
                   <Reveal>
-                    <Image src={section.logo} alt={t(venue.name, active)} width={2154} height={873} className="h-auto w-48 md:w-56" />
+                    <Image src={section.logo} alt={t(venue.name, active)} width={2154} height={873} className="h-auto w-48 md:w-56 dark:hidden" />
+                    <Image src={section.logo.replace('-b.svg', '-a.svg')} alt={t(venue.name, active)} width={2154} height={873} className="hidden h-auto w-48 md:w-56 dark:block" />
                   </Reveal>
                   {venue.hub.title && (
                     <Reveal delay={0.08}>
