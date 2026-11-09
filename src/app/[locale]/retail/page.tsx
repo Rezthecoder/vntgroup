@@ -101,9 +101,10 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title="その他の店舗" />
-
+      {/* As on the live Ikegami page: the supplier call follows the stores. */}
       <SupplierCall locale={active} />
+
+      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title="その他の店舗" />
     </>
   );
 }

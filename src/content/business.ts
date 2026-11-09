@@ -102,6 +102,20 @@ export const supplierCall = {
   } satisfies L10n,
 };
 
+export const supplierCallExtras = {
+  eyebrow: 'Supplier Wanted',
+  channels: [
+    { name: { ja: 'HISANO', en: 'HISANO' } satisfies L10n, note: { ja: '健康食品・健康器具 / EC', en: 'Health foods & equipment / online' } satisfies L10n },
+    { name: { ja: 'イケガミストア', en: 'Ikegami Store' } satisfies L10n, note: { ja: 'インバウンド向けドラッグストア', en: 'Inbound-focused drugstore' } satisfies L10n },
+  ],
+  steps: [
+    { title: { ja: 'お問い合わせ', en: 'Contact us' } satisfies L10n, body: { ja: 'フォームからお気軽にご連絡ください', en: 'Reach us through the contact form' } satisfies L10n },
+    { title: { ja: '商品のご提案', en: 'Propose your product' } satisfies L10n, body: { ja: '商品の特長や価値をお聞かせください', en: 'Tell us what makes it valuable' } satisfies L10n },
+    { title: { ja: '国内外へ販売', en: 'Sell in Japan & abroad' } satisfies L10n, body: { ja: '当社の販売網でお客様へお届けします', en: 'We carry it through our sales network' } satisfies L10n },
+  ],
+  cta: { ja: '仕入れのご相談はこちら', en: 'Talk to us about supplying' } satisfies L10n,
+};
+
 export type Branch = { name: L10n; address: L10n; tel?: string; hours?: L10n };
 
 export const ikegami = {
