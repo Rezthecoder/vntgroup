@@ -59,7 +59,7 @@ export function ScrollToTop({ label }: { label: string }) {
           exit={{ opacity: 0, y: 12, scale: 0.9 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           // Phones: sits above the fixed call / form bar. PC: bottom-right corner.
-          className="glass-panel fixed right-4 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-[120] flex size-12 items-center justify-center rounded-full border border-ink/10 text-ink shadow-[0_8px_24px_rgba(0,0,0,0.14)] transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand md:right-8 md:bottom-8"
+          className="glass-panel liquid-press fixed right-4 bottom-[calc(6.25rem+env(safe-area-inset-bottom))] z-[120] flex size-12 items-center justify-center rounded-full text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand md:right-8 md:bottom-8"
         >
           <svg viewBox="0 0 48 48" className="absolute inset-0 size-full -rotate-90" aria-hidden>
             <circle cx="24" cy="24" r={R} fill="none" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1.5" />

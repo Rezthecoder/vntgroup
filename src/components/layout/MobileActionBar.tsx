@@ -34,14 +34,15 @@ export function MobileActionBar({
 
   return (
     <motion.div
-      className="fixed inset-x-0 bottom-0 z-[110] grid grid-cols-2 border-t border-ink/12 bg-page/95 shadow-[0_-8px_28px_rgba(21,21,26,0.08)] backdrop-blur-lg md:hidden"
-      initial={{ y: '100%' }}
-      animate={{ y: shown ? '0%' : '100%' }}
+      // Floating Liquid Glass capsule, as the iOS 26 tab bar.
+      className="glass-panel fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[110] grid grid-cols-2 gap-1.5 rounded-full p-1.5 md:hidden"
+      initial={{ y: '160%' }}
+      animate={{ y: shown ? '0%' : '160%' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <a
         href={`tel:${site.telGroup.replace(/-/g, '')}`}
-        className="flex flex-col items-center gap-1 border-r border-ink/12 py-3.5"
+        className="liquid-press flex flex-col items-center justify-center gap-0.5 rounded-full py-2"
       >
         <span className="text-[0.8125rem] tracking-[0.2em] text-stone uppercase">{labels.call}</span>
         <span className="type-display text-[1.0625rem] tracking-[0.08em] text-brass">{site.telGroup}</span>
@@ -49,7 +50,7 @@ export function MobileActionBar({
 
       <Link
         href={localePath(locale, '/contact')}
-        className="flex flex-col items-center justify-center gap-1 bg-brass py-3.5"
+        className="liquid-press flex flex-col items-center justify-center gap-0.5 rounded-full bg-brass py-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),inset_0_-1px_1px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(183,41,41,0.6)]"
       >
         <span className="text-[0.8125rem] tracking-[0.2em] text-page/70 uppercase">Form</span>
         <span className="text-[0.9375rem] tracking-[0.12em] text-page">{labels.contact}</span>
