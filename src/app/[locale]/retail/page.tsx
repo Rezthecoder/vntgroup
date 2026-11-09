@@ -31,7 +31,8 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
         <div className="shell text-center">
           <p className="type-eyebrow">Ikegami Store</p>
           <h1 className="type-display mt-4 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(ikegami.name, active)}</h1>
-          <Reveal className="mx-auto mt-10 max-w-[62.5rem]">
+          {/* No fade-in: this is the first thing on the page, so it shows at full strength at once. */}
+          <div className="mx-auto mt-10 max-w-[62.5rem]">
             <Image
               src={ikegami.image}
               alt={`${t(ikegami.name, active)}（IKEGAMI STORE）の店舗外観`}
@@ -41,7 +42,7 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
               sizes="(max-width: 1024px) 100vw, 62.5rem"
               className="h-auto w-full shadow-[0_10px_40px_rgba(0,0,0,0.12)]"
             />
-          </Reveal>
+          </div>
         </div>
       </section>
 
