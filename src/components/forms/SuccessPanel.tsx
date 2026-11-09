@@ -9,7 +9,7 @@ export function SuccessPanel({ title, body }: { title: string; body: string }) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="border border-brass/35 bg-brass/5 px-8 py-16 text-center md:px-16"
+      className="border border-brass/35 bg-brass/5 px-8 py-20 text-center md:px-16"
     >
       <motion.span
         className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-brass"

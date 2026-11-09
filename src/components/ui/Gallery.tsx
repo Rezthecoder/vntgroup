@@ -55,7 +55,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
               {item.caption && (
                 <>
                   <span className="absolute inset-0 bg-linear-to-t from-sumi/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
-                  <span className="absolute right-4 bottom-4 left-4 text-left text-[0.75rem] md:text-[0.6875rem] tracking-[0.18em] text-washi/85 uppercase">
+                  <span className="absolute right-4 bottom-4 left-4 text-left text-[0.875rem] md:text-[0.8125rem] tracking-[0.18em] text-washi/85 uppercase">
                     {item.caption}
                   </span>
                 </>
@@ -78,7 +78,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
             <button
               type="button"
               onClick={() => setOpen(null)}
-              className="absolute top-6 right-6 z-10 text-[0.75rem] md:text-[0.6875rem] tracking-[0.28em] text-washi/70 uppercase hover:text-brass-lit"
+              className="absolute top-6 right-6 z-10 text-[0.875rem] md:text-[0.8125rem] tracking-[0.28em] text-washi/85 uppercase hover:text-brass-lit"
             >
               {closeLabel}
             </button>
@@ -95,7 +95,7 @@ export function Gallery({ items, closeLabel }: { items: GalleryItem[]; closeLabe
               <div className="relative aspect-[3/2] w-full">
                 <Image src={items[open].src} alt={label(items[open])} fill sizes="90vw" className="object-contain" priority />
               </div>
-              <figcaption className="mt-5 flex items-center justify-between text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-washi/60 uppercase">
+              <figcaption className="mt-5 flex items-center justify-between text-[0.875rem] md:text-[0.8125rem] tracking-[0.2em] text-washi/75 uppercase">
                 <button type="button" onClick={() => step(-1)} className="hover:text-brass-lit">
                   ← Prev
                 </button>

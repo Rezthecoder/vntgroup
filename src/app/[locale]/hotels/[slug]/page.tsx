@@ -114,7 +114,7 @@ const MODE_LABEL: Record<RouteMode, L10n> = {
 const mapsUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 /** Thin outline button (周辺観光をもっと見る / アクセス情報). */
-const BTN_LINE = 'inline-flex items-center justify-center border px-8 py-3 text-[0.8125rem] tracking-[0.1em] transition-colors';
+const BTN_LINE = 'inline-flex items-center justify-center border px-8 py-3 text-[0.9375rem] tracking-[0.1em] transition-colors';
 
 /** Latitude / longitude printed in the dark footer, read off the map embed. */
 function coords(embed: string) {
@@ -211,9 +211,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           </Reveal>
 
           <Reveal delay={0.08} className="text-center md:text-left">
-            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.7] tracking-[0.06em] text-ink">{L(hotel.about.title)}</h3>
-            <h3 className="mt-3 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.7] tracking-[0.06em] text-ink">{L(hotel.about.lede)}</h3>
-            <div className="mt-6 space-y-3 text-[0.8125rem] leading-[1.9] whitespace-pre-line text-ink-mute">
+            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.95] tracking-[0.06em] text-ink">{L(hotel.about.title)}</h3>
+            <h3 className="mt-3 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.95] tracking-[0.06em] text-ink">{L(hotel.about.lede)}</h3>
+            <div className="mt-6 space-y-3 text-[0.9375rem] leading-[2] whitespace-pre-line text-ink-mute">
               {L(hotel.about.body)
                 .split(/\n\s*\n/)
                 .map((p, i) => (
@@ -222,8 +222,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </div>
             {hotel.highlights.map((block, i) => (
               <Fragment key={i}>
-                <h3 className="mt-8 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.7] tracking-[0.06em] whitespace-pre-line text-ink">{L(block.title)}</h3>
-                <div className="mt-4 space-y-3 text-[0.8125rem] leading-[1.9] text-ink-mute">
+                <h3 className="mt-8 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.95] tracking-[0.06em] whitespace-pre-line text-ink">{L(block.title)}</h3>
+                <div className="mt-4 space-y-3 text-[0.9375rem] leading-[2] text-ink-mute">
                   {L(block.body)
                     .split(/\n\s*\n/)
                     .map((p, k) => (
@@ -232,7 +232,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 </div>
               </Fragment>
             ))}
-            <p className="mt-8 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.7] tracking-[0.06em] text-ink">—— {L(hotel.tagline)}</p>
+            <p className="mt-8 text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.95] tracking-[0.06em] text-ink">—— {L(hotel.tagline)}</p>
           </Reveal>
         </div>
       </section>
@@ -240,14 +240,14 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <Rule />
 
       {/* GROUPS & EVENTS -------------------------------------------------- */}
-      <section className="px-5 py-20 md:py-24">
+      <section className="px-5 py-24 md:py-28">
         <EnHeading en="PERFECT FOR GROUPS & EVENTS" sub={L(S.groups)} />
         <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-10 md:grid-cols-[0.9fr_1.4fr] md:gap-12">
           <Reveal>
-            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.7] tracking-[0.06em] whitespace-pre-line text-ink">{L(S.groupsTitle)}</h3>
-            <p className="mt-6 text-[0.8125rem] leading-[1.9] text-ink-mute">{L(S.groupsBody1)}</p>
-            <p className="mt-4 text-[0.8125rem] leading-[1.9] text-ink-mute">{L(S.groupsBody2)}</p>
-            <a href="tel:08040979552" className="mt-6 inline-flex items-center gap-3 text-[1.125rem] font-medium text-ink hover:opacity-70">
+            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.95] tracking-[0.06em] whitespace-pre-line text-ink">{L(S.groupsTitle)}</h3>
+            <p className="mt-6 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody1)}</p>
+            <p className="mt-4 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody2)}</p>
+            <a href="tel:08040979552" className="mt-6 inline-flex items-center gap-3 text-[1.25rem] font-medium text-ink hover:opacity-70">
               <PhoneIcon size={18} /> {L(S.groupDesk)}　080-4097-9552
             </a>
             <div className="mt-6">
@@ -275,7 +275,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <Rule />
 
       {/* 8 photo cards ---------------------------------------------------- */}
-      <section className="px-5 py-20 md:py-24">
+      <section className="px-5 py-24 md:py-28">
         <EnHeading en="WHATS SPECIAL" sub={L(S.features)} />
         <Flourish className="mt-6" />
         <div className="mx-auto mt-12 grid max-w-[72rem] gap-5 sm:grid-cols-2 lg:grid-cols-6">
@@ -293,8 +293,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:px-6">
-                    <h3 className="text-[1.35rem] tracking-[0.06em] md:text-[1.6rem]">{L(f.title)}</h3>
-                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.8125rem] md:text-[0.75rem] leading-[1.7] text-pretty whitespace-pre-line">{L(f.body)}</p>
+                    <h3 className="text-[1.5rem] tracking-[0.06em] md:text-[1.75rem]">{L(f.title)}</h3>
+                    <p className="mx-auto mt-2 max-w-[24rem] text-[0.9375rem] md:text-[0.875rem] leading-[1.95] text-pretty whitespace-pre-line">{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>
@@ -307,16 +307,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section id="rooms" className={cn('bg-page pb-24', ANCHOR)}>
         <JpBand title={L(S.rooms)} sub={L(S.roomsSub)} />
         <div className="mx-auto max-w-[76rem] px-5">
-          <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.rooms.lead)}</p>
+          <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.rooms.lead)}</p>
 
           {stay.rooms.services && (
             <Reveal className="mt-10 rounded-xl bg-page-3 p-5 md:p-7">
-              <p className="text-center text-[1rem] tracking-[0.08em] text-ink">{L(S.services)}</p>
+              <p className="text-center text-[1.125rem] tracking-[0.08em] text-ink">{L(S.services)}</p>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
                 {stay.rooms.services.map((item, i) => (
                   <li key={i} className="rounded-lg border border-ink/10 bg-page p-4">
-                    <p className="border-l-[3px] border-brass pl-2.5 text-[0.875rem] font-medium text-ink">{L(item.title)}</p>
-                    <p className="mt-2.5 text-[0.8125rem] md:text-[0.75rem] leading-[1.9] whitespace-pre-line text-ink-mute">{L(item.body)}</p>
+                    <p className="border-l-[3px] border-brass pl-2.5 text-[1rem] font-medium text-ink">{L(item.title)}</p>
+                    <p className="mt-2.5 text-[0.9375rem] md:text-[0.875rem] leading-[2] whitespace-pre-line text-ink-mute">{L(item.body)}</p>
                   </li>
                 ))}
               </ul>
@@ -327,10 +327,10 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             <article key={i} className="mt-16 md:mt-20">
               <Rule inline />
               <Reveal className="mt-12 text-center">
-                <h3 className="font-latin text-[1.5rem] tracking-[0.1em] text-ink uppercase md:text-[1.75rem]">
+                <h3 className="font-latin text-[1.625rem] tracking-[0.1em] text-ink uppercase md:text-[1.875rem]">
                   {room.name.en ?? L(room.name)}
                 </h3>
-                <p className="mt-2 text-[0.875rem] text-stone">{L(room.name)}</p>
+                <p className="mt-2 text-[1rem] text-stone">{L(room.name)}</p>
               </Reveal>
 
               <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
@@ -339,9 +339,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 </Reveal>
 
                 <Reveal delay={0.08}>
-                  <p className="text-[1rem] leading-[1.9] text-ink">{L(room.body)}</p>
+                  <p className="text-[1.125rem] leading-[2] text-ink">{L(room.body)}</p>
                   {room.amenities && (
-                    <ul className="mt-4 space-y-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.9] text-ink-mute">
+                    <ul className="mt-4 space-y-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-ink-mute">
                       <li>・{L(S.amenities)}｜{room.amenities.map((a) => L(a)).join('、')}</li>
                     </ul>
                   )}
@@ -349,7 +349,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   {room.facts && (
                     <dl className="mt-6 overflow-hidden rounded-lg bg-page-3">
                       {room.facts.map((fact, k) => (
-                        <div key={k} className={cn('grid grid-cols-[7rem_1fr] gap-4 px-5 py-3 text-[0.8125rem]', k > 0 && 'border-t border-page')}>
+                        <div key={k} className={cn('grid grid-cols-[7rem_1fr] gap-4 px-5 py-3 text-[0.9375rem]', k > 0 && 'border-t border-page')}>
                           <dt className="font-medium text-ink">{L(fact.label)}</dt>
                           <dd className="text-ink-mute">{L(fact.value)}</dd>
                         </div>
@@ -368,11 +368,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section id="dining" className={cn('bg-page pb-24', ANCHOR)}>
         <JpBand title={L(S.dining)} sub={L(S.diningSub)} />
         <div className="mx-auto max-w-[76rem] px-5">
-          <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.dining.lead)}</p>
+          <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.dining.lead)}</p>
 
           {diningGroups.map((group, g) => (
             <div key={g} className="mt-12">
-              <h3 className="border-l-4 border-brass pl-3 text-[1.0625rem] font-medium tracking-[0.04em] text-ink">{group.title}</h3>
+              <h3 className="border-l-4 border-brass pl-3 text-[1.1875rem] font-medium tracking-[0.04em] text-ink">{group.title}</h3>
               <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {group.items.map((item, i) => (
                   <Reveal key={i} delay={(i % 3) * 0.06}>
@@ -386,14 +386,14 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                         ) : (
                           // No dish photo yet: a soft panel carrying the hotel's wordmark, as the reference's logo tiles.
                           <div className="flex h-full w-full flex-col items-center justify-center bg-[linear-gradient(160deg,#f6f6f6,#e4e4e4)] px-6 text-center">
-                            <span className="font-latin text-[1rem] tracking-[0.2em] text-ink-mute">{title}</span>
-                            <span className="mt-1 text-[0.8125rem] md:text-[0.75rem] tracking-[0.2em] text-star">{'★'.repeat(hotel.stars)}</span>
+                            <span className="font-latin text-[1.125rem] tracking-[0.2em] text-ink-mute">{title}</span>
+                            <span className="mt-1 text-[0.9375rem] md:text-[0.875rem] tracking-[0.2em] text-star">{'★'.repeat(hotel.stars)}</span>
                           </div>
                         )}
                       </div>
                       <div className="flex flex-1 flex-col p-5">
-                        <h4 className="text-[0.9375rem] font-medium text-ink">{L(item.title)}</h4>
-                        <p className="mt-2 text-[0.8125rem] leading-[1.9] text-ink-mute">{L(item.body)}</p>
+                        <h4 className="text-[1.0625rem] font-medium text-ink">{L(item.title)}</h4>
+                        <p className="mt-2 text-[0.9375rem] leading-[2] text-ink-mute">{L(item.body)}</p>
                       </div>
                     </article>
                   </Reveal>
@@ -407,9 +407,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <Rule />
 
       {/* SURROUNDINGS ----------------------------------------------------- */}
-      <section id="sightseeing" className={cn('px-5 py-20 md:py-24', ANCHOR)}>
+      <section id="sightseeing" className={cn('px-5 py-24 md:py-28', ANCHOR)}>
         <EnHeading en="SURROUNDINGS" sub={L(S.sightseeing)} />
-        <p className="mx-auto mt-8 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.sightseeing.lead)}</p>
+        <p className="mx-auto mt-8 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.sightseeing.lead)}</p>
 
         <div className="mx-auto mt-10 grid max-w-[76rem] grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
           {stay.sightseeing.spots.map((spot, i) => (
@@ -423,15 +423,15 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-page-2 px-3 text-center">
-                      <span className="text-[0.8125rem] md:text-[0.75rem] tracking-[0.1em] text-stone">{L(spot.name)}</span>
+                      <span className="text-[0.9375rem] md:text-[0.875rem] tracking-[0.1em] text-stone">{L(spot.name)}</span>
                     </div>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-3">
-                  <h3 className="text-[0.9375rem] leading-snug font-medium text-pretty text-ink">{L(spot.name)}</h3>
-                  <p className="mt-1 text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.fromHotel)}{L(spot.time)}</p>
-                  <p className="mt-2 flex-1 text-[0.75rem] leading-[1.8] text-pretty text-ink-mute md:text-[0.6875rem]">{L(spot.body)}</p>
-                  <p className="mt-2 flex flex-wrap gap-x-3 text-[0.75rem] md:text-[0.6875rem]">
+                  <h3 className="text-[1.0625rem] leading-snug font-medium text-pretty text-ink">{L(spot.name)}</h3>
+                  <p className="mt-1 text-[0.875rem] md:text-[0.8125rem] text-stone">{L(S.fromHotel)}{L(spot.time)}</p>
+                  <p className="mt-2 flex-1 text-[0.875rem] leading-[2] text-pretty text-ink-mute md:text-[0.8125rem]">{L(spot.body)}</p>
+                  <p className="mt-2 flex flex-wrap gap-x-3 text-[0.875rem] md:text-[0.8125rem]">
                     <a href={mapsUrl(spot.query)} target="_blank" rel="noopener noreferrer" className="border-b border-ink text-ink hover:opacity-60">
                       {L(S.viewMap)}
                     </a>
@@ -446,34 +446,34 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </Reveal>
           ))}
         </div>
-        <p className="mx-auto mt-3 max-w-[76rem] text-right text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.timeNote)}</p>
+        <p className="mx-auto mt-3 max-w-[76rem] text-right text-[0.875rem] md:text-[0.8125rem] text-stone">{L(S.timeNote)}</p>
 
         {stay.sightseeing.events && (
           <div className="mx-auto mt-16 max-w-[76rem]">
             <EnHeading en="SEASONAL EVENTS" sub={L(S.events)} small />
-            <p className="mx-auto mt-5 max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(S.eventsLead)}</p>
+            <p className="mx-auto mt-5 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(S.eventsLead)}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {stay.sightseeing.events.map((event, i) => (
                 <Reveal key={i} delay={(i % 4) * 0.06}>
                   <article className="flex h-full flex-col rounded-md border border-ink/10 bg-page p-5">
-                    <span className="type-mincho flex size-9 items-center justify-center rounded-full border border-ink text-[0.9375rem] text-ink">
+                    <span className="type-mincho flex size-9 items-center justify-center rounded-full border border-ink text-[1.0625rem] text-ink">
                       {SEASON[event.season]}
                     </span>
-                    <h4 className="mt-3 text-[0.9375rem] font-medium text-ink">{L(event.name)}</h4>
-                    <p className="mt-2 text-[0.75rem] md:text-[0.6875rem] leading-[1.8] text-ink-mute">
+                    <h4 className="mt-3 text-[1.0625rem] font-medium text-ink">{L(event.name)}</h4>
+                    <p className="mt-2 text-[0.875rem] md:text-[0.8125rem] leading-[2] text-ink-mute">
                       {L(S.when)}{L(event.when)}
                       <br />
                       {L(S.where)}{L(event.place)}
                     </p>
-                    <p className="mt-2 flex-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.8] text-pretty text-ink-mute">{L(event.body)}</p>
-                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-ink text-[0.75rem] md:text-[0.6875rem] text-ink hover:opacity-60">
+                    <p className="mt-2 flex-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-pretty text-ink-mute">{L(event.body)}</p>
+                    <a href={mapsUrl(event.query)} target="_blank" rel="noopener noreferrer" className="mt-3 self-start border-b border-ink text-[0.875rem] md:text-[0.8125rem] text-ink hover:opacity-60">
                       {L(S.viewMap)}
                     </a>
                   </article>
                 </Reveal>
               ))}
             </div>
-            <p className="mt-3 text-right text-[0.75rem] md:text-[0.6875rem] text-stone">{L(S.eventsNote)}</p>
+            <p className="mt-3 text-right text-[0.875rem] md:text-[0.8125rem] text-stone">{L(S.eventsNote)}</p>
           </div>
         )}
 
@@ -484,11 +484,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
               {stay.sightseeing.facilities.map((item, i) => (
                 <Reveal key={i} delay={(i % 3) * 0.06}>
                   <article className="h-full rounded-md border border-ink/10 bg-page p-5">
-                    <p className="border-b border-ink/10 pb-2 text-[0.9375rem] font-medium text-ink">{L(item.kind)}</p>
-                    <p className="mt-3 text-[0.875rem] font-medium text-ink">{L(item.name)}</p>
-                    {item.address && <p className="mt-1 text-[0.8125rem] md:text-[0.75rem] leading-[1.8] text-ink-mute">{L(S.addressLabel)}：{item.address}</p>}
-                    {item.hours && <p className="mt-1 text-[0.8125rem] md:text-[0.75rem] text-ink-mute">{L(S.hours)}：{L(item.hours)}</p>}
-                    <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] text-stone">{L(S.fromHotel)}{L(item.time)}</p>
+                    <p className="border-b border-ink/10 pb-2 text-[1.0625rem] font-medium text-ink">{L(item.kind)}</p>
+                    <p className="mt-3 text-[1rem] font-medium text-ink">{L(item.name)}</p>
+                    {item.address && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-ink-mute">{L(S.addressLabel)}：{item.address}</p>}
+                    {item.hours && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] text-ink-mute">{L(S.hours)}：{L(item.hours)}</p>}
+                    <p className="mt-2 text-[0.9375rem] md:text-[0.875rem] text-stone">{L(S.fromHotel)}{L(item.time)}</p>
                   </article>
                 </Reveal>
               ))}
@@ -500,7 +500,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <Rule />
 
       {/* Photo marquees --------------------------------------------------- */}
-      <section className="px-5 py-16 md:py-20">
+      <section className="px-5 py-20 md:py-24">
         <div className="mx-auto grid max-w-[76rem] gap-12 md:grid-cols-2 md:gap-8">
           <PhotoMarquee images={scenery.inside} title={L(S.inside)} />
           <PhotoMarquee images={scenery.around} title={L(S.around)} reverse />
@@ -511,9 +511,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section id="access" className={cn('relative overflow-hidden bg-sumi text-washi', ANCHOR)}>
         <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover opacity-85" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-sumi/50 via-sumi/10 to-sumi/30" />
-        <div className="relative mx-auto max-w-[60rem] px-5 py-24 text-center [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] md:py-40">
-          <p className="font-latin text-[1.75rem] tracking-[0.2em] md:text-[2.25rem]">ACCESS</p>
-          <p className="mt-1 text-[0.8125rem] tracking-[0.15em]">{L(S.accessSub)}</p>
+        <div className="relative mx-auto max-w-[60rem] px-5 py-28 text-center [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] md:py-40">
+          <p className="font-latin text-[1.875rem] tracking-[0.2em] md:text-[2.5rem]">ACCESS</p>
+          <p className="mt-1 text-[0.9375rem] tracking-[0.15em]">{L(S.accessSub)}</p>
           <a href="#access-detail" className={cn(BTN_LINE, 'mt-10 border-washi text-washi hover:bg-washi hover:text-sumi')}>
             {L(S.accessInfo)}
           </a>
@@ -521,9 +521,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Access details --------------------------------------------------- */}
-      <section id="access-detail" className={cn('bg-page py-20 md:py-24', ANCHOR)}>
+      <section id="access-detail" className={cn('bg-page py-24 md:py-28', ANCHOR)}>
         <div className="mx-auto max-w-[76rem] px-5">
-          <p className="mx-auto max-w-[46rem] text-center text-[0.8125rem] leading-[1.9] text-ink-mute">{L(stay.access.lead)}</p>
+          <p className="mx-auto max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.access.lead)}</p>
 
           <Reveal className="mt-10 overflow-hidden rounded-xl border border-ink/10">
             <MapEmbed src={hotel.mapEmbed} title={title} address={L(hotel.info.address)} cta={dict.common.openInMaps} height="h-[18rem] md:h-[26rem]" />
@@ -531,10 +531,10 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
           <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <p className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone">{L(S.hotelInfo)}</p>
-              <h3 className="mt-2 text-[1.5rem] font-medium tracking-[0.06em] text-ink">{hotel.nameJa}</h3>
-              <p className="mt-4 text-[0.9375rem] text-ink">{L(hotel.info.address)}</p>
-              <ul className="mt-4 space-y-2.5 text-[0.875rem] text-ink-mute">
+              <p className="text-[0.875rem] md:text-[0.8125rem] tracking-[0.2em] text-stone">{L(S.hotelInfo)}</p>
+              <h3 className="mt-2 text-[1.625rem] font-medium tracking-[0.06em] text-ink">{hotel.nameJa}</h3>
+              <p className="mt-4 text-[1.0625rem] text-ink">{L(hotel.info.address)}</p>
+              <ul className="mt-4 space-y-2.5 text-[1rem] text-ink-mute">
                 {hotel.info.tel && (
                   <li className="flex items-center gap-3">
                     <PhoneIcon size={16} /> {L(S.telLabel)}　<a href={`tel:${hotel.info.tel.replace(/-/g, '')}`}>{hotel.info.tel}</a>
@@ -550,7 +550,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 </li>
               </ul>
               {(stay.access.checkIn || stay.access.checkOut || stay.access.parking) && (
-                <dl className="mt-8 border-t border-ink/15 text-[0.8125rem]">
+                <dl className="mt-8 border-t border-ink/15 text-[0.9375rem]">
                   {stay.access.checkIn && <InfoRow label={L(S.checkIn)} value={stay.access.checkIn} />}
                   {stay.access.checkOut && <InfoRow label={L(S.checkOut)} value={stay.access.checkOut} />}
                   {stay.access.parking && <InfoRow label={L(S.parking)} value={L(stay.access.parking)} />}
@@ -559,7 +559,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </Reveal>
 
             <Reveal delay={0.08} className="rounded-xl bg-page-3 p-6 md:p-8">
-              <p className="text-[0.875rem] font-medium text-ink">{L(S.routes)}</p>
+              <p className="text-[1rem] font-medium text-ink">{L(S.routes)}</p>
               <ul className="mt-5 space-y-5">
                 {stay.access.routes.map((route, i) => (
                   <li key={i} className="flex items-start gap-4">
@@ -567,10 +567,10 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                       <ModeIcon mode={route.mode} />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-[0.875rem] font-medium text-ink">
+                      <span className="block text-[1rem] font-medium text-ink">
                         {L(MODE_LABEL[route.mode])}：{L(route.from)}
                       </span>
-                      <span className="mt-0.5 block text-[0.8125rem] text-ink-mute">{L(route.detail)}</span>
+                      <span className="mt-0.5 block text-[0.9375rem] text-ink-mute">{L(route.detail)}</span>
                     </span>
                   </li>
                 ))}
@@ -580,11 +580,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
           {stay.access.journeys && (
             <div className="mt-14">
-              <p className="text-[0.875rem] font-medium text-ink">{L(S.routeGuide)}</p>
+              <p className="text-[1rem] font-medium text-ink">{L(S.routeGuide)}</p>
               <div className="mt-4 grid gap-5 lg:grid-cols-2">
                 {stay.access.journeys.map((journey, i) => (
                   <Reveal key={i} delay={(i % 2) * 0.08} className="rounded-xl bg-page-3 p-6 md:p-8">
-                    <p className="text-[0.875rem] font-medium text-ink">{L(journey.title)}</p>
+                    <p className="text-[1rem] font-medium text-ink">{L(journey.title)}</p>
                     <ol className="mt-5 flex flex-col md:flex-row md:items-center">
                       {journey.steps.map((step, k) => {
                         const last = k === journey.steps.length - 1;
@@ -592,7 +592,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                           <Fragment key={k}>
                             <li
                               className={cn(
-                                'rounded-md px-3 py-3 text-center text-[0.8125rem] leading-snug md:min-w-[6rem]',
+                                'rounded-md px-3 py-3 text-center text-[0.9375rem] leading-snug md:min-w-[6rem]',
                                 last ? 'bg-ink text-page' : 'bg-page text-ink shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
                               )}
                             >
@@ -605,7 +605,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                                 <span className="relative flex size-7 shrink-0 items-center justify-center rounded-full bg-ink text-page">
                                   <ModeIcon mode={step.leg.mode} />
                                 </span>
-                                <span className="relative text-[0.8125rem] md:text-[0.75rem] leading-snug whitespace-nowrap text-ink-mute md:text-center">{L(step.leg.text)}</span>
+                                <span className="relative text-[0.9375rem] md:text-[0.875rem] leading-snug whitespace-nowrap text-ink-mute md:text-center">{L(step.leg.text)}</span>
                               </li>
                             )}
                           </Fragment>
@@ -621,16 +621,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Dark hotel footer, as the reference ------------------------------ */}
-      <section className="bg-[#1c1c1c] px-5 py-16 text-center text-washi md:py-20">
-        <p className="font-latin text-[1.5rem] tracking-[0.22em] md:text-[1.9rem]">{title}</p>
-        <p className="mt-1 text-[0.9375rem] tracking-[0.3em] text-star">{'★'.repeat(hotel.stars)}</p>
-        <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] tracking-[0.3em] text-washi/70">{hotel.nameJa}</p>
+      <section className="bg-[#1c1c1c] px-5 py-20 text-center text-washi md:py-24">
+        <p className="font-latin text-[1.625rem] tracking-[0.22em] md:text-[2rem]">{title}</p>
+        <p className="mt-1 text-[1.0625rem] tracking-[0.3em] text-star">{'★'.repeat(hotel.stars)}</p>
+        <p className="mt-2 text-[0.9375rem] md:text-[0.875rem] tracking-[0.3em] text-washi/85">{hotel.nameJa}</p>
         {geo && (
-          <p className="mt-6 text-[0.8125rem] tracking-[0.05em]">
+          <p className="mt-6 text-[0.9375rem] tracking-[0.05em]">
             北緯{geo.lat}° 東経{geo.lng}°
           </p>
         )}
-        <p className="mt-5 text-[0.8125rem] leading-[2] text-washi/85">
+        <p className="mt-5 text-[0.9375rem] leading-[2] text-washi/85">
           {L(hotel.info.address)}
           <br />
           {hotel.info.tel && <>電話：{hotel.info.tel}　</>}
@@ -638,7 +638,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           <br />
           {L(S.frontDesk)}
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.8125rem] md:text-[0.75rem] text-washi/70">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.9375rem] md:text-[0.875rem] text-washi/85">
           {links.map((l) => (
             <a key={l.id} href={`#${l.id}`} className="hover:text-washi">
               {l.label}
@@ -659,10 +659,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 function EnHeading({ en, sub, small }: { en: string; sub?: string; small?: boolean }) {
   return (
     <Reveal className="text-center">
-      <h2 className={cn('font-latin tracking-[0.18em] text-ink', small ? 'text-[1.25rem] md:text-[1.5rem]' : 'text-[clamp(1.4rem,2.6vw,2.1rem)]')}>
+      <h2 className={cn('font-latin tracking-[0.18em] text-ink', small ? 'text-[1.375rem] md:text-[1.625rem]' : 'text-[clamp(1.4rem,2.6vw,2.1rem)]')}>
         {en}
       </h2>
-      {sub && <p className="mt-2 text-[0.8125rem] md:text-[0.75rem] tracking-[0.1em] text-stone">{sub}</p>}
+      <span aria-hidden className="ornament" />
+      {sub && <p className="mt-3 text-[0.9375rem] md:text-[0.875rem] tracking-[0.16em] text-brass">{sub}</p>}
     </Reveal>
   );
 }
@@ -670,10 +671,10 @@ function EnHeading({ en, sub, small }: { en: string; sub?: string; small?: boole
 /** The reference's light title band with a faint dot pattern (客室紹介 / お食事). */
 function JpBand({ title, sub }: { title: string; sub?: string }) {
   return (
-    <div className="bg-page-2 px-5 py-12 text-center [background-image:radial-gradient(rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:14px_14px] md:py-14">
-      <h2 className="text-[1.75rem] tracking-[0.1em] text-ink md:text-[2.125rem]">{title}</h2>
-      <span aria-hidden className="mx-auto mt-4 block h-0.5 w-10 bg-brass" />
-      {sub && <p className="mt-3 text-[0.8125rem] text-stone">{sub}</p>}
+    <div className="bg-seigaiha px-5 py-14 text-center md:py-16">
+      <h2 className="text-[1.875rem] tracking-[0.1em] text-ink md:text-[2.25rem]">{title}</h2>
+      <span aria-hidden className="ornament ornament-on-2" />
+      {sub && <p className="mt-3 text-[0.9375rem] text-stone">{sub}</p>}
     </div>
   );
 }
@@ -699,7 +700,7 @@ function Rule({ inline }: { inline?: boolean }) {
   return (
     <div aria-hidden className={cn('relative mx-auto', inline ? 'max-w-[60rem]' : 'max-w-[76rem] px-5')}>
       <span className="block h-px w-full bg-ink/12" />
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-page px-2 text-[0.8125rem] md:text-[0.75rem] text-stone-dim">✦</span>
+      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-page px-2 text-[0.9375rem] md:text-[0.875rem] text-stone-dim">✦</span>
     </div>
   );
 }
@@ -771,7 +772,7 @@ function Credit({ credit }: { credit: PhotoCredit }) {
       href={credit.source}
       target="_blank"
       rel="noopener noreferrer"
-      className="absolute right-0 bottom-0 left-0 truncate bg-gradient-to-t from-sumi/55 to-transparent px-2 pt-4 pb-1 text-right text-[0.5625rem] leading-tight text-washi/85 hover:text-washi"
+      className="absolute right-0 bottom-0 left-0 truncate bg-gradient-to-t from-sumi/55 to-transparent px-2 pt-4 pb-1 text-right text-[0.65rem] leading-tight text-washi/85 hover:text-washi"
     >
       Photo: {credit.author} / {credit.license}
     </a>

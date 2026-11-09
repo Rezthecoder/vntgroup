@@ -56,7 +56,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
               <Link
                 key={item.href + item.label.ja}
                 href={localePath(locale, item.href)}
-                className="text-[0.9375rem] font-bold text-ink transition-colors hover:text-brand"
+                className="text-[1.0625rem] font-bold text-ink transition-colors hover:text-brand"
               >
                 {t(item.label, locale)}
               </Link>
@@ -68,7 +68,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 href={localePath(locale, '/contact')}
-                className="rounded-lg bg-brand px-6 py-3.5 text-[0.9375rem] font-bold text-washi shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
+                className="rounded-lg bg-brand px-6 py-3.5 text-[1.0625rem] font-bold text-washi shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
               >
                 {labels.contact}
               </Link>

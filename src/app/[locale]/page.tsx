@@ -47,14 +47,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       />
 
       <section id="business" className="px-5 pt-20 pb-24 md:pt-24 md:pb-36">
-        <SectionTitle>BUSINESS</SectionTitle>
+        <SectionTitle sub={locale === 'ja' ? '事業紹介' : 'What we do'}>BUSINESS</SectionTitle>
         <div className="mt-12 md:mt-14">
           <BusinessCards locale={locale} viewMore={dict.common.viewMore} />
         </div>
       </section>
 
       <section id="hotel" className="pb-20 md:pb-28">
-        <SectionTitle>HOTEL</SectionTitle>
+        <SectionTitle sub={locale === 'ja' ? 'ホテル' : 'Hotels'}>HOTEL</SectionTitle>
         <PhotoStrip items={hotelStrip} locale={locale} />
         <GroupNote
           body={dict.home.groupHotel}
@@ -64,7 +64,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <section id="foodshop" className="pb-8 md:pb-12">
-        <SectionTitle>FOOD &amp; SHOP</SectionTitle>
+        <SectionTitle sub={locale === 'ja' ? '飲食店・販売店' : 'Restaurants & shops'}>FOOD &amp; SHOP</SectionTitle>
         <PhotoStrip items={foodStrip} locale={locale} />
         <GroupNote
           body={dict.home.groupDining}
@@ -78,10 +78,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   );
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionTitle({ children, sub }: { children: React.ReactNode; sub?: string }) {
   return (
-    <Reveal>
-      <h2 className="type-section text-center text-[clamp(1.9rem,2.3vw,2.25rem)] text-ink-mute">{children}</h2>
+    <Reveal className="text-center">
+      <h2 className="type-section text-[clamp(2.1rem,2.8vw,2.75rem)] text-ink">{children}</h2>
+      <span aria-hidden className="ornament" />
+      {sub && <p className="mt-3 text-[0.9375rem] tracking-[0.3em] text-brass">{sub}</p>}
     </Reveal>
   );
 }
@@ -97,13 +99,13 @@ function PhotoStrip({ items, locale }: { items: Strip[]; locale: Locale }) {
           className="group relative block h-[15rem] overflow-hidden border-page md:h-[min(25vw,22.5rem)] md:border-l first:md:border-l-0"
         >
           <Image src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-          <span className="absolute inset-0 bg-sumi/25 transition-colors duration-500 group-hover:bg-sumi/40" />
+          <span className="absolute inset-0 bg-sumi/35 transition-colors duration-500 group-hover:bg-sumi/50" />
           <span
             className={cn(
-              'absolute inset-0 flex items-center justify-center px-4 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]',
+              'absolute inset-0 flex items-center justify-center px-4 text-center text-washi [text-shadow:0_2px_12px_rgba(0,0,0,0.55)]',
               item.mincho
                 ? 'type-mincho text-[clamp(1.4rem,1.7vw,1.6rem)]'
-                : 'font-latin text-[clamp(1rem,1.25vw,1.2rem)] tracking-[0.12em]',
+                : 'font-latin text-[clamp(1.3rem,1.6vw,1.6rem)] font-medium tracking-[0.12em]',
             )}
           >
             {item.name}
@@ -125,12 +127,12 @@ function GroupNote({
 }) {
   return (
     <Reveal className="mx-auto mt-10 max-w-[76.25rem] px-5 md:mt-12">
-      <p className="text-[0.875rem] leading-[1.75] whitespace-pre-line text-ink-mute">{body}</p>
+      <p className="text-[1rem] leading-[1.95] whitespace-pre-line text-ink-mute">{body}</p>
       <div className="mt-6 flex justify-end gap-5">
         <Link href={more.href} className="btn-pill">
           {more.label}
         </Link>
-        <Link href={contact.href} className="btn-pill">
+        <Link href={contact.href} className="btn-pill btn-pill-brand">
           {contact.label}
         </Link>
       </div>

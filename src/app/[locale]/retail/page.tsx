@@ -48,7 +48,7 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-24 md:py-32">
         <div className="shell">
           <Reveal className="mx-auto max-w-3xl">
             <p className="type-mincho text-[clamp(1rem,2vw,1.35rem)] leading-[2.1] text-ink/90">{t(ikegami.lede, active)}</p>
@@ -57,7 +57,7 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
       </section>
 
       {/* Stores ----------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-20 md:py-28">
+      <section className="relative border-t border-ink/10 py-24 md:py-32">
         <div className="shell">
           <SectionHeading eyebrow="Stores" title={dict.common.storeInformation} />
 
@@ -65,17 +65,17 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
             {ikegami.branches.map((branch, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div className="h-full border border-ink/12 p-8 md:p-10">
-                  <h3 className="type-display text-[1.125rem] leading-snug text-ink">{t(branch.name, active)}</h3>
-                  <dl className="mt-7 space-y-4 text-sm">
+                  <h3 className="type-display text-[1.25rem] leading-snug text-ink">{t(branch.name, active)}</h3>
+                  <dl className="mt-7 space-y-4 text-base">
                     <div>
-                      <dt className="text-[0.625rem] tracking-[0.24em] text-stone uppercase">{dict.common.address}</dt>
-                      <dd className="mt-1.5 leading-relaxed text-ink/75">{t(branch.address, active)}</dd>
+                      <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">{dict.common.address}</dt>
+                      <dd className="mt-1.5 leading-[1.95] text-ink/85">{t(branch.address, active)}</dd>
                     </div>
                     {branch.tel && (
                       <div>
-                        <dt className="text-[0.625rem] tracking-[0.24em] text-stone uppercase">TEL</dt>
+                        <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">TEL</dt>
                         <dd className="mt-1.5">
-                          <a href={`tel:${branch.tel.replace(/-/g, '')}`} className="text-ink/75 hover:text-brass">
+                          <a href={`tel:${branch.tel.replace(/-/g, '')}`} className="text-ink/85 hover:text-brass">
                             {branch.tel}
                           </a>
                         </dd>
@@ -83,8 +83,8 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
                     )}
                     {branch.hours && (
                       <div>
-                        <dt className="text-[0.625rem] tracking-[0.24em] text-stone uppercase">{dict.common.hours}</dt>
-                        <dd className="mt-1.5 text-ink/75">{t(branch.hours, active)}</dd>
+                        <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">{dict.common.hours}</dt>
+                        <dd className="mt-1.5 text-ink/85">{t(branch.hours, active)}</dd>
                       </div>
                     )}
                   </dl>

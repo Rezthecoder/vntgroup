@@ -39,7 +39,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ local
       />
 
       {/* Six areas -------------------------------------------------------- */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-28 md:py-36">
         <div className="shell-wide space-y-24 md:space-y-36">
           {businessAreas.map((area, i) => (
             <div
@@ -88,7 +88,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ local
       </section>
 
       {/* HISANO ----------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 bg-page-2 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 bg-page-2 py-28 md:py-36">
         <div className="shell-wide">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <div>
@@ -102,7 +102,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ local
                 className="type-display mt-5 text-[clamp(2rem,5vw,3.5rem)] tracking-[0.14em] text-ink"
               />
               <Reveal delay={0.16}>
-                <p className="type-mincho mt-4 text-sm text-brass">{t(hisano.title, active)}</p>
+                <p className="type-mincho mt-4 text-base text-brass">{t(hisano.title, active)}</p>
               </Reveal>
               <Reveal delay={0.26} className="mt-10">
                 <ButtonLink href={hisano.href} external variant="outline">
@@ -129,7 +129,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ local
       </section>
 
       {/* Suppliers -------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 py-28 md:py-36">
         <div className="shell">
           <SectionHeading eyebrow="Suppliers" title={t(supplierCall.title, active)} />
           <Reveal delay={0.16}>

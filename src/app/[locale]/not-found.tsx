@@ -15,7 +15,7 @@ export default function LocaleNotFound() {
         </p>
         <Link
           href="/ja"
-          className="mt-10 inline-block border border-brass/60 px-9 py-4 text-[0.75rem] md:text-[0.6875rem] tracking-[0.22em] text-brass uppercase transition-colors duration-400 hover:bg-brass hover:text-page"
+          className="mt-10 inline-block border border-brass/60 px-9 py-4 text-[0.875rem] md:text-[0.8125rem] tracking-[0.22em] text-brass uppercase transition-colors duration-400 hover:bg-brass hover:text-page"
         >
           Back to top
         </Link>

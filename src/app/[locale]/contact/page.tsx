@@ -36,14 +36,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         height="h-[52vh] min-h-[20rem] md:h-[62vh]"
       />
 
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-24 md:py-32">
         <div className="shell">
           <div className="grid gap-14 lg:grid-cols-[0.62fr_1.38fr] lg:gap-20">
             <div>
               <Reveal>
                 <dl className="space-y-8">
                   <div>
-                    <dt className="text-[0.625rem] tracking-[0.26em] text-stone uppercase">{dict.footer.tel}</dt>
+                    <dt className="text-[0.8125rem] tracking-[0.26em] text-stone uppercase">{dict.footer.tel}</dt>
                     <dd className="type-display mt-2 text-xl text-brass">
                       <a href={`tel:${site.tel.replace(/-/g, '')}`} className="hover:opacity-75">
                         {site.tel}
@@ -51,7 +51,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[0.625rem] tracking-[0.26em] text-stone uppercase">
+                    <dt className="text-[0.8125rem] tracking-[0.26em] text-stone uppercase">
                       {dict.common.groupDesk}
                     </dt>
                     <dd className="type-display mt-2 text-xl text-brass">
@@ -61,16 +61,16 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[0.625rem] tracking-[0.26em] text-stone uppercase">{dict.footer.email}</dt>
-                    <dd className="mt-2 text-sm text-ink/80">
+                    <dt className="text-[0.8125rem] tracking-[0.26em] text-stone uppercase">{dict.footer.email}</dt>
+                    <dd className="mt-2 text-base text-ink/90">
                       <a href={`mailto:${site.email}`} className="hover:text-brass">
                         {site.email}
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[0.625rem] tracking-[0.26em] text-stone uppercase">{dict.common.address}</dt>
-                    <dd className="mt-2 text-sm leading-relaxed text-ink/70">
+                    <dt className="text-[0.8125rem] tracking-[0.26em] text-stone uppercase">{dict.common.address}</dt>
+                    <dd className="mt-2 text-base leading-[1.95] text-ink/85">
                       {site.address.postal}
                       <br />
                       {active === 'ja' ? site.address.ja : site.address.en}

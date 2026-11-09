@@ -33,11 +33,15 @@ export function BusinessCards({ locale, viewMore }: { locale: Locale; viewMore: 
               )}
             </div>
 
-            <h3 className="type-mincho mt-6 text-[1.375rem] text-ink">{t(area.title, locale)}</h3>
-            <p className="mt-3 text-[0.9375rem] leading-[1.7] tracking-[0.03em] text-ink-mute">{t(area.summary, locale)}</p>
+            <p className="font-latin mt-6 text-[1.0625rem] tracking-[0.2em] text-gold">{String(i + 1).padStart(2, '0')}</p>
+            <h3 className="type-mincho mt-1 border-l-[3px] border-brand pl-4 text-[1.5rem] leading-[1.5] text-ink">{t(area.title, locale)}</h3>
+            <p className="mt-3 text-[1.0625rem] leading-[1.95] tracking-[0.03em] text-ink-mute">{t(area.summary, locale)}</p>
 
             {area.href && (
-              <span className="mt-3 block text-right text-[0.875rem] text-ink-mute group-hover:text-brand">{viewMore}</span>
+              <span className="mt-4 flex items-center justify-end gap-2 text-[1rem] tracking-[0.08em] text-brass">
+                {viewMore}
+                <span aria-hidden className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
             )}
           </>
         );

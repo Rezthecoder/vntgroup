@@ -73,13 +73,13 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       />
 
       {/* Copy blocks, in the live page's order ----------------------------- */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-28 md:py-36">
         <div className="shell space-y-16 md:space-y-24">
           {venue.about.map((block, i) => (
             <div key={i} className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
               <div>
                 <Reveal>
-                  <p className="type-display text-[0.75rem] md:text-[0.6875rem] tracking-[0.26em] text-brass">
+                  <p className="type-display text-[0.875rem] md:text-[0.8125rem] tracking-[0.26em] text-brass">
                     {block.eyebrow ?? String(i + 1).padStart(2, '0')}
                   </p>
                 </Reveal>
@@ -99,7 +99,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
                 {/* The live page prints the English under the Japanese. */}
                 {block.bilingual && active === 'ja' && (
                   <Reveal delay={0.2}>
-                    <p className="type-body mt-6 text-[0.875rem] text-ink/60">{block.body.en}</p>
+                    <p className="type-body mt-6 text-[1rem] text-ink/75">{block.body.en}</p>
                   </Reveal>
                 )}
               </div>
@@ -112,7 +112,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       {/* Film ------------------------------------------------------------- */}
       {venue.youtubeId && (
         <section className="relative border-y border-ink/10">
-          <div className="shell-wide py-16 md:py-24">
+          <div className="shell-wide py-20 md:py-28">
             <RevealImage>
               <VideoEmbed
                 id={venue.youtubeId}
@@ -127,14 +127,14 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
 
       {/* Time schedule ---------------------------------------------------- */}
       {venue.schedule && (
-        <section className="relative border-b border-ink/10 py-20 md:py-28">
+        <section className="relative border-b border-ink/10 py-24 md:py-32">
           <div className="shell">
             <SectionHeading eyebrow="Time Schedule" title={t(venue.schedule.title, active)} />
 
             <div className="mt-12 flex flex-wrap justify-center gap-3">
               {venue.schedule.times.map((time, i) => (
                 <Reveal key={time} delay={i * 0.05} direction="none">
-                  <span className="type-display inline-block border border-brass/35 px-6 py-3 text-sm tracking-[0.16em] text-brass">
+                  <span className="type-display inline-block border border-brass/35 px-6 py-3 text-base tracking-[0.16em] text-brass">
                     {time}
                   </span>
                 </Reveal>
@@ -142,10 +142,10 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
             </div>
 
             <Reveal delay={0.2}>
-              <p className="type-body mt-10 text-center text-[0.875rem] whitespace-pre-line">{t(venue.schedule.note, active)}</p>
+              <p className="type-body mt-10 text-center text-[1rem] whitespace-pre-line">{t(venue.schedule.note, active)}</p>
             </Reveal>
             <Reveal delay={0.26}>
-              <p className="type-display mt-6 text-center text-[1.05rem] tracking-[0.12em] text-ink">
+              <p className="type-display mt-6 text-center text-[1.1875rem] tracking-[0.12em] text-ink">
                 <a href="tel:08040979552" className="hover:text-brass">
                   {t(venue.schedule.tel, active)}
                 </a>
@@ -157,7 +157,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
 
 
       {/* Gallery ---------------------------------------------------------- */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-28 md:py-36">
         <div className="shell-wide">
           <SectionHeading eyebrow="Gallery" title={dict.common.gallery} />
           <div className="mt-14">
@@ -169,7 +169,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       {/* Warakutei band: the group logo and both Ariake shops, as on the
           live yakiniku and yakitori pages. */}
       {venue.slug.startsWith('warakutei') && (
-        <section className="relative bg-sumi py-16 md:py-20">
+        <section className="relative bg-sumi py-20 md:py-24">
           <div className="shell flex flex-col items-center text-center">
             <Reveal direction="none">
               <Image
@@ -180,7 +180,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
                 className="h-auto w-[min(22rem,70vw)]"
               />
             </Reveal>
-            <p className="mt-2 text-[0.625rem] tracking-[0.28em] text-washi/50 uppercase">{dict.dining.sisterStores}</p>
+            <p className="mt-2 text-[0.8125rem] tracking-[0.28em] text-washi/70 uppercase">{dict.dining.sisterStores}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               {venues
                 .filter((v) => v.slug.startsWith('warakutei'))
@@ -189,7 +189,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
                     key={v.slug}
                     href={localePath(active, `/dining/${v.slug}`)}
                     aria-current={v.slug === venue.slug ? 'page' : undefined}
-                    className="type-display border border-washi/30 px-7 py-3 text-[0.9375rem] tracking-[0.12em] text-washi transition-colors hover:border-brass-lit hover:text-brass-lit aria-[current=page]:border-brass-lit aria-[current=page]:text-brass-lit"
+                    className="type-display border border-washi/30 px-7 py-3 text-[1.0625rem] tracking-[0.12em] text-washi transition-colors hover:border-brass-lit hover:text-brass-lit aria-[current=page]:border-brass-lit aria-[current=page]:text-brass-lit"
                   >
                     {t(v.name, active)}
                   </Link>
@@ -202,7 +202,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
       {/* Address + map ---------------------------------------------------- */}
       <section className="relative border-t border-ink/10">
         <div className="grid lg:grid-cols-2">
-          <div className="flex items-center px-(--spacing-gutter) py-20 md:py-28">
+          <div className="flex items-center px-(--spacing-gutter) py-24 md:py-32">
             <div className="w-full max-w-xl">
               <Reveal>
                 <p className="type-eyebrow">Address</p>
@@ -216,20 +216,20 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
               <Reveal delay={0.16}>
                 <dl className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
                   <div className="grid grid-cols-[7rem_1fr] gap-4 py-4 md:grid-cols-[9rem_1fr]">
-                    <dt className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone uppercase">{dict.common.address}</dt>
-                    <dd className="text-sm leading-relaxed whitespace-pre-line text-ink/80">
+                    <dt className="text-[0.875rem] md:text-[0.8125rem] tracking-[0.2em] text-stone uppercase">{dict.common.address}</dt>
+                    <dd className="text-base leading-[1.95] whitespace-pre-line text-ink/90">
                       {t(venue.info.address, active)}
                       {venue.info.addressEnOnJa && active === 'ja' && (
-                        <span className="mt-3 block text-ink/60">{venue.info.address.en}</span>
+                        <span className="mt-3 block text-ink/75">{venue.info.address.en}</span>
                       )}
                     </dd>
                   </div>
                   {venue.info.tel && (
                     <div className="grid grid-cols-[7rem_1fr] gap-4 py-4 md:grid-cols-[9rem_1fr]">
-                      <dt className="text-[0.75rem] md:text-[0.6875rem] tracking-[0.2em] text-stone uppercase">
+                      <dt className="text-[0.875rem] md:text-[0.8125rem] tracking-[0.2em] text-stone uppercase">
                         {venue.info.telLabel ? t(venue.info.telLabel, active) : dict.common.tel}
                       </dt>
-                      <dd className="text-sm text-ink/80">
+                      <dd className="text-base text-ink/90">
                         <a href={`tel:${venue.info.tel.replace(/-/g, '')}`} className="hover:text-brass">
                           {venue.info.tel}
                         </a>

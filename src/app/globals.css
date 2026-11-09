@@ -56,6 +56,8 @@
   --color-vermilion: #b72929;
   --color-brand: #b72929;
   --color-star: #b08d57;
+  /* Kin (gold) for ornaments and index numbers; pairs with the VNT red. */
+  --color-gold: #b08d57;
 
   /* Google Fonts loaded by <link> in layout.tsx (no build-time fetch).
      Cormorant Garamond sets the Latin names (FUJI PREMIUM HOTEL, section
@@ -87,7 +89,7 @@
      The header keeps roughly its old height. */
   @media (max-width: 47.99rem) {
     html {
-      font-size: 112.5%;
+      font-size: 106.25%;
     }
     :root {
       --header-h: 4.5rem;
@@ -109,6 +111,7 @@
     /* The VNT red, lifted so small red text stays readable on charcoal. */
     --color-brass: #e0605a;
     --color-vermilion: #e0605a;
+    --color-gold: #d4b27a;
   }
 
   * {
@@ -224,6 +227,7 @@
     line-height: 1.35;
     /* Proportional kana spacing for Japanese headings. */
     font-feature-settings: 'palt' 1;
+    font-variant-numeric: lining-nums;
   }
 
   .type-mincho {
@@ -237,6 +241,9 @@
   /* Latin names set in Cormorant (hotel names, room names, section titles). */
   .font-latin {
     font-family: var(--font-display);
+    /* Cormorant's default old-style figures read as lowercase; phone
+       numbers and index numbers use lining figures. */
+    font-variant-numeric: lining-nums;
   }
 
   /* Montserrat light, the home page's BUSINESS / HOTEL / FOOD & SHOP titles. */
@@ -250,16 +257,16 @@
   /* Small Tenor caps with the short rule beneath (WHATS SPECIAL, ABOUT ...). */
   .type-eyebrow {
     font-family: var(--font-display);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
     text-transform: uppercase;
-    color: var(--color-ink);
+    color: var(--color-brass);
   }
 
   .type-eyebrow-lit {
     font-family: var(--font-display);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--color-washi);
@@ -270,14 +277,57 @@
     width: 4.25rem;
     height: 1px;
     margin: 1.25rem auto 0;
-    background: currentColor;
+    background: linear-gradient(90deg, var(--color-brand), var(--color-gold));
+  }
+
+  /* Gold hairline with a small red lozenge, under section titles. */
+  .ornament {
+    position: relative;
+    display: block;
+    width: 8.5rem;
+    height: 0.75rem;
+    margin: 1.1rem auto 0;
+  }
+  .ornament::before {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold) 25%, var(--color-gold) 75%, transparent);
+  }
+  .ornament::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-brand);
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 0 4px var(--color-page);
+  }
+  .ornament-left {
+    margin-inline: 0;
+  }
+  .ornament-on-2::after {
+    box-shadow: 0 0 0 4px var(--color-page-2);
+  }
+
+  /* Seigaiha (青海波) waves in faint gold, for title bands. */
+  .bg-seigaiha {
+    background-color: var(--color-page-2);
+    background-size: 48px 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cg fill='%23f1eee9' stroke='%23b08d57' stroke-opacity='0.28' stroke-width='1'%3E%3Cg id='w'%3E%3Ccircle r='22'/%3E%3Ccircle r='16'/%3E%3Ccircle r='10'/%3E%3Ccircle r='4'/%3E%3C/g%3E%3Cuse href='%23w' x='48'/%3E%3Cuse href='%23w' x='24' y='12'/%3E%3Cuse href='%23w' y='24'/%3E%3Cuse href='%23w' x='48' y='24'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  [data-theme='dark'] .bg-seigaiha {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cg fill='%231b1b1b' stroke='%23d4b27a' stroke-opacity='0.22' stroke-width='1'%3E%3Cg id='w'%3E%3Ccircle r='22'/%3E%3Ccircle r='16'/%3E%3Ccircle r='10'/%3E%3Ccircle r='4'/%3E%3C/g%3E%3Cuse href='%23w' x='48'/%3E%3Cuse href='%23w' x='24' y='12'/%3E%3Cuse href='%23w' y='24'/%3E%3Cuse href='%23w' x='48' y='24'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   .type-body {
     line-height: 2.1;
     letter-spacing: 0.06em;
     color: var(--color-ink-mute);
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
   }
 
   /* Rounded photo with the soft drop shadow the live hotel pages use. */
@@ -295,7 +345,7 @@
     background: var(--color-page);
     color: var(--color-ink);
     padding: 0.85rem 1.75rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
     letter-spacing: 0.05em;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
     transition: box-shadow 0.3s, transform 0.3s;
@@ -314,12 +364,21 @@
     border-radius: 999px;
     background: #ebe7e1;
     color: var(--color-ink-mute);
-    padding: 0.6rem 1.6rem;
-    font-size: 0.875rem;
+    padding: 0.7rem 1.75rem;
+    font-size: 1rem;
     transition: background 0.3s;
   }
   .btn-pill:hover {
     background: #e0dbd3;
+  }
+  /* The red pill for the main action (お問い合わせ). */
+  .btn-pill-brand {
+    background: var(--color-brand);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-brand) 70%, transparent);
+  }
+  .btn-pill-brand:hover {
+    background: color-mix(in srgb, var(--color-brand) 88%, #000);
   }
   [data-theme='dark'] .btn-pill {
     background: #2a2a2a;
@@ -327,6 +386,10 @@
   }
   [data-theme='dark'] .btn-pill:hover {
     background: #363636;
+  }
+  [data-theme='dark'] .btn-pill.btn-pill-brand {
+    background: #b72929;
+    color: #ffffff;
   }
   /* Frosted glass. `glass-bar` is the header once content scrolls under it;
      `glass-panel` is the slide-out menu; `glass-lit` sits over photographs

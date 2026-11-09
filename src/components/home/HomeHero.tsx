@@ -67,7 +67,7 @@ export function HomeHero({
         <motion.div {...rise(0.55)} className="mt-6 md:mt-8">
           <Link
             href={ctaHref}
-            className="glass-lit inline-flex min-w-[14rem] items-center justify-center rounded-full px-8 py-3.5 text-[0.875rem] tracking-[0.08em] transition-colors md:min-w-[12rem]"
+            className="glass-lit inline-flex min-w-[14rem] items-center justify-center rounded-full px-8 py-3.5 text-[1rem] tracking-[0.08em] transition-colors md:min-w-[12rem]"
           >
             {cta}
           </Link>
@@ -75,7 +75,7 @@ export function HomeHero({
 
         <motion.p
           {...rise(0.75)}
-          className="mt-14 self-start text-left text-[0.9375rem] leading-[1.75] whitespace-pre-line text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.45)] md:absolute md:bottom-[calc(13%-4vw)] md:left-[12.5%] md:mt-0 md:self-auto md:text-[0.9375rem] md:leading-[1.7]"
+          className="mt-14 self-start text-left text-[1.0625rem] leading-[1.95] whitespace-pre-line text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.45)] md:absolute md:bottom-[calc(13%-4vw)] md:left-[12.5%] md:mt-0 md:self-auto md:text-[1.0625rem] md:leading-[1.95]"
         >
           {intro}
         </motion.p>

@@ -45,7 +45,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex items-center justify-end border-b border-ink/10">
-          <button type="button" onClick={onClose} className="py-3 text-[0.8125rem] tracking-[0.1em] text-ink">
+          <button type="button" onClick={onClose} className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink">
             {closeLabel}
           </button>
         </div>
@@ -54,8 +54,8 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
           {navigation.map((item) => (
             <li key={item.href} className="border-b border-ink/10">
               <Link href={localePath(locale, item.href)} onClick={onClose} className="flex items-baseline gap-2 py-3.5">
-                <span className="text-[0.625rem] tracking-[0.16em] text-brand">{item.index}</span>
-                <span className="text-[0.9375rem] font-medium tracking-[0.04em] text-ink">{t(item.label, locale)}</span>
+                <span className="text-[0.8125rem] tracking-[0.16em] text-brand">{item.index}</span>
+                <span className="text-[1.0625rem] font-medium tracking-[0.04em] text-ink">{t(item.label, locale)}</span>
               </Link>
               {item.children && (
                 <div className="flex flex-col gap-1.5 pb-3 pl-5">
@@ -64,7 +64,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
                       key={child.href}
                       href={localePath(locale, child.href)}
                       onClick={onClose}
-                      className="text-[0.75rem] md:text-[0.6875rem] leading-snug tracking-[0.04em] text-ink-mute"
+                      className="text-[0.875rem] md:text-[0.8125rem] leading-snug tracking-[0.04em] text-ink-mute"
                     >
                       {t(child.label, locale)}
                     </Link>
@@ -75,7 +75,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
           ))}
         </ul>
 
-        <div className="mt-6 flex flex-col gap-2 text-[0.75rem] md:text-[0.6875rem] tracking-[0.04em] break-all">
+        <div className="mt-6 flex flex-col gap-2 text-[0.875rem] md:text-[0.8125rem] tracking-[0.04em] break-all">
           <a href={`tel:${site.telGroup.replace(/-/g, '')}`} className="text-brand">
             {site.telGroup}
           </a>

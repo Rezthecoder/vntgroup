@@ -55,11 +55,11 @@ export function HotelSectionNav({ links }: { links: SectionLink[] }) {
                 aria-current={on ? 'true' : undefined}
                 className={cn(
                   'group relative flex flex-col items-center gap-1 py-3.5 text-center transition-colors md:py-4',
-                  on ? 'text-ink' : 'text-ink/55 hover:text-ink',
+                  on ? 'text-ink' : 'text-ink/70 hover:text-ink',
                 )}
               >
-                <span className="type-mincho text-[0.8125rem] tracking-[0.12em] md:text-[0.9375rem]">{link.label}</span>
-                <span className="hidden text-[0.5625rem] tracking-[0.28em] text-stone uppercase sm:block">{link.en}</span>
+                <span className="type-mincho text-[0.9375rem] tracking-[0.12em] md:text-[1.0625rem]">{link.label}</span>
+                <span className="hidden text-[0.75rem] tracking-[0.28em] text-stone uppercase sm:block">{link.en}</span>
                 <span
                   className={cn(
                     'absolute inset-x-3 bottom-0 h-px origin-center bg-brass transition-transform duration-500 ease-(--ease-out-expo)',

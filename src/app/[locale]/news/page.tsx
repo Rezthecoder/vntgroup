@@ -31,7 +31,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
         height="h-[46vh] min-h-[18rem] md:h-[56vh]"
       />
 
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-24 md:py-32">
         <div className="shell">
           {sorted.length === 0 ? (
             <p className="type-body">{dict.news.empty}</p>
@@ -41,19 +41,19 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
                 <RevealItem key={item.slug} as="li">
                   <article className="grid gap-6 py-9 md:grid-cols-[10rem_1fr_14rem] md:gap-10">
                     <div className="flex flex-wrap items-baseline gap-4 md:flex-col md:items-start md:gap-2">
-                      <time dateTime={item.date} className="type-display text-sm tracking-[0.14em] text-brass">
+                      <time dateTime={item.date} className="type-display text-base tracking-[0.14em] text-brass">
                         {formatter.format(new Date(item.date))}
                       </time>
-                      <span className="border border-ink/20 px-3 py-1 text-[0.5625rem] tracking-[0.2em] text-stone uppercase">
+                      <span className="border border-ink/20 px-3 py-1 text-[0.75rem] tracking-[0.2em] text-stone uppercase">
                         {t(item.category, active)}
                       </span>
                     </div>
 
                     <div>
-                      <h2 className="type-mincho text-[1.05rem] leading-relaxed text-ink">
+                      <h2 className="type-mincho text-[1.1875rem] leading-[1.95] text-ink">
                         {t(item.title, active)}
                       </h2>
-                      <p className="type-body mt-3 text-[0.8125rem]">{t(item.body, active)}</p>
+                      <p className="type-body mt-3 text-[0.9375rem]">{t(item.body, active)}</p>
                     </div>
 
                     {item.image && (

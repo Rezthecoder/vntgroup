@@ -58,7 +58,7 @@ export default function Preloader({ tagline }: { tagline: string }) {
           />
 
           <motion.p
-            className="mt-6 text-xs tracking-[0.3em] text-stone uppercase"
+            className="mt-6 text-sm tracking-[0.3em] text-stone uppercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}

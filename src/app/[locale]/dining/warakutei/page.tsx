@@ -68,7 +68,7 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
         if (!venue) return null;
         const href = localePath(active, `/dining/${venue.slug}`);
         return (
-          <section key={venue.slug} id={venue.slug} className="relative py-20 md:py-28">
+          <section key={venue.slug} id={venue.slug} className="relative py-24 md:py-32">
             <div className="shell-wide">
               <div className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
                 <Reveal direction={i % 2 === 1 ? 'left' : 'right'}>
@@ -92,7 +92,7 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
                   </Reveal>
                   {venue.hub.title && (
                     <Reveal delay={0.08}>
-                      <h2 className="type-mincho mt-8 text-[1.25rem] text-ink">{t(venue.hub.title, active)}</h2>
+                      <h2 className="type-mincho mt-8 text-[1.375rem] text-ink">{t(venue.hub.title, active)}</h2>
                     </Reveal>
                   )}
                   <Reveal delay={0.14}>

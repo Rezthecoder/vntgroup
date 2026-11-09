@@ -46,7 +46,7 @@ export function ArrowLink({
   );
 
   const classes = cn(
-    'group relative inline-flex items-center gap-3 pb-2 text-sm tracking-[0.16em] uppercase',
+    'group relative inline-flex items-center gap-3 pb-2 text-base tracking-[0.16em] uppercase',
     tone === 'washi' ? 'text-washi' : 'text-ink',
     className,
   );
@@ -84,7 +84,7 @@ export function ButtonLink({
   external?: boolean;
 }) {
   const classes = cn(
-    'group relative inline-flex items-center justify-center gap-3 overflow-hidden px-9 py-4 text-[0.8125rem] tracking-[0.22em] uppercase transition-colors duration-500',
+    'group relative inline-flex items-center justify-center gap-3 overflow-hidden px-9 py-4 text-[0.9375rem] tracking-[0.22em] uppercase transition-colors duration-500',
     variant === 'brass' && 'bg-brass text-page',
     variant === 'ink' && 'bg-ink text-washi',
     variant === 'outline' && 'border border-ink/30 text-ink hover:border-brass',
