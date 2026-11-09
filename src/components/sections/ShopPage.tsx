@@ -91,6 +91,22 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
           </div>
         </div>
 
+        {shop.flyer && (
+          <div className="shell mt-20">
+            <h2 className="text-center text-[0.6875rem] tracking-[0.24em] text-stone uppercase">Flyer</h2>
+            <Reveal className="mx-auto mt-6 max-w-xl">
+              <Image
+                src={shop.flyer.src}
+                alt={`${t(shop.name, locale)} のチラシ`}
+                width={shop.flyer.width}
+                height={shop.flyer.height}
+                sizes="(max-width: 640px) 100vw, 36rem"
+                className="h-auto w-full shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+              />
+            </Reveal>
+          </div>
+        )}
+
         {shop.address && shop.mapEmbed && (
           <div className="mt-16">
             <MapEmbed src={shop.mapEmbed} title={t(shop.name, locale)} address={t(shop.address, locale)} cta={dict.common.openInMaps} />
