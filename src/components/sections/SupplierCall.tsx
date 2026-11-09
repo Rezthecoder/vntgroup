@@ -9,7 +9,7 @@ import { localePath, t, type Locale } from '@/lib/i18n';
  * 新規の仕入先を探しています — the live site's supplier panel (home and
  * Ikegami Store), redesigned: the head-office tower at dusk under a deep
  * navy wash, a gold eyebrow and ornament, the two sales channels, a
- * three-step "how it works" strip in glass cards and the red CONTACT pill.
+ * three-step "how it works" strip in glass cards and the red お問い合わせ (CONTACT in English) pill.
  * On phones the photo becomes a band above the copy so the text never sits
  * on the busy building facade.
  */
@@ -88,7 +88,7 @@ export function SupplierCall({ locale }: { locale: Locale }) {
               href={localePath(locale, '/contact')}
               className="group inline-flex items-center gap-3 rounded-full bg-[#d23a3a] py-3.5 pr-4 pl-7 font-bold tracking-[0.12em] text-white shadow-[0_14px_30px_-12px_rgba(210,58,58,0.85)] transition hover:bg-[#b72929]"
             >
-              CONTACT
+              {locale === 'ja' ? 'お問い合わせ' : 'CONTACT'}
               <span className="grid h-8 w-8 place-items-center rounded-full bg-white/18 transition-transform group-hover:translate-x-1">
                 →
               </span>
