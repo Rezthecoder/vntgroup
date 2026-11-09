@@ -30,7 +30,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
         type="button"
         aria-label={closeLabel}
         onClick={onClose}
-        className="absolute inset-0 bg-sumi/35"
+        className="absolute inset-0 bg-sumi/25 backdrop-blur-[2px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -38,7 +38,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
       />
       <motion.nav
         aria-label="Menu"
-        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[10rem] flex-col overflow-y-auto overscroll-contain bg-page px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
+        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[10rem] flex-col overflow-y-auto overscroll-contain glass-panel px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
         initial={{ x: '100%' }}
         animate={{ x: '0%' }}
         exit={{ x: '100%' }}

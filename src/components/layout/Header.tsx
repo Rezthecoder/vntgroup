@@ -40,8 +40,9 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
     <>
       <header
         className={cn(
-          'sticky top-0 z-[130] bg-page transition-shadow duration-300',
-          scrolled && !open && 'shadow-[0_2px_12px_rgba(0,0,0,0.08)]',
+          'sticky top-0 z-[130] transition-[background-color,box-shadow] duration-500',
+          // Solid at the top of the page; frosted glass once content scrolls under it.
+          scrolled && !open ? 'glass-bar shadow-[0_2px_16px_rgba(0,0,0,0.06)]' : 'bg-page',
         )}
       >
         {/* PC: logo | links centred on the page | contact. Smaller screens: logo | contact + menu. */}

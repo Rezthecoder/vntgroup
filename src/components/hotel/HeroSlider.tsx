@@ -64,7 +64,7 @@ export function HeroSlider({
             type="button"
             onClick={() => go(-1)}
             aria-label="前の写真"
-            className="absolute top-1/2 left-4 -translate-y-1/2 p-3 text-washi/85 transition-opacity hover:opacity-60 md:left-8"
+            className="absolute top-1/2 left-4 -translate-y-1/2 glass-lit flex size-11 items-center justify-center rounded-full text-washi transition-colors md:left-8"
           >
             <Chevron dir="left" />
           </button>
@@ -72,7 +72,7 @@ export function HeroSlider({
             type="button"
             onClick={() => go(1)}
             aria-label="次の写真"
-            className="absolute top-1/2 right-4 -translate-y-1/2 p-3 text-washi/85 transition-opacity hover:opacity-60 md:right-8"
+            className="absolute top-1/2 right-4 -translate-y-1/2 glass-lit flex size-11 items-center justify-center rounded-full text-washi transition-colors md:right-8"
           >
             <Chevron dir="right" />
           </button>
