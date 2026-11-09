@@ -2,10 +2,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-import { PageHero } from '@/components/sections/PageHero';
 import { SupplierCall } from '@/components/sections/SupplierCall';
 import { Reveal } from '@/components/motion/Reveal';
-import { Parallax } from '@/components/motion/Parallax';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ButtonLink } from '@/components/ui/ArrowLink';
 
@@ -27,19 +25,31 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
 
   return (
     <>
-      <PageHero eyebrow="Ikegami Store" title={t(ikegami.name, active)} image={ikegami.image} />
+      {/* Bright masthead: the storefront photo is shown whole, with no dark
+          scrim, so the full イケガミストア / IKEGAMI STORE sign reads clearly. */}
+      <section className="bg-page-2 pt-14 pb-16 md:pt-20 md:pb-24">
+        <div className="shell text-center">
+          <p className="type-eyebrow">Ikegami Store</p>
+          <h1 className="type-display mt-4 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(ikegami.name, active)}</h1>
+          <Reveal className="mx-auto mt-10 max-w-[62.5rem]">
+            <Image
+              src={ikegami.image}
+              alt={`${t(ikegami.name, active)}（IKEGAMI STORE）の店舗外観`}
+              width={1000}
+              height={601}
+              priority
+              sizes="(max-width: 1024px) 100vw, 62.5rem"
+              className="h-auto w-full shadow-[0_10px_40px_rgba(0,0,0,0.12)]"
+            />
+          </Reveal>
+        </div>
+      </section>
 
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-20 md:py-28">
         <div className="shell">
-          <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-            <Reveal>
-              <p className="type-mincho text-[clamp(1rem,2vw,1.35rem)] leading-[2.1] text-ink/90">{t(ikegami.lede, active)}</p>
-            </Reveal>
-
-            <Parallax strength={8} className="aspect-4/3 w-full">
-              <Image src={ikegami.image} alt="" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
-            </Parallax>
-          </div>
+          <Reveal className="mx-auto max-w-3xl">
+            <p className="type-mincho text-[clamp(1rem,2vw,1.35rem)] leading-[2.1] text-ink/90">{t(ikegami.lede, active)}</p>
+          </Reveal>
         </div>
       </section>
 
