@@ -14,6 +14,7 @@ import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { getVenue, venues } from '@/content/dining';
 import { diningShops, getShop } from '@/content/shops';
 import { ShopPage } from '@/components/sections/ShopPage';
+import { SakaiKagetsuPage } from '@/components/sections/SakaiKagetsuPage';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, locales, localePath, t, type Locale } from '@/lib/i18n';
 
@@ -54,6 +55,7 @@ export default async function VenuePage({ params }: { params: Promise<{ locale: 
   if (!isLocale(locale)) notFound();
   // New restaurants from content/shops.ts share this URL space (/dining/<slug>).
   const shop = getShop(slug, 'dining');
+  if (shop?.slug === 'sakai-kagetsu') return <SakaiKagetsuPage shop={shop} locale={locale as Locale} />;
   if (shop) return <ShopPage shop={shop} locale={locale as Locale} />;
   const venue = getVenue(slug);
   if (!venue) notFound();
