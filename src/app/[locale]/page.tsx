@@ -103,7 +103,7 @@ function PhotoStrip({ items, locale }: { items: Strip[]; locale: Locale }) {
               'absolute inset-0 flex items-center justify-center px-4 text-center text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]',
               item.mincho
                 ? 'type-mincho text-[clamp(1.4rem,1.7vw,1.6rem)]'
-                : 'font-[family-name:var(--font-tenor)] text-[clamp(1rem,1.25vw,1.2rem)] tracking-[0.12em]',
+                : 'font-latin text-[clamp(1rem,1.25vw,1.2rem)] tracking-[0.12em]',
             )}
           >
             {item.name}

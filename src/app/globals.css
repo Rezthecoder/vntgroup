@@ -12,16 +12,17 @@
    with washi text while the rest of the page stays on paper.
 ------------------------------------------------------------------- */
 @theme {
-  /* Taken from the live vntgroup.co.jp (STUDIO) build, measured 5 Nov 2026:
-     white pages, #f0f0f0 / #f6f6f6 split panels, black and #333 text,
-     the VNT red on the header buttons, gold rating stars. */
-  --color-page: #ffffff;
-  --color-page-2: #f0f0f0;
-  --color-page-3: #f6f6f6;
+  /* Japanese-luxury palette (Nov 2026 restyle): a faintly warm white like
+     hakuji porcelain, warm stone panels, and sumi ink instead of pure black.
+     The VNT red stays the brand colour; a muted gold marks stars and fine
+     details. */
+  --color-page: #faf9f7;
+  --color-page-2: #f1eee9;
+  --color-page-3: #f6f4f0;
 
-  --color-ink: #000000;
-  --color-ink-soft: #222222;
-  --color-ink-mute: #333333;
+  --color-ink: #1f1d1b;
+  --color-ink-soft: #2b2926;
+  --color-ink-mute: #3d3a36;
 
   --color-washi: #ffffff;
   --color-washi-dim: #eeeeee;
@@ -30,8 +31,8 @@
      that stay dark (footer, hotel access banner). */
   --color-sumi: #000000;
 
-  --color-stone: #666666;
-  --color-stone-dim: #999999;
+  --color-stone: #6e6a64;
+  --color-stone-dim: #9c978f;
 
   /* The old "brass" accent now carries the live site's red; over photography
      the lit tone is plain white, as the original sets it. */
@@ -40,17 +41,21 @@
 
   --color-vermilion: #b72929;
   --color-brand: #b72929;
-  --color-star: #e9b949;
+  --color-star: #b08d57;
 
-  /* Google Fonts loaded by <link> in layout.tsx (no build-time fetch). */
-  --font-tenor: 'Tenor Sans';
-  --font-shippori: 'Shippori Mincho';
-  --font-noto-sans: 'Noto Sans JP';
-  --font-montserrat: 'Montserrat';
-  --font-display: var(--font-tenor), 'Tenor Sans', var(--font-noto-sans), 'Noto Sans JP', sans-serif;
-  --font-mincho: var(--font-shippori), 'Shippori Mincho', 'Noto Serif JP', serif;
-  --font-sans: var(--font-noto-sans), 'Noto Sans JP', system-ui, sans-serif;
-  --font-section: var(--font-montserrat), 'Montserrat', var(--font-noto-sans), sans-serif;
+  /* Google Fonts loaded by <link> in layout.tsx (no build-time fetch).
+     Cormorant Garamond sets the Latin names (FUJI PREMIUM HOTEL, section
+     titles); Japanese headings fall through to Zen Old Mincho; body copy is
+     Zen Kaku Gothic New. The old token names (--font-tenor etc.) are kept
+     so every existing usage picks up the new faces. */
+  --font-tenor: 'Cormorant Garamond';
+  --font-shippori: 'Zen Old Mincho';
+  --font-noto-sans: 'Zen Kaku Gothic New';
+  --font-montserrat: 'Cormorant Garamond';
+  --font-display: 'Cormorant Garamond', 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-mincho: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', system-ui, sans-serif;
+  --font-section: 'Cormorant Garamond', 'Zen Old Mincho', serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
@@ -95,6 +100,17 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+  }
+
+  /* Headings default to Zen Old Mincho; classes such as type-display or
+     font-latin still set the Latin face where a title is in English. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-feature-settings: 'palt' 1;
   }
 
   ::selection {
@@ -173,29 +189,43 @@
      as the live hotel pages set their headings. */
   .type-display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    /* Cormorant's small x-height reads a size smaller than the old face;
+       lift it so the Latin names keep their presence. */
+    font-size-adjust: 0.46;
+    /* Proportional kana spacing for Japanese headings. */
+    font-feature-settings: 'palt' 1;
   }
 
   .type-mincho {
     font-family: var(--font-mincho);
     font-weight: 500;
-    line-height: 1.75;
-    letter-spacing: 0.04em;
+    line-height: 1.95;
+    letter-spacing: 0.06em;
+    font-feature-settings: 'palt' 1;
+  }
+
+  /* Latin names set in Cormorant (hotel names, room names, section titles). */
+  .font-latin {
+    font-family: var(--font-display);
+    font-size-adjust: 0.46;
   }
 
   /* Montserrat light, the home page's BUSINESS / HOTEL / FOOD & SHOP titles. */
   .type-section {
     font-family: var(--font-section);
-    font-weight: 300;
-    letter-spacing: 0.04em;
+    font-size-adjust: 0.46;
+    font-weight: 400;
+    letter-spacing: 0.12em;
     line-height: 1.2;
   }
 
   /* Small Tenor caps with the short rule beneath (WHATS SPECIAL, ABOUT ...). */
   .type-eyebrow {
     font-family: var(--font-display);
+    font-size-adjust: 0.46;
     font-size: 0.8125rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
@@ -205,6 +235,7 @@
 
   .type-eyebrow-lit {
     font-family: var(--font-display);
+    font-size-adjust: 0.46;
     font-size: 0.8125rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -220,10 +251,10 @@
   }
 
   .type-body {
-    line-height: 2;
-    letter-spacing: 0.05em;
+    line-height: 2.1;
+    letter-spacing: 0.06em;
     color: var(--color-ink-mute);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
   }
 
   /* Rounded photo with the soft drop shadow the live hotel pages use. */
@@ -258,14 +289,14 @@
     justify-content: center;
     min-width: 6.25rem;
     border-radius: 999px;
-    background: #eeeeee;
-    color: #333;
+    background: #ebe7e1;
+    color: var(--color-ink-mute);
     padding: 0.6rem 1.6rem;
     font-size: 0.875rem;
     transition: background 0.3s;
   }
   .btn-pill:hover {
-    background: #dddddd;
+    background: #e0dbd3;
   }
   [data-theme='dark'] .btn-pill {
     background: #2a2a2a;

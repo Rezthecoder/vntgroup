@@ -19,7 +19,7 @@ import { isLocale, locales, t, type Locale } from '@/lib/i18n';
  * variables are set in globals.css.
  */
 const GOOGLE_FONTS_CSS =
-  'https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400&display=swap';
+  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Zen+Old+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap';
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

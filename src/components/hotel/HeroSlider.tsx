@@ -53,7 +53,7 @@ export function HeroSlider({
 
       {/* Hotel name over the photo, as the reference's centred logo. */}
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
-        <h1 className="font-[family-name:var(--font-tenor)] text-[clamp(1.6rem,3.6vw,3rem)] leading-tight tracking-[0.2em]">{title}</h1>
+        <h1 className="font-latin text-[clamp(1.6rem,3.6vw,3rem)] leading-tight tracking-[0.2em]">{title}</h1>
         <p className="mt-2 text-[1rem] tracking-[0.3em] text-star md:text-[1.25rem]">{'★'.repeat(stars)}</p>
         {tagline && <p className="mt-5 text-[clamp(0.9rem,1.3vw,1.15rem)] tracking-[0.12em] whitespace-pre-line">{tagline}</p>}
       </div>

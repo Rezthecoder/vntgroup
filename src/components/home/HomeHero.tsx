@@ -50,7 +50,7 @@ export function HomeHero({
         </motion.h1>
         <motion.p
           {...rise(0.35)}
-          className="mt-3 font-[family-name:var(--font-tenor)] text-[clamp(0.9rem,3.6vw,1rem)] tracking-[0.03em] text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.3)] md:mt-4 md:text-[clamp(1rem,1.2vw,1.1rem)] md:tracking-[0.04em]"
+          className="mt-3 font-latin text-[clamp(0.9rem,3.6vw,1rem)] tracking-[0.03em] text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.3)] md:mt-4 md:text-[clamp(1rem,1.2vw,1.1rem)] md:tracking-[0.04em]"
         >
           {line2}
         </motion.p>

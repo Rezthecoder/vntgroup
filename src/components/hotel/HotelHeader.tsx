@@ -83,7 +83,7 @@ export function HotelHeader({
       {/* Wordmark block, white, centred. */}
       <div className="bg-page px-5 pt-16 pb-8 text-center md:pt-24 md:pb-10">
         <a href="#top" className="inline-block">
-          <span className="block font-[family-name:var(--font-tenor)] text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.22em] text-ink">
+          <span className="block font-latin text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.22em] text-ink">
             {name}
           </span>
           <span className="mt-1 block text-[1rem] tracking-[0.3em] text-star">{'★'.repeat(stars)}</span>
