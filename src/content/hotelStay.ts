@@ -893,15 +893,25 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           site: 'https://toji.or.jp/',
         },
         {
-          name: { ja: '京都水族館・梅小路公園', en: 'Kyoto Aquarium & Umekoji Park' },
-          image: '/images/spots/toji-night-umekoji-v2.webp',
+          name: { ja: '京都水族館', en: 'Kyoto Aquarium' },
+          image: '/images/spots/toji-aquarium.webp',
           time: { ja: '徒歩約15分', en: 'About 15 min on foot' },
           body: {
-            ja: '京都の川や海の生きものに出会える水族館と、鉄道博物館もある広大な公園。ご家族連れにおすすめです。',
-            en: 'An aquarium of Kyoto’s rivers and seas beside a large park with the Railway Museum — ideal for families.',
+            ja: '京都の川や海の生きものに出会える水族館。光が差し込む大水槽を群れで泳ぐ魚たちは迫力満点で、ご家族連れにもおすすめです。',
+            en: 'An aquarium of Kyoto’s rivers and seas. Schools of fish sweep through the great sunlit tank — a favourite with families.',
           },
           query: '京都水族館',
           site: 'https://www.kyoto-aquarium.com/',
+        },
+        {
+          name: { ja: '梅小路公園', en: 'Umekoji Park' },
+          image: '/images/spots/toji-umekoji-park.webp',
+          time: { ja: '徒歩約15分', en: 'About 15 min on foot' },
+          body: {
+            ja: '京都駅の西に広がる、芝生と緑の広大な公園。春には梅や桜が園内を彩り、京都水族館や京都鉄道博物館も同じ園内にあります。',
+            en: 'A wide park of lawns and greenery west of Kyoto Station. Plum and cherry blossoms colour it in spring, and the Kyoto Aquarium and Railway Museum stand in the same grounds.',
+          },
+          query: '梅小路公園',
         },
         {
           name: { ja: '伏見稲荷大社', en: 'Fushimi Inari Taisha' },
