@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/sections/PageHero';
 import { Reveal } from '@/components/motion/Reveal';
 import { ArrowLink } from '@/components/ui/ArrowLink';
+import { Gallery } from '@/components/ui/Gallery';
 
 import { getVenue, type Venue } from '@/content/dining';
 import { getDictionary } from '@/content/dictionary';
@@ -15,9 +16,23 @@ import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
  * restaurants, a section each for 焼肉 and 焼鳥 with its logo, heading,
  * introduction, photo and a 詳しく見る link to that restaurant's own page.
  */
-const SECTIONS: { slug: Venue['slug']; logo: string; image: string }[] = [
-  { slug: 'warakutei-yakiniku', logo: '/images/warakutei/logo-yakiniku-b.svg', image: '/images/warakutei/yakiniku-03.webp' },
-  { slug: 'warakutei-yakitori', logo: '/images/warakutei/logo-yakitori-b.svg', image: '/images/warakutei/yakitori-02.webp' },
+const range = (prefix: string, n: number) =>
+  Array.from({ length: n }, (_, i) => `/images/warakutei/${prefix}-${String(i + 1).padStart(2, '0')}.webp`);
+
+/** Every Warakutei photo is shown: all 10 焼肉 and all 4 焼鳥 pictures. */
+const SECTIONS: { slug: Venue['slug']; logo: string; image: string; photos: string[] }[] = [
+  {
+    slug: 'warakutei-yakiniku',
+    logo: '/images/warakutei/logo-yakiniku-b.svg',
+    image: '/images/warakutei/yakiniku-03.webp',
+    photos: range('yakiniku', 10),
+  },
+  {
+    slug: 'warakutei-yakitori',
+    logo: '/images/warakutei/logo-yakitori-b.svg',
+    image: '/images/warakutei/yakitori-02.webp',
+    photos: range('yakitori', 4),
+  },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -85,6 +100,10 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
                     <ArrowLink href={href}>{dict.common.viewMore}</ArrowLink>
                   </Reveal>
                 </div>
+              </div>
+
+              <div className="mt-14 md:mt-20">
+                <Gallery items={section.photos.map((src) => ({ src, alt: t(venue.name, active) }))} closeLabel={dict.common.close} />
               </div>
             </div>
           </section>
