@@ -74,9 +74,9 @@ export function HotelHeader({
   }, [open]);
 
   const linkClass =
-    'relative block py-2 text-[0.8125rem] tracking-[0.06em] text-ink-mute transition-colors hover:text-ink md:py-3';
+    'relative block py-2 text-[0.9375rem] tracking-[0.06em] text-ink-mute transition-colors hover:text-ink md:py-3';
 
-  const drawerLink = 'block border-b border-ink/10 py-3.5 text-[0.8125rem] tracking-[0.08em] text-ink-mute';
+  const drawerLink = 'block border-b border-ink/10 py-3.5 text-[0.9375rem] tracking-[0.08em] text-ink-mute';
 
   return (
     <>
@@ -86,8 +86,8 @@ export function HotelHeader({
           <span className="block font-latin text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.22em] text-ink">
             {name}
           </span>
-          <span className="mt-1 block text-[1rem] tracking-[0.3em] text-star">{'★'.repeat(stars)}</span>
-          <span className="mt-2 block text-[0.75rem] tracking-[0.3em] text-stone">{nameJa}</span>
+          <span className="mt-1 block text-[1.125rem] tracking-[0.3em] text-star">{'★'.repeat(stars)}</span>
+          <span className="mt-2 block text-[0.9375rem] md:text-[0.875rem] tracking-[0.3em] text-stone">{nameJa}</span>
         </a>
       </div>
 
@@ -99,7 +99,7 @@ export function HotelHeader({
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="hotel-mobile-menu"
-            className="py-3 text-[0.8125rem] tracking-[0.1em] text-ink"
+            className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink"
           >
             {open ? '閉じる' : 'メニュー'}
           </button>
@@ -167,7 +167,7 @@ export function HotelHeader({
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="py-3 text-[0.8125rem] tracking-[0.1em] text-ink"
+                  className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink"
                 >
                   閉じる
                 </button>

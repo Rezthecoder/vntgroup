@@ -66,7 +66,7 @@ export function PageHero({
         {lead && (
           <motion.p
             className={cn(
-              'type-mincho mt-7 max-w-xl text-[0.95rem] whitespace-pre-line text-washi/80',
+              'type-mincho mt-7 max-w-xl text-[1.0625rem] whitespace-pre-line text-washi/90',
               align === 'center' && 'mx-auto',
             )}
             initial={{ opacity: 0, y: 16 }}

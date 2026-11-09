@@ -40,7 +40,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
       <PageHero eyebrow="Food & Shop" title={'FOOD\n& SHOP'} lead={INTRO[active]} image="/images/geisya/geisya-01.webp" />
 
       {venues.map((venue, i) => (
-        <section key={venue.slug} id={venue.slug} className="relative border-t border-ink/10 py-20 md:py-28">
+        <section key={venue.slug} id={venue.slug} className="relative border-t border-ink/10 py-24 md:py-32">
           <div className="shell-wide">
             <div className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
               <Reveal direction={i % 2 === 1 ? 'left' : 'right'}>
@@ -69,7 +69,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
                 />
                 {venue.hub.title && (
                   <Reveal delay={0.14}>
-                    <p className="type-mincho mt-5 text-[1.05rem] text-brass">{t(venue.hub.title, active)}</p>
+                    <p className="type-mincho mt-5 text-[1.1875rem] text-brass">{t(venue.hub.title, active)}</p>
                   </Reveal>
                 )}
                 <Reveal delay={0.2}>
@@ -87,7 +87,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
       <ShopLinks shops={diningShops} locale={active} eyebrow="More Restaurants" title="その他の飲食店" />
 
       {/* Retail ----------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 py-28 md:py-36">
         <div className="shell-wide">
           <SectionHeading eyebrow="Shop" title={t(ikegami.name, active)} lead={t(ikegami.lede, active)} />
           <div className="mx-auto mt-14 grid max-w-md gap-5">

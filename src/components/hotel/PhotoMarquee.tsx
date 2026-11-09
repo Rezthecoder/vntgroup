@@ -11,7 +11,7 @@ export function PhotoMarquee({ images, title, reverse }: { images: string[]; tit
   const loop = [...images, ...images];
   return (
     <div className="w-full min-w-0">
-      <p className="text-center text-[1rem] tracking-[0.08em] text-ink">{title}</p>
+      <p className="text-center text-[1.125rem] tracking-[0.08em] text-ink">{title}</p>
       <div className="relative mt-4 w-full overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
         <ul
           className="flex w-max gap-3 motion-reduce:animate-none"

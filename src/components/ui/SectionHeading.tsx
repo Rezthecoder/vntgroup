@@ -36,14 +36,15 @@ export function SectionHeading({
           tone === 'dark' ? 'text-ink' : 'text-ink',
         )}
       />
+      <span aria-hidden className={cn('ornament', align === 'left' && 'ornament-left')} />
 
       {lead && (
         <Reveal delay={0.18}>
           <p
             className={cn(
-              'type-mincho mt-6 max-w-2xl text-[0.95rem] whitespace-pre-line',
+              'type-mincho mt-6 max-w-2xl text-[1.0625rem] whitespace-pre-line',
               align === 'center' && 'mx-auto',
-              tone === 'dark' ? 'text-ink/70' : 'text-ink/70',
+              tone === 'dark' ? 'text-ink/85' : 'text-ink/85',
             )}
           >
             {lead}

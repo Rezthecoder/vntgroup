@@ -212,20 +212,20 @@ export function ContactForm({ locale }: { locale: Locale }) {
           onChange={(e) => set('agree', e.target.checked)}
           label={dict.contact.agree}
         />
-        {errors.agree && <p className="text-xs text-vermilion">{errors.agree}</p>}
+        {errors.agree && <p className="text-sm text-vermilion">{errors.agree}</p>}
         {status === 'error' && (
-          <p className="border border-vermilion/40 bg-vermilion/10 p-4 text-sm text-ink/85">
+          <p className="border border-vermilion/40 bg-vermilion/10 p-4 text-base text-ink/90">
             {dict.reservation.errorTitle} — {dict.reservation.errorBody}
           </p>
         )}
-        {errors.form && <p className="text-xs text-vermilion">{errors.form}</p>}
+        {errors.form && <p className="text-sm text-vermilion">{errors.form}</p>}
       </div>
 
       <div className="md:col-span-2">
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="group relative overflow-hidden bg-brass px-12 py-4 text-[0.6875rem] tracking-[0.22em] text-page uppercase disabled:opacity-60"
+          className="group relative overflow-hidden bg-brass px-12 py-4 text-[0.875rem] md:text-[0.8125rem] tracking-[0.22em] text-page uppercase disabled:opacity-60"
         >
           <span className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-y-100" />
           <span className="relative transition-colors duration-300 group-hover:text-page">

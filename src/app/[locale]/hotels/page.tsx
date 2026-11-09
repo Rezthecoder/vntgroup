@@ -37,7 +37,7 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
 
       {ordered.map((hotel, i) => (
         <Fragment key={hotel.slug}>
-          <section id={hotel.slug} className="relative border-t border-ink/10 py-20 md:py-28">
+          <section id={hotel.slug} className="relative border-t border-ink/10 py-24 md:py-32">
             <div className="shell-wide">
               <div className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
                 <Reveal direction={i % 2 === 1 ? 'left' : 'right'}>
@@ -65,12 +65,12 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
                     className="type-display mt-5 text-[clamp(1.5rem,3.6vw,2.75rem)] text-ink"
                   />
                   <Reveal delay={0.12}>
-                    <p aria-label={`${hotel.stars} star`} className="mt-4 text-[0.75rem] tracking-[0.34em] text-brass">
+                    <p aria-label={`${hotel.stars} star`} className="mt-4 text-[0.9375rem] md:text-[0.875rem] tracking-[0.34em] text-brass">
                       {'★'.repeat(hotel.stars)}
                     </p>
                   </Reveal>
                   <Reveal delay={0.18}>
-                    <p className="type-mincho mt-6 text-[1.05rem] text-brass">{t(hotel.hub.title, active)}</p>
+                    <p className="type-mincho mt-6 text-[1.1875rem] text-brass">{t(hotel.hub.title, active)}</p>
                   </Reveal>
                   <Reveal delay={0.24}>
                     <p className="type-body mt-6 max-w-xl whitespace-pre-line">{t(hotel.hub.body, active)}</p>
@@ -84,12 +84,12 @@ export default async function HotelsPage({ params }: { params: Promise<{ locale:
           </section>
 
           {hotel.hub.divider && (
-            <section className="border-t border-ink/10 py-16 md:py-20">
+            <section className="border-t border-ink/10 py-20 md:py-24">
               <div className="shell text-center">
                 <SplitText
                   as="p"
                   text={hotel.hub.divider}
-                  className="type-display text-[clamp(1.4rem,3.4vw,2.5rem)] leading-[1.3] text-ink/80"
+                  className="type-display text-[clamp(1.4rem,3.4vw,2.5rem)] leading-[1.3] text-ink/90"
                 />
               </div>
             </section>

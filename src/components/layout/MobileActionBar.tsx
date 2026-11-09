@@ -43,16 +43,16 @@ export function MobileActionBar({
         href={`tel:${site.telGroup.replace(/-/g, '')}`}
         className="flex flex-col items-center gap-1 border-r border-ink/12 py-3.5"
       >
-        <span className="text-[0.5625rem] tracking-[0.24em] text-stone uppercase">{labels.call}</span>
-        <span className="type-display text-[0.9375rem] tracking-[0.08em] text-brass">{site.telGroup}</span>
+        <span className="text-[0.8125rem] tracking-[0.2em] text-stone uppercase">{labels.call}</span>
+        <span className="type-display text-[1.0625rem] tracking-[0.08em] text-brass">{site.telGroup}</span>
       </a>
 
       <Link
         href={localePath(locale, '/contact')}
         className="flex flex-col items-center justify-center gap-1 bg-brass py-3.5"
       >
-        <span className="text-[0.5625rem] tracking-[0.24em] text-page/70 uppercase">Form</span>
-        <span className="text-[0.8125rem] tracking-[0.12em] text-page">{labels.contact}</span>
+        <span className="text-[0.8125rem] tracking-[0.2em] text-page/70 uppercase">Form</span>
+        <span className="text-[0.9375rem] tracking-[0.12em] text-page">{labels.contact}</span>
       </Link>
     </motion.div>
   );

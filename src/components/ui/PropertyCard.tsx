@@ -46,13 +46,13 @@ export function PropertyCard({
 
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
             {meta && (
-              <p className="text-[0.625rem] tracking-[0.26em] text-brass-lit uppercase">{meta}</p>
+              <p className="text-[0.8125rem] tracking-[0.26em] text-brass-lit uppercase">{meta}</p>
             )}
             <h3 className="type-display mt-2.5 text-[clamp(1.1rem,2vw,1.5rem)] text-washi">{name}</h3>
-            {sub && <p className="type-mincho mt-2 line-clamp-2 text-[0.8125rem] whitespace-pre-line text-washi/65">{sub}</p>}
+            {sub && <p className="type-mincho mt-2 line-clamp-2 text-[0.9375rem] whitespace-pre-line text-washi/80">{sub}</p>}
 
             {stars ? (
-              <p aria-label={`${stars} star`} className="mt-3 text-[0.7rem] tracking-[0.3em] text-brass-lit">
+              <p aria-label={`${stars} star`} className="mt-3 text-[0.8125rem] tracking-[0.3em] text-brass-lit">
                 {'★'.repeat(stars)}
               </p>
             ) : null}

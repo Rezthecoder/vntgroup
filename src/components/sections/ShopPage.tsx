@@ -28,24 +28,24 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
       <section className="border-b border-ink/10 bg-page-2 pt-16 pb-14 md:pt-24 md:pb-20">
         <div className="shell text-center">
           <p className="type-eyebrow">{shop.romaji}</p>
-          <p className="type-mincho mt-6 text-[0.9375rem] text-brass">{t(shop.category, locale)}</p>
+          <p className="type-mincho mt-6 text-[1.0625rem] text-brass">{t(shop.category, locale)}</p>
           <h1 className="type-display mt-3 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(shop.name, locale)}</h1>
           {shop.draft && (
-            <p className="mt-6 inline-block rounded-full border border-ink/15 px-4 py-1.5 text-[0.75rem] tracking-[0.12em] text-stone">
+            <p className="mt-6 inline-block rounded-full border border-ink/15 px-4 py-1.5 text-[0.9375rem] md:text-[0.875rem] tracking-[0.12em] text-stone">
               店舗情報は近日公開予定です
             </p>
           )}
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="shell grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div className="relative aspect-4/3 w-full overflow-hidden bg-page-3">
               {shop.image ? (
                 <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-[0.8125rem] tracking-[0.2em] text-stone">
+                <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] tracking-[0.2em] text-stone">
                   写真{PENDING}
                 </div>
               )}
@@ -60,12 +60,12 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h2 className="mt-12 text-[0.6875rem] tracking-[0.24em] text-stone uppercase">{dict.common.storeInformation}</h2>
-              <dl className="mt-5 divide-y divide-ink/10 border-y border-ink/10 text-sm">
+              <h2 className="mt-12 text-[0.875rem] md:text-[0.8125rem] tracking-[0.24em] text-stone uppercase">{dict.common.storeInformation}</h2>
+              <dl className="mt-5 divide-y divide-ink/10 border-y border-ink/10 text-base">
                 {rows.map((row) => (
                   <div key={row.label} className="grid grid-cols-[6.5rem_1fr] gap-4 py-4">
                     <dt className="text-stone">{row.label}</dt>
-                    <dd className={row.value ? 'text-ink/80' : 'text-stone/80'}>
+                    <dd className={row.value ? 'text-ink/90' : 'text-stone'}>
                       {row.value ? (
                         row.href ? (
                           <a href={row.href} className="hover:text-brass">
@@ -93,7 +93,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
 
         {shop.flyer && (
           <div className="shell mt-20">
-            <h2 className="text-center text-[0.6875rem] tracking-[0.24em] text-stone uppercase">Flyer</h2>
+            <h2 className="text-center text-[0.875rem] md:text-[0.8125rem] tracking-[0.24em] text-stone uppercase">Flyer</h2>
             <Reveal className="mx-auto mt-6 max-w-xl">
               <Image
                 src={shop.flyer.src}
@@ -121,7 +121,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
 export function ShopLinks({ shops, locale, eyebrow, title }: { shops: Shop[]; locale: Locale; eyebrow: string; title: string }) {
   if (!shops.length) return null;
   return (
-    <section className="relative border-t border-ink/10 py-20 md:py-28">
+    <section className="relative border-t border-ink/10 py-24 md:py-32">
       <div className="shell">
         <p className="type-eyebrow text-center">{eyebrow}</p>
         <h2 className="type-display mt-4 text-center text-[clamp(1.375rem,3vw,2.25rem)] text-ink">{title}</h2>
@@ -136,12 +136,12 @@ export function ShopLinks({ shops, locale, eyebrow, title }: { shops: Shop[]; lo
                 {shop.image ? (
                   <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-[0.75rem] tracking-[0.2em] text-stone">写真{PENDING}</div>
+                  <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] md:text-[0.875rem] tracking-[0.2em] text-stone">写真{PENDING}</div>
                 )}
               </div>
               <div className="p-6">
-                <p className="text-[0.75rem] text-brass">{t(shop.category, locale)}</p>
-                <p className="type-display mt-2 text-[1.0625rem] text-ink group-hover:text-brass">{t(shop.name, locale)}</p>
+                <p className="text-[0.9375rem] md:text-[0.875rem] text-brass">{t(shop.category, locale)}</p>
+                <p className="type-display mt-2 text-[1.1875rem] text-ink group-hover:text-brass">{t(shop.name, locale)}</p>
               </div>
             </a>
           ))}

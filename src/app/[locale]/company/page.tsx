@@ -40,7 +40,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
       />
 
       {/* Greeting --------------------------------------------------------- */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-28 md:py-36">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
             <div>
@@ -57,12 +57,12 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
 
             <div>
               <Reveal delay={0.12}>
-                <p className="type-mincho text-[0.95rem] leading-[2.2] whitespace-pre-line text-ink/80">
+                <p className="type-mincho text-[1.0625rem] leading-[2.2] whitespace-pre-line text-ink/90">
                   {t(greeting.body, active)}
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
-                <p className="type-display mt-10 text-sm tracking-[0.18em] text-brass">
+                <p className="type-display mt-10 text-base tracking-[0.18em] text-brass">
                   {t(greeting.signature, active)}
                 </p>
               </Reveal>
@@ -72,17 +72,17 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Facts ------------------------------------------------------------ */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 py-28 md:py-36">
         <div className="shell">
           <SectionHeading eyebrow="Profile" title={active === 'ja' ? '会社概要' : 'Corporate profile'} />
 
           <RevealGroup as="ul" className="mt-14 divide-y divide-ink/10 border-y border-ink/10" stagger={0.05}>
             {companyFacts.map((fact, i) => (
               <RevealItem key={i} as="li" className="grid gap-2 py-5 md:grid-cols-[14rem_1fr] md:gap-6">
-                <span className="text-[0.6875rem] tracking-[0.22em] text-stone uppercase">
+                <span className="text-[0.875rem] md:text-[0.8125rem] tracking-[0.22em] text-stone uppercase">
                   {t(fact.label, active)}
                 </span>
-                <span className="text-sm leading-relaxed text-ink/85">{t(fact.value, active)}</span>
+                <span className="text-base leading-[1.95] text-ink/90">{t(fact.value, active)}</span>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -90,7 +90,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Revenue ---------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 py-28 md:py-36">
         <div className="shell">
           <SectionHeading
             eyebrow="Performance"
@@ -103,17 +103,17 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Scope + licences ------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
+      <section className="relative border-t border-ink/10 py-28 md:py-36">
         <div className="shell grid gap-16 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading align="left" eyebrow="Scope" title={active === 'ja' ? '事業内容' : 'Scope of business'} />
             <RevealGroup as="ul" className="mt-10 space-y-4" stagger={0.04}>
               {businessScope.map((item, i) => (
                 <RevealItem key={i} as="li" className="flex gap-4">
-                  <span className="type-display shrink-0 text-[0.6875rem] tracking-[0.16em] text-brass/70">
+                  <span className="type-display shrink-0 text-[0.875rem] md:text-[0.8125rem] tracking-[0.16em] text-brass/70">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-[0.8125rem] leading-relaxed text-ink/70">{t(item, active)}</span>
+                  <span className="text-[0.9375rem] leading-[1.95] text-ink/85">{t(item, active)}</span>
                 </RevealItem>
               ))}
             </RevealGroup>
@@ -124,7 +124,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
             <RevealGroup as="ul" className="mt-10 space-y-5" stagger={0.06}>
               {licenses.map((item, i) => (
                 <RevealItem key={i} as="li" className="border-l border-brass/40 pl-5">
-                  <span className="text-[0.8125rem] leading-relaxed text-ink/70">{t(item, active)}</span>
+                  <span className="text-[0.9375rem] leading-[1.95] text-ink/85">{t(item, active)}</span>
                 </RevealItem>
               ))}
             </RevealGroup>
@@ -135,7 +135,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
       {/* Access ----------------------------------------------------------- */}
       <section className="relative border-t border-ink/10">
         <div className="grid lg:grid-cols-2">
-          <div className="flex items-center px-(--spacing-gutter) py-20 md:py-28">
+          <div className="flex items-center px-(--spacing-gutter) py-24 md:py-32">
             <div>
               <Reveal>
                 <p className="type-eyebrow">Access</p>
@@ -147,7 +147,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
                 className="type-display mt-5 text-[clamp(1.4rem,3vw,2.25rem)] text-ink"
               />
               <Reveal delay={0.16}>
-                <address className="mt-8 space-y-1 text-sm leading-relaxed text-ink/75 not-italic">
+                <address className="mt-8 space-y-1 text-base leading-[1.95] text-ink/85 not-italic">
                   <p>{site.address.postal}</p>
                   <p>{active === 'ja' ? site.address.ja : site.address.en}</p>
                 </address>

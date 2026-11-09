@@ -48,7 +48,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
             <span aria-hidden className="mt-2 block h-px w-full max-w-[16rem] bg-page/70" />
 
-            <address className="mt-6 text-[0.875rem] leading-[1.75] text-washi not-italic">
+            <address className="mt-6 text-[1rem] leading-[1.95] text-washi not-italic">
               <p>{site.address.postal}</p>
               {locale === 'ja' ? (
                 <>
@@ -60,7 +60,7 @@ export function Footer({ locale }: { locale: Locale }) {
               )}
             </address>
 
-            <dl className="mt-5 space-y-2.5 text-[0.875rem]">
+            <dl className="mt-5 space-y-2.5 text-[1rem]">
               <ContactRow label={dict.footer.tel}>
                 <a href={`tel:${site.tel.replace(/-/g, '')}`} className="hover:opacity-70">
                   {site.tel}
@@ -76,7 +76,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
 
-        <p className="mt-16 text-center text-[0.8125rem] text-washi/35">
+        <p className="mt-16 text-center text-[0.9375rem] text-washi/35">
           {dict.footer.rights}
         </p>
       </div>
@@ -87,7 +87,7 @@ export function Footer({ locale }: { locale: Locale }) {
 /** Column heading with the short underline the original uses. */
 function Heading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="inline-block border-b border-washi/80 -ml-1 pl-1 pr-3 pb-1 text-[0.9375rem] text-washi uppercase">
+    <h3 className="inline-block border-b border-washi/80 -ml-1 pl-1 pr-3 pb-1 text-[1.0625rem] text-washi uppercase">
       {children}
     </h3>
   );
@@ -107,7 +107,7 @@ function LinkList({ links, locale }: { links: FooterLink[]; locale: Locale }) {
 
 function FooterAnchor({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="text-[0.875rem] text-washi transition-colors duration-300 hover:opacity-70">
+    <Link href={href} className="text-[1rem] text-washi transition-colors duration-300 hover:opacity-70">
       {children}
     </Link>
   );
