@@ -67,7 +67,7 @@ export function HomeHero({
         <motion.div {...rise(0.55)} className="mt-6 md:mt-8">
           <Link
             href={ctaHref}
-            className="glass-lit inline-flex min-w-[14rem] items-center justify-center rounded-full px-8 py-3.5 text-[1rem] tracking-[0.08em] transition-colors md:min-w-[12rem]"
+            className="glass-lit liquid-press inline-flex min-w-[14rem] items-center justify-center rounded-full px-8 py-3.5 text-[1rem] tracking-[0.08em] transition-colors md:min-w-[12rem]"
           >
             {cta}
           </Link>

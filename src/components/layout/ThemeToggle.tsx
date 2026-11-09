@@ -46,7 +46,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       title={dark ? 'ライトモード' : 'ダークモード'}
       onClick={toggle}
       className={cn(
-        'relative inline-flex h-8 w-[3.75rem] shrink-0 items-center rounded-full border border-ink/15 bg-page-2 p-1 transition-colors hover:border-ink/30',
+        'glass-panel liquid-press relative inline-flex h-8 w-[3.75rem] shrink-0 items-center rounded-full p-1',
         className,
       )}
     >

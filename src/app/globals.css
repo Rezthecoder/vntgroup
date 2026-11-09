@@ -405,42 +405,91 @@
     background: #b72929;
     color: #ffffff;
   }
-  /* Frosted glass. `glass-bar` is the header once content scrolls under it;
-     `glass-panel` is the slide-out menu; `glass-lit` sits over photographs
-     (hero buttons, slider arrows). Without backdrop-filter support they fall
-     back to a near-solid fill so text stays readable. */
+  /* Liquid Glass (iOS 26 style), CSS only so it works in iPhone Safari.
+     Layers: a light tint, a strong blur + saturation of what is behind, a
+     specular sheen across the top, and a bright rim (inset highlights) that
+     reads as the glass edge catching light.
+     `glass-bar`   header once content scrolls under it
+     `glass-panel` slide-out menus, floating buttons, bottom bar
+     `glass-lit`   controls laid over photographs (hero CTA, slider arrows)
+     Without backdrop-filter they fall back to a near-solid fill. */
   .glass-bar,
   .glass-panel {
-    background: color-mix(in srgb, var(--color-page) 94%, transparent);
+    --glass-tint: color-mix(in srgb, var(--color-page) 94%, transparent);
+    background: var(--glass-tint);
     border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
   }
   .glass-lit {
     background: rgba(255, 255, 255, 0.32);
-    border: 1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: var(--color-washi);
   }
   @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass-bar {
-      background: color-mix(in srgb, var(--color-page) 68%, transparent);
-      -webkit-backdrop-filter: blur(18px) saturate(170%);
-      backdrop-filter: blur(18px) saturate(170%);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 70%),
+        color-mix(in srgb, var(--color-page) 58%, transparent);
+      -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+      backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 0 color-mix(in srgb, var(--color-ink) 7%, transparent),
+        0 6px 24px -10px rgba(0, 0, 0, 0.18);
+      border-bottom-color: transparent;
     }
     .glass-panel {
-      background: color-mix(in srgb, var(--color-page) 76%, transparent);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-      backdrop-filter: blur(24px) saturate(160%);
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 38%, rgba(255, 255, 255, 0) 60%),
+        color-mix(in srgb, var(--color-page) 62%, transparent);
+      -webkit-backdrop-filter: blur(26px) saturate(185%) brightness(1.05);
+      backdrop-filter: blur(26px) saturate(185%) brightness(1.05);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.85),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.35),
+        0 12px 36px -12px rgba(0, 0, 0, 0.28);
     }
     .glass-lit {
-      background: rgba(255, 255, 255, 0.14);
-      -webkit-backdrop-filter: blur(14px) saturate(150%);
-      backdrop-filter: blur(14px) saturate(150%);
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.12) 100%),
+        rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.08);
+      backdrop-filter: blur(16px) saturate(180%) brightness(1.08);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.35),
-        0 8px 24px rgba(0, 0, 0, 0.18);
+        inset 0 1px 1px rgba(255, 255, 255, 0.9),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.3),
+        0 10px 30px -8px rgba(0, 0, 0, 0.35);
+    }
+    [data-theme='dark'] .glass-bar {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 70%),
+        color-mix(in srgb, var(--color-page) 62%, transparent);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 24px -10px rgba(0, 0, 0, 0.6);
+    }
+    [data-theme='dark'] .glass-panel {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(255, 255, 255, 0) 60%),
+        color-mix(in srgb, var(--color-page) 66%, transparent);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.08),
+        0 12px 36px -12px rgba(0, 0, 0, 0.7);
     }
   }
   .glass-lit:hover {
-    background: rgba(255, 255, 255, 0.24);
+    background-color: rgba(255, 255, 255, 0.18);
+  }
+  /* iOS-style press: glass gives a little, then springs back. */
+  .liquid-press {
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .liquid-press:active {
+    transform: scale(0.94);
   }
 
   .rule {
