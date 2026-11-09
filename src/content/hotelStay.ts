@@ -799,12 +799,20 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           label: 'Kyoto Cuisine',
-          title: { ja: '京の味', en: 'Tastes of Kyoto' },
-          image: '/images/spots/toji-kaiseki.webp',
-          credit: { author: 'Donatingpictures', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Kaiseki_-_Kyoto.jpg' },
+          title: { ja: '京料理（会席）', en: 'Kyoto kaiseki' },
+          image: '/images/spots/toji-kaiseki-v2.webp',
           body: {
-            ja: '湯葉や京漬物、おばんざいなど、京都ならではの味わいを。京都駅周辺には老舗から新しいお店まで揃っています。',
-            en: 'Yuba, Kyoto pickles, obanzai home cooking — from old houses to new restaurants around Kyoto Station.',
+            ja: '旬の食材を美しい器に少しずつ盛り付ける京料理。目でも季節を味わえる会席は、京都の夜を特別なひとときにしてくれます。京都駅周辺には老舗から新しいお店まで揃っています。',
+            en: 'Seasonal ingredients served a little at a time in beautiful dishes — a kaiseki dinner makes a Kyoto evening special. Around Kyoto Station you will find everything from old houses to new restaurants.',
+          },
+        },
+        {
+          label: 'Kyoto Cuisine',
+          title: { ja: '湯豆腐・湯葉', en: 'Yudofu & yuba' },
+          image: '/images/spots/toji-yudofu.webp',
+          body: {
+            ja: '京都の良質な水が生む、なめらかな豆腐と湯葉。昆布だしでやさしく温める湯豆腐は、寒い季節の京都で味わいたい定番の一品です。',
+            en: 'Silky tofu and yuba made with Kyoto’s soft water. Yudofu, gently warmed in kombu broth, is a classic to enjoy on a cold Kyoto day.',
           },
         },
         {
