@@ -873,20 +873,20 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       spots: [
         {
           name: { ja: '東寺（教王護国寺）', en: 'Toji Temple' },
-          time: { ja: 'ホテルの目の前', en: 'Right in front of the hotel' },
+          time: { ja: '徒歩すぐ（目の前）', en: 'Just across the street' },
           body: {
             ja: '平安京唯一の遺構として残る世界遺産。高さ約55mの五重塔は木造塔として日本一の高さを誇ります。',
             en: 'A World Heritage site and the only surviving structure of the Heian capital; its 55 m pagoda is Japan’s tallest wooden tower.',
           },
-          image: '/images/toji/toji-03.webp',
+          image: '/images/spots/toji-night-toji.webp',
+          focus: 'center 35%',
           query: '東寺',
           pickup: true,
           site: 'https://toji.or.jp/',
         },
         {
           name: { ja: '京都水族館・梅小路公園', en: 'Kyoto Aquarium & Umekoji Park' },
-          image: '/images/spots/toji-umekoji.webp',
-          credit: { author: '＋－', license: 'CC BY-SA 3.0', source: 'https://commons.wikimedia.org/wiki/File:梅小路公園_芝生広場.jpg' },
+          image: '/images/spots/toji-night-umekoji.webp',
           time: { ja: '徒歩約15分', en: 'About 15 min on foot' },
           body: {
             ja: '京都の川や海の生きものに出会える水族館と、鉄道博物館もある広大な公園。ご家族連れにおすすめです。',
@@ -897,8 +897,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '伏見稲荷大社', en: 'Fushimi Inari Taisha' },
-          image: '/images/spots/toji-inari.webp',
-          credit: { author: 'Basile Morin', license: 'CC BY-SA 4.0', source: 'https://commons.wikimedia.org/wiki/File:Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg' },
+          image: '/images/spots/toji-night-inari.webp',
           time: { ja: '電車・車で約15分', en: 'About 15 min by train or car' },
           body: {
             ja: '朱色の鳥居が山へと続く「千本鳥居」で知られる、全国の稲荷神社の総本宮です。',
@@ -914,14 +913,14 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             ja: '「清水の舞台」で知られる世界遺産と、八坂の塔や二年坂など石畳の町並みが続く京都らしい散策エリア。',
             en: 'The World Heritage temple with its famous stage, and the stone-paved lanes around Yasaka Pagoda and Ninenzaka.',
           },
-          image: '/images/toji/toji-07.webp',
+          image: '/images/spots/toji-night-kiyomizu.webp',
+          focus: '64% center',
           query: '清水寺',
           site: 'https://www.kiyomizudera.or.jp/',
         },
         {
           name: { ja: '西本願寺', en: 'Nishi Hongan-ji' },
-          image: '/images/spots/toji-nishihongan.webp',
-          credit: { author: '663highland', license: 'CC BY 2.5', source: 'https://commons.wikimedia.org/wiki/File:170216_Nishi_Honganji_Kyoto_Japan06n.jpg' },
+          image: '/images/spots/toji-night-nishihongan.webp',
           time: { ja: '徒歩約20分', en: 'About 20 min on foot' },
           body: {
             ja: '浄土真宗本願寺派の本山で、世界遺産。国宝の唐門や御影堂など、桃山文化の華やかな建築が見られます。',
