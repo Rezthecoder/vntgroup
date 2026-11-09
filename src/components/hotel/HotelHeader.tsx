@@ -83,7 +83,7 @@ export function HotelHeader({
       {/* Wordmark block, white, centred. */}
       <div className="bg-page px-5 pt-16 pb-8 text-center md:pt-24 md:pb-10">
         <a href="#top" className="inline-block">
-          <span className="block font-[family-name:var(--font-tenor)] text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.22em] text-ink">
+          <span className="block font-latin text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.22em] text-ink">
             {name}
           </span>
           <span className="mt-1 block text-[1rem] tracking-[0.3em] text-star">{'★'.repeat(stars)}</span>
@@ -91,7 +91,7 @@ export function HotelHeader({
         </a>
       </div>
 
-      <header className="sticky top-0 z-[130] border-y border-ink/10 bg-page/95 backdrop-blur-sm">
+      <header className="glass-bar sticky top-0 z-[130] border-t border-ink/10">
         <div className="flex items-center justify-between px-5 md:hidden">
           <ThemeToggle />
           <button
@@ -148,7 +148,7 @@ export function HotelHeader({
               type="button"
               aria-label="閉じる"
               onClick={() => setOpen(false)}
-              className="absolute inset-0 bg-sumi/35"
+              className="absolute inset-0 bg-sumi/25 backdrop-blur-[2px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -157,7 +157,7 @@ export function HotelHeader({
             <motion.nav
               id="hotel-mobile-menu"
               aria-label="Page sections"
-              className="absolute inset-y-0 right-0 flex w-[40%] min-w-[9.5rem] flex-col overflow-y-auto bg-page px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
+              className="absolute inset-y-0 right-0 flex w-[40%] min-w-[9.5rem] flex-col overflow-y-auto glass-panel px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
               initial={{ x: '100%' }}
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 /**
  * Live home hero: the Yokohama harbour photo under the white header, the
@@ -28,6 +28,7 @@ export function HomeHero({
   ctaHref: string;
   scrollLabel?: string;
 }) {
+  const still = useReducedMotion();
   const rise = (delay: number) => ({
     initial: { opacity: 0, y: 14 },
     animate: { opacity: 1, y: 0 },
@@ -36,7 +37,16 @@ export function HomeHero({
 
   return (
     <section className="relative h-[34rem] w-full overflow-hidden md:h-[clamp(34rem,53vw,54rem)]">
-      <Image src="/images/brand/hero-group.webp" alt="" fill priority sizes="100vw" className="object-cover" />
+      {/* The page's one orchestrated moment: the harbour settles from a slight
+          zoom while the lines rise in. Skipped for reduced-motion visitors. */}
+      <motion.div
+        className="absolute inset-0"
+        initial={still ? false : { scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Image src="/images/brand/hero-group.webp" alt="" fill priority sizes="100vw" className="object-cover" />
+      </motion.div>
       {/* Barely there: keeps the white type readable on bright sky without
           changing how the photograph looks. */}
       <div className="absolute inset-0 bg-linear-to-b from-sumi/10 via-transparent to-sumi/20" />
@@ -50,12 +60,15 @@ export function HomeHero({
         </motion.h1>
         <motion.p
           {...rise(0.35)}
-          className="mt-3 font-[family-name:var(--font-tenor)] text-[clamp(0.9rem,3.6vw,1rem)] tracking-[0.03em] text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.3)] md:mt-4 md:text-[clamp(1rem,1.2vw,1.1rem)] md:tracking-[0.04em]"
+          className="mt-3 font-latin text-[clamp(0.9rem,3.6vw,1rem)] tracking-[0.03em] text-washi [text-shadow:0_1px_8px_rgba(0,0,0,0.3)] md:mt-4 md:text-[clamp(1rem,1.2vw,1.1rem)] md:tracking-[0.04em]"
         >
           {line2}
         </motion.p>
         <motion.div {...rise(0.55)} className="mt-6 md:mt-8">
-          <Link href={ctaHref} className="btn-live min-w-[14rem] md:min-w-[12rem]">
+          <Link
+            href={ctaHref}
+            className="glass-lit inline-flex min-w-[14rem] items-center justify-center rounded-full px-8 py-3.5 text-[0.875rem] tracking-[0.08em] transition-colors md:min-w-[12rem]"
+          >
             {cta}
           </Link>
         </motion.div>

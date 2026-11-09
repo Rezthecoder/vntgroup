@@ -327,7 +327,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             <article key={i} className="mt-16 md:mt-20">
               <Rule inline />
               <Reveal className="mt-12 text-center">
-                <h3 className="font-[family-name:var(--font-tenor)] text-[1.5rem] tracking-[0.1em] text-ink uppercase md:text-[1.75rem]">
+                <h3 className="font-latin text-[1.5rem] tracking-[0.1em] text-ink uppercase md:text-[1.75rem]">
                   {room.name.en ?? L(room.name)}
                 </h3>
                 <p className="mt-2 text-[0.875rem] text-stone">{L(room.name)}</p>
@@ -386,7 +386,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                         ) : (
                           // No dish photo yet: a soft panel carrying the hotel's wordmark, as the reference's logo tiles.
                           <div className="flex h-full w-full flex-col items-center justify-center bg-[linear-gradient(160deg,#f6f6f6,#e4e4e4)] px-6 text-center">
-                            <span className="font-[family-name:var(--font-tenor)] text-[1rem] tracking-[0.2em] text-ink-mute">{title}</span>
+                            <span className="font-latin text-[1rem] tracking-[0.2em] text-ink-mute">{title}</span>
                             <span className="mt-1 text-[0.75rem] tracking-[0.2em] text-star">{'★'.repeat(hotel.stars)}</span>
                           </div>
                         )}
@@ -511,7 +511,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section id="access" className={cn('relative overflow-hidden bg-sumi text-washi', ANCHOR)}>
         <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover opacity-55" />
         <div className="relative mx-auto max-w-[60rem] px-5 py-16 text-center md:py-28">
-          <p className="font-[family-name:var(--font-tenor)] text-[1.75rem] tracking-[0.2em] md:text-[2.25rem]">ACCESS</p>
+          <p className="font-latin text-[1.75rem] tracking-[0.2em] md:text-[2.25rem]">ACCESS</p>
           <p className="mt-1 text-[0.8125rem] tracking-[0.15em]">{L(S.accessSub)}</p>
           <div className="mt-8 space-y-4 text-[0.9375rem] leading-[1.8] tracking-[0.04em] text-pretty [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:text-[clamp(1rem,1.5vw,1.25rem)] md:mt-10 md:space-y-6">
             {stay.access.routes.map((route, i) => (
@@ -628,7 +628,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       {/* Dark hotel footer, as the reference ------------------------------ */}
       <section className="bg-[#1c1c1c] px-5 py-16 text-center text-washi md:py-20">
-        <p className="font-[family-name:var(--font-tenor)] text-[1.5rem] tracking-[0.22em] md:text-[1.9rem]">{title}</p>
+        <p className="font-latin text-[1.5rem] tracking-[0.22em] md:text-[1.9rem]">{title}</p>
         <p className="mt-1 text-[0.9375rem] tracking-[0.3em] text-star">{'★'.repeat(hotel.stars)}</p>
         <p className="mt-2 text-[0.75rem] tracking-[0.3em] text-washi/70">{hotel.nameJa}</p>
         {geo && (
@@ -665,7 +665,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 function EnHeading({ en, sub, small }: { en: string; sub?: string; small?: boolean }) {
   return (
     <Reveal className="text-center">
-      <h2 className={cn('font-[family-name:var(--font-tenor)] tracking-[0.18em] text-ink', small ? 'text-[1.25rem] md:text-[1.5rem]' : 'text-[clamp(1.4rem,2.6vw,2.1rem)]')}>
+      <h2 className={cn('font-latin tracking-[0.18em] text-ink', small ? 'text-[1.25rem] md:text-[1.5rem]' : 'text-[clamp(1.4rem,2.6vw,2.1rem)]')}>
         {en}
       </h2>
       {sub && <p className="mt-2 text-[0.75rem] tracking-[0.1em] text-stone">{sub}</p>}
