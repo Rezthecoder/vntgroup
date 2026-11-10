@@ -13,7 +13,8 @@ import type { Hotel } from '@/content/hotels';
 
 export type RoomType = {
   name: L10n;
-  image: string;
+  /** Main photo. Leave out until the hotel sends one: a 写真準備中 panel shows instead. */
+  image?: string;
   body: L10n;
   /** Short facts printed as tags: size, capacity, beds. */
   specs?: L10n[];
@@ -138,15 +139,13 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
       items: [
+        // DRAFT (client: add DBL). Same text as Nagoya's double. Photo to come; confirm beds/capacity.
         {
-          name: { ja: '富士山ビュー ツインルーム', en: 'Mt. Fuji View Twin' },
-          image: '/images/fuji/fuji-02.webp',
-          gallery: ['/images/fuji/fuji-01.webp', '/images/fuji/onsen-01.webp'],
+          name: { ja: 'ダブルルーム', en: 'Double Room' },
           facts: [
-            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
-            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
-            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '2名様', en: '2 guests' } },
-            { label: { ja: '眺望', en: 'View' }, value: { ja: '富士山ビュー', en: 'Mt. Fuji' } },
+            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
+            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
+            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '1〜2名様', en: '1–2 guests' } },
           ],
           amenities: [
             { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
@@ -157,13 +156,56 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: 'アメニティ一式', en: 'Toiletries' },
           ],
           body: {
-            ja: '大きな窓から富士山を望むツインルーム。朝焼けから夕暮れまで、刻々と表情を変える富士山を客室からお楽しみいただけます。',
-            en: 'A twin room with a large window onto Mt. Fuji — watch the mountain change from dawn to dusk without leaving the room.',
+            ja: 'お一人様やご夫婦でのご滞在に。落ち着いた色調で、観光やお仕事の後にゆっくりお休みいただけます。',
+            en: 'For solo guests or couples — calm tones to rest well after sightseeing or work.',
           },
-          specs: [
-            { ja: '2名様', en: '2 guests' },
-            { ja: 'ツインベッド', en: 'Twin beds' },
+          specs: [{ ja: '1〜2名様', en: '1–2 guests' }],
+        },
+        // Same text and table as Nagoya's twin; Fuji's own photos.
+        {
+          name: { ja: 'ツインルーム', en: 'Twin Room' },
+          image: '/images/fuji/fuji-02.webp',
+          gallery: ['/images/fuji/fuji-01.webp', '/images/fuji/onsen-01.webp'],
+          facts: [
+            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
+            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
+            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '2名様', en: '2 guests' } },
           ],
+          amenities: [
+            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
+            { ja: 'テレビ', en: 'TV' },
+            { ja: '冷蔵庫', en: 'Fridge' },
+            { ja: 'エアコン', en: 'Air conditioning' },
+            { ja: 'バス・トイレ', en: 'Bath & toilet' },
+            { ja: 'アメニティ一式', en: 'Toiletries' },
+          ],
+          body: {
+            ja: 'ご友人同士や出張にも便利なツインルーム。それぞれのベッドでゆったりとお過ごしいただけます。',
+            en: 'A twin room for friends or colleagues, with a bed each to relax in.',
+          },
+          specs: [{ ja: '2名様', en: '2 guests' }],
+        },
+        // DRAFT (client: add TRPL). Same text as Nagoya's triple. Photo to come; confirm beds/capacity.
+        {
+          name: { ja: 'トリプルルーム', en: 'Triple Room' },
+          facts: [
+            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
+            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },
+            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '3名様', en: '3 guests' } },
+          ],
+          amenities: [
+            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
+            { ja: 'テレビ', en: 'TV' },
+            { ja: '冷蔵庫', en: 'Fridge' },
+            { ja: 'エアコン', en: 'Air conditioning' },
+            { ja: 'バス・トイレ', en: 'Bath & toilet' },
+            { ja: 'アメニティ一式', en: 'Toiletries' },
+          ],
+          body: {
+            ja: 'ご家族や小グループでのご旅行に。皆さまご一緒に過ごせる、ゆとりある客室です。',
+            en: 'For families and small groups — room for everyone together.',
+          },
+          specs: [{ ja: '3名様', en: '3 guests' }],
         },
       ],
     },

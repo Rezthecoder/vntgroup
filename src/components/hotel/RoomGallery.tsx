@@ -7,8 +7,19 @@ import Image from 'next/image';
  * Main room photo with a thumbnail strip underneath (pattern from the estimate's
  * reference sites): clicking a thumbnail swaps the main photo.
  */
-export function RoomGallery({ images, alt }: { images: string[]; alt: string }) {
+export function RoomGallery({ images, alt, emptyLabel = '写真準備中' }: { images: string[]; alt: string; emptyLabel?: string }) {
   const [current, setCurrent] = useState(0);
+
+  // No photo yet: a soft washi panel instead of an empty box.
+  if (images.length === 0) {
+    return (
+      <div className="bg-seigaiha relative flex aspect-4/3 w-full flex-col items-center justify-center text-center">
+        <span className="type-mincho text-[1.375rem] tracking-[0.12em] text-ink">{alt}</span>
+        <span aria-hidden className="ornament ornament-on-2" />
+        <span className="mt-3 text-[0.9375rem] tracking-[0.2em] text-stone">{emptyLabel}</span>
+      </div>
+    );
+  }
 
   return (
     <div>
