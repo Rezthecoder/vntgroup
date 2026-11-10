@@ -39,17 +39,19 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
       />
       <motion.nav
         aria-label="Menu"
-        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[10rem] flex-col overflow-y-auto overscroll-contain glass-panel px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
+        className="absolute inset-y-0 right-0 flex w-[40%] min-w-[11.5rem] flex-col overflow-y-auto overscroll-contain glass-panel px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
         initial={{ x: '100%' }}
         animate={{ x: '0%' }}
         exit={{ x: '100%' }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex items-center justify-between border-b border-ink/10">
-          <LangSwitch locale={locale} />
-          <button type="button" onClick={onClose} className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink">
+        <div className="flex items-center justify-end">
+          <button type="button" onClick={onClose} className="py-3 text-[0.9375rem] tracking-[0.1em] whitespace-nowrap text-ink">
             {closeLabel}
           </button>
+        </div>
+        <div className="border-b border-ink/10 pb-3">
+          <LangSwitch locale={locale} />
         </div>
 
         <ul className="flex flex-col">
