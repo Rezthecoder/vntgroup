@@ -127,7 +127,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // DRAFT: parking / front-desk hours / breakfast to be confirmed by the client.
     features: [
       { title: { ja: '富士山ビュー客室', en: 'Mt. Fuji view rooms' }, body: { ja: '全50室から、四季折々の富士山を望む', en: 'Mt. Fuji from all 50 rooms, in every season' }, image: '/images/fuji/fuji-01.webp' },
-      { title: { ja: '麦飯石温泉大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '天然の麦飯石を使用した人工温泉。ご宿泊者専用', en: 'Hot-spring style bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
       // Client: ご朝食 → 食事. Photo is the udon shot until the client's photo arrives.
       { title: { ja: 'お食事', en: 'Dining' }, body: { ja: '吉田のうどん・ほうとうなど、富士吉田の味をご堪能ください', en: 'Yoshida udon, hoto and more local flavours' }, image: '/images/spots/fuji-udon-v2.webp' },
