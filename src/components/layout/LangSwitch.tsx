@@ -6,27 +6,37 @@ import { usePathname } from 'next/navigation';
 import { switchLocalePath, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
-/** 日本語 | EN — the same page in the other language. */
+/**
+ * 日本語 | EN — one big tap target: the whole pill links to the same page in
+ * the other language (44px tall, so it is easy to hit with a thumb). The
+ * current language is the filled half.
+ */
 export function LangSwitch({ locale, className }: { locale: Locale; className?: string }) {
   const pathname = usePathname() ?? `/${locale}`;
-  const item = (to: Locale, label: string) => (
-    <Link
-      href={switchLocalePath(pathname, to)}
-      hrefLang={to}
-      lang={to}
-      aria-current={locale === to ? 'true' : undefined}
+  const other: Locale = locale === 'ja' ? 'en' : 'ja';
+  const half = (lang: Locale, label: string) => (
+    <span
+      lang={lang}
       className={cn(
-        'rounded-full px-2.5 py-1 text-[0.75rem] font-bold tracking-[0.06em] transition-colors',
-        locale === to ? 'bg-ink text-page' : 'text-ink-mute hover:text-ink',
+        'flex h-full items-center rounded-full px-3 text-[0.875rem] font-bold tracking-[0.04em] whitespace-nowrap transition-colors',
+        locale === lang ? 'bg-ink text-page' : 'text-ink-mute group-hover:text-ink',
       )}
     >
       {label}
-    </Link>
+    </span>
   );
   return (
-    <div role="group" aria-label="Language" className={cn('glass-panel inline-flex items-center gap-0.5 rounded-full p-0.5', className)}>
-      {item('ja', '日本語')}
-      {item('en', 'EN')}
-    </div>
+    <Link
+      href={switchLocalePath(pathname, other)}
+      hrefLang={other}
+      aria-label={other === 'en' ? 'English' : '日本語'}
+      className={cn(
+        'group glass-panel liquid-press inline-flex h-11 shrink-0 items-center gap-0.5 rounded-full p-1 select-none',
+        className,
+      )}
+    >
+      {half('ja', '日本語')}
+      {half('en', 'EN')}
+    </Link>
   );
 }
