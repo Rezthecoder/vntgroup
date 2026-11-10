@@ -334,7 +334,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       <section id="rooms" className={cn('bg-page pb-24', ANCHOR)}>
         <JpBand title={L(S.rooms)} sub={L(S.roomsSub)} />
         <div className="mx-auto max-w-[76rem] px-5">
-          <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.rooms.lead)}</p>
+          {stay.rooms.lead && (
+            <p className="mx-auto mt-10 max-w-[46rem] text-center text-[0.9375rem] leading-[2] text-ink-mute">{L(stay.rooms.lead)}</p>
+          )}
 
           {stay.rooms.services && (
             <Reveal className="mt-10 rounded-xl bg-page-3 p-5 md:p-7">
