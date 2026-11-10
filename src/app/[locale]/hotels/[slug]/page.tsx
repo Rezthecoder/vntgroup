@@ -580,15 +580,9 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       {/* ACCESS banner ---------------------------------------------------- */}
       <section id="access" className={cn('relative overflow-hidden bg-sumi text-washi', ANCHOR)}>
-        <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover opacity-85" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-sumi/50 via-sumi/10 to-sumi/30" />
-        <div className="relative mx-auto max-w-[60rem] px-5 py-28 text-center [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] md:py-40">
-          <p className="font-latin text-[1.875rem] tracking-[0.2em] md:text-[2.5rem]">ACCESS</p>
-          <p className="mt-1 text-[0.9375rem] tracking-[0.15em]">{L(S.accessSub)}</p>
-          <a href="#access-detail" className={cn(BTN_LINE, 'mt-10 border-washi text-washi hover:bg-washi hover:text-sumi')}>
-            {L(S.accessInfo)}
-          </a>
-        </div>
+        <Image src={pick(0)} alt="" fill sizes="100vw" className="object-cover" />
+        {/* Photo only: the client asked for no ACCESS / アクセス情報 text here. */}
+        <div aria-hidden className="relative h-[16rem] md:h-[26rem]" />
       </section>
 
       {/* Access details --------------------------------------------------- */}
