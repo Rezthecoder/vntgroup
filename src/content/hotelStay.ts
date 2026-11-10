@@ -432,14 +432,14 @@ const stays: Record<Hotel['slug'], HotelStay> = {
   nagoya: {
     // Short cards for WHATS SPECIAL (the live About copy is too long to sit on a photo).
     features: [
-      { title: { ja: '駅から徒歩約5分', en: '5 min from the station' }, body: { ja: '名鉄「国府宮駅」から徒歩約5分。名古屋駅へ急行約15分', en: '5 min walk from Konomiya; 15 min express to Nagoya' }, image: '/images/nagoya/nagoya-02.webp' },
-      { title: { ja: '全33室の静かな客室', en: '33 quiet rooms' }, body: { ja: '静けさと快適さを大切にした客室', en: 'Rooms designed for quiet and comfort' }, image: '/images/nagoya/nagoya-01.webp' },
+      { title: { ja: '駅から徒歩約5分', en: '5 min from the station' }, body: { ja: '名鉄「国府宮駅」から徒歩約5分。名古屋駅へ急行約15分', en: '5 min walk from Konomiya; 15 min express to Nagoya' }, image: '/images/spots/nagoya-konomiya-v2.webp' },
+      { title: { ja: '全33室の静かな客室', en: '33 quiet rooms' }, body: { ja: '静けさと快適さを大切にした客室', en: 'Rooms designed for quiet and comfort' }, image: '/images/nagoya/nagoya-05.webp' },
       { title: { ja: '3タイプの客室', en: 'Three room types' }, body: { ja: 'ダブル・ツイン・トリプル。一人旅からご家族まで', en: 'Double, twin and triple — solo trips to families' }, image: '/images/nagoya/room-03.webp' },
       { title: { ja: '天然麦飯石の大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '宿泊者だけが利用できる癒しの空間', en: 'A large bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
       { title: { ja: '名古屋観光の拠点', en: 'A base for Nagoya' }, body: { ja: '名古屋城・熱田神宮・徳川美術館へ', en: 'Nagoya Castle, Atsuta Shrine, Tokugawa Art Museum' }, image: '/images/nagoya/castle-01.webp' },
-      { title: { ja: 'ビジネスにも', en: 'For business too' }, body: { ja: '観光にもビジネスにも便利な立地', en: 'Convenient for sightseeing and work alike' }, image: '/images/nagoya/nagoya-05.webp' },
+      { title: { ja: 'ビジネスにも', en: 'For business too' }, body: { ja: '観光にもビジネスにも便利な立地', en: 'Convenient for sightseeing and work alike' }, image: '/images/nagoya/room-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/nagoya/room-02.webp' },
-      { title: { ja: '空港からも便利', en: 'Easy from the airport' }, body: { ja: '中部国際空港から名鉄で約1時間', en: 'About 1 h from Centrair on the Meitetsu line' }, image: '/images/nagoya/room-01.webp' },
+      { title: { ja: '空港からも便利', en: 'Easy from the airport' }, body: { ja: '中部国際空港から名鉄で約1時間', en: 'About 1 h from Centrair on the Meitetsu line' }, image: '/images/spots/nagoya-atsuta-v2.webp' },
     ],
     rooms: {
       lead: {
@@ -450,7 +450,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
           image: '/images/nagoya/room-01.webp',
-          gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-02.webp'],
+          // Only this room type's photos (+ the bathroom). No blue-bed photos.
+          gallery: ['/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
@@ -473,7 +474,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'ツインルーム', en: 'Twin Room' },
           image: '/images/nagoya/room-02.webp',
-          gallery: ['/images/nagoya/nagoya-03.webp', '/images/nagoya/nagoya-04.webp'],
+          gallery: ['/images/nagoya/nagoya-05.webp', '/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
@@ -496,7 +497,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'トリプルルーム', en: 'Triple Room' },
           image: '/images/nagoya/room-03.webp',
-          gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },
