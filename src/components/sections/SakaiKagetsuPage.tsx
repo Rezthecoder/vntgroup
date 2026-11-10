@@ -9,9 +9,9 @@ import { localePath, t, type Locale } from '@/lib/i18n';
 const IMG = '/images/shops/sakai-';
 
 const SCENES = [
-  { src: `${IMG}scene-dinner.webp`, caption: '大切な方とのご会食に' },
-  { src: `${IMG}scene-private.webp`, caption: '個室でゆったりと' },
-  { src: `${IMG}scene-celebration.webp`, caption: '記念日・ご接待にも' },
+  { src: `${IMG}scene-dinner.webp`, caption: { ja: '大切な方とのご会食に', en: 'Dinner with someone special' } },
+  { src: `${IMG}scene-private.webp`, caption: { ja: '個室でゆったりと', en: 'Relax in a private room' } },
+  { src: `${IMG}scene-celebration.webp`, caption: { ja: '記念日・ご接待にも', en: 'Anniversaries and business dinners' } },
 ];
 
 /**
@@ -24,6 +24,7 @@ const SCENES = [
 export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale }) {
   const dict = getDictionary(locale);
   const contactHref = localePath(locale, '/contact');
+  const en = locale === 'en';
 
   return (
     <div className="bg-[#f7f3ea] text-[#2a2420] dark:bg-page dark:text-ink">
@@ -42,31 +43,39 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
             <p className="font-latin mt-6 text-[1.125rem] tracking-[0.3em] uppercase">Sakai Kagetsu</p>
             <p className="font-latin mt-1 text-[0.8125rem] tracking-[0.35em] text-stone uppercase">Japanese Cuisine</p>
             <p className="type-mincho mt-8 text-[1.25rem] leading-[1.9] tracking-[0.12em] whitespace-pre-line">
-              {'七十年、\n受け継がれる\n日本の味とおもてなし'}
+              {en ? 'Seventy years of\nJapanese flavour\nand hospitality' : '七十年、\n受け継がれる\n日本の味とおもてなし'}
             </p>
           </Reveal>
 
           <Reveal from="right" duration={1.1} className="relative min-h-[26rem] overflow-hidden rounded-sm md:min-h-[38rem]">
-            <Image src={`${IMG}room.webp`} alt="堺花月の座敷" fill priority sizes="(max-width: 768px) 100vw, 60vw" className="object-cover" />
+            <Image src={`${IMG}room.webp`} alt={en ? 'Tatami dining room at Sakai Kagetsu' : '堺花月の座敷'} fill priority sizes="(max-width: 768px) 100vw, 60vw" className="object-cover" />
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,14,10,0.78),rgba(20,14,10,0.25)_45%,rgba(20,14,10,0)_70%)]" />
             <div className="absolute inset-x-0 top-0 p-5 pr-16 text-washi md:p-10 md:pr-28">
               <h2 className="type-mincho text-[clamp(1.25rem,2.6vw,2rem)] leading-[1.6] tracking-[0.1em]">
-                四季を味わい、心を結ぶ
+                {en ? 'Savour the seasons,' : '四季を味わい、心を結ぶ'}
                 <br />
-                特別なひととき
+                {en ? 'share a special moment' : '特別なひととき'}
               </h2>
               <p className="mt-4 text-[0.875rem] leading-[2] tracking-[0.04em] text-washi/90 md:text-[0.9375rem] md:tracking-[0.06em]">
-                旬の食材と伝統の技で仕立てる、
-                <br />
-                ここにしかない懐石料理を、
-                <br />
-                落ち着いた和の空間でお楽しみください。
+                {en ? (
+                  'Kaiseki you will find only here — seasonal ingredients and time-honoured technique, served in a calm Japanese room.'
+                ) : (
+                  <>
+                    旬の食材と伝統の技で仕立てる、
+                    <br />
+                    ここにしかない懐石料理を、
+                    <br />
+                    落ち着いた和の空間でお楽しみください。
+                  </>
+                )}
               </p>
             </div>
             {/* Black ribbon: 創業七十年 */}
             <div className="absolute top-0 right-3 flex gap-2 bg-[#14110f]/90 px-2.5 pt-3 pb-4 text-[#d9b77c] md:right-6 md:px-4 md:pt-4 md:pb-5">
               <p className="writing-vertical type-mincho text-[1.125rem] tracking-[0.3em] md:text-[1.75rem]">創業七十年</p>
-              <p className="writing-vertical type-mincho hidden text-[0.8125rem] tracking-[0.25em] text-washi/85 md:block">受け継がれる伝統、変わらぬおもてなし</p>
+              {!en && (
+                <p className="writing-vertical type-mincho hidden text-[0.8125rem] tracking-[0.25em] text-washi/85 md:block">受け継がれる伝統、変わらぬおもてなし</p>
+              )}
             </div>
           </Reveal>
         </div>
@@ -76,20 +85,24 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
       <section className="relative overflow-hidden bg-[#14110f] text-washi">
         <div aria-hidden className="absolute inset-0 opacity-[0.07] [background-image:repeating-linear-gradient(45deg,#d9b77c_0_1px,transparent_1px_22px)]" />
         <div className="relative mx-auto grid max-w-[76rem] items-center gap-8 px-5 py-14 md:py-20 lg:grid-cols-[auto_1.5fr_1fr] lg:gap-10">
-          <Reveal className="hidden justify-center lg:flex">
+          <Reveal className={en ? 'hidden' : 'hidden justify-center lg:flex'}>
             <p className="writing-vertical type-mincho text-[1.5rem] leading-[2] tracking-[0.3em] text-[#e9dcc0]">
               季節の彩りを、一皿に込めて
             </p>
           </Reveal>
           <Reveal from="left" duration={1.1} className="relative aspect-[2/1] overflow-hidden rounded-sm">
-            <Image src={`${IMG}kaiseki.webp`} alt="懐石料理" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src={`${IMG}kaiseki.webp`} alt={en ? 'Kaiseki course' : '懐石料理'} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="type-mincho text-[1.125rem] tracking-[0.2em] text-[#e9dcc0] lg:hidden">季節の彩りを、一皿に込めて</p>
-            <h2 className="type-mincho mt-3 text-[clamp(2rem,3.4vw,2.75rem)] tracking-[0.25em] text-[#d9b77c] lg:mt-0">懐石料理</h2>
+            <p className={`type-mincho text-[1.125rem] tracking-[0.2em] text-[#e9dcc0] ${en ? '' : 'lg:hidden'}`}>
+              {en ? 'The colours of the season, on one plate' : '季節の彩りを、一皿に込めて'}
+            </p>
+            <h2 className="type-mincho mt-3 text-[clamp(2rem,3.4vw,2.75rem)] tracking-[0.25em] text-[#d9b77c] lg:mt-0">{en ? 'Kaiseki' : '懐石料理'}</h2>
             <span aria-hidden className="mt-4 block h-px w-16 bg-[#d9b77c]/70" />
             <p className="mt-5 text-[1rem] leading-[2.1] tracking-[0.06em] text-washi/90">
-              旬の恵みを大切に、一品一品に心を込めた懐石料理。目で楽しみ、舌で味わい、心に残るひとときを。日本の四季が織りなす、美しい味わいをお届けします。
+              {en
+                ? 'Kaiseki made with care, one dish at a time, around the gifts of the season — to enjoy with the eyes, savour on the palate and remember. The beauty of Japan’s four seasons, served at your table.'
+                : '旬の恵みを大切に、一品一品に心を込めた懐石料理。目で楽しみ、舌で味わい、心に残るひとときを。日本の四季が織りなす、美しい味わいをお届けします。'}
             </p>
           </Reveal>
         </div>
@@ -102,9 +115,9 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
             <Reveal key={s.src} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={i * 0.06}>
               <figure>
                 <div className="relative aspect-[16/9] overflow-hidden rounded-sm shadow-[0_14px_30px_-14px_rgba(0,0,0,0.35)]">
-                  <Image src={s.src} alt={s.caption} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                  <Image src={s.src} alt={t(s.caption, locale)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
                 </div>
-                <figcaption className="type-mincho mt-4 text-center text-[1.0625rem] tracking-[0.12em]">{s.caption}</figcaption>
+                <figcaption className="type-mincho mt-4 text-center text-[1.0625rem] tracking-[0.12em]">{t(s.caption, locale)}</figcaption>
               </figure>
             </Reveal>
           ))}
@@ -115,7 +128,7 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
       <section className="bg-seigaiha">
         <div className="mx-auto grid max-w-[76rem] items-center gap-8 px-5 py-14 md:grid-cols-[0.9fr_1.2fr_0.8fr] md:gap-10 md:py-20">
           <Reveal from="left" duration={1.1} className="relative aspect-[5/3] overflow-hidden rounded-sm">
-            <Image src={`${IMG}storefront.webp`} alt="堺花月の店構え" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" />
+            <Image src={`${IMG}storefront.webp`} alt={en ? 'Sakai Kagetsu storefront' : '堺花月の店構え'} fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" />
           </Reveal>
 
           <Reveal delay={0.08}>
@@ -138,21 +151,21 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
               )}
               {shop.closed && (
                 <div className="flex gap-4">
-                  <dt className="w-20 shrink-0 text-stone">定休日</dt>
+                  <dt className="w-20 shrink-0 text-stone">{en ? 'Closed' : '定休日'}</dt>
                   <dd>{t(shop.closed, locale)}</dd>
                 </div>
               )}
             </dl>
             <Link href={contactHref} className="btn-pill btn-pill-brand liquid-press mt-7">
-              ご予約・お問い合わせ
+              {en ? 'Reservations & enquiries' : 'ご予約・お問い合わせ'}
             </Link>
           </Reveal>
 
           <Reveal delay={0.16} className="text-center md:text-left">
             <p className="type-mincho text-[1.375rem] leading-[2] tracking-[0.15em] text-ink">
-              変わらぬ味を、
+              {en ? 'The same flavours,' : '変わらぬ味を、'}
               <br />
-              これからも。
+              {en ? 'for years to come.' : 'これからも。'}
             </p>
           </Reveal>
         </div>

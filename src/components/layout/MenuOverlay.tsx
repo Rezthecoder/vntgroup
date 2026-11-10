@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { navigation, site } from '@/content/site';
 import { localePath, t, type Locale } from '@/lib/i18n';
+import { LangSwitch } from './LangSwitch';
 
 /**
  * Site menu (phones and tablets): a drawer that slides in from the right over
@@ -44,7 +45,8 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
         exit={{ x: '100%' }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex items-center justify-end border-b border-ink/10">
+        <div className="flex items-center justify-between border-b border-ink/10">
+          <LangSwitch locale={locale} />
           <button type="button" onClick={onClose} className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink">
             {closeLabel}
           </button>

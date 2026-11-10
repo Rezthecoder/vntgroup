@@ -8,7 +8,6 @@ import type { Shop } from '@/content/shops';
 import { getDictionary } from '@/content/dictionary';
 import { localePath, t, type Locale } from '@/lib/i18n';
 
-const PENDING = '準備中';
 
 /**
  * One page for a shop or restaurant from `content/shops.ts`. Any detail the
@@ -16,10 +15,12 @@ const PENDING = '準備中';
  */
 export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
   const dict = getDictionary(locale);
+  const en = locale === 'en';
+  const PENDING = en ? 'Coming soon' : '準備中';
   const rows: { label: string; value?: string; href?: string }[] = [
     { label: dict.common.address, value: shop.address && t(shop.address, locale) },
     { label: dict.common.hours, value: shop.hours && t(shop.hours, locale) },
-    { label: '定休日', value: shop.closed && t(shop.closed, locale) },
+    { label: en ? 'Closed' : '定休日', value: shop.closed && t(shop.closed, locale) },
     { label: 'TEL', value: shop.tel, href: shop.tel && `tel:${shop.tel.replace(/-/g, '')}` },
   ];
 
@@ -32,7 +33,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
           <h1 className="type-display mt-3 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(shop.name, locale)}</h1>
           {shop.draft && (
             <p className="mt-6 inline-block rounded-full border border-ink/15 px-4 py-1.5 text-[0.9375rem] md:text-[0.875rem] tracking-[0.12em] text-stone">
-              店舗情報は近日公開予定です
+              {en ? 'Store details coming soon' : '店舗情報は近日公開予定です'}
             </p>
           )}
         </div>
@@ -46,7 +47,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
                 <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] tracking-[0.2em] text-stone">
-                  写真{PENDING}
+                  {en ? 'Photos coming soon' : `写真${PENDING}`}
                 </div>
               )}
             </div>
@@ -55,7 +56,11 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
           <div>
             <Reveal>
               <p className="type-body whitespace-pre-line">
-                {shop.lede ? t(shop.lede, locale) : `${t(shop.name, locale)}（${t(shop.category, locale)}）の店舗紹介は${PENDING}です。`}
+                {shop.lede
+                  ? t(shop.lede, locale)
+                  : en
+                    ? `Details about ${t(shop.name, locale)} (${t(shop.category, locale)}) are coming soon.`
+                    : `${t(shop.name, locale)}（${t(shop.category, locale)}）の店舗紹介は${PENDING}です。`}
               </p>
             </Reveal>
 
@@ -97,7 +102,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
             <Reveal className="mx-auto mt-6 max-w-xl">
               <Image
                 src={shop.flyer.src}
-                alt={`${t(shop.name, locale)} のチラシ`}
+                alt={en ? `${t(shop.name, locale)} flyer` : `${t(shop.name, locale)} のチラシ`}
                 width={shop.flyer.width}
                 height={shop.flyer.height}
                 sizes="(max-width: 640px) 100vw, 36rem"
@@ -136,7 +141,7 @@ export function ShopLinks({ shops, locale, eyebrow, title }: { shops: Shop[]; lo
                 {shop.image ? (
                   <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] md:text-[0.875rem] tracking-[0.2em] text-stone">写真{PENDING}</div>
+                  <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] md:text-[0.875rem] tracking-[0.2em] text-stone">{locale === 'en' ? 'Photos coming soon' : '写真準備中'}</div>
                 )}
               </div>
               <div className="p-6">

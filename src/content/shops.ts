@@ -48,7 +48,10 @@ export const shops: Shop[] = [
     category: { ja: 'ドラッグストア', en: 'Drugstore' },
     romaji: 'Kix Japan drug — Izumisano',
     // Wording from the store's own signage (医薬品・化粧品・サプリメント・日用品).
-    lede: { ja: '医薬品・化粧品・サプリメント・日用品を取り揃えたドラッグストアです。' },
+    lede: {
+      ja: '医薬品・化粧品・サプリメント・日用品を取り揃えたドラッグストアです。',
+      en: 'A drugstore with medicines, cosmetics, supplements and everyday goods.',
+    },
     image: '/images/shops/kix-japan-drug-izumisano.webp',
     // Still to come from VNT: address, hours, closed days, phone.
     draft: true,
@@ -73,9 +76,9 @@ export const shops: Shop[] = [
     },
     image: '/images/shops/sakai-kagetsu-kaiseki.webp',
     flyer: { src: '/images/shops/sakai-kagetsu-flyer.webp', width: 853, height: 1280 },
-    address: { ja: '大阪府堺市（詳細はお問い合わせください）' },
-    hours: { ja: '11:00〜22:00（L.O. 21:00）' },
-    closed: { ja: '不定休' },
+    address: { ja: '大阪府堺市（詳細はお問い合わせください）', en: 'Sakai, Osaka (please ask us for details)' },
+    hours: { ja: '11:00〜22:00（L.O. 21:00）', en: '11:00–22:00 (last order 21:00)' },
+    closed: { ja: '不定休', en: 'Irregular holidays' },
     // The flyer's phone number (072-000-0000) is a placeholder, so it is not
     // shown. Still to come from VNT: real phone number and full address.
     draft: true,

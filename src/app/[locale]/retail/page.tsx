@@ -104,7 +104,7 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
       {/* As on the live Ikegami page: the supplier call follows the stores. */}
       <SupplierCall locale={active} />
 
-      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title="その他の店舗" />
+      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title={active === 'en' ? 'Other stores' : 'その他の店舗'} />
     </>
   );
 }

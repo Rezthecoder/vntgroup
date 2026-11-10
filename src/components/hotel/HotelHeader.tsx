@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
 import { Wordmark } from '@/components/brand/Wordmark';
+import { LangSwitch } from '@/components/layout/LangSwitch';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { navigation } from '@/content/site';
 import { localePath, t, type Locale } from '@/lib/i18n';
@@ -179,13 +180,14 @@ export function HotelHeader({
               ))}
               <li>
                 <Link href={contactHref} className={linkClass}>
-                  お問い合わせ
+                  {ja ? 'お問い合わせ' : 'Contact'}
                 </Link>
               </li>
             </ul>
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
+            <LangSwitch locale={locale} className="hidden lg:inline-flex" />
             <ThemeToggle className="hidden lg:inline-flex" />
             <button
               type="button"
@@ -224,7 +226,8 @@ export function HotelHeader({
               exit={{ x: '100%' }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex h-14 shrink-0 items-center justify-end border-b border-ink/10">
+              <div className="flex h-14 shrink-0 items-center justify-between border-b border-ink/10">
+                <LangSwitch locale={locale} />
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
@@ -251,7 +254,7 @@ export function HotelHeader({
                 ))}
                 <li>
                   <Link href={contactHref} onClick={() => setOpen(false)} className={drawerLink}>
-                    お問い合わせ
+                    {ja ? 'お問い合わせ' : 'Contact'}
                   </Link>
                 </li>
               </ul>

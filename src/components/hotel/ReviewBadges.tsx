@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Reveal } from '@/components/motion/Reveal';
 
 type Reviews = {
-  google: { score: number; date: string; href: string };
+  google: { score: number; date: string; href?: string };
   ranks: { site: string; logo?: string; stars: number; href?: string }[];
 };
 

@@ -96,7 +96,12 @@ const S = {
   hours: { ja: '営業時間', en: 'Hours' },
 } satisfies Record<string, L10n>;
 
-const SEASON: Record<Season, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+const SEASON: Record<Season, L10n> = {
+  spring: { ja: '春', en: 'Spring' },
+  summer: { ja: '夏', en: 'Summer' },
+  autumn: { ja: '秋', en: 'Autumn' },
+  winter: { ja: '冬', en: 'Winter' },
+};
 /** Traditional seasonal tones: 桜 (sakura), 藍 (indigo), 紅葉 (maple), 銀鼠 (snow grey). */
 const SEASON_COLOR: Record<Season, string> = { spring: '#c95b7e', summer: '#2a6f93', autumn: '#c0532b', winter: '#5b6b88' };
 
@@ -193,14 +198,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
   ];
   const groupGrid = [pick(1), pick(2), pick(3), pick(0)];
   const geo = coords(hotel.mapEmbed);
+  /** Label colon: full-width in Japanese, ': ' in English. */
+  const C = active === 'en' ? ': ' : '：';
   const links = [
     // トップ = top of this hotel page; ホーム is kept for the VNT home page.
-    { id: 'top', label: 'トップ' },
-    { id: 'about', label: 'ホテルについて' },
-    { id: 'rooms', label: '客室' },
-    { id: 'dining', label: 'お食事' },
-    { id: 'sightseeing', label: '周辺観光' },
-    { id: 'access', label: 'アクセス' },
+    { id: 'top', label: L({ ja: 'トップ', en: 'Top' }) },
+    { id: 'about', label: L({ ja: 'ホテルについて', en: 'About' }) },
+    { id: 'rooms', label: L({ ja: '客室', en: 'Rooms' }) },
+    { id: 'dining', label: L({ ja: 'お食事', en: 'Dining' }) },
+    { id: 'sightseeing', label: L({ ja: '周辺観光', en: 'Sightseeing' }) },
+    { id: 'access', label: L({ ja: 'アクセス', en: 'Access' }) },
   ];
 
   return (
@@ -319,7 +326,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       {/* THE HOTEL MOVIE (as the live page) ------------------------------ */}
       {hotel.youtubeId && (
         <section className="border-t border-ink/8 px-5 py-24 md:py-28">
-          <EnHeading en="THE HOTEL MOVIE" sub={locale === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
+          <EnHeading en="THE HOTEL MOVIE" sub={active === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
           <Reveal from="left" duration={1.2} className="mx-auto mt-12 max-w-[60rem]">
             <VideoEmbed
               id={hotel.youtubeId}
@@ -365,7 +372,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <h3 className="font-latin text-[1.625rem] tracking-[0.1em] text-ink uppercase md:text-[1.875rem]">
                   {room.name.en ?? L(room.name)}
                 </h3>
-                <p className="mt-2 text-[1rem] text-stone">{L(room.name)}</p>
+                {/* Japanese name under the English title; in English it would just repeat it. */}
+                {active === 'ja' && <p className="mt-2 text-[1rem] text-stone">{L(room.name)}</p>}
               </Reveal>
 
               <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
@@ -381,7 +389,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   <p className="text-[1.125rem] leading-[2] text-ink">{L(room.body)}</p>
                   {room.amenities && (
                     <ul className="mt-4 space-y-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-ink-mute">
-                      <li>・{L(S.amenities)}｜{room.amenities.map((a) => L(a)).join('、')}</li>
+                      <li>
+                        {active === 'en'
+                          ? `• ${L(S.amenities)}: ${room.amenities.map((a) => L(a)).join(', ')}`
+                          : `・${L(S.amenities)}｜${room.amenities.map((a) => L(a)).join('、')}`}
+                      </li>
                     </ul>
                   )}
 
@@ -511,7 +523,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   >
                     <div className="flex items-center gap-3">
                       <span className="type-mincho flex size-10 items-center justify-center rounded-full bg-[var(--season)] text-[1.125rem] text-white shadow-[0_4px_12px_-4px_var(--season)]">
-                        {SEASON[event.season]}
+                        {L(SEASON[event.season])}
                       </span>
                       <span className="font-latin text-[0.9375rem] tracking-[0.22em] text-[var(--season)] uppercase dark:text-[color-mix(in_srgb,var(--season)_55%,white)]">{event.season}</span>
                     </div>
@@ -542,8 +554,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   <article className="h-full rounded-md border border-ink/10 bg-page p-5">
                     <p className="border-b border-ink/10 pb-2 text-[1.0625rem] font-medium text-ink">{L(item.kind)}</p>
                     <p className="mt-3 text-[1rem] font-medium text-ink">{L(item.name)}</p>
-                    {item.address && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-ink-mute">{L(S.addressLabel)}：{item.address}</p>}
-                    {item.hours && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] text-ink-mute">{L(S.hours)}：{L(item.hours)}</p>}
+                    {item.address && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] leading-[2] text-ink-mute">{L(S.addressLabel)}{C}{item.address}</p>}
+                    {item.hours && <p className="mt-1 text-[0.9375rem] md:text-[0.875rem] text-ink-mute">{L(S.hours)}{C}{L(item.hours)}</p>}
                     <p className="mt-2 text-[0.9375rem] md:text-[0.875rem] text-stone">{L(S.fromHotel)}{L(item.time)}</p>
                   </article>
                 </Reveal>
@@ -617,7 +629,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <p className="text-[0.875rem] md:text-[0.8125rem] tracking-[0.2em] text-stone">{L(S.hotelInfo)}</p>
-              <h3 className="mt-2 text-[1.625rem] font-medium tracking-[0.06em] text-ink">{hotel.nameJa}</h3>
+              <h3 className="mt-2 text-[1.625rem] font-medium tracking-[0.06em] text-ink">{active === 'en' ? title : hotel.nameJa}</h3>
               <p className="mt-4 text-[1.0625rem] text-ink">{L(hotel.info.address)}</p>
               <ul className="mt-4 space-y-2.5 text-[1rem] text-ink-mute">
                 {hotel.info.tel && (
@@ -653,7 +665,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                     </span>
                     <span className="min-w-0">
                       <span className="block text-[1rem] font-medium text-ink">
-                        {L(MODE_LABEL[route.mode])}：{L(route.from)}
+                        {L(MODE_LABEL[route.mode])}{C}{L(route.from)}
                       </span>
                       <span className="mt-0.5 block text-[0.9375rem] text-ink-mute">{L(route.detail)}</span>
                     </span>
@@ -713,14 +725,14 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <p className="mt-2 text-[0.9375rem] md:text-[0.875rem] tracking-[0.3em] text-washi/85">{hotel.nameJa}</p>
         {geo && (
           <p className="mt-6 text-[0.9375rem] tracking-[0.05em]">
-            北緯{geo.lat}° 東経{geo.lng}°
+            {active === 'en' ? `${geo.lat}° N, ${geo.lng}° E` : `北緯${geo.lat}° 東経${geo.lng}°`}
           </p>
         )}
         <p className="mt-5 text-[0.9375rem] leading-[2] text-washi/85">
           {L(hotel.info.address)}
           <br />
-          {hotel.info.tel && <>電話：{hotel.info.tel}　</>}
-          {L(S.groupDesk)}：080-4097-9552
+          {hotel.info.tel && <>{L(S.telLabel)}{C}{hotel.info.tel}　</>}
+          {L(S.groupDesk)}{C}080-4097-9552
           <br />
           {L(S.frontDesk)}
         </p>
@@ -731,7 +743,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
             </a>
           ))}
           <Link href={contactHref} className="hover:text-washi">
-            お問い合わせ
+            {active === 'en' ? 'Contact' : 'お問い合わせ'}
           </Link>
         </div>
       </section>

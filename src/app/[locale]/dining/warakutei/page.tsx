@@ -51,9 +51,9 @@ export default async function WarakuteiPage({ params }: { params: Promise<{ loca
   return (
     <>
       <PageHero
-        eyebrow="WARAKUTEI — 東京・有明"
+        eyebrow={active === 'en' ? 'WARAKUTEI — Ariake, Tokyo' : 'WARAKUTEI — 東京・有明'}
         title="和楽亭"
-        lead="焼肉・焼鳥"
+        lead={active === 'en' ? 'Yakiniku & yakitori' : '焼肉・焼鳥'}
         image="/images/warakutei/yakiniku-01.webp"
         alt="和楽亭"
       />

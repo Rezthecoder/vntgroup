@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { headerNav } from '@/content/site';
 import { localePath, t, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import { LangSwitch } from './LangSwitch';
 import { MenuOverlay } from './MenuOverlay';
 import { Wordmark } from '@/components/brand/Wordmark';
 
@@ -63,7 +64,8 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
             ))}
           </nav>
 
-          <div className="flex items-center gap-4 justify-self-end md:gap-6">
+          <div className="flex items-center gap-3 justify-self-end md:gap-5">
+            <LangSwitch locale={locale} className="hidden sm:inline-flex" />
             <ThemeToggle />
             <div className="hidden items-center gap-3 md:flex">
               <Link

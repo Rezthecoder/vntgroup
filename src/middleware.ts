@@ -3,7 +3,7 @@ import { defaultLocale, locales } from '@/lib/i18n';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
-/** Sends every un-prefixed request to the (only) locale, /ja. */
+/** Sends every un-prefixed request to the default locale, /ja. */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 

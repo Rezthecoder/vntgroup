@@ -54,7 +54,7 @@ export function HomeHero({
       <div className="relative flex h-full flex-col items-center justify-center px-5 pt-6 text-center md:-mt-[4%] md:items-end md:px-[8.5%] md:pt-0 md:text-right">
         <motion.h1
           {...rise(0.15)}
-          className="type-mincho text-[clamp(1.45rem,6.2vw,1.85rem)] tracking-[0.06em] whitespace-nowrap text-washi [text-shadow:0_1px_10px_rgba(0,0,0,0.25)] md:text-[clamp(1.85rem,2.6vw,2.4rem)] md:tracking-[0.12em]"
+          className="type-mincho text-[clamp(1.45rem,6.2vw,1.85rem)] tracking-[0.06em] text-balance text-washi [text-shadow:0_1px_10px_rgba(0,0,0,0.25)] md:text-[clamp(1.85rem,2.6vw,2.4rem)] md:tracking-[0.12em]"
         >
           {line1}
         </motion.h1>
