@@ -126,7 +126,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // DRAFT: parking / front-desk hours / breakfast to be confirmed by the client.
     features: [
       { title: { ja: '富士山ビュー客室', en: 'Mt. Fuji view rooms' }, body: { ja: '全50室から、四季折々の富士山を望む', en: 'Mt. Fuji from all 50 rooms, in every season' }, image: '/images/fuji/fuji-01.webp' },
-      { title: { ja: '麦飯石温泉大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '天然の麦飯石を使用した人工温泉。ご宿泊者専用', en: 'Hot-spring style bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
       { title: { ja: 'ご朝食', en: 'Breakfast' }, body: { ja: '朝食の有無・内容はご宿泊プランによります', en: 'Depends on your plan' }, image: '/images/live/fuji/about-2.webp' },
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
@@ -163,29 +162,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: '2名様', en: '2 guests' },
             { ja: 'ツインベッド', en: 'Twin beds' },
           ],
-        },
-        {
-          name: { ja: '眺望を楽しむ客室', en: 'Rooms with a view' },
-          image: '/images/fuji/fuji-01.webp',
-          gallery: ['/images/fuji/info-top.webp', '/images/fuji/fuji-03.webp'],
-          facts: [
-            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: '富士山ビュー客室', en: 'Mt. Fuji view room' } },
-            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '1〜3名様', en: '1–3 guests' } },
-            { label: { ja: '眺望', en: 'View' }, value: { ja: '富士山ビュー', en: 'Mt. Fuji' } },
-          ],
-          amenities: [
-            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
-            { ja: 'テレビ', en: 'TV' },
-            { ja: '冷蔵庫', en: 'Fridge' },
-            { ja: 'エアコン', en: 'Air conditioning' },
-            { ja: 'バス・トイレ', en: 'Bath & toilet' },
-            { ja: 'アメニティ一式', en: 'Toiletries' },
-          ],
-          body: {
-            ja: '窓辺に腰かけて、目の前に広がる富士山を眺めるひととき。旅の思い出に残る景色を、客室からそのままお届けします。',
-            en: 'Sit by the window with Mt. Fuji filling the view — a scene to remember, straight from your room.',
-          },
-          specs: [{ ja: '富士山ビュー', en: 'Mt. Fuji view' }],
         },
       ],
     },
