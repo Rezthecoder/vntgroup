@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+import { ReviewBadges } from '@/components/hotel/ReviewBadges';
 import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { Reveal } from '@/components/motion/Reveal';
 import { MapEmbed } from '@/components/ui/MapEmbed';
@@ -210,9 +211,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         stars={hotel.stars}
         tagline={L(hotel.tagline)}
         nextId="about"
-        homeHref={localePath(active)}
-        homeLabel={active === 'ja' ? 'ホーム' : 'Home'}
       />
+
 
       <HotelHeader
         name={title}
@@ -221,9 +221,12 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         links={links}
         contactHref={contactHref}
         homeHref={localePath(active)}
+        locale={active}
       />
 
       <Breadcrumbs locale={active} inHotel />
+
+      {hotel.reviews && <ReviewBadges reviews={hotel.reviews} locale={active} />}
 
       {/* EXPERIENCE ------------------------------------------------------- */}
       <section id="about" className={cn('px-5 pt-16 pb-20 md:pt-20 md:pb-28', ANCHOR)}>
