@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
-import { HomeFab } from '@/components/hotel/HomeFab';
 import { ReviewBadges } from '@/components/hotel/ReviewBadges';
 import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { Reveal } from '@/components/motion/Reveal';
@@ -214,8 +213,6 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         nextId="about"
       />
 
-      {/* The single VNT home button: floats bottom-left, hides while scrolling. */}
-      <HomeFab href={localePath(active)} label={active === 'ja' ? 'ホーム' : 'Home'} />
 
       <HotelHeader
         name={title}
@@ -224,6 +221,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         links={links}
         contactHref={contactHref}
         homeHref={localePath(active)}
+        locale={active}
       />
 
       <Breadcrumbs locale={active} inHotel />

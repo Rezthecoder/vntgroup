@@ -130,7 +130,9 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    /* clip, not hidden: with html clipped too, 'hidden' turned body into its
+       own scroll box and every position: sticky bar stopped sticking. */
+    overflow-x: clip;
   }
 
   /* Headings default to Zen Old Mincho; classes such as type-display or
