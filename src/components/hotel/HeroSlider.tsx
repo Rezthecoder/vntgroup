@@ -62,9 +62,8 @@ export function HeroSlider({
         <Link
           href={homeHref}
           aria-label={`VNT GROUP ${homeLabel}`}
-          className="glass-panel liquid-press absolute top-[calc(0.875rem+env(safe-area-inset-top))] left-4 z-20 flex items-center gap-2.5 rounded-full py-2 pr-4 pl-3 text-ink shadow-[0_6px_20px_rgba(0,0,0,0.18)] md:top-6 md:left-8"
+          className="glass-panel liquid-press absolute top-[calc(0.875rem+env(safe-area-inset-top))] left-4 z-20 flex items-center gap-2.5 rounded-full py-2 pr-4 pl-4 text-ink shadow-[0_6px_20px_rgba(0,0,0,0.18)] md:top-6 md:left-8"
         >
-          <span aria-hidden className="text-[1rem] leading-none">←</span>
           <Wordmark className="h-[0.95rem] w-auto text-brand md:h-[1.05rem]" />
           <span className="text-[0.8125rem] font-bold tracking-[0.1em]">{homeLabel}</span>
         </Link>

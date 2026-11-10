@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import '../globals.css';
 
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { MobileActionBar } from '@/components/layout/MobileActionBar';
@@ -119,6 +120,8 @@ export default async function LocaleLayout({
             contact: dict.common.contact,
           }}
         />
+
+        <Breadcrumbs locale={locale} />
 
         <PageTransition>{children}</PageTransition>
 
