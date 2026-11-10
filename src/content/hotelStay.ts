@@ -161,6 +161,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           },
           specs: [{ ja: '1〜2名様', en: '1–2 guests' }],
         },
+        // Same text and table as Nagoya's twin; Fuji's own photos.
         {
           name: { ja: 'ツインルーム', en: 'Twin Room' },
           image: '/images/fuji/fuji-02.webp',
@@ -169,7 +170,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
             { label: { ja: '定員', en: 'Capacity' }, value: { ja: '2名様', en: '2 guests' } },
-            { label: { ja: '眺望', en: 'View' }, value: { ja: '富士山ビュー', en: 'Mt. Fuji' } },
           ],
           amenities: [
             { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
@@ -180,13 +180,10 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: 'アメニティ一式', en: 'Toiletries' },
           ],
           body: {
-            ja: '大きな窓から富士山を望むツインルーム。朝焼けから夕暮れまで、刻々と表情を変える富士山を客室からお楽しみいただけます。',
-            en: 'A twin room with a large window onto Mt. Fuji — watch the mountain change from dawn to dusk without leaving the room.',
+            ja: 'ご友人同士や出張にも便利なツインルーム。それぞれのベッドでゆったりとお過ごしいただけます。',
+            en: 'A twin room for friends or colleagues, with a bed each to relax in.',
           },
-          specs: [
-            { ja: '2名様', en: '2 guests' },
-            { ja: 'ツインベッド', en: 'Twin beds' },
-          ],
+          specs: [{ ja: '2名様', en: '2 guests' }],
         },
         // DRAFT (client: add TRPL). Same text as Nagoya's triple. Photo to come; confirm beds/capacity.
         {
