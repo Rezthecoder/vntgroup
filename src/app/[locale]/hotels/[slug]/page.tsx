@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { Reveal } from '@/components/motion/Reveal';
 import { MapEmbed } from '@/components/ui/MapEmbed';
 import { HeroSlider } from '@/components/hotel/HeroSlider';
@@ -256,6 +257,26 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       <Rule />
 
+      {/* THE HOTEL MOVIE (as the live page) ------------------------------ */}
+      {hotel.youtubeId && (
+        <section className="border-t border-ink/8 px-5 py-24 md:py-28">
+          <EnHeading en="THE HOTEL MOVIE" sub={locale === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
+          <Reveal from="left" duration={1.2} className="mx-auto mt-12 max-w-[60rem]">
+            <VideoEmbed
+              id={hotel.youtubeId}
+              poster={hotel.hero}
+              label={locale === 'ja' ? '動画を再生' : 'Play film'}
+              title={`${hotel.name} — ${locale === 'ja' ? 'ホテル紹介動画' : 'hotel film'}`}
+            />
+          </Reveal>
+          {hotel.movieText && (
+            <Reveal className="mx-auto mt-10 max-w-[46rem]">
+              <p className="text-center text-[1.0625rem] leading-[2.05] text-ink-mute">{L(hotel.movieText)}</p>
+            </Reveal>
+          )}
+        </section>
+      )}
+
       {/* GROUPS & EVENTS -------------------------------------------------- */}
       <section className="px-5 py-24 md:py-28">
         <EnHeading en="PERFECT FOR GROUPS & EVENTS" sub={L(S.groups)} />
@@ -293,12 +314,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       {/* 8 photo cards ---------------------------------------------------- */}
       <section className="px-5 py-24 md:py-28">
-        <EnHeading en="WHATS SPECIAL" sub={L(S.features)} />
+        <EnHeading
+          en="WHATS SPECIAL"
+          sub={locale === 'ja' ? `${features.length}つの魅力` : `${features.length} things to love`}
+        />
         <Flourish className="mt-6" />
         <div className="mx-auto mt-12 grid max-w-[72rem] gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {features.map((f, i) => {
-            // 3 / 2 / 3 rhythm on desktop, as the reference grid.
-            const wide = i === 3 || i === 4;
+            // 8 cards: 3 / 2 / 3 rhythm on desktop, as the reference grid.
+            // Other counts: full rows of 3, any remainder as wide cards.
+            const wide = features.length === 8 ? i === 3 || i === 4 : spotShape(i, features.length).wide;
             return (
               <Reveal key={i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
                 <article

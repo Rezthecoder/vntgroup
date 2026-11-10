@@ -128,7 +128,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       { title: { ja: '富士山ビュー客室', en: 'Mt. Fuji view rooms' }, body: { ja: '全50室から、四季折々の富士山を望む', en: 'Mt. Fuji from all 50 rooms, in every season' }, image: '/images/fuji/fuji-01.webp' },
       { title: { ja: '麦飯石温泉大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '天然の麦飯石を使用した人工温泉。ご宿泊者専用', en: 'Hot-spring style bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
-      { title: { ja: 'ご朝食', en: 'Breakfast' }, body: { ja: '朝食の有無・内容はご宿泊プランによります', en: 'Depends on your plan' }, image: '/images/live/fuji/about-2.webp' },
+      // Client: ご朝食 → 食事. Photo is the udon shot until the client's photo arrives.
+      { title: { ja: 'お食事', en: 'Dining' }, body: { ja: '吉田のうどん・ほうとうなど、富士吉田の味をご堪能ください', en: 'Yoshida udon, hoto and more local flavours' }, image: '/images/spots/fuji-udon-v2.webp' },
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
       { title: { ja: '24時間フロント', en: '24-hour front desk' }, body: { ja: '深夜のご到着・早朝のご出発も安心', en: 'Late arrivals and early departures made easy' }, image: '/images/live/fuji/building.webp' },
       { title: { ja: '駐車場', en: 'Parking' }, body: { ja: 'お車でお越しのお客様へ。\n詳しくはお問い合わせください', en: 'For guests arriving by car' }, image: '/images/fuji/info-top.webp' },
@@ -430,12 +431,21 @@ const stays: Record<Hotel['slug'], HotelStay> = {
   },
 
   nagoya: {
+    // Photo strips. 周辺景色 = Nagoya sights (not rooms); 内景色 = rooms + bathroom.
+    scenery: {
+      inside: ['/images/nagoya/room-01.webp', '/images/nagoya/nagoya-03.webp', '/images/nagoya/room-02.webp', '/images/nagoya/nagoya-05.webp', '/images/nagoya/room-03.webp'],
+      around: [
+        '/images/spots/nagoya-konomiya-v2.webp',
+        '/images/nagoya/castle-01.webp',
+        '/images/spots/nagoya-atsuta-v2.webp',
+        '/images/spots/nagoya-tokugawa-v2.webp',
+        '/images/spots/nagoya-kiyosu-v2.webp',
+      ],
+    },
     // Short cards for WHATS SPECIAL (the live About copy is too long to sit on a photo).
     features: [
       { title: { ja: '駅から徒歩約5分', en: '5 min from the station' }, body: { ja: '名鉄「国府宮駅」から徒歩約5分。名古屋駅へ急行約15分', en: '5 min walk from Konomiya; 15 min express to Nagoya' }, image: '/images/spots/nagoya-konomiya-v2.webp' },
-      { title: { ja: '全33室の静かな客室', en: '33 quiet rooms' }, body: { ja: '静けさと快適さを大切にした客室', en: 'Rooms designed for quiet and comfort' }, image: '/images/nagoya/nagoya-05.webp' },
       { title: { ja: '3タイプの客室', en: 'Three room types' }, body: { ja: 'ダブル・ツイン・トリプル。一人旅からご家族まで', en: 'Double, twin and triple — solo trips to families' }, image: '/images/nagoya/room-03.webp' },
-      { title: { ja: '天然麦飯石の大浴場', en: 'Bakuhanseki stone bath' }, body: { ja: '宿泊者だけが利用できる癒しの空間', en: 'A large bath for staying guests only' }, image: '/images/fuji/onsen-01.webp' },
       { title: { ja: '名古屋観光の拠点', en: 'A base for Nagoya' }, body: { ja: '名古屋城・熱田神宮・徳川美術館へ', en: 'Nagoya Castle, Atsuta Shrine, Tokugawa Art Museum' }, image: '/images/nagoya/castle-01.webp' },
       { title: { ja: 'ビジネスにも', en: 'For business too' }, body: { ja: '観光にもビジネスにも便利な立地', en: 'Convenient for sightseeing and work alike' }, image: '/images/nagoya/room-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/nagoya/room-02.webp' },
@@ -497,6 +507,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'トリプルルーム', en: 'Triple Room' },
           image: '/images/nagoya/room-03.webp',
+          gallery: ['/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },

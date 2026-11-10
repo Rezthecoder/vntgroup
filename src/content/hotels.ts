@@ -48,7 +48,7 @@ const EXPEDIA = 'https://expe.app.link/CgQTljpNESb';
 const BATH: Block = {
   title: { ja: '心と体を解きほぐす\n天然麦飯石の大浴場', en: 'A bakuhanseki stone bath\nthat unwinds body and mind' },
   body: {
-    ja: '天然の麦飯石を使用した人工温泉「性石温泉大浴場」で、体の芯から温まるリラクゼーションをお楽しみください。\n\n大浴場は、宿泊者だけが利用できる特別な癒しの空間です。旅の疲れを優しく癒し、次の日への活力を養うひとときをお過ごしいただけます。',
+    ja: '天然の麦飯石を使用した人工温泉「麦飯石温泉大浴場」で、体の芯から温まるリラクゼーションをお楽しみください。\n\n大浴場は、宿泊者だけが利用できる特別な癒しの空間です。旅の疲れを優しく癒し、次の日への活力を養うひとときをお過ごしいただけます。',
     en: 'Warm through to the core in the “Shoseki Onsen” large bath, an artificial hot spring drawn over natural bakuhanseki stone.\n\nThe large bath is reserved for staying guests — a quiet place to ease the day’s travel and gather energy for tomorrow.',
   },
   image: '/images/fuji/onsen-01.webp',
