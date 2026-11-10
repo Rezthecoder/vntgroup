@@ -479,7 +479,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
           image: '/images/nagoya/room-01.webp',
-          gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-02.webp'],
+          // Only this room type's photos (+ the bathroom); no twin/triple shots.
+          gallery: ['/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
@@ -502,7 +503,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'ツインルーム', en: 'Twin Room' },
           image: '/images/nagoya/room-02.webp',
-          gallery: ['/images/nagoya/nagoya-03.webp', '/images/nagoya/nagoya-04.webp'],
+          gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
@@ -525,7 +526,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'トリプルルーム', en: 'Triple Room' },
           image: '/images/nagoya/room-03.webp',
-          gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-03.webp'],
+          gallery: ['/images/nagoya/nagoya-02.webp', '/images/nagoya/nagoya-04.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },
