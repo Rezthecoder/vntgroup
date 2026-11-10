@@ -16,6 +16,11 @@ export type Hotel = {
   pageTitle?: string;
   nameJa: string;
   stars: number;
+  /** Rating badges, as on the live page (Google review score + booking-site ranks). */
+  reviews?: {
+    google: { score: number; date: string; href: string };
+    ranks: { site: string; stars: number; href?: string }[];
+  };
   rating?: { score: string; asOf: string };
   location: L10n;
   /** Photo on the hotel's own page. */
@@ -60,6 +65,14 @@ export const hotels: Hotel[] = [
     name: 'FUJI PREMIUM HOTEL',
     nameJa: '富士プレミアムホテル',
     stars: 4,
+    // From vntgroup.co.jp/fuji-premium-hotel (scores dated 2025.5.12 there).
+    reviews: {
+      google: { score: 4.8, date: '2025.5.12', href: 'https://maps.app.goo.gl/9dFUmefu89cxFRYUA' },
+      ranks: [
+        { site: 'agoda', stars: 4, href: 'https://www.agoda.com/ja-jp/fuji-premium-hotel/hotel/fujikawaguchiko-jp.html' },
+        { site: 'Booking.com', stars: 4 },
+      ],
+    },
     rating: { score: '4.8', asOf: '25.5.12' },
     location: { ja: '山梨県 富士吉田市', en: 'Fujiyoshida, Yamanashi' },
     hero: '/images/fuji/fuji-03.webp',
