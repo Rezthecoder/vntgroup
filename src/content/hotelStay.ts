@@ -165,29 +165,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: 'ツインベッド', en: 'Twin beds' },
           ],
         },
-        {
-          name: { ja: '眺望を楽しむ客室', en: 'Rooms with a view' },
-          image: '/images/fuji/fuji-01.webp',
-          gallery: ['/images/fuji/info-top.webp', '/images/fuji/fuji-03.webp'],
-          facts: [
-            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: '富士山ビュー客室', en: 'Mt. Fuji view room' } },
-            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '1〜3名様', en: '1–3 guests' } },
-            { label: { ja: '眺望', en: 'View' }, value: { ja: '富士山ビュー', en: 'Mt. Fuji' } },
-          ],
-          amenities: [
-            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
-            { ja: 'テレビ', en: 'TV' },
-            { ja: '冷蔵庫', en: 'Fridge' },
-            { ja: 'エアコン', en: 'Air conditioning' },
-            { ja: 'バス・トイレ', en: 'Bath & toilet' },
-            { ja: 'アメニティ一式', en: 'Toiletries' },
-          ],
-          body: {
-            ja: '窓辺に腰かけて、目の前に広がる富士山を眺めるひととき。旅の思い出に残る景色を、客室からそのままお届けします。',
-            en: 'Sit by the window with Mt. Fuji filling the view — a scene to remember, straight from your room.',
-          },
-          specs: [{ ja: '富士山ビュー', en: 'Mt. Fuji view' }],
-        },
       ],
     },
     dining: {
