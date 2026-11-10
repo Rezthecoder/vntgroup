@@ -722,7 +722,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     features: [
       { title: { ja: '世界遺産・東寺の目の前', en: 'Facing World Heritage Toji' }, body: { ja: '1200年の歴史を刻む東寺のすぐ前に', en: 'Right in front of 1,200-year-old Toji' }, image: '/images/toji/toji-01.webp' },
       { title: { ja: '五重塔を望む客室', en: 'Rooms with a pagoda view' }, body: { ja: '一部の客室から東寺の五重塔を望めます', en: 'Some rooms look out on Toji’s five-storey pagoda' }, image: '/images/toji/toji-04.webp' },
-      { title: { ja: '15室のスモールホテル', en: 'A small hotel of 15 rooms' }, body: { ja: 'ひとりひとりが落ち着いて過ごせる空間', en: 'Space for every guest to settle in' }, image: '/images/toji/toji-05.webp' },
       { title: { ja: '京都駅から約5分', en: '5 min from Kyoto Station' }, body: { ja: '八条口からタクシーで約5分。観光にも移動にも', en: 'About 5 min by taxi from the Hachijo exit' }, image: '/images/toji/toji-07.webp' },
       { title: { ja: '光で変わる東寺', en: 'Toji in changing light' }, body: { ja: '朝の光、夕暮れ、夜のライトアップ', en: 'Morning light, dusk and the evening illumination' }, image: '/images/toji/toji-06.webp' },
       { title: { ja: '和のツインルーム', en: 'Japanese-accent twins' }, body: { ja: '静かな京都の夜をゆっくりと', en: 'Quiet Kyoto nights, at your own pace' }, image: '/images/toji/toji-08.webp' },
