@@ -165,7 +165,7 @@ export const hotels: Hotel[] = [
           ja: 'Nagoya Premium Hotelは、愛知県稲沢市・国府宮に位置し、\n名古屋の中心地からのアクセスも良好な、落ち着いた環境に佇んでいます。\n\n全33室の客室は、静かな時間を大切にした設計で、\nビジネスや観光の拠点としてご利用いただく方々に、\n心やすらぐ滞在をご提供します。\n\n歴史ある国府宮神社や名古屋の名所にも程近く、\n都市の賑わいと落ち着きの両方を感じられるこの場所で、\nあなただけの特別な時間をお過ごしください。',
           en: 'Nagoya Premium Hotel stands in Konomiya, Inazawa, Aichi — a calm setting with good access to central Nagoya.\n\nAll 33 rooms are designed around quiet time, giving a restful stay to guests using the hotel as a base for business or sightseeing.\n\nClose to the historic Konomiya Shrine and Nagoya’s sights, it is a place to feel both the city’s energy and its calm — spend a special time of your own here.',
         },
-        image: '/images/nagoya/nagoya-01.webp',
+        image: '/images/nagoya/room-02.webp',
       },
     ],
     // The live Nagoya page shows the Fuji hotel film and Fuji's description
@@ -182,7 +182,7 @@ export const hotels: Hotel[] = [
             ja: 'Nagoya Premium Hotelは、愛知県稲沢市・国府宮に位置し、\n名古屋市内や主要観光地へのアクセスも良好な落ち着いた環境にあります。\n\n全33室の客室は、心地よい静けさと機能性を兼ね備え、\n観光やビジネスの合間にリラックスできる空間をご提供します。\n\nどうぞ、日常から少し離れた穏やかな時間をお過ごしください。\n気軽に、そして心ゆくまで、名古屋の滞在をお楽しみいただけます。',
             en: 'In Konomiya, Inazawa, Aichi, the hotel sits in a calm setting with good access to central Nagoya and the main sights.\n\nAll 33 rooms combine comfortable quiet with practicality — a place to relax between sightseeing and business.\n\nSpend some peaceful time a little away from the everyday, and enjoy your stay in Nagoya at your own pace.',
           },
-          image: '/images/nagoya/nagoya-02.webp',
+          image: '/images/nagoya/room-03.webp',
         },
         BATH,
       ],
@@ -202,7 +202,8 @@ export const hotels: Hotel[] = [
         en: 'Comfortable rooms and quiet streets, in a convenient base for Nagoya. From solo trips to families and groups, a stay that fits every journey.',
       },
     },
-    gallery: ['/images/nagoya/nagoya-01.webp', '/images/nagoya/nagoya-02.webp', '/images/nagoya/nagoya-03.webp', '/images/nagoya/nagoya-04.webp'],
+    // Blue-bed photos (nagoya-01/02/04) removed at the client's request.
+    gallery: ['/images/nagoya/room-01.webp', '/images/nagoya/room-02.webp', '/images/nagoya/room-03.webp', '/images/nagoya/nagoya-03.webp'],
     info: {
       address: {
         ja: '〒492-8137 愛知県稲沢市国府宮3丁目1-12',
