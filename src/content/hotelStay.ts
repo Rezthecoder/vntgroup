@@ -13,7 +13,8 @@ import type { Hotel } from '@/content/hotels';
 
 export type RoomType = {
   name: L10n;
-  image: string;
+  /** Main photo. Leave out until the hotel sends one: a 写真準備中 panel shows instead. */
+  image?: string;
   body: L10n;
   /** Short facts printed as tags: size, capacity, beds. */
   specs?: L10n[];
@@ -138,8 +139,30 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
       items: [
+        // DRAFT (client: add DBL). Photo to come; beds/capacity as a standard double — confirm with the client.
         {
-          name: { ja: '富士山ビュー ツインルーム', en: 'Mt. Fuji View Twin' },
+          name: { ja: 'ダブルルーム', en: 'Double Room' },
+          facts: [
+            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
+            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
+            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '1〜2名様', en: '1–2 guests' } },
+          ],
+          amenities: [
+            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
+            { ja: 'テレビ', en: 'TV' },
+            { ja: '冷蔵庫', en: 'Fridge' },
+            { ja: 'エアコン', en: 'Air conditioning' },
+            { ja: 'バス・トイレ', en: 'Bath & toilet' },
+            { ja: 'アメニティ一式', en: 'Toiletries' },
+          ],
+          body: {
+            ja: 'お一人様やご夫婦でのご滞在に。落ち着いた客室で、富士山観光の後もゆったりとお休みいただけます。',
+            en: 'For solo guests or couples — a calm room to rest in after a day around Mt. Fuji.',
+          },
+          specs: [{ ja: '1〜2名様', en: '1–2 guests' }],
+        },
+        {
+          name: { ja: 'ツインルーム', en: 'Twin Room' },
           image: '/images/fuji/fuji-02.webp',
           gallery: ['/images/fuji/fuji-01.webp', '/images/fuji/onsen-01.webp'],
           facts: [
@@ -164,6 +187,28 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: '2名様', en: '2 guests' },
             { ja: 'ツインベッド', en: 'Twin beds' },
           ],
+        },
+        // DRAFT (client: add TRPL). Photo to come; beds/capacity as a standard triple — confirm with the client.
+        {
+          name: { ja: 'トリプルルーム', en: 'Triple Room' },
+          facts: [
+            { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
+            { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },
+            { label: { ja: '定員', en: 'Capacity' }, value: { ja: '3名様', en: '3 guests' } },
+          ],
+          amenities: [
+            { ja: '無料Wi-Fi', en: 'Free Wi-Fi' },
+            { ja: 'テレビ', en: 'TV' },
+            { ja: '冷蔵庫', en: 'Fridge' },
+            { ja: 'エアコン', en: 'Air conditioning' },
+            { ja: 'バス・トイレ', en: 'Bath & toilet' },
+            { ja: 'アメニティ一式', en: 'Toiletries' },
+          ],
+          body: {
+            ja: 'ご家族や小グループでのご旅行に。皆さまご一緒に過ごせる、ゆとりある客室です。',
+            en: 'For families and small groups — room for everyone together.',
+          },
+          specs: [{ ja: '3名様', en: '3 guests' }],
         },
       ],
     },

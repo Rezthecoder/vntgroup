@@ -389,7 +389,11 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
               <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
                 <Reveal from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} className="overflow-hidden rounded-xl">
-                  <RoomGallery images={[room.image, ...(room.gallery ?? [])]} alt={L(room.name)} />
+                  <RoomGallery
+                    images={[room.image, ...(room.gallery ?? [])].filter((src): src is string => !!src)}
+                    alt={L(room.name)}
+                    emptyLabel={active === 'ja' ? '写真準備中' : 'Photos coming soon'}
+                  />
                 </Reveal>
 
                 <Reveal delay={0.08}>
