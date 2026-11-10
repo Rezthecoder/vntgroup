@@ -91,22 +91,25 @@ export function HotelHeader({
         </a>
       </div>
 
-      <header className="glass-bar sticky top-0 z-[130] border-t border-ink/10">
-        <div className="flex items-center justify-between px-5 md:hidden">
-          <ThemeToggle />
-          <div className="flex items-center gap-4">
-            <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="hotel-mobile-menu"
-            className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink"
-          >
-            {open ? '閉じる' : 'メニュー'}
-            </button>
-          </div>
-        </div>
+      {/* Phone: one round menu button, fixed top-right from the first screen and
+          never hidden, so the page sections are always one tap away. */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="hotel-mobile-menu"
+        aria-label={open ? '閉じる' : 'メニュー'}
+        className="glass-panel liquid-press fixed top-[calc(0.875rem+env(safe-area-inset-top))] right-4 z-[150] flex size-14 flex-col items-center justify-center gap-1 rounded-full text-ink shadow-[0_8px_24px_rgba(0,0,0,0.18)] md:hidden"
+      >
+        <span aria-hidden className="relative block h-[0.75rem] w-5">
+          <span className={cn('absolute left-0 h-[1.5px] w-5 rounded bg-current transition-transform duration-300', open ? 'top-[0.33rem] rotate-45' : 'top-0')} />
+          <span className={cn('absolute top-[0.33rem] left-0 h-[1.5px] w-5 rounded bg-current transition-opacity duration-200', open && 'opacity-0')} />
+          <span className={cn('absolute left-0 h-[1.5px] w-5 rounded bg-current transition-transform duration-300', open ? 'top-[0.33rem] -rotate-45' : 'top-[0.66rem]')} />
+        </span>
+        <span className="text-[0.5625rem] font-bold tracking-[0.08em]">{open ? '閉じる' : 'メニュー'}</span>
+      </button>
 
+      <header className="glass-bar sticky top-0 z-[130] hidden border-t border-ink/10 md:block">
         {/* Desktop: one centred row of links, the theme switch at the right. */}
         <ThemeToggle className="absolute top-1/2 right-5 hidden -translate-y-1/2 md:inline-flex" />
         <nav aria-label="Page sections" className="hidden px-5 md:block">
@@ -160,15 +163,8 @@ export function HotelHeader({
               exit={{ x: '100%' }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center justify-end border-b border-ink/10">
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink"
-                >
-                  閉じる
-                </button>
-              </div>
+              {/* Room for the round button, which now reads 閉じる. */}
+              <div className="h-[calc(4.75rem+env(safe-area-inset-top))] shrink-0 border-b border-ink/10" />
               <ul className="flex flex-col">
                 {links.map((link) => (
                   <li key={link.id}>
@@ -193,6 +189,9 @@ export function HotelHeader({
                   </Link>
                 </li>
               </ul>
+              <div className="mt-6">
+                <ThemeToggle />
+              </div>
             </motion.nav>
           </div>
         )}
