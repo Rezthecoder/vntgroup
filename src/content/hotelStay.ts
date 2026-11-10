@@ -139,7 +139,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
       items: [
-        // DRAFT (client: add DBL). Photo to come; beds/capacity as a standard double — confirm with the client.
+        // DRAFT (client: add DBL). Same text as Nagoya's double. Photo to come; confirm beds/capacity.
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
           facts: [
@@ -156,8 +156,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: 'アメニティ一式', en: 'Toiletries' },
           ],
           body: {
-            ja: 'お一人様やご夫婦でのご滞在に。落ち着いた客室で、富士山観光の後もゆったりとお休みいただけます。',
-            en: 'For solo guests or couples — a calm room to rest in after a day around Mt. Fuji.',
+            ja: 'お一人様やご夫婦でのご滞在に。落ち着いた色調で、観光やお仕事の後にゆっくりお休みいただけます。',
+            en: 'For solo guests or couples — calm tones to rest well after sightseeing or work.',
           },
           specs: [{ ja: '1〜2名様', en: '1–2 guests' }],
         },
@@ -188,7 +188,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             { ja: 'ツインベッド', en: 'Twin beds' },
           ],
         },
-        // DRAFT (client: add TRPL). Photo to come; beds/capacity as a standard triple — confirm with the client.
+        // DRAFT (client: add TRPL). Same text as Nagoya's triple. Photo to come; confirm beds/capacity.
         {
           name: { ja: 'トリプルルーム', en: 'Triple Room' },
           facts: [
