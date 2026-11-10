@@ -202,7 +202,15 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
   return (
     <div id="top" className="bg-page text-ink">
-      <HeroSlider images={slides} title={title} stars={hotel.stars} tagline={L(hotel.tagline)} nextId="about" />
+      <HeroSlider
+        images={slides}
+        title={title}
+        stars={hotel.stars}
+        tagline={L(hotel.tagline)}
+        nextId="about"
+        homeHref={localePath(active)}
+        homeLabel={active === 'ja' ? 'ホーム' : 'Home'}
+      />
 
       <HotelHeader
         name={title}

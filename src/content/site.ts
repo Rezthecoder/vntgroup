@@ -36,6 +36,11 @@ export type NavItem = {
 /** Full menu (overlay). Labels use the live site's wording. */
 export const navigation: NavItem[] = [
   {
+    href: '/',
+    index: '00',
+    label: { ja: 'ホーム', en: 'Home' },
+  },
+  {
     href: '/company',
     index: '01',
     label: { ja: '会社概要', en: 'Company' },
@@ -86,6 +91,7 @@ export const navigation: NavItem[] = [
 /** Header bar links, in the live site's order and wording. 採用 goes to the
  *  contact form there, as it does on the live site. */
 export const headerNav: { href: string; label: L10n }[] = [
+  { href: '/', label: { ja: 'ホーム', en: 'Home' } },
   { href: '/business', label: { ja: '事業', en: 'Business' } },
   { href: '/hotels', label: { ja: 'ホテル', en: 'Hotels' } },
   { href: '/dining', label: { ja: '飲食店', en: 'Dining' } },

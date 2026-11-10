@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
+import { Wordmark } from '@/components/brand/Wordmark';
 import { cn } from '@/lib/utils';
 
 /**
@@ -17,6 +19,8 @@ export function HeroSlider({
   stars,
   tagline,
   nextId,
+  homeHref,
+  homeLabel = 'ホーム',
 }: {
   images: string[];
   title: string;
@@ -24,6 +28,9 @@ export function HeroSlider({
   tagline?: string;
   /** Section the round scroll button leads to. */
   nextId: string;
+  /** VNT GROUP home: a glass pill in the top-left corner, so the way back is visible at once. */
+  homeHref?: string;
+  homeLabel?: string;
 }) {
   const [index, setIndex] = useState(0);
   const count = images.length;
@@ -50,6 +57,18 @@ export function HeroSlider({
       ))}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sumi/30 via-sumi/5 to-sumi/30 md:from-sumi/15 md:to-sumi/15" />
       </div>
+
+      {homeHref && (
+        <Link
+          href={homeHref}
+          aria-label={`VNT GROUP ${homeLabel}`}
+          className="glass-panel liquid-press absolute top-[calc(0.875rem+env(safe-area-inset-top))] left-4 z-20 flex items-center gap-2.5 rounded-full py-2 pr-4 pl-3 text-ink shadow-[0_6px_20px_rgba(0,0,0,0.18)] md:top-6 md:left-8"
+        >
+          <span aria-hidden className="text-[1rem] leading-none">←</span>
+          <Wordmark className="h-[0.95rem] w-auto text-brand md:h-[1.05rem]" />
+          <span className="text-[0.8125rem] font-bold tracking-[0.1em]">{homeLabel}</span>
+        </Link>
+      )}
 
       {/* Hotel name over the photo, as the reference's centred logo. */}
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-washi [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
