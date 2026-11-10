@@ -98,7 +98,7 @@ export type HotelStay = {
   features?: Feature[];
   /** Photo strips: inside the hotel / around the hotel. */
   scenery?: { inside: string[]; around: string[] };
-  rooms: { lead: L10n; services?: ServiceNote[]; items: RoomType[] };
+  rooms: { lead?: L10n; services?: ServiceNote[]; items: RoomType[] };
   dining: { lead: L10n; items: DiningItem[] };
   access: {
     lead: L10n;
@@ -134,37 +134,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       { title: { ja: '駐車場', en: 'Parking' }, body: { ja: 'お車でお越しのお客様へ。\n詳しくはお問い合わせください', en: 'For guests arriving by car' }, image: '/images/fuji/info-top.webp' },
       { title: { ja: '周辺観光の拠点', en: 'A base for sightseeing' }, body: { ja: '河口湖・忍野八海・富士急ハイランドへ車で約10〜15分', en: 'Lake Kawaguchi, Oshino Hakkai and Fuji-Q in 10-15 min' }, image: '/images/live/fuji/u2.jpg' },
     ],
+    // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
-      // DRAFT (reference-style サービス内容 cards). Wi-Fi / front desk from the hotel's booking listings; confirm with the client.
-      services: [
-        {
-          title: { ja: '基本サービス', en: 'Basics' },
-          body: { ja: '館内全域で無料Wi-Fiをご利用いただけます。\nフロントは24時間対応です。', en: 'Free Wi-Fi throughout; 24-hour front desk.' },
-        },
-        {
-          title: { ja: '朝食', en: 'Breakfast' },
-          body: BREAKFAST_NOTE,
-        },
-        {
-          title: { ja: '大浴場', en: 'Large bath' },
-          body: {
-            ja: '天然の麦飯石を使用した人工温泉「麦飯石温泉大浴場」。ご宿泊者専用です。',
-            en: 'The Bakuhanseki stone bath, for staying guests only.',
-          },
-        },
-        {
-          title: { ja: '団体のお客様', en: 'Groups' },
-          body: { ja: '団体予約は団体受付までお電話ください。\n080-4097-9552', en: 'Group bookings: call the group desk, 080-4097-9552.' },
-        },
-        {
-          title: { ja: '交通', en: 'Getting here' },
-          body: { ja: '富士急行線「富士山駅」よりタクシーで約7分。\n中央自動車道「河口湖IC」より車で約10分。', en: 'About 7 min by taxi from Fujisan Station; 10 min by car from Kawaguchiko IC.' },
-        },
-      ],
-      lead: {
-        ja: '全50室の客室は、窓の向こうに富士山を望む設計。ご夫婦やご友人同士の旅から、ご家族・団体でのご滞在まで、ゆったりとお過ごしいただけます。',
-        en: 'All 50 rooms are designed around the view of Mt. Fuji beyond the window — for couples and friends, families and groups alike.',
-      },
       items: [
         {
           name: { ja: '富士山ビュー ツインルーム', en: 'Mt. Fuji View Twin' },
