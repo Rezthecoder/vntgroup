@@ -1,8 +1,10 @@
+import Image from 'next/image';
+
 import { Reveal } from '@/components/motion/Reveal';
 
 type Reviews = {
   google: { score: number; date: string; href: string };
-  ranks: { site: string; stars: number; href?: string }[];
+  ranks: { site: string; logo?: string; stars: number; href?: string }[];
 };
 
 function Stars({ n, of = 5, className = '' }: { n: number; of?: number; className?: string }) {
@@ -16,8 +18,9 @@ function Stars({ n, of = 5, className = '' }: { n: number; of?: number; classNam
 
 /**
  * The live page's rating strip: Google review score and the booking sites'
- * hotel ranks. Site names are set in type (no third-party logos); each badge
- * links to its listing where the live page does.
+ * hotel ranks, with the sites' logos as the live page shows them (on a white
+ * patch in dark mode so the grey marks stay legible); each badge links to
+ * its listing where the live page does.
  */
 export function ReviewBadges({ reviews, locale }: { reviews: Reviews; locale: 'ja' | 'en' }) {
   const ja = locale === 'ja';
@@ -37,8 +40,14 @@ export function ReviewBadges({ reviews, locale }: { reviews: Reviews; locale: 'j
       <div className="mx-auto grid max-w-[60rem] grid-cols-3 gap-2 sm:gap-4">
         <Reveal from="left" distance={50}>
           <Wrap href={reviews.google.href}>
-            <span className="text-[0.8125rem] font-bold tracking-[0.04em] whitespace-nowrap text-ink-mute sm:text-[0.9375rem] sm:tracking-[0.1em]">
-              Google<span className="hidden sm:inline"> {ja ? 'マップ' : 'Maps'}</span>
+            <span className="dark:rounded-md dark:bg-white dark:px-1.5 dark:py-1">
+              <Image
+                src="/images/brands/google-maps.webp"
+                alt="Google Maps"
+                width={640}
+                height={124}
+                className="h-[1.05rem] w-auto sm:h-[1.75rem]"
+              />
             </span>
             <span className="text-[0.6875rem] tracking-[0.1em] text-stone sm:text-[0.75rem] sm:tracking-[0.2em]">{ja ? '口コミ評価' : 'Review'}</span>
             <span className="mt-1 flex items-baseline gap-1.5">
@@ -54,7 +63,19 @@ export function ReviewBadges({ reviews, locale }: { reviews: Reviews; locale: 'j
         {reviews.ranks.map((r, i) => (
           <Reveal key={r.site} delay={0.1 * (i + 1)} from={i % 2 ? 'left' : 'right'} distance={50}>
             <Wrap href={r.href}>
-              <span className="text-[0.8125rem] font-bold whitespace-nowrap text-ink sm:text-[1.25rem]">{r.site}</span>
+              {r.logo ? (
+                <span className="flex h-[2rem] items-center dark:rounded-md dark:bg-white dark:px-1.5 sm:h-[3.25rem]">
+                  <Image
+                    src={r.logo}
+                    alt={r.site}
+                    width={640}
+                    height={330}
+                    className={r.site === 'agoda' ? 'h-[1.9rem] w-auto sm:h-[3.1rem]' : 'h-[0.85rem] w-auto sm:h-[1.45rem]'}
+                  />
+                </span>
+              ) : (
+                <span className="text-[0.8125rem] font-bold whitespace-nowrap text-ink sm:text-[1.25rem]">{r.site}</span>
+              )}
               <span className="text-[0.6875rem] tracking-[0.1em] text-stone sm:text-[0.75rem] sm:tracking-[0.2em]">Hotel Rank</span>
               <Stars n={r.stars} of={r.stars} className="mt-1 text-[0.9375rem] sm:text-[1.375rem]" />
             </Wrap>
