@@ -63,7 +63,7 @@ export function HeroSlider({
           <button
             type="button"
             onClick={() => go(-1)}
-            aria-label="前の写真"
+            aria-label="Previous photo"
             className="absolute top-1/2 left-4 -translate-y-1/2 glass-lit flex size-11 items-center justify-center rounded-full text-washi transition-colors md:left-8"
           >
             <Chevron dir="left" />
@@ -71,7 +71,7 @@ export function HeroSlider({
           <button
             type="button"
             onClick={() => go(1)}
-            aria-label="次の写真"
+            aria-label="Next photo"
             className="absolute top-1/2 right-4 -translate-y-1/2 glass-lit flex size-11 items-center justify-center rounded-full text-washi transition-colors md:right-8"
           >
             <Chevron dir="right" />
@@ -82,7 +82,7 @@ export function HeroSlider({
                 <button
                   type="button"
                   onClick={() => setIndex(i)}
-                  aria-label={`写真 ${i + 1}`}
+                  aria-label={`Photo ${i + 1}`}
                   aria-current={i === index}
                   className={cn('block size-2 rounded-full transition-colors', i === index ? 'bg-washi' : 'bg-washi/40 hover:bg-washi/70')}
                 />

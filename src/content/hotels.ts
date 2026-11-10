@@ -18,7 +18,7 @@ export type Hotel = {
   stars: number;
   /** Rating badges, as on the live page (Google review score + booking-site ranks). */
   reviews?: {
-    google: { score: number; date: string; href: string };
+    google: { score: number; date: string; href?: string };
     ranks: { site: string; logo?: string; stars: number; href?: string }[];
   };
   rating?: { score: string; asOf: string };
@@ -235,6 +235,15 @@ export const hotels: Hotel[] = [
     pageTitle: 'PREMIUM TOJI HOTEL',
     nameJa: 'プレミアム東寺',
     stars: 3,
+    // From vntgroup.co.jp/premium-toji (dated 2025.5.12). The live page's links
+    // point to Fuji's listings by mistake, so no links until the client sends Toji's.
+    reviews: {
+      google: { score: 4.5, date: '2025.5.12' },
+      ranks: [
+        { site: 'agoda', logo: '/images/brands/agoda.webp', stars: 3 },
+        { site: 'Booking.com', logo: '/images/brands/booking.webp', stars: 3 },
+      ],
+    },
     rating: { score: '4.5', asOf: '25.5.12' },
     location: { ja: '京都府 京都市南区', en: 'Minami-ku, Kyoto' },
     hero: '/images/toji/toji-02.webp',

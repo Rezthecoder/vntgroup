@@ -84,7 +84,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
         </section>
       ))}
 
-      <ShopLinks shops={diningShops} locale={active} eyebrow="More Restaurants" title="その他の飲食店" />
+      <ShopLinks shops={diningShops} locale={active} eyebrow="More Restaurants" title={active === 'en' ? 'Other restaurants' : 'その他の飲食店'} />
 
       {/* Retail ----------------------------------------------------------- */}
       <section className="relative border-t border-ink/10 py-28 md:py-36">
@@ -101,7 +101,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      <ShopLinks shops={retailShops} locale={active} eyebrow="More Shops" title="その他の販売店" />
+      <ShopLinks shops={retailShops} locale={active} eyebrow="More Shops" title={active === 'en' ? 'Other shops' : 'その他の販売店'} />
 
     </>
   );

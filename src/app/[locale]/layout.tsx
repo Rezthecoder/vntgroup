@@ -47,12 +47,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t(site.description, active),
     alternates: {
       canonical: `/${active}`,
-      languages: { ja: '/ja' },
+      languages: { ja: '/ja', en: '/en' },
     },
     openGraph: {
       type: 'website',
       siteName: 'VNT GROUP',
-      locale: 'ja_JP',
+      locale: active === 'en' ? 'en_US' : 'ja_JP',
       title: `VNT GROUP | ${t(site.tagline, active)}`,
       description: t(site.description, active),
       images: ['/images/brand/hero-group.webp'],
