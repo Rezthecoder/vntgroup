@@ -293,12 +293,16 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       {/* 8 photo cards ---------------------------------------------------- */}
       <section className="px-5 py-24 md:py-28">
-        <EnHeading en="WHATS SPECIAL" sub={L(S.features)} />
+        <EnHeading
+          en="WHATS SPECIAL"
+          sub={locale === 'ja' ? `${features.length}つの魅力` : `${features.length} things to love`}
+        />
         <Flourish className="mt-6" />
         <div className="mx-auto mt-12 grid max-w-[72rem] gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {features.map((f, i) => {
-            // 3 / 2 / 3 rhythm on desktop, as the reference grid.
-            const wide = i === 3 || i === 4;
+            // 8 cards: 3 / 2 / 3 rhythm on desktop, as the reference grid.
+            // Other counts: full rows of 3, any remainder as wide cards.
+            const wide = features.length === 8 ? i === 3 || i === 4 : spotShape(i, features.length).wide;
             return (
               <Reveal key={i} from={i % 2 === 0 ? 'left' : 'right'} duration={1.1} delay={(i % 3) * 0.06} className={cn(wide ? 'lg:col-span-3' : 'lg:col-span-2')}>
                 <article
