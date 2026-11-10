@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { Reveal } from '@/components/motion/Reveal';
 import { MapEmbed } from '@/components/ui/MapEmbed';
 import { HeroSlider } from '@/components/hotel/HeroSlider';
@@ -255,6 +256,26 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <Rule />
+
+      {/* THE HOTEL MOVIE (as the live page) ------------------------------ */}
+      {hotel.youtubeId && (
+        <section className="border-t border-ink/8 px-5 py-24 md:py-28">
+          <EnHeading en="THE HOTEL MOVIE" sub={locale === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
+          <Reveal from="left" duration={1.2} className="mx-auto mt-12 max-w-[60rem]">
+            <VideoEmbed
+              id={hotel.youtubeId}
+              poster={hotel.hero}
+              label={locale === 'ja' ? '動画を再生' : 'Play film'}
+              title={`${hotel.name} — ${locale === 'ja' ? 'ホテル紹介動画' : 'hotel film'}`}
+            />
+          </Reveal>
+          {hotel.movieText && (
+            <Reveal className="mx-auto mt-10 max-w-[46rem]">
+              <p className="text-center text-[1.0625rem] leading-[2.05] text-ink-mute">{L(hotel.movieText)}</p>
+            </Reveal>
+          )}
+        </section>
+      )}
 
       {/* GROUPS & EVENTS -------------------------------------------------- */}
       <section className="px-5 py-24 md:py-28">
