@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { VideoEmbed } from '@/components/ui/VideoEmbed';
 import { Reveal } from '@/components/motion/Reveal';
 import { MapEmbed } from '@/components/ui/MapEmbed';
@@ -192,7 +193,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
   const groupGrid = [pick(1), pick(2), pick(3), pick(0)];
   const geo = coords(hotel.mapEmbed);
   const links = [
-    { id: 'top', label: 'ホーム' },
+    // トップ = top of this hotel page; ホーム is kept for the VNT home page.
+    { id: 'top', label: 'トップ' },
     { id: 'about', label: 'ホテルについて' },
     { id: 'rooms', label: '客室' },
     { id: 'dining', label: 'お食事' },
@@ -202,7 +204,15 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
   return (
     <div id="top" className="bg-page text-ink">
-      <HeroSlider images={slides} title={title} stars={hotel.stars} tagline={L(hotel.tagline)} nextId="about" />
+      <HeroSlider
+        images={slides}
+        title={title}
+        stars={hotel.stars}
+        tagline={L(hotel.tagline)}
+        nextId="about"
+        homeHref={localePath(active)}
+        homeLabel={active === 'ja' ? 'ホーム' : 'Home'}
+      />
 
       <HotelHeader
         name={title}
@@ -212,6 +222,8 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         contactHref={contactHref}
         homeHref={localePath(active)}
       />
+
+      <Breadcrumbs locale={active} inHotel />
 
       {/* EXPERIENCE ------------------------------------------------------- */}
       <section id="about" className={cn('px-5 pt-16 pb-20 md:pt-20 md:pb-28', ANCHOR)}>

@@ -1,5 +1,6 @@
 ﻿'use client';
 
+import { Wordmark } from '@/components/brand/Wordmark';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -93,8 +94,12 @@ export function HotelHeader({
 
       <header className="glass-bar sticky top-0 z-[130] border-t border-ink/10">
         <div className="flex items-center justify-between px-5 md:hidden">
-          <ThemeToggle />
-          <button
+          <Link href={homeHref} aria-label="VNT GROUP ホーム" className="py-3 text-brand">
+            <Wordmark className="h-[1.05rem] w-auto" />
+          </Link>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -102,13 +107,28 @@ export function HotelHeader({
             className="py-3 text-[0.9375rem] tracking-[0.1em] text-ink"
           >
             {open ? '閉じる' : 'メニュー'}
-          </button>
+            </button>
+          </div>
         </div>
 
-        {/* Desktop: one centred row of links, the theme switch at the right. */}
+        {/* Desktop: VNT logo (home) at the left, centred links, theme switch at the right. */}
+        <Link
+          href={homeHref}
+          aria-label="VNT GROUP ホーム"
+          className="absolute top-1/2 left-8 hidden -translate-y-1/2 items-center gap-2 text-brand transition-opacity hover:opacity-75 xl:flex"
+        >
+          <Wordmark className="h-[1.05rem] w-auto" />
+          <span className="text-[0.8125rem] font-bold tracking-[0.1em] text-ink-mute">ホーム</span>
+        </Link>
         <ThemeToggle className="absolute top-1/2 right-5 hidden -translate-y-1/2 md:inline-flex" />
         <nav aria-label="Page sections" className="hidden px-5 md:block">
-          <ul className="flex flex-row justify-center gap-7 lg:gap-9">
+          <ul className="flex flex-row items-center justify-center gap-4 lg:gap-7 xl:gap-9">
+            {/* Tablets: the logo leads the row (the corner logo shows from xl up). */}
+            <li className="xl:hidden">
+              <Link href={homeHref} aria-label="VNT GROUP ホーム" className="block py-3 text-brand">
+                <Wordmark className="h-[0.95rem] w-auto" />
+              </Link>
+            </li>
             {links.map((link) => (
               <li key={link.id}>
                 <a
@@ -129,11 +149,6 @@ export function HotelHeader({
             <li>
               <Link href={contactHref} className={linkClass}>
                 お問い合わせ
-              </Link>
-            </li>
-            <li>
-              <Link href={homeHref} className={cn(linkClass, 'text-stone')}>
-                VNTグループ
               </Link>
             </li>
           </ul>
@@ -192,7 +207,7 @@ export function HotelHeader({
                 </li>
                 <li>
                   <Link href={homeHref} onClick={() => setOpen(false)} className={cn(drawerLink, 'border-b-0 text-stone')}>
-                    VNTグループ
+                    VNTグループ ホーム
                   </Link>
                 </li>
               </ul>
