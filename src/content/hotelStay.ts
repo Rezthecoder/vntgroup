@@ -737,7 +737,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: 'ツインルーム', en: 'Twin Room' },
           image: '/images/toji/toji-08.webp',
-          gallery: ['/images/toji/toji-05.webp', '/images/toji/toji-01.webp'],
+          // Client: no building/temple shots here; bathroom photo as on Nagoya.
+          gallery: ['/images/nagoya/nagoya-03.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
