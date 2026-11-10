@@ -18,11 +18,11 @@ export type HotelNavLink = { id: string; label: string };
  *
  * - The hotel's wordmark centred on white under the slideshow.
  * - Phone: a slim glass navbar fixed to the top from the first screen —
- *   VNT logo (home) left, ≡ メニュー right. It slides away while scrolling
+ *   VNT logo (home) left, ≡ right (icons only; labels are for screen readers). It slides away while scrolling
  *   down and returns on scrolling up, so it never sits over what is being
  *   read but is there the moment the guest reaches for it.
  * - Tablet / laptop: the sticky section row, with the VNT logo at the left
- *   and a メニュー button at the right.
+ *   and ≡ at the right.
  * - The menu (a drawer from the right) lists this hotel's sections and the
  *   whole site, so the guest can switch to any page from anywhere.
  */
@@ -123,18 +123,17 @@ export function HotelHeader({
       >
         <div className="flex h-14 items-center justify-between px-4">
           <Link href={homeHref} aria-label={`VNT GROUP ${homeLabel}`} className="flex items-center gap-2 text-brand">
-            <Wordmark className="h-[1.05rem] w-auto" />
-            <span className="text-[0.75rem] font-bold tracking-[0.1em] text-ink-mute">{homeLabel}</span>
+            <Wordmark className="h-[1.15rem] w-auto" />
           </Link>
           <button
             type="button"
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="hotel-menu"
-            className="flex items-center gap-2 rounded-full px-2 py-2 text-ink"
+            aria-label={menuLabel}
+            className="-mr-2 flex size-11 items-center justify-center rounded-full text-ink"
           >
             <Burger />
-            <span className="text-[0.8125rem] font-bold tracking-[0.1em]">{menuLabel}</span>
           </button>
         </div>
       </div>
@@ -157,7 +156,6 @@ export function HotelHeader({
             className="flex shrink-0 items-center gap-2 py-3 text-brand transition-opacity hover:opacity-75"
           >
             <Wordmark className="h-[1rem] w-auto" />
-            <span className="hidden text-[0.8125rem] font-bold tracking-[0.1em] text-ink-mute xl:inline">{homeLabel}</span>
           </Link>
 
           <nav aria-label="Page sections" className="min-w-0">
@@ -194,10 +192,10 @@ export function HotelHeader({
               onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-controls="hotel-menu"
-              className="flex items-center gap-2 py-3 text-ink transition-opacity hover:opacity-70"
+              aria-label={menuLabel}
+              className="flex size-11 items-center justify-center text-ink transition-opacity hover:opacity-70"
             >
               <Burger />
-              <span className="hidden text-[0.8125rem] font-bold tracking-[0.1em] lg:inline">{menuLabel}</span>
             </button>
           </div>
         </div>
