@@ -737,6 +737,19 @@ const stays: Record<Hotel['slug'], HotelStay> = {
   },
 
   toji: {
+    // Photo strips: 内景色 = rooms + bathroom only; 周辺景色 = nearby sights only.
+    scenery: {
+      inside: ['/images/toji/toji-04.webp', '/images/toji/toji-08.webp', '/images/nagoya/nagoya-03.webp'],
+      around: [
+        '/images/toji/toji-03.webp',
+        '/images/toji/toji-06.webp',
+        '/images/toji/toji-07.webp',
+        '/images/spots/toji-nishihongan.webp',
+        '/images/spots/toji-umekoji-park.webp',
+        '/images/spots/toji-inari.webp',
+        '/images/spots/toji-night-kiyomizu-v2.webp',
+      ],
+    },
     features: [
       { title: { ja: '世界遺産・東寺の目の前', en: 'Facing World Heritage Toji' }, body: { ja: '1200年の歴史を刻む東寺のすぐ前に', en: 'Right in front of 1,200-year-old Toji' }, image: '/images/toji/toji-01.webp' },
       { title: { ja: '五重塔を望む客室', en: 'Rooms with a pagoda view' }, body: { ja: '一部の客室から東寺の五重塔を望めます', en: 'Some rooms look out on Toji’s five-storey pagoda' }, image: '/images/toji/toji-04.webp' },

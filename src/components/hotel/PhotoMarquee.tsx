@@ -8,14 +8,17 @@ import Image from 'next/image';
  * its grid column to the full track length.
  */
 export function PhotoMarquee({ images, title, reverse }: { images: string[]; title: string; reverse?: boolean }) {
-  const loop = [...images, ...images];
+  // Repeat a short list so each half of the loop is wide enough to fill the
+  // strip (otherwise 3 photos leave a gap before the loop restarts).
+  const base = images.length ? Array.from({ length: Math.ceil(6 / images.length) }, () => images).flat() : images;
+  const loop = [...base, ...base];
   return (
     <div className="w-full min-w-0">
       <p className="text-center text-[1.125rem] tracking-[0.08em] text-ink">{title}</p>
       <div className="relative mt-4 w-full overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
         <ul
           className="flex w-max gap-3 motion-reduce:animate-none"
-          style={{ animation: `marquee ${Math.max(28, images.length * 9)}s linear infinite${reverse ? ' reverse' : ''}` }}
+          style={{ animation: `marquee ${Math.max(28, base.length * 9)}s linear infinite${reverse ? ' reverse' : ''}` }}
         >
           {loop.map((src, i) => (
             <li key={i} className="relative h-[8.5rem] w-[8.5rem] shrink-0 overflow-hidden rounded-md md:h-[9.5rem] md:w-[9.5rem]">
