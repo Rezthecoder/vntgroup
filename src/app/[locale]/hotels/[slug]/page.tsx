@@ -141,9 +141,10 @@ function coords(embed: string) {
 /**
  * Hotel page laid out after the estimate's reference, goderehotel.com:
  * slideshow → wordmark + link row → EXPERIENCE (collage + statements) →
- * GROUPS & EVENTS (copy + photo grid) → 8 photo cards → 客室 → お食事 →
- * SURROUNDINGS strip + 季節の行事 → two photo marquees → dark ACCESS banner
- * with the details beneath → dark hotel footer.
+ * WHATS SPECIAL photo cards → THE HOTEL MOVIE (if any) → 客室 → お食事 →
+ * SURROUNDINGS strip + 季節の行事 → two photo marquees → GROUPS & EVENTS →
+ * ACCESS banner with the details beneath → dark hotel footer.
+ * (Story order: why stay → feel it → rooms & food → the area → groups → how to get here.)
  */
 export default async function HotelPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
@@ -257,61 +258,6 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
       <Rule />
 
-      {/* THE HOTEL MOVIE (as the live page) ------------------------------ */}
-      {hotel.youtubeId && (
-        <section className="border-t border-ink/8 px-5 py-24 md:py-28">
-          <EnHeading en="THE HOTEL MOVIE" sub={locale === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
-          <Reveal from="left" duration={1.2} className="mx-auto mt-12 max-w-[60rem]">
-            <VideoEmbed
-              id={hotel.youtubeId}
-              poster={hotel.hero}
-              label={locale === 'ja' ? '動画を再生' : 'Play film'}
-              title={`${hotel.name} — ${locale === 'ja' ? 'ホテル紹介動画' : 'hotel film'}`}
-            />
-          </Reveal>
-          {hotel.movieText && (
-            <Reveal className="mx-auto mt-10 max-w-[46rem]">
-              <p className="text-center text-[1.0625rem] leading-[2.05] text-ink-mute">{L(hotel.movieText)}</p>
-            </Reveal>
-          )}
-        </section>
-      )}
-
-      {/* GROUPS & EVENTS -------------------------------------------------- */}
-      <section className="px-5 py-24 md:py-28">
-        <EnHeading en="PERFECT FOR GROUPS & EVENTS" sub={L(S.groups)} />
-        <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-10 md:grid-cols-[0.9fr_1.4fr] md:gap-12">
-          <Reveal>
-            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.95] tracking-[0.06em] whitespace-pre-line text-ink">{L(S.groupsTitle)}</h3>
-            <p className="mt-6 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody1)}</p>
-            <p className="mt-4 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody2)}</p>
-            <a href="tel:08040979552" className="mt-6 inline-flex items-center gap-3 text-[1.25rem] font-medium text-ink hover:opacity-70">
-              <PhoneIcon size={18} /> {L(S.groupDesk)}　080-4097-9552
-            </a>
-            <div className="mt-6">
-              <Link href={contactHref} className={cn(BTN_LINE, 'border-ink text-ink hover:bg-ink hover:text-page')}>
-                {L(S.contactForm)}
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal from="right" duration={1.1} delay={0.08} className="grid grid-cols-[1fr_1.7fr] gap-3 md:gap-4">
-            <div className="grid gap-3 md:gap-4">
-              {groupGrid.slice(0, 3).map((src, i) => (
-                <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md">
-                  <Image src={src} alt="" fill sizes="(max-width: 768px) 35vw, 220px" className="object-cover" />
-                </div>
-              ))}
-            </div>
-            <div className="relative overflow-hidden rounded-md">
-              <Image src={groupGrid[3]} alt="" fill sizes="(max-width: 768px) 60vw, 420px" className="object-cover" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <Rule />
-
       {/* 8 photo cards ---------------------------------------------------- */}
       <section className="px-5 py-24 md:py-28">
         <EnHeading
@@ -354,6 +300,26 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           })}
         </div>
       </section>
+
+      {/* THE HOTEL MOVIE (as the live page) ------------------------------ */}
+      {hotel.youtubeId && (
+        <section className="border-t border-ink/8 px-5 py-24 md:py-28">
+          <EnHeading en="THE HOTEL MOVIE" sub={locale === 'ja' ? 'ホテル紹介動画' : 'Hotel film'} />
+          <Reveal from="left" duration={1.2} className="mx-auto mt-12 max-w-[60rem]">
+            <VideoEmbed
+              id={hotel.youtubeId}
+              poster={hotel.hero}
+              label={locale === 'ja' ? '動画を再生' : 'Play film'}
+              title={`${hotel.name} — ${locale === 'ja' ? 'ホテル紹介動画' : 'hotel film'}`}
+            />
+          </Reveal>
+          {hotel.movieText && (
+            <Reveal className="mx-auto mt-10 max-w-[46rem]">
+              <p className="text-center text-[1.0625rem] leading-[2.05] text-ink-mute">{L(hotel.movieText)}</p>
+            </Reveal>
+          )}
+        </section>
+      )}
 
       {/* 客室 ------------------------------------------------------------- */}
       <section id="rooms" className={cn('bg-page pb-24', ANCHOR)}>
@@ -579,6 +545,41 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <div className="mx-auto grid max-w-[76rem] gap-12 md:grid-cols-2 md:gap-8">
           <PhotoMarquee images={scenery.inside} title={L(S.inside)} />
           <PhotoMarquee images={scenery.around} title={L(S.around)} reverse />
+        </div>
+      </section>
+
+      <Rule />
+
+      {/* GROUPS & EVENTS -------------------------------------------------- */}
+      <section className="px-5 py-24 md:py-28">
+        <EnHeading en="PERFECT FOR GROUPS & EVENTS" sub={L(S.groups)} />
+        <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-10 md:grid-cols-[0.9fr_1.4fr] md:gap-12">
+          <Reveal>
+            <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.95] tracking-[0.06em] whitespace-pre-line text-ink">{L(S.groupsTitle)}</h3>
+            <p className="mt-6 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody1)}</p>
+            <p className="mt-4 text-[0.9375rem] leading-[2] text-ink-mute">{L(S.groupsBody2)}</p>
+            <a href="tel:08040979552" className="mt-6 inline-flex items-center gap-3 text-[1.25rem] font-medium text-ink hover:opacity-70">
+              <PhoneIcon size={18} /> {L(S.groupDesk)}　080-4097-9552
+            </a>
+            <div className="mt-6">
+              <Link href={contactHref} className={cn(BTN_LINE, 'border-ink text-ink hover:bg-ink hover:text-page')}>
+                {L(S.contactForm)}
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal from="right" duration={1.1} delay={0.08} className="grid grid-cols-[1fr_1.7fr] gap-3 md:gap-4">
+            <div className="grid gap-3 md:gap-4">
+              {groupGrid.slice(0, 3).map((src, i) => (
+                <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md">
+                  <Image src={src} alt="" fill sizes="(max-width: 768px) 35vw, 220px" className="object-cover" />
+                </div>
+              ))}
+            </div>
+            <div className="relative overflow-hidden rounded-md">
+              <Image src={groupGrid[3]} alt="" fill sizes="(max-width: 768px) 60vw, 420px" className="object-cover" />
+            </div>
+          </Reveal>
         </div>
       </section>
 
