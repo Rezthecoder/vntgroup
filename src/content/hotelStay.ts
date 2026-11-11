@@ -34,6 +34,8 @@ export type DiningItem = {
   label: string;
   body: L10n;
   image?: string;
+  /** object-position for the photo crop, e.g. 'center 30%'. */
+  focus?: string;
   credit?: PhotoCredit;
 };
 
@@ -128,8 +130,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     features: [
       { title: { ja: '富士山ビュー客室', en: 'Mt. Fuji view rooms' }, body: { ja: '全50室から、四季折々の富士山を望む', en: 'Mt. Fuji from all 50 rooms, in every season' }, image: '/images/fuji/fuji-01.webp' },
       { title: { ja: '団体・グループ歓迎', en: 'Groups welcome' }, body: { ja: '研修・社員旅行・ツアーのご宿泊に', en: 'Training trips, company outings and tours' }, image: '/images/live/fuji/u5.jpg' },
-      // Client: ご朝食 → 食事. Photo is the udon shot until the client's photo arrives.
-      { title: { ja: 'お食事', en: 'Dining' }, body: { ja: '吉田のうどん・ほうとうなど、富士吉田の味をご堪能ください', en: 'Yoshida udon, hoto and more local flavours' }, image: '/images/spots/fuji-udon-v2.webp' },
+      // Client: ご朝食 → 食事, with the hotel's crab photo.
+      { title: { ja: 'お食事', en: 'Dining' }, body: { ja: 'タラバガニ・ズワイガニなど、自慢のカニ料理をご堪能ください', en: 'King crab, snow crab and more — our crab dishes' }, image: '/images/fuji/fuji-dining-kingcrab.webp' },
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
       { title: { ja: '24時間フロント', en: '24-hour front desk' }, body: { ja: '深夜のご到着・早朝のご出発も安心', en: 'Late arrivals and early departures made easy' }, image: '/images/live/fuji/building.webp' },
       { title: { ja: '駐車場', en: 'Parking' }, body: { ja: 'お車でお越しのお客様へ。\n詳しくはお問い合わせください', en: 'For guests arriving by car' }, image: '/images/fuji/info-top.webp' },
@@ -214,32 +216,43 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     },
     dining: {
       lead: {
-        ja: '富士吉田は「吉田のうどん」で知られる食の町。ホテル周辺には、地元ならではの味を楽しめるお店が点在しています。',
-        en: 'Fujiyoshida is a food town famous for Yoshida udon, with local restaurants dotted around the hotel.',
+        ja: 'ホテルでは、タラバガニやズワイガニをふんだんに使ったカニ料理をご用意しています。',
+        en: 'At the hotel we serve generous crab dishes with king crab and snow crab.',
       },
       items: [
+        // Client's photos of the hotel's own meals (crab). Dish names from the photos — confirm with the client.
+        {
+          label: 'Hotel Dining',
+          title: { ja: 'タラバガニの舟盛り', en: 'King crab boat platter' },
+          image: '/images/fuji/fuji-dining-kingcrab.webp',
+          body: {
+            ja: '舟に盛り付けたタラバガニを、野菜やきのこと一緒に鍋でお楽しみいただけます。',
+            en: 'King crab served on a wooden boat, enjoyed as a hot pot with vegetables and mushrooms.',
+          },
+        },
+        {
+          label: 'Hotel Dining',
+          title: { ja: 'ズワイガニ', en: 'Snow crab' },
+          image: '/images/fuji/fuji-dining-snowcrab.webp',
+          body: {
+            ja: '甘みのあるズワイガニを、えびや魚介と盛り合わせて。',
+            en: 'Sweet snow crab served with prawns and other seafood.',
+          },
+        },
+        {
+          label: 'Hotel Dining',
+          title: { ja: '真心込めたおもてなし', en: 'Served with care' },
+          image: '/images/fuji/fuji-dining-serving.webp',
+          focus: 'center 35%',
+          body: {
+            ja: '大切なご旅行の夜を、心を込めたお料理でおもてなしいたします。',
+            en: 'A special evening of your trip, with food prepared with care.',
+          },
+        },
         {
           label: 'Breakfast',
           title: { ja: 'ご朝食', en: 'Breakfast' },
           body: BREAKFAST_NOTE,
-        },
-        {
-          label: 'Local Food',
-          title: { ja: '吉田のうどん', en: 'Yoshida udon' },
-          image: '/images/spots/fuji-udon-v2.webp',
-          body: {
-            ja: '富士吉田を代表する郷土料理。コシの強い太麺に、キャベツや馬肉をのせるのが定番です。市内には多くの専門店があります。',
-            en: 'Fujiyoshida’s signature dish: thick, firm noodles, traditionally topped with cabbage and horse meat. The town is full of udon shops.',
-          },
-        },
-        {
-          label: 'Local Food',
-          title: { ja: 'ほうとう', en: 'Hoto' },
-          image: '/images/spots/fuji-hoto-v2.webp',
-          body: {
-            ja: '平打ち麺をかぼちゃや野菜と味噌で煮込んだ山梨の郷土料理。寒い季節の富士観光に、体の芯から温まる一杯をどうぞ。',
-            en: 'Yamanashi’s flat noodles simmered in miso with pumpkin and vegetables — a bowl that warms you through on a cold day by Mt. Fuji.',
-          },
         },
       ],
     },
