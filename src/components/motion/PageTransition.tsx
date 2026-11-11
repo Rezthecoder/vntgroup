@@ -13,7 +13,7 @@ let lastPath: string | null = null;
 
 /**
  * Soft cross-fade + lift between routes, keyed on the pathname. Switching
- * language (same page, other locale) uses a quick fade with no lift, so the
+ * language (same page, other locale) appears at once with no fade, so the
  * 日本語 / EN switch feels instant.
  */
 export default function PageTransition({ children }: { children: ReactNode }) {
@@ -24,9 +24,9 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   return (
     <motion.main
       key={pathname}
-      initial={langOnly ? { opacity: 0.4, y: 0 } : { opacity: 0, y: 16 }}
+      initial={langOnly ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={langOnly ? { duration: 0.22, ease: 'easeOut' } : { duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="relative"
     >
       {children}
