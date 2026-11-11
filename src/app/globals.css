@@ -609,12 +609,16 @@
   }
 }
 
-/* 日本語 / EN: the old page glides out, the new one glides in (View Transitions). */
-@keyframes lang-out-next { to { opacity: 0; transform: translateX(-28px); } }
-@keyframes lang-in-next { from { opacity: 0; transform: translateX(28px); } }
-@keyframes lang-out-prev { to { opacity: 0; transform: translateX(28px); } }
-@keyframes lang-in-prev { from { opacity: 0; transform: translateX(-28px); } }
-html[data-lang-dir='next']::view-transition-old(root) { animation: lang-out-next 0.22s cubic-bezier(0.4, 0, 1, 1) both; }
-html[data-lang-dir='next']::view-transition-new(root) { animation: lang-in-next 0.34s cubic-bezier(0.22, 1, 0.36, 1) both; }
-html[data-lang-dir='prev']::view-transition-old(root) { animation: lang-out-prev 0.22s cubic-bezier(0.4, 0, 1, 1) both; }
-html[data-lang-dir='prev']::view-transition-new(root) { animation: lang-in-prev 0.34s cubic-bezier(0.22, 1, 0.36, 1) both; }
+/* 日本語 / EN tapped: the page glides out (left for EN, right for 日本語),
+   then the other language glides in (PageTransition). !important: <main>
+   carries inline styles from the page fade. */
+.lang-leaving main {
+  opacity: 0 !important;
+  transform: translateX(-28px) !important;
+  transition:
+    opacity 0.17s ease-in,
+    transform 0.17s ease-in !important;
+}
+.lang-leaving[data-lang-dir='prev'] main {
+  transform: translateX(28px) !important;
+}
