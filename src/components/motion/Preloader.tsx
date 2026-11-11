@@ -18,11 +18,20 @@ export const introInitScript = `try{if(sessionStorage.getItem('${SESSION_KEY}')|
  * gold rule drawing beneath it, then the curtain lifts. Rendered on the server
  * so it covers the page from the first frame.
  */
+/** Set once the intro has played or been skipped in this tab. Module-level:
+ *  /ja and /en have separate root layouts, so switching language remounts
+ *  this component (and replaces <html>, dropping the intro-skip class). */
+let introDone = false;
+
 export default function Preloader({ tagline }: { tagline: string }) {
-  const [visible, setVisible] = useState(true);
+  // First load: render like the server (visible; CSS hides it if skipped).
+  // Later remounts (language switch): start hidden, so it never re-appears.
+  const [visible, setVisible] = useState(() => !introDone);
 
   useEffect(() => {
-    if (document.documentElement.classList.contains('intro-skip')) {
+    if (introDone || document.documentElement.classList.contains('intro-skip')) {
+      introDone = true;
+      document.documentElement.classList.add('intro-skip');
       setVisible(false);
       return;
     }
@@ -31,6 +40,7 @@ export default function Preloader({ tagline }: { tagline: string }) {
       try {
         sessionStorage.setItem(SESSION_KEY, '1');
       } catch {}
+      introDone = true;
       setVisible(false);
       document.documentElement.style.overflow = '';
     }, 2600);

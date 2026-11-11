@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 type Theme = 'light' | 'dark';
@@ -22,12 +22,31 @@ function apply(theme: Theme) {
   }
 }
 
+/**
+ * Re-applies the saved theme. Mounted in the locale layout: switching
+ * 日本語 / EN replaces <html> (each language has its own root layout), which
+ * drops data-theme, and the head script only runs on a full page load.
+ */
+export function ThemeRestore() {
+  // Layout effect: runs before the browser paints the new page, so no light flash.
+  useLayoutEffect(() => {
+    try {
+      if (localStorage.getItem(KEY) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch {}
+  }, []);
+  return null;
+}
+
 /** Compact light / dark switch: a sliding pill with a sun and a moon. */
 export function ThemeToggle({ className }: { className?: string }) {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem(KEY);
+    } catch {}
+    setTheme(saved === 'dark' || document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
   }, []);
 
   const dark = theme === 'dark';

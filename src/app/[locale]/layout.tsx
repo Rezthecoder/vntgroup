@@ -1,7 +1,7 @@
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { ColorReveal } from '@/components/motion/ColorReveal';
 import Preloader, { introInitScript } from '@/components/motion/Preloader';
-import { themeInitScript } from '@/components/layout/ThemeToggle';
+import { ThemeRestore, themeInitScript } from '@/components/layout/ThemeToggle';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import '../globals.css';
@@ -107,6 +107,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organisation) }}
         />
 
+        <ThemeRestore />
         <Preloader tagline="Beyond. Connected. To the World." />
         <SmoothScroll />
         <ColorReveal />
