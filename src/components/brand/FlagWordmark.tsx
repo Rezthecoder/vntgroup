@@ -12,18 +12,27 @@ const STRIPS = 40;
  * to the free edge (right, widest swing). Pure SVG + CSS keyframes, so it
  * runs in iPhone Safari without JavaScript.
  */
-export function FlagWordmark({ className, title = 'VNT GROUP' }: { className?: string; title?: string }) {
+export function FlagWordmark({
+  className,
+  title = 'VNT GROUP',
+  idPrefix = 'vnt-flag',
+}: {
+  className?: string;
+  title?: string;
+  /** Unique per instance on the page (the arrival screen and the language loader). */
+  idPrefix?: string;
+}) {
   const sw = W / STRIPS;
   return (
     <svg viewBox={`-10 -40 ${W + 20} ${H + 80}`} role="img" aria-label={title} fill="currentColor" className={cn('block h-auto w-full overflow-visible', className)}>
       <defs>
-        <g id="vnt-flag-art">
+        <g id={`${idPrefix}-art`}>
           {WORDMARK_PATHS.map((d, i) => (
             <path key={i} d={d} />
           ))}
         </g>
         {Array.from({ length: STRIPS }, (_, i) => (
-          <clipPath key={i} id={`vnt-flag-c${i}`}>
+          <clipPath key={i} id={`${idPrefix}-c${i}`}>
             {/* +0.6 overlaps neighbours so no hairline gaps show between strips. */}
             <rect x={i * sw - 0.3} y={-60} width={sw + 0.6} height={H + 120} />
           </clipPath>
@@ -31,7 +40,7 @@ export function FlagWordmark({ className, title = 'VNT GROUP' }: { className?: s
       </defs>
       {Array.from({ length: STRIPS }, (_, i) => (
         <g key={i} className="flag-strip" style={{ '--i': i, '--amp': i / (STRIPS - 1) } as React.CSSProperties}>
-          <use href="#vnt-flag-art" clipPath={`url(#vnt-flag-c${i})`} />
+          <use href={`#${idPrefix}-art`} clipPath={`url(#${idPrefix}-c${i})`} />
         </g>
       ))}
     </svg>

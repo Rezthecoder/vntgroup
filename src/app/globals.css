@@ -622,3 +622,36 @@
 .lang-leaving[data-lang-dir='prev'] main {
   transform: translateX(28px) !important;
 }
+
+/* Language-switch loader (LangLoader): hidden until the switch starts. */
+.lang-loader {
+  display: none;
+}
+.lang-leaving .lang-loader {
+  display: flex;
+  animation: lang-loader-in 0.2s ease-out 0.12s both;
+}
+@keyframes lang-loader-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.lang-loader-bar {
+  position: relative;
+}
+.lang-loader-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-brand), var(--color-gold));
+  animation: lang-loader-bar 0.9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes lang-loader-bar {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(225%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-leaving .lang-loader { animation: none; }
+  .lang-loader-bar::after { animation: none; width: 100%; }
+}
