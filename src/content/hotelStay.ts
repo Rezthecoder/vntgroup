@@ -138,9 +138,11 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
       items: [
-        // DRAFT (client: add DBL). Same text as Nagoya's double. Photo to come; confirm beds/capacity.
+        // Client: add DBL. Same text as Nagoya's double; client's photos (room + bathroom).
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
+          image: '/images/fuji/fuji-double.webp',
+          gallery: ['/images/fuji/fuji-unit-bath.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
@@ -184,9 +186,11 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           },
           specs: [{ ja: '2名様', en: '2 guests' }],
         },
-        // DRAFT (client: add TRPL). Same text as Nagoya's triple. Photo to come; confirm beds/capacity.
+        // Client: add TRPL. Same text as Nagoya's triple; client's photos (room + bathroom).
         {
           name: { ja: 'トリプルルーム', en: 'Triple Room' },
+          image: '/images/fuji/fuji-triple.webp',
+          gallery: ['/images/fuji/fuji-unit-bath.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'トリプルルーム', en: 'Triple' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 3', en: '3 single beds' } },
