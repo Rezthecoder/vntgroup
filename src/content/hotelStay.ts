@@ -216,8 +216,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     },
     dining: {
       lead: {
-        ja: 'ホテルでは、タラバガニやズワイガニをふんだんに使ったカニ料理をご用意しています。また富士吉田は「吉田のうどん」で知られる食の町。周辺には地元ならではの味を楽しめるお店も点在しています。',
-        en: 'At the hotel we serve generous crab dishes with king crab and snow crab. Fujiyoshida is also a food town famous for Yoshida udon, with local restaurants dotted around the hotel.',
+        ja: 'ホテルでは、タラバガニやズワイガニをふんだんに使ったカニ料理をご用意しています。',
+        en: 'At the hotel we serve generous crab dishes with king crab and snow crab.',
       },
       items: [
         // Client's photos of the hotel's own meals (crab). Dish names from the photos — confirm with the client.
@@ -253,24 +253,6 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           label: 'Breakfast',
           title: { ja: 'ご朝食', en: 'Breakfast' },
           body: BREAKFAST_NOTE,
-        },
-        {
-          label: 'Local Food',
-          title: { ja: '吉田のうどん', en: 'Yoshida udon' },
-          image: '/images/spots/fuji-udon-v2.webp',
-          body: {
-            ja: '富士吉田を代表する郷土料理。コシの強い太麺に、キャベツや馬肉をのせるのが定番です。市内には多くの専門店があります。',
-            en: 'Fujiyoshida’s signature dish: thick, firm noodles, traditionally topped with cabbage and horse meat. The town is full of udon shops.',
-          },
-        },
-        {
-          label: 'Local Food',
-          title: { ja: 'ほうとう', en: 'Hoto' },
-          image: '/images/spots/fuji-hoto-v2.webp',
-          body: {
-            ja: '平打ち麺をかぼちゃや野菜と味噌で煮込んだ山梨の郷土料理。寒い季節の富士観光に、体の芯から温まる一杯をどうぞ。',
-            en: 'Yamanashi’s flat noodles simmered in miso with pumpkin and vegetables — a bowl that warms you through on a cold day by Mt. Fuji.',
-          },
         },
       ],
     },
