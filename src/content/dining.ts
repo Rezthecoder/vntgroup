@@ -57,7 +57,7 @@ export const venues: Venue[] = [
     hero: '/images/geisya/geisya-01.webp',
     youtubeId: 'fkGobIZt_i4',
     tagline: {
-      ja: 'Geisha shows and Japanese dining, just steps from Asakusa’s streets.',
+      ja: '浅草の街並みからすぐ。芸者の舞と和食をお楽しみいただけます。',
       en: 'Geisha shows and Japanese dining, just steps from Asakusa’s streets.',
     },
     hub: {
@@ -69,16 +69,14 @@ export const venues: Venue[] = [
     },
     about: [
       {
-        title: { ja: 'About Geisha-tei', en: 'About Geisha-tei' },
-        bilingual: true,
+        title: { ja: '芸者亭について', en: 'About Geisha-tei' },
         body: {
           ja: '「芸者亭」は、浅草に位置する、日本の伝統芸能である芸者文化を楽しめるレストランです。当店では、お客様が食事を楽しみながら、芸者たちが舞踊や三味線などの華麗な芸を披露し、お座敷を華やかに盛り上げます。',
           en: 'Experience the enchantment of traditional Japanese culture at Geisha-tei, nestled in the heart of Asakusa, Tokyo. Delight in delicious meals while being mesmerized by captivating geisha performances, including dance and shamisen music, creating an unforgettable experience.',
         },
       },
       {
-        title: { ja: 'What is Geisha ?', en: 'What is Geisha ?' },
-        bilingual: true,
+        title: { ja: '芸者とは', en: 'What is a geisha?' },
         body: {
           ja: '芸者とは、日本の伝統芸能を専門とする芸能者であり、舞踊、三味線、唄、茶道などを通じてお客様をもてなします。長年にわたる厳しい修業を経て、一流の技と洗練された所作を身につけ、宴席では優雅な舞や音楽、会話で場を和ませます。芸者は単なるパフォーマーではなく、日本の美意識や礼節を体現する存在として、国内外から高く評価されています。',
           en: 'A geisha is a traditional Japanese performer who specializes in classical arts such as dance, shamisen music, singing, and tea ceremony. Through years of disciplined training, they master refined skills and graceful manners to entertain guests at banquets and private events. More than just entertainers, geisha are seen as cultural ambassadors who embody the aesthetics and etiquette of Japan.',
@@ -90,7 +88,7 @@ export const venues: Venue[] = [
       title: { ja: '開催時間のスケジュール', en: 'Time Schedule' },
       times: ['10:00 ~', '11:00 ~', '12:00 ~', '14:00 ~', '15:00 ~', '18:00 ~', '19:00 ~'],
       note: {
-        ja: '※完全ご予約制\n(by appointment only)\n予約受付時間10:00-18:00年中無休',
+        ja: '※完全ご予約制\n予約受付時間 10:00〜18:00（年中無休）',
         en: 'By appointment only.\nReservations accepted 10:00–18:00, open every day of the year.',
       },
       tel: { ja: 'ご予約番号　080-4097-9552', en: 'Reservations: 080-4097-9552' },
@@ -100,7 +98,6 @@ export const venues: Venue[] = [
         ja: '〒111-0025\n東京都台東区東浅草1-21-11高記ビル2階',
         en: '〒111-0025\n2F Koki Building, 1-21-11 Higashi Asakusa, Taito-ku, Tokyo',
       },
-      addressEnOnJa: true,
       tel: '080-4097-9552',
       telLabel: { ja: 'ご予約番号', en: 'Reservations' },
     },
