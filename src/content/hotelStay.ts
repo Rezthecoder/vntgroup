@@ -141,7 +141,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         // Client: add DBL. Same text as Nagoya's double; client's photos (room + bathroom).
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
-          image: '/images/fuji/fuji-double.webp',
+          image: '/images/fuji/fuji-double-v2.webp',
           gallery: ['/images/fuji/fuji-unit-bath.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
