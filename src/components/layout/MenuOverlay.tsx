@@ -26,7 +26,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
   const closeLabel = locale === 'ja' ? '閉じる' : 'Close';
 
   return (
-    <div className="fixed inset-0 z-[140]">
+    <div data-lang-hide className="fixed inset-0 z-[140]">
       <motion.button
         type="button"
         aria-label={closeLabel}

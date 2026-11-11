@@ -206,7 +206,7 @@ export function HotelHeader({
       {/* Menu: this hotel's sections, then the whole site. */}
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-[140]">
+          <div data-lang-hide className="fixed inset-0 z-[140]">
             <motion.button
               type="button"
               aria-label={ja ? '閉じる' : 'Close'}
