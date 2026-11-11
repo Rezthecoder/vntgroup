@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 /** Slide length; the page change starts part-way through so the two overlap. */
 const SLIDE_MS = 180;
-const NAV_AFTER_MS = 40;
+const NAV_AFTER_MS = 0;
 
 /**
  * 日本語 | EN — one big tap target: the whole pill links to the same page in
@@ -33,8 +33,9 @@ export function LangSwitch({ locale, className }: { locale: Locale; className?: 
     e.preventDefault();
     if (shown !== locale) return; // already switching
     setShown(other);
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.setTimeout(() => router.push(href), reduce ? 0 : NAV_AFTER_MS);
+    // Start loading at once; the slide plays while the page swaps.
+    if (NAV_AFTER_MS) window.setTimeout(() => router.push(href), NAV_AFTER_MS);
+    else router.push(href);
   };
 
   // Fixed half widths so the highlight can slide exactly from one to the other.
