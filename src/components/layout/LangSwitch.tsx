@@ -12,6 +12,18 @@ const SLIDE_MS = 180;
 const NAV_AFTER_MS = 0;
 
 /**
+ * Smooth page change between languages with the View Transitions API: the
+ * old page glides out and the new one glides in (towards the left for
+ * EN, the right for 日本語). /ja and /en have separate root layouts, so
+ * <html> is replaced; the switch on the new page finishes the transition
+ * when it mounts. Browsers without the API just switch.
+ */
+let finishSwitch: (() => void) | null = null;
+let switchDir: 'next' | 'prev' = 'next';
+
+type VTDocument = Document & { startViewTransition?: (cb: () => Promise<void>) => unknown };
+
+/**
  * 日本語 | EN — one big tap target: the whole pill links to the same page in
  * the other language (44px tall). On tap the dark highlight slides across
  * to the new language while the page change starts, so it feels smooth
@@ -26,6 +38,18 @@ export function LangSwitch({ locale, className }: { locale: Locale; className?: 
 
   // Back in sync after the new page arrives (or browser back/forward).
   useEffect(() => setShown(locale), [locale]);
+
+  // New page mounted mid-transition: restore the direction (the old <html>
+  // carried it) and let the transition play.
+  useEffect(() => {
+    if (!finishSwitch) return;
+    document.documentElement.dataset.langDir = switchDir;
+    const done = finishSwitch;
+    finishSwitch = null;
+    // Resolve now: the browser pauses animation frames until the update
+    // callback settles, so waiting for one would deadlock.
+    done();
+  }, []);
   useEffect(() => router.prefetch(href), [router, href]);
 
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -33,9 +57,28 @@ export function LangSwitch({ locale, className }: { locale: Locale; className?: 
     e.preventDefault();
     if (shown !== locale) return; // already switching
     setShown(other);
-    // Start loading at once; the slide plays while the page swaps.
-    if (NAV_AFTER_MS) window.setTimeout(() => router.push(href), NAV_AFTER_MS);
-    else router.push(href);
+    const go = () => (NAV_AFTER_MS ? window.setTimeout(() => router.push(href), NAV_AFTER_MS) : router.push(href));
+
+    const doc = document as VTDocument;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!doc.startViewTransition || reduce) {
+      go();
+      return;
+    }
+    switchDir = other === 'en' ? 'next' : 'prev';
+    document.documentElement.dataset.langDir = switchDir;
+    doc.startViewTransition(
+      () =>
+        new Promise<void>((resolve) => {
+          finishSwitch = resolve;
+          go();
+          // Safety net: never hold the screen if the new page is slow.
+          window.setTimeout(() => {
+            if (finishSwitch === resolve) finishSwitch = null;
+            resolve();
+          }, 1500);
+        }),
+    );
   };
 
   // Fixed half widths so the highlight can slide exactly from one to the other.
