@@ -118,6 +118,7 @@ function spotShape(i: number, n: number) {
 }
 
 const DINING_GROUP: Record<string, L10n> = {
+  'Hotel Dining': { ja: 'ホテルのお食事', en: 'Dining at the hotel' },
   Breakfast: { ja: 'ご朝食', en: 'Breakfast' },
   'Local Food': { ja: '地元グルメ', en: 'Local food' },
   'Nagoya Meshi': { ja: '名古屋めし', en: 'Nagoya meshi' },
@@ -439,7 +440,14 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                       <div className="relative aspect-[4/3] w-full">
                         {item.image ? (
                           <>
-                            <Image src={item.image} alt={L(item.title)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                            <Image
+                              src={item.image}
+                              alt={L(item.title)}
+                              fill
+                              sizes="(max-width: 640px) 100vw, 33vw"
+                              className="object-cover"
+                              style={item.focus ? { objectPosition: item.focus } : undefined}
+                            />
                             {item.credit && <Credit credit={item.credit} />}
                           </>
                         ) : (
