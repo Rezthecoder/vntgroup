@@ -7,13 +7,15 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { switchLocalePath, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
-const SLIDE_MS = 320;
+/** Slide length; the page change starts part-way through so the two overlap. */
+const SLIDE_MS = 180;
+const NAV_AFTER_MS = 40;
 
 /**
  * 日本語 | EN — one big tap target: the whole pill links to the same page in
  * the other language (44px tall). On tap the dark highlight slides across
- * to the new language first, then the page switches, so the change feels
- * smooth instead of jumping.
+ * to the new language while the page change starts, so it feels smooth
+ * without waiting.
  */
 export function LangSwitch({ locale, className }: { locale: Locale; className?: string }) {
   const pathname = usePathname() ?? `/${locale}`;
@@ -32,7 +34,7 @@ export function LangSwitch({ locale, className }: { locale: Locale; className?: 
     if (shown !== locale) return; // already switching
     setShown(other);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.setTimeout(() => router.push(href), reduce ? 0 : SLIDE_MS);
+    window.setTimeout(() => router.push(href), reduce ? 0 : NAV_AFTER_MS);
   };
 
   // Fixed half widths so the highlight can slide exactly from one to the other.
