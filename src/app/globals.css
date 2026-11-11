@@ -622,6 +622,12 @@
 .lang-leaving[data-lang-dir='prev'] main {
   transform: translateX(28px) !important;
 }
+/* Open menus fade away with the page, so the loader stands alone. */
+.lang-leaving [data-lang-hide] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in;
+}
 
 /* Language-switch loader (LangLoader): hidden until the switch starts. */
 .lang-loader {
