@@ -164,11 +164,11 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           },
           specs: [{ ja: '1〜2名様', en: '1–2 guests' }],
         },
-        // Same text and table as Nagoya's twin; Fuji's own photos.
+        // Same text and table as Nagoya's twin; client's newer photos (room, bathroom, large bath).
         {
           name: { ja: 'ツインルーム', en: 'Twin Room' },
-          image: '/images/fuji/fuji-02.webp',
-          gallery: ['/images/fuji/fuji-01.webp', '/images/fuji/onsen-01.webp'],
+          image: '/images/fuji/fuji-twin-room.webp',
+          gallery: ['/images/fuji/fuji-double-bath.webp', '/images/fuji/fuji-bath-large.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ツインルーム', en: 'Twin' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'シングルベッド × 2', en: '2 single beds' } },
