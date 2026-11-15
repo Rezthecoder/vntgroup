@@ -135,7 +135,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
       { title: { ja: '24時間フロント', en: '24-hour front desk' }, body: { ja: '深夜のご到着・早朝のご出発も安心', en: 'Late arrivals and early departures made easy' }, image: '/images/live/fuji/building.webp' },
       { title: { ja: '駐車場', en: 'Parking' }, body: { ja: 'お車でお越しのお客様へ。\n詳しくはお問い合わせください', en: 'For guests arriving by car' }, image: '/images/fuji/info-top.webp' },
-      { title: { ja: '周辺観光の拠点', en: 'A base for sightseeing' }, body: { ja: '河口湖・忍野八海・富士急ハイランドへ車で約10〜15分', en: 'Lake Kawaguchi, Oshino Hakkai and Fuji-Q in 10-15 min' }, image: '/images/live/fuji/u2.jpg' },
+      { title: { ja: '周辺観光の拠点', en: 'A base for sightseeing' }, body: { ja: '河口湖・忍野八海・富士急ハイランドへ車で約12〜20分', en: 'Lake Kawaguchi, Oshino Hakkai and Fuji-Q in 12-20 min' }, image: '/images/live/fuji/u2.jpg' },
     ],
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
@@ -298,7 +298,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       ],
     },
     sightseeing: {
-      // DRAFT エリア情報: public facilities only. Convenience store / supermarket / drugstore / laundry entries need the client's picks.
+      // エリア情報: public facilities plus the shops, convenience stores and cafe the client listed (distances from the client).
       facilities: [
         {
           kind: { ja: '病院', en: 'Hospital' },
@@ -318,6 +318,36 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           address: '〒403-0006 山梨県富士吉田市新屋1936-6',
           time: { ja: '車で約10分', en: 'About 10 min by car' },
         },
+        {
+          kind: { ja: '衣料品', en: 'Clothing' },
+          name: { ja: 'ユニクロ 富士吉田', en: 'UNIQLO Fujiyoshida' },
+          time: { ja: '600m・徒歩約10分', en: '600 m, about 10 min on foot' },
+        },
+        {
+          kind: { ja: 'スーパー', en: 'Supermarket' },
+          name: { ja: 'いちやまマート 城山店', en: 'Ichiyama Mart Shiroyama' },
+          time: { ja: '550m・徒歩約7分', en: '550 m, about 7 min on foot' },
+        },
+        {
+          kind: { ja: 'スーパー', en: 'Supermarket' },
+          name: { ja: 'ベイシアスーパーマーケット 富士吉田店', en: 'Beisia Supermarket Fujiyoshida' },
+          time: { ja: '800m・徒歩約10分', en: '800 m, about 10 min on foot' },
+        },
+        {
+          kind: { ja: 'コンビニ', en: 'Convenience store' },
+          name: { ja: 'ローソン', en: 'Lawson' },
+          time: { ja: '700m・徒歩約10分', en: '700 m, about 10 min on foot' },
+        },
+        {
+          kind: { ja: 'コンビニ', en: 'Convenience store' },
+          name: { ja: 'セブン-イレブン', en: '7-Eleven' },
+          time: { ja: '950m・徒歩約12分', en: '950 m, about 12 min on foot' },
+        },
+        {
+          kind: { ja: 'カフェ', en: 'Cafe' },
+          name: { ja: 'スターバックス コーヒー 富士吉田店', en: 'Starbucks Coffee Fujiyoshida' },
+          time: { ja: '1.2km・徒歩約15分', en: '1.2 km, about 15 min on foot' },
+        },
       ],
       lead: {
         ja: '富士山の麓ならではの名所が、ホテルから車でわずかな距離に。四季折々の富士山を巡る旅の拠点にどうぞ。',
@@ -327,7 +357,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '新倉山浅間公園（忠霊塔）', en: 'Arakurayama Sengen Park (Chureito Pagoda)' },
           image: '/images/spots/fuji-chureito.webp',
-          time: { ja: '車で約10分', en: 'About 10 min by car' },
+          time: { ja: '5.4km・車で約15分', en: '5.4 km, about 15 min by car' },
           body: {
             ja: '五重塔と富士山を一枚に収められる絶景スポット。春は桜、秋は紅葉と、季節ごとに表情を変えます。',
             en: 'The pagoda and Mt. Fuji in a single frame — cherry blossom in spring, autumn colour in the fall.',
@@ -337,7 +367,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '北口本宮冨士浅間神社', en: 'Kitaguchi Hongu Fuji Sengen Shrine' },
           image: '/images/spots/fuji-kitaguchi.webp',
-          time: { ja: '車で約5分', en: 'About 5 min by car' },
+          time: { ja: '1.5km・車で約7分', en: '1.5 km, about 7 min by car' },
           body: {
             ja: '富士山信仰の拠点として古くから崇敬を集める神社。杉並木の参道と荘厳な社殿が、静かな時間へと誘います。',
             en: 'A centre of Mt. Fuji worship for centuries — a cedar-lined approach and a solemn shrine hall.',
@@ -348,7 +378,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '忍野八海', en: 'Oshino Hakkai' },
           image: '/images/spots/fuji-oshino.webp',
-          time: { ja: '車で約10分', en: 'About 10 min by car' },
+          time: { ja: '5.9km・車で約13分', en: '5.9 km, about 13 min by car' },
           body: {
             ja: '富士山の雪解け水が湧き出す八つの池。透き通った水面と茅葺き屋根の風景が広がります。',
             en: 'Eight ponds fed by Mt. Fuji’s snowmelt, with crystal-clear water and thatched roofs.',
@@ -358,7 +388,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '富士急ハイランド', en: 'Fuji-Q Highland' },
           image: '/images/spots/fuji-fujiq.webp',
-          time: { ja: '車で約10分', en: 'About 10 min by car' },
+          time: { ja: '3.7km・車で約12分', en: '3.7 km, about 12 min by car' },
           body: {
             ja: '富士山を望む絶叫マシンで知られるテーマパーク。ご家族やグループでの旅行にもおすすめです。',
             en: 'The theme park famous for its thrill rides under Mt. Fuji — great for families and groups.',
@@ -368,7 +398,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '河口湖', en: 'Lake Kawaguchi' },
-          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          time: { ja: '9.7km・車で約20分', en: '9.7 km, about 20 min by car' },
           body: {
             ja: '湖面に映る「逆さ富士」で知られる富士五湖のひとつ。湖畔の散策や遊覧船をお楽しみください。',
             en: 'One of the Fuji Five Lakes, known for Mt. Fuji reflected in its surface — lakeside walks and boat cruises.',
@@ -380,7 +410,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '山中湖', en: 'Lake Yamanaka' },
           image: '/images/spots/fuji-yamanaka.webp',
-          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          time: { ja: '6.7km・車で約15分', en: '6.7 km, about 15 min by car' },
           body: {
             ja: '富士五湖で最も大きな湖。湖畔からの富士山の眺めは格別で、冬には「ダイヤモンド富士」も見られます。',
             en: 'The largest of the Fuji Five Lakes, with a superb view of the mountain — and “Diamond Fuji” in winter.',
@@ -390,7 +420,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '山中湖花の都公園', en: 'Hana no Miyako Park, Yamanakako' },
           image: '/images/spots/fuji-hananomiyako.webp',
-          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          time: { ja: '7.6km・車で約15分', en: '7.6 km, about 15 min by car' },
           body: {
             ja: '富士山を背景に、春から秋まで季節の花畑が広がる公園。夏のポピーやひまわりは特に見事です。',
             en: 'Fields of seasonal flowers with Mt. Fuji behind them, spring to autumn — the summer poppies and sunflowers are a highlight.',
@@ -400,7 +430,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '山中湖のカバ（水陸両用バス）', en: 'KABA amphibious bus, Lake Yamanaka' },
           image: '/images/spots/fuji-kaba.webp',
-          time: { ja: '車で約20分', en: 'About 20 min by car' },
+          time: { ja: '11km・車で約25分', en: '11 km, about 25 min by car' },
           body: {
             ja: 'バスのまま山中湖へ「ザブーン」と入水する水陸両用バス。湖上から富士山を眺める、ご家族に人気の体験です。',
             en: 'An amphibious bus that drives straight into Lake Yamanaka — Mt. Fuji from the water, a family favourite.',
@@ -410,7 +440,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '忍野 しのびの里', en: 'Oshino Shinobi no Sato (ninja village)' },
           image: '/images/spots/fuji-shinobi.webp',
-          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          time: { ja: '2.4km・車で約7分', en: '2.4 km, about 7 min by car' },
           body: {
             ja: '迫力ある忍者ショーや手裏剣体験が楽しめる忍者のテーマパーク。日本庭園越しの富士山も見どころです。',
             en: 'A ninja theme park with live ninja shows and shuriken throwing, and Mt. Fuji beyond its Japanese garden.',
@@ -420,12 +450,21 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           name: { ja: '山梨県立富士湧水の里水族館', en: 'Fuji Wakimizu no Sato Aquarium' },
           image: '/images/spots/fuji-aquarium.webp',
-          time: { ja: '車で約15分', en: 'About 15 min by car' },
+          time: { ja: '3.7km・車で約8分', en: '3.7 km, about 8 min by car' },
           body: {
             ja: '富士山の湧水で淡水魚を育てる「森の中の水族館」。澄んだ水の中を泳ぐ魚たちを間近に観察できます。',
             en: 'The “aquarium in the forest”, raising freshwater fish in Mt. Fuji’s spring water — see them up close in crystal-clear tanks.',
           },
           query: '山梨県立富士湧水の里水族館',
+        },
+        {
+          name: { ja: '御殿場アウトレット', en: 'Gotemba Outlets' },
+          time: { ja: '29km・車で約35分', en: '29 km, about 35 min by car' },
+          body: {
+            ja: '富士山麓にある大型アウトレット。お買い物をたっぷり楽しみたい方におすすめです。',
+            en: 'A large outlet mall at the foot of Mt. Fuji — for guests who want a full day of shopping.',
+          },
+          query: '御殿場アウトレット',
         },
       ],
       events: [
