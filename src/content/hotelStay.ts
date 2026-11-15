@@ -230,25 +230,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
             en: 'King crab served on a wooden boat, enjoyed as a hot pot with vegetables and mushrooms.',
           },
         },
-        {
-          label: 'Hotel Dining',
-          title: { ja: 'ズワイガニ', en: 'Snow crab' },
-          image: '/images/fuji/fuji-dining-snowcrab.webp',
-          body: {
-            ja: '甘みのあるズワイガニを、えびや魚介と盛り合わせて。',
-            en: 'Sweet snow crab served with prawns and other seafood.',
-          },
-        },
         // Client's newer meal photos. Titles and text written from the photos — confirm with the client.
-        {
-          label: 'Hotel Dining',
-          title: { ja: 'カニと海の幸の鍋', en: 'Crab and seafood hot pot' },
-          image: '/images/fuji/fuji-dining-nabe.webp',
-          body: {
-            ja: 'カニやえび、魚の切り身に、たっぷりの野菜ときのこ。〆の麺まで鍋でお楽しみいただけます。',
-            en: 'Crab, prawns and sliced fish with plenty of vegetables and mushrooms, finished with noodles in the pot.',
-          },
-        },
         {
           label: 'Hotel Dining',
           title: { ja: '舟盛りの盛り合わせ', en: 'Boat platter assortment' },
@@ -256,6 +238,15 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           body: {
             ja: 'カニの舟盛りとお刺身の舟盛りを、枝豆や野菜とともにテーブルいっぱいに。',
             en: 'Boat platters of crab and sashimi, with edamame and vegetables, filling the table.',
+          },
+        },
+        {
+          label: 'Hotel Dining',
+          title: { ja: 'カニと海の幸の鍋', en: 'Crab and seafood hot pot' },
+          image: '/images/fuji/fuji-dining-nabe.webp',
+          body: {
+            ja: 'カニやえび、魚の切り身に、たっぷりの野菜ときのこ。〆の麺まで鍋でお楽しみいただけます。',
+            en: 'Crab, prawns and sliced fish with plenty of vegetables and mushrooms, finished with noodles in the pot.',
           },
         },
         {
