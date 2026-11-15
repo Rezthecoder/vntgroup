@@ -89,7 +89,7 @@ export const hotels: Hotel[] = [
         ja: '富士山を眺めながら過ごす時間は、心を豊かに。\n\n富士山とは、日本の自然の象徴。\n四季折々の姿を見せる雄大な山の景色は、\n日常と非日常、静寂と賑わい、癒しと冒険をつなぐ場所です。\n\nそんな特別なロケーションで、\n眺め、触れ、心に刻むことで、\nかけがえのない体験を。\n\nFuji Premium Hotelは、\nその思いを大切にしながら、\n富士山とともに過ごす贅沢な瞬間を提供するホテルです。',
         en: 'Time spent looking out at Mt. Fuji enriches the heart.\n\nMt. Fuji is the symbol of Japan’s nature. Changing with every season, the mountain connects the everyday and the extraordinary, stillness and bustle, rest and adventure.\n\nIn a place this special — to look, to touch, to keep it in your heart — is an experience like no other.\n\nFuji Premium Hotel holds to that thought, offering luxurious moments spent together with Mt. Fuji.',
       },
-      image: '/images/fuji/fuji-01.webp',
+      image: '/images/fuji/fuji-exterior.webp',
       divider: HERO_EN,
     },
     about: {
