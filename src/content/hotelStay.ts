@@ -265,7 +265,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         {
           mode: 'train',
           from: { ja: '富士急行線「富士山駅」', en: 'Fujikyu Line, Fujisan Station' },
-          detail: { ja: 'タクシーで約7分', en: 'About 7 min by taxi' },
+          detail: { ja: 'タクシーで約8分', en: 'About 8 min by taxi' },
         },
         {
           mode: 'bus',
@@ -283,7 +283,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           title: { ja: '東京方面から（高速バス）', en: 'From Tokyo by highway bus' },
           steps: [
             { place: { ja: 'バスタ新宿', en: 'Busta Shinjuku' }, leg: { mode: 'bus', text: { ja: '高速バス 約2時間', en: 'Highway bus, about 2 h' } } },
-            { place: { ja: '富士山駅', en: 'Fujisan Station' }, leg: { mode: 'car', text: { ja: 'タクシー 約7分', en: 'Taxi, about 7 min' } } },
+            { place: { ja: '富士山駅', en: 'Fujisan Station' }, leg: { mode: 'car', text: { ja: 'タクシー 約8分', en: 'Taxi, about 8 min' } } },
             { place: { ja: 'ホテル', en: 'Hotel' } },
           ],
         },
@@ -304,13 +304,18 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           kind: { ja: '病院', en: 'Hospital' },
           name: { ja: '富士吉田市立病院', en: 'Fujiyoshida Municipal Hospital' },
           address: '〒403-0005 山梨県富士吉田市上吉田東7丁目11-1',
-          time: { ja: '車で約5分', en: 'About 5 min by car' },
+          time: { ja: '徒歩約1分', en: 'About 1 min on foot' },
         },
         {
           kind: { ja: '駅・ショッピング', en: 'Station and shopping' },
           name: { ja: '富士山駅（富士急行線）・Q-STA', en: 'Fujisan Station (Fujikyu Line) and Q-STA' },
           address: '〒403-0012 山梨県富士吉田市上吉田2丁目5-1',
-          time: { ja: 'タクシーで約7分', en: 'About 7 min by taxi' },
+          time: { ja: '3km・車で約8分', en: '3 km, about 8 min by car' },
+        },
+        {
+          kind: { ja: '駅', en: 'Station' },
+          name: { ja: '河口湖駅（富士急行線）', en: 'Kawaguchiko Station (Fujikyu Line)' },
+          time: { ja: '6.1km・車で約17分', en: '6.1 km, about 17 min by car' },
         },
         {
           kind: { ja: '道の駅', en: 'Roadside station' },
@@ -459,6 +464,7 @@ const stays: Record<Hotel['slug'], HotelStay> = {
         },
         {
           name: { ja: '御殿場アウトレット', en: 'Gotemba Outlets' },
+          image: '/images/spots/fuji-gotemba-outlet.webp',
           time: { ja: '29km・車で約35分', en: '29 km, about 35 min by car' },
           body: {
             ja: '富士山麓にある大型アウトレット。お買い物をたっぷり楽しみたい方におすすめです。',
