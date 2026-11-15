@@ -124,7 +124,7 @@ export const hotels: Hotel[] = [
       // The live site repeats the location block here; it is shown once, above.
       blocks: [BATH],
     },
-    gallery: ['/images/fuji/fuji-02.webp', '/images/fuji/fuji-01.webp', '/images/fuji/info-top.webp', '/images/fuji/onsen-01.webp'],
+    gallery: ['/images/fuji/fuji-twin-room.webp', '/images/fuji/fuji-01.webp', '/images/fuji/info-top.webp', '/images/fuji/onsen-01.webp'],
     info: {
       address: {
         ja: '〒403-0032 山梨県富士吉田市上吉田東５丁目１０−１２',
