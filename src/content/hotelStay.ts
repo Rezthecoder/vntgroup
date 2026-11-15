@@ -140,11 +140,11 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
       items: [
-        // Client: add DBL. Same text as Nagoya's double; client's photos (room + bathroom).
+        // Client: add DBL. Same text as Nagoya's double; client's newer photos (room, bathroom, large bath).
         {
           name: { ja: 'ダブルルーム', en: 'Double Room' },
-          image: '/images/fuji/fuji-double-v2.webp',
-          gallery: ['/images/fuji/fuji-unit-bath.webp', '/images/fuji/fuji-double-bed.webp', '/images/fuji/fuji-double-bath.webp', '/images/fuji/fuji-bath-large.webp'],
+          image: '/images/fuji/fuji-double-bed.webp',
+          gallery: ['/images/fuji/fuji-double-bath.webp', '/images/fuji/fuji-bath-large.webp'],
           facts: [
             { label: { ja: '客室タイプ', en: 'Room type' }, value: { ja: 'ダブルルーム', en: 'Double' } },
             { label: { ja: 'ベッド', en: 'Beds' }, value: { ja: 'ダブルベッド × 1', en: '1 double bed' } },
