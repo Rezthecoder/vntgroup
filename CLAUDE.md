@@ -55,6 +55,21 @@ public/images/         WebP photos grouped by property (fuji/, nagoya/, toji/, s
 | `company.ts` | President's message, facts, revenue, licences |
 | `news.ts` | Announcements, newest first |
 
+## Finding code: use Graphify first
+
+The repo is indexed in Graphify (MCP tools `mcp__Graphify__*`, repository
+`Rezthecoder/vntgroup`). To save tokens, look code up there before grepping or
+reading whole files:
+
+- where something is defined → `graphify_find`
+- who uses it / what a change affects → `graphify_callers`, `graphify_impact`
+- a file's imports and dependents → `graphify_file_neighbors`
+- "how does X work" → `query_graph` (use `skeleton: true` to just locate things)
+
+Each result has a `commitSha`. If it equals `git rev-parse HEAD`, trust it. If
+not, read the current version of any file changed since then. For literal text
+(copy, image paths, config values) plain grep is still faster.
+
 ## Rules
 
 - **Text:** every string is an `L10n` value, `{ ja: string; en?: string }`. Read
