@@ -19,8 +19,8 @@ const PAGE_SOURCES = [
   '/images/geisya/geisya-01.webp', // dining hub
   '/images/ikegami/store-01.webp', // retail (Ikegami Store)
 ];
-// Where to anchor the crop for tall photos (sharp position names).
-const FOCUS = { '/images/shops/kyosaido-kimono-v1.webp': 'north' };
+// Tall photos: where the 1200×630 window sits, 0 = top … 1 = bottom.
+const FOCUS_Y = { '/images/shops/kyosaido-kimono-v1.webp': 0.36 };
 
 // Main photos only: hotel and venue heroes, shop photos.
 const CONTENT_FIELDS = [
@@ -51,10 +51,15 @@ for (const src of sources) {
     continue;
   }
   await mkdir(path.dirname(out), { recursive: true });
-  await sharp(input)
-    .resize(1200, 630, { fit: 'cover', position: FOCUS[src] ?? 'centre' })
-    .jpeg({ quality: 82, mozjpeg: true })
-    .toFile(out);
+  const fy = FOCUS_Y[src];
+  let img = sharp(input);
+  if (fy !== undefined) {
+    const { width = 1200, height = 630 } = await img.metadata();
+    const h = Math.round((height * 1200) / width);
+    const top = h > 630 ? Math.round((h - 630) * fy) : 0;
+    img = sharp(await img.resize(1200).toBuffer()).extract({ left: 0, top, width: 1200, height: Math.min(630, h) });
+  }
+  await img.resize(1200, 630, { fit: 'cover' }).jpeg({ quality: 82, mozjpeg: true }).toFile(out);
   made++;
 }
 console.log(`og-images: ${made} made, ${sources.size} total`);
