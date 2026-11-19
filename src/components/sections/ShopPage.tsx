@@ -7,6 +7,7 @@ import { MapEmbed } from '@/components/ui/MapEmbed';
 import type { Shop } from '@/content/shops';
 import { getDictionary } from '@/content/dictionary';
 import { localePath, t, type Locale } from '@/lib/i18n';
+import { cn } from '@/lib/utils';
 
 
 /**
@@ -42,7 +43,18 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
       <section className="py-24 md:py-32">
         <div className="shell grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <div className="relative aspect-4/3 w-full overflow-hidden bg-page-3">
+            <div
+              className={cn('relative w-full overflow-hidden bg-page-3', shop.imageSize ? 'mx-auto' : 'aspect-4/3')}
+              style={
+                shop.imageSize
+                  ? {
+                      // Whole photo at its own shape, at most ~44rem tall.
+                      aspectRatio: `${shop.imageSize.width} / ${shop.imageSize.height}`,
+                      maxWidth: `calc(44rem * ${shop.imageSize.width / shop.imageSize.height})`,
+                    }
+                  : undefined
+              }
+            >
               {shop.image ? (
                 <Image
                   src={shop.image}
@@ -50,7 +62,7 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  style={shop.imageFocus ? { objectPosition: shop.imageFocus } : undefined}
+                  style={!shop.imageSize && shop.imageFocus ? { objectPosition: shop.imageFocus } : undefined}
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] tracking-[0.2em] text-stone">

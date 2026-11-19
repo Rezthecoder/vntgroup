@@ -21,8 +21,11 @@ export type Shop = {
   romaji: string;
   lede?: L10n;
   image?: string;
-  /** object-position for the photo crop, e.g. 'center 30%'. */
+  /** object-position for the photo crop in cards, e.g. 'center 30%'. */
   imageFocus?: string;
+  /** Pixel size of `image`. When set, the shop page shows the whole photo
+   *  at its own shape (no crop) instead of a 4:3 frame. */
+  imageSize?: { width: number; height: number };
   /** Optional flyer or pamphlet shown in full on the page. */
   flyer?: { src: string; width: number; height: number };
   address?: L10n;
@@ -44,6 +47,7 @@ export const shops: Shop[] = [
     // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
     image: '/images/shops/kyosaido-kimono-v1.webp',
     imageFocus: 'center 30%',
+    imageSize: { width: 939, height: 1525 },
     draft: true,
   },
   {
