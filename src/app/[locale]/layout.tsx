@@ -2,6 +2,7 @@ import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { ColorReveal } from '@/components/motion/ColorReveal';
 import Preloader, { introInitScript } from '@/components/motion/Preloader';
 import { LangLoader } from '@/components/motion/LangLoader';
+import { pageMeta, siteOrigin } from '@/lib/seo';
 import { ThemeRestore, themeInitScript } from '@/components/layout/ThemeToggle';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
@@ -39,26 +40,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const active: Locale = isLocale(locale) ? locale : 'ja';
 
+  const home = `VNT GROUP | ${t(site.tagline, active)}`;
+  const base = pageMeta({ locale: active, description: t(site.description, active) });
+  // Site-wide defaults (= the home page). Every other page sets its own with
+  // pageMeta(), so its title, preview image and canonical URL are its own.
   return {
-    metadataBase: new URL(site.url),
-    title: {
-      default: `VNT GROUP | ${t(site.tagline, active)}`,
-      template: '%s | VNT GROUP',
-    },
-    description: t(site.description, active),
-    alternates: {
-      canonical: `/${active}`,
-      languages: { ja: '/ja', en: '/en' },
-    },
-    openGraph: {
-      type: 'website',
-      siteName: 'VNT GROUP',
-      locale: active === 'en' ? 'en_US' : 'ja_JP',
-      title: `VNT GROUP | ${t(site.tagline, active)}`,
-      description: t(site.description, active),
-      images: ['/images/brand/hero-group.webp'],
-    },
-    twitter: { card: 'summary_large_image' },
+    ...base,
+    metadataBase: new URL(siteOrigin),
+    title: { default: home, template: '%s | VNT GROUP' },
+    openGraph: { ...base.openGraph, title: home },
+    twitter: { ...base.twitter, title: home },
   };
 }
 

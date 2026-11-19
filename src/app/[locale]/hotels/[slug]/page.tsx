@@ -19,6 +19,7 @@ import { getStay, type Feature, type PhotoCredit, type RouteMode, type Season } 
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, locales, localePath, t, type L10n, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import { pageMeta } from '@/lib/seo';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => hotels.map((h) => ({ locale, slug: h.slug })));
@@ -35,11 +36,13 @@ export async function generateMetadata({
   const active: Locale = isLocale(locale) ? locale : 'ja';
   const title = hotel.pageTitle ?? hotel.name;
 
-  return {
+  return pageMeta({
+    locale: active,
+    path: `/hotels/${hotel.slug}`,
+    image: hotel.hero,
     title,
     description: t(hotel.about.body, active).replace(/\s+/g, ' ').slice(0, 150),
-    openGraph: { title, images: [hotel.hero] },
-  };
+  });
 }
 
 /** Clears the pinned link row when an in-page link lands. */

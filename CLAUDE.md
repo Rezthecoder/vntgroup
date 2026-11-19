@@ -87,6 +87,12 @@ not, read the current version of any file changed since then. For literal text
   switch uses View Transitions and must keep working in Safari.
 - **Japanese line breaks:** use `splitForStagger` in `lib/utils.ts` for split text
   so that 、。」 never start a line.
+- **Link previews (OGP):** every page's `generateMetadata` returns
+  `pageMeta()` from `src/lib/seo.ts` (own title, description, canonical and
+  preview image). Preview images are 1200×630 JPGs in `public/og/`, made by
+  `scripts/og-images.mjs` (runs as `prebuild`) from hotel/venue heroes, shop
+  photos and its `PAGE_SOURCES` list. A new page photo used as a preview must
+  be one of those. URLs use `siteOrigin` (Vercel's production domain).
 - **Third-party embeds:** Google Maps and YouTube stay behind click-to-load
   facades.
 - **Design:** warm washi paper background, sumi ink text and a brass accent, all

@@ -17,6 +17,7 @@ import { ShopPage } from '@/components/sections/ShopPage';
 import { SakaiKagetsuPage } from '@/components/sections/SakaiKagetsuPage';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, locales, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => [
@@ -34,20 +35,26 @@ export async function generateMetadata({
   const active: Locale = isLocale(locale) ? locale : 'ja';
   const shop = getShop(slug, 'dining');
   if (shop) {
-    return {
+    return pageMeta({
+      locale: active,
+      path: `/dining/${shop.slug}`,
+      image: shop.image,
       title: `${t(shop.name, active)}（${t(shop.category, active)}）`,
+      description: shop.lede ? t(shop.lede, active).replace(/\s+/g, ' ').slice(0, 150) : undefined,
       robots: shop.draft ? { index: false, follow: true } : undefined,
-    };
+    });
   }
   const venue = getVenue(slug);
   if (!venue) return {};
   const title = venue.slug === 'geisyatei' ? t(venue.name, active) : `${t(venue.name, active)} | 和楽亭`;
 
-  return {
+  return pageMeta({
+    locale: active,
+    path: `/dining/${venue.slug}`,
+    image: venue.hero,
     title,
     description: t(venue.about[0].body, active).replace(/\s+/g, ' ').slice(0, 150),
-    openGraph: { title, images: [venue.hero] },
-  };
+  });
 }
 
 export default async function VenuePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
