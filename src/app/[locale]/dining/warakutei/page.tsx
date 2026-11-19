@@ -10,6 +10,7 @@ import { Gallery } from '@/components/ui/Gallery';
 import { getVenue, type Venue } from '@/content/dining';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 /**
  * 和楽亭 — the live site's /restaurant page: one page for both Ariake
@@ -35,11 +36,18 @@ const SECTIONS: { slug: Venue['slug']; logo: string; image: string; photos: stri
   },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: '和楽亭（焼肉、焼鳥）',
-    description: '東京・有明（国際展示場から徒歩7分）の和牛焼肉店と焼き鳥居酒屋、和楽亭。',
-  };
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const ja = locale !== 'en';
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/dining/warakutei',
+    image: '/images/warakutei/yakiniku-03.webp',
+    title: ja ? '和楽亭（焼肉、焼鳥）' : 'Warakutei (yakiniku & yakitori)',
+    description: ja
+      ? '東京・有明（国際展示場から徒歩7分）の和牛焼肉店と焼き鳥居酒屋、和楽亭。'
+      : 'Warakutei in Ariake, Tokyo (7 minutes on foot from Tokyo Big Sight): a wagyu yakiniku restaurant and a yakitori izakaya.',
+  });
 }
 
 export default async function WarakuteiPage({ params }: { params: Promise<{ locale: string }> }) {

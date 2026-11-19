@@ -12,16 +12,20 @@ import { ArrowLink, ButtonLink } from '@/components/ui/ArrowLink';
 import { businessAreas, hisano, supplierCall } from '@/content/business';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
-  return {
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/business',
+    image: '/images/business/product-02.webp',
     title: ja ? '事業内容' : 'Business',
     description: ja
       ? '商品企画・製造販売、ホテル、飲食、輸入出、海外進出支援、観光支援。VNTグループの六つの事業領域。'
       : 'Product planning, hotels, dining, trade, overseas expansion and tourism — the six fields the VNT Group works in.',
-  };
+  });
 }
 
 export default async function BusinessPage({ params }: { params: Promise<{ locale: string }> }) {

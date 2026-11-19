@@ -9,16 +9,20 @@ import { MapEmbed } from '@/components/ui/MapEmbed';
 import { getDictionary } from '@/content/dictionary';
 import { site } from '@/content/site';
 import { isLocale, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
-  return {
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/contact',
+    image: '/images/brand/hero-main.webp',
     title: ja ? 'お問い合わせ' : 'Contact',
     description: ja
       ? '事業・お取引・採用に関するお問い合わせはこちらから。'
       : 'Enquiries about our business, partnerships and careers.',
-  };
+  });
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {

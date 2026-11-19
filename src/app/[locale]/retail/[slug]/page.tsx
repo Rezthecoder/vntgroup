@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { ShopPage } from '@/components/sections/ShopPage';
 import { getShop, retailShops } from '@/content/shops';
 import { isLocale, locales, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => retailShops.map((s) => ({ locale, slug: s.slug })));
@@ -18,11 +19,15 @@ export async function generateMetadata({
   const shop = getShop(slug, 'retail');
   if (!shop) return {};
   const active: Locale = isLocale(locale) ? locale : 'ja';
-  return {
+  return pageMeta({
+    locale: active,
+    path: `/retail/${shop.slug}`,
+    image: shop.image,
     title: `${t(shop.name, active)}（${t(shop.category, active)}）`,
+    description: shop.lede ? t(shop.lede, active).replace(/\s+/g, ' ').slice(0, 150) : undefined,
     // Placeholder pages stay out of search results until the client's details are in.
     robots: shop.draft ? { index: false, follow: true } : undefined,
-  };
+  });
 }
 
 export default async function RetailShopPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {

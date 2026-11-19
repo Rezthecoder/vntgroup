@@ -12,11 +12,18 @@ import { ButtonLink } from '@/components/ui/ArrowLink';
 import { ikegami } from '@/content/business';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const active: Locale = isLocale(locale) ? locale : 'ja';
-  return { title: t(ikegami.name, active), description: t(ikegami.lede, active) };
+  return pageMeta({
+    locale: active,
+    path: '/retail',
+    image: ikegami.image,
+    title: t(ikegami.name, active),
+    description: t(ikegami.lede, active),
+  });
 }
 
 export default async function RetailPage({ params }: { params: Promise<{ locale: string }> }) {

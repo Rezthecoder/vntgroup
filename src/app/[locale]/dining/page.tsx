@@ -16,6 +16,7 @@ import { venues } from '@/content/dining';
 import { ikegami } from '@/content/business';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 // First sentence of the live site's 飲食店事業 description.
 const INTRO = {
@@ -26,7 +27,13 @@ const INTRO = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
-  return { title: ja ? '飲食・販売店' : 'Food & Shop', description: ja ? INTRO.ja : INTRO.en };
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/dining',
+    image: '/images/geisya/geisya-01.webp',
+    title: ja ? '飲食・販売店' : 'Food & Shop',
+    description: ja ? INTRO.ja : INTRO.en,
+  });
 }
 
 export default async function DiningPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -7,10 +7,11 @@ import { RevealGroup, RevealItem } from '@/components/motion/Reveal';
 import { news } from '@/content/news';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: locale === 'ja' ? 'ニュース' : 'News' };
+  return pageMeta({ locale: locale === 'en' ? 'en' : 'ja', path: '/news', title: locale === 'ja' ? 'ニュース' : 'News' });
 }
 
 export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -12,16 +12,20 @@ import { businessScope, companyFacts, greeting, licenses, revenue } from '@/cont
 import { getDictionary } from '@/content/dictionary';
 import { site } from '@/content/site';
 import { isLocale, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
-  return {
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/company',
+    image: '/images/brand/hero-main.webp',
     title: ja ? '会社概要' : 'Company',
     description: ja
       ? 'VNT株式会社の会社概要、代表挨拶、事業内容および許認可について。'
       : 'Company profile, message from the president, scope of business and licences held by VNT Co., Ltd.',
-  };
+  });
 }
 
 export default async function CompanyPage({ params }: { params: Promise<{ locale: string }> }) {

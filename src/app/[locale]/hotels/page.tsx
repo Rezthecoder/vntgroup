@@ -11,6 +11,7 @@ import { ArrowLink } from '@/components/ui/ArrowLink';
 import { hotels, hubOrder } from '@/content/hotels';
 import { getDictionary } from '@/content/dictionary';
 import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { pageMeta } from '@/lib/seo';
 
 // The live hub page's meta description.
 const INTRO = {
@@ -21,7 +22,13 @@ const INTRO = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
-  return { title: 'Premium Hotel', description: (ja ? INTRO.ja : INTRO.en).replace('\n', '') };
+  return pageMeta({
+    locale: ja ? 'ja' : 'en',
+    path: '/hotels',
+    image: '/images/toji/toji-01.webp',
+    title: 'Premium Hotel',
+    description: (ja ? INTRO.ja : INTRO.en).replace('\n', ''),
+  });
 }
 
 export default async function HotelsPage({ params }: { params: Promise<{ locale: string }> }) {
