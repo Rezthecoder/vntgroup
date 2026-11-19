@@ -9,9 +9,10 @@ import { localePath, t, type Locale } from '@/lib/i18n';
 const IMG = '/images/shops/sakai-';
 
 const SCENES = [
-  { src: `${IMG}scene-dinner.webp`, caption: { ja: '大切な方とのご会食に', en: 'Dinner with someone special' } },
-  { src: `${IMG}scene-private.webp`, caption: { ja: '個室でゆったりと', en: 'Relax in a private room' } },
-  { src: `${IMG}scene-celebration.webp`, caption: { ja: '記念日・ご接待にも', en: 'Anniversaries and business dinners' } },
+  // Captions from the client's updated flyer (Nov 2026).
+  { src: `${IMG}scene-entrance-v2.webp`, caption: { ja: '落ち着いた和の空間で', en: 'A calm Japanese setting' } },
+  { src: `${IMG}scene-hall-v2.webp`, caption: { ja: 'ご接待・ご会食に', en: 'Business dinners and gatherings' } },
+  { src: `${IMG}scene-special-v2.webp`, caption: { ja: '大切な方との特別なひとときに', en: 'Special moments with someone dear' } },
 ];
 
 /**
@@ -48,7 +49,7 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
           </Reveal>
 
           <Reveal from="right" duration={1.1} className="relative min-h-[26rem] overflow-hidden rounded-sm md:min-h-[38rem]">
-            <Image src={`${IMG}room.webp`} alt={en ? 'Tatami dining room at Sakai Kagetsu' : '堺花月の座敷'} fill priority sizes="(max-width: 768px) 100vw, 60vw" className="object-cover" />
+            <Image src={`${IMG}room-v2.webp`} alt={en ? 'Banquet room at Sakai Kagetsu' : '堺花月の宴会場'} fill priority sizes="(max-width: 768px) 100vw, 60vw" className="object-cover" />
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,14,10,0.78),rgba(20,14,10,0.25)_45%,rgba(20,14,10,0)_70%)]" />
             <div className="absolute inset-x-0 top-0 p-5 pr-16 text-washi md:p-10 md:pr-28">
               <h2 className="type-mincho text-[clamp(1.25rem,2.6vw,2rem)] leading-[1.6] tracking-[0.1em]">
@@ -91,7 +92,7 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
             </p>
           </Reveal>
           <Reveal from="left" duration={1.1} className="relative aspect-[2/1] overflow-hidden rounded-sm">
-            <Image src={`${IMG}kaiseki.webp`} alt={en ? 'Kaiseki course' : '懐石料理'} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src={`${IMG}kaiseki-v2.webp`} alt={en ? 'Kaiseki course' : '懐石料理'} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </Reveal>
           <Reveal delay={0.1}>
             <p className={`type-mincho text-[1.125rem] tracking-[0.2em] text-[#e9dcc0] ${en ? '' : 'lg:hidden'}`}>
@@ -128,7 +129,7 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
       <section className="bg-seigaiha">
         <div className="mx-auto grid max-w-[76rem] items-center gap-8 px-5 py-14 md:grid-cols-[0.9fr_1.2fr_0.8fr] md:gap-10 md:py-20">
           <Reveal from="left" duration={1.1} className="relative aspect-[5/3] overflow-hidden rounded-sm">
-            <Image src={`${IMG}storefront.webp`} alt={en ? 'Sakai Kagetsu storefront' : '堺花月の店構え'} fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" />
+            <Image src={`${IMG}storefront-v2.webp`} alt={en ? 'Sakai Kagetsu storefront' : '堺花月の店構え'} fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" />
           </Reveal>
 
           <Reveal delay={0.08}>
