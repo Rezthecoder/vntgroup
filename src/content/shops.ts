@@ -21,6 +21,11 @@ export type Shop = {
   romaji: string;
   lede?: L10n;
   image?: string;
+  /** object-position for the photo crop in cards, e.g. 'center 30%'. */
+  imageFocus?: string;
+  /** Pixel size of `image`. When set, the shop page shows the whole photo
+   *  at its own shape (no crop) instead of a 4:3 frame. */
+  imageSize?: { width: number; height: number };
   /** Optional flyer or pamphlet shown in full on the page. */
   flyer?: { src: string; width: number; height: number };
   address?: L10n;
@@ -39,6 +44,10 @@ export const shops: Shop[] = [
     name: { ja: '京彩堂', en: 'Kyosaido' },
     category: { ja: '着物レンタル', en: 'Kimono rental' },
     romaji: 'Kyosaido — Kimono Rental',
+    // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
+    image: '/images/shops/kyosaido-kimono-v1.webp',
+    imageFocus: 'center 30%',
+    imageSize: { width: 939, height: 1525 },
     draft: true,
   },
   {
@@ -70,13 +79,14 @@ export const shops: Shop[] = [
     name: { ja: '堺花月', en: 'Sakai Kagetsu' },
     category: { ja: '懐石料理', en: 'Kaiseki cuisine' },
     romaji: 'Sakai Kagetsu — Japanese Cuisine',
-    // Copy, hours and closed days from VNT's flyer.
+    // Copy, hours and closed days from VNT's flyer (updated Nov 2026).
     lede: {
-      ja: '創業七十年、受け継がれる日本の味とおもてなし。\n旬の食材と伝統の技で仕立てる、ここにしかない懐石料理を、落ち着いた和の空間でお楽しみください。\n大切な方とのご会食、個室でゆったりとしたひとときに、記念日やご接待にもご利用いただけます。',
+      ja: '創業七十年、受け継がれる日本の味とおもてなし。\n旬の食材と伝統の技で仕立てる、ここにしかない懐石料理を、落ち着いた和の空間でお楽しみください。\nご接待・ご会食、大切な方との特別なひとときにご利用いただけます。',
+      en: 'Seventy years of Japanese flavour and hospitality.\nKaiseki you will find only here, made with seasonal ingredients and time-honoured technique, served in a calm Japanese room.\nFor business dinners, gatherings and special moments with someone dear.',
     },
-    image: '/images/shops/sakai-kagetsu-kaiseki.webp',
-    flyer: { src: '/images/shops/sakai-kagetsu-flyer.webp', width: 853, height: 1280 },
-    address: { ja: '大阪府堺市（詳細はお問い合わせください）', en: 'Sakai, Osaka (please ask us for details)' },
+    image: '/images/shops/sakai-kagetsu-card-v2.webp',
+    flyer: { src: '/images/shops/sakai-kagetsu-flyer-v2.webp', width: 853, height: 1280 },
+    address: { ja: '大阪府堺市堺区（詳細はお問い合わせください）', en: 'Sakai Ward, Sakai, Osaka (please ask us for details)' },
     hours: { ja: '11:00〜22:00（L.O. 21:00）', en: '11:00–22:00 (last order 21:00)' },
     closed: { ja: '不定休', en: 'Irregular holidays' },
     // The flyer's phone number (072-000-0000) is a placeholder, so it is not
