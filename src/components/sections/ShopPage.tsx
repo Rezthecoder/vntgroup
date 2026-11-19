@@ -44,7 +44,14 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
           <Reveal>
             <div className="relative aspect-4/3 w-full overflow-hidden bg-page-3">
               {shop.image ? (
-                <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                <Image
+                  src={shop.image}
+                  alt={t(shop.name, locale)}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  style={shop.imageFocus ? { objectPosition: shop.imageFocus } : undefined}
+                />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] tracking-[0.2em] text-stone">
                   {en ? 'Photos coming soon' : `写真${PENDING}`}
@@ -139,7 +146,14 @@ export function ShopLinks({ shops, locale, eyebrow, title }: { shops: Shop[]; lo
             >
               <div className="relative aspect-[3/2] w-full overflow-hidden bg-page-3">
                 {shop.image ? (
-                  <Image src={shop.image} alt={t(shop.name, locale)} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                  <Image
+                    src={shop.image}
+                    alt={t(shop.name, locale)}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover"
+                    style={shop.imageFocus ? { objectPosition: shop.imageFocus } : undefined}
+                  />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] md:text-[0.875rem] tracking-[0.2em] text-stone">{locale === 'en' ? 'Photos coming soon' : '写真準備中'}</div>
                 )}

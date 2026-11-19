@@ -21,6 +21,8 @@ export type Shop = {
   romaji: string;
   lede?: L10n;
   image?: string;
+  /** object-position for the photo crop, e.g. 'center 30%'. */
+  imageFocus?: string;
   /** Optional flyer or pamphlet shown in full on the page. */
   flyer?: { src: string; width: number; height: number };
   address?: L10n;
@@ -39,6 +41,9 @@ export const shops: Shop[] = [
     name: { ja: '京彩堂', en: 'Kyosaido' },
     category: { ja: '着物レンタル', en: 'Kimono rental' },
     romaji: 'Kyosaido — Kimono Rental',
+    // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
+    image: '/images/shops/kyosaido-kimono-v1.webp',
+    imageFocus: 'center 30%',
     draft: true,
   },
   {
