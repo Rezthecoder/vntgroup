@@ -24,6 +24,11 @@ const INTRO = {
   en: 'We create places where Japanese culture can be experienced through food.',
 };
 
+const WARAKUTEI_LABEL = {
+  'warakutei-yakiniku': { ja: '和楽亭（焼肉）', en: 'Warakutei (Yakiniku)' },
+  'warakutei-yakitori': { ja: '和楽亭（焼鳥）', en: 'Warakutei (Yakitori)' },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ja = locale === 'ja';
@@ -42,11 +47,24 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
   const active = locale as Locale;
   const dict = getDictionary(active);
 
+  // 芸者亭 keeps its large feature block; the two Warakutei restaurants are
+  // shown as cards under その他の飲食店, next to 堺花月 (client request, Nov 2026).
+  const featured = venues.filter((v) => !v.slug.startsWith('warakutei-'));
+  const warakuteiCards = venues
+    .filter((v) => v.slug.startsWith('warakutei-'))
+    .map((v) => ({
+      key: v.slug,
+      href: localePath(active, `/dining/${v.slug}`),
+      image: v.hub.image,
+      category: t(WARAKUTEI_LABEL[v.slug as keyof typeof WARAKUTEI_LABEL], active),
+      name: t(v.name, active),
+    }));
+
   return (
     <>
       <PageHero eyebrow="Food & Shop" title={'FOOD\n& SHOP'} lead={INTRO[active]} image="/images/geisya/geisya-01.webp" />
 
-      {venues.map((venue, i) => (
+      {featured.map((venue, i) => (
         <section key={venue.slug} id={venue.slug} className="relative border-t border-ink/10 py-24 md:py-32">
           <div className="shell-wide">
             <div className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
@@ -91,7 +109,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
         </section>
       ))}
 
-      <ShopLinks shops={diningShops} locale={active} eyebrow="More Restaurants" title={active === 'en' ? 'Other restaurants' : 'その他の飲食店'} />
+      <ShopLinks shops={diningShops} extra={warakuteiCards} locale={active} eyebrow="More Restaurants" title={active === 'en' ? 'Other restaurants' : 'その他の飲食店'} />
 
       {/* Retail ----------------------------------------------------------- */}
       <section className="relative border-t border-ink/10 py-28 md:py-36">
