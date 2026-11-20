@@ -142,14 +142,40 @@ export function ShopPage({ shop, locale }: { shop: Shop; locale: Locale }) {
 }
 
 /** Simple linked cards for the hub pages. Shops without a photo show text only. */
-export function ShopLinks({ shops, locale, eyebrow, title }: { shops: Shop[]; locale: Locale; eyebrow: string; title: string }) {
-  if (!shops.length) return null;
+/** A card that is not a Shop entry (e.g. a Warakutei venue), shown before the shops. */
+export type ExtraShopCard = { key: string; href: string; image: string; category: string; name: string };
+
+export function ShopLinks({
+  shops,
+  locale,
+  eyebrow,
+  title,
+  extra = [],
+}: {
+  shops: Shop[];
+  locale: Locale;
+  eyebrow: string;
+  title: string;
+  extra?: ExtraShopCard[];
+}) {
+  if (!shops.length && !extra.length) return null;
   return (
     <section className="relative border-t border-ink/10 py-24 md:py-32">
       <div className="shell">
         <p className="type-eyebrow text-center">{eyebrow}</p>
         <h2 className="type-display mt-4 text-center text-[clamp(1.375rem,3vw,2.25rem)] text-ink">{title}</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {extra.map((card) => (
+            <a key={card.key} href={card.href} className="group block border border-ink/12 transition-colors hover:border-brass">
+              <div className="relative aspect-[3/2] w-full overflow-hidden bg-page-3">
+                <Image src={card.image} alt={card.name} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+              </div>
+              <div className="p-6">
+                <p className="text-[0.9375rem] md:text-[0.875rem] text-brass">{card.category}</p>
+                <p className="type-display mt-2 text-[1.1875rem] text-ink group-hover:text-brass">{card.name}</p>
+              </div>
+            </a>
+          ))}
           {shops.map((shop) => (
             <a
               key={shop.slug}
