@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
       { source: '/reservation', destination: '/ja/contact', permanent: true },
       { source: '/:locale(ja|en)/reservation', destination: '/:locale/contact', permanent: true },
       { source: '/news', destination: '/ja/news', permanent: true },
+      // The kimono shop was renamed 小町着物レンタル (Nov 2026); keep its old address working.
+      { source: '/:locale(ja|en)/retail/kyosaido-kimono', destination: '/:locale/retail/komachi-kimono', permanent: true },
     ];
   },
 };

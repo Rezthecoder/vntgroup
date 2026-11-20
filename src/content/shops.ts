@@ -11,7 +11,7 @@ import type { L10n } from '@/lib/i18n';
  * the sitemap.
  */
 export type Shop = {
-  slug: 'kyosaido-kimono' | 'kix-japan-drug-izumisano' | 'kyosaido-drug' | 'sakai-kagetsu';
+  slug: 'komachi-kimono' | 'kix-japan-drug-izumisano' | 'kyosaido-drug' | 'sakai-kagetsu';
   /** Which part of the site the shop lives in: 販売店 (/retail) or 飲食店 (/dining). */
   section: 'retail' | 'dining';
   name: L10n;
@@ -37,17 +37,15 @@ export type Shop = {
   draft: boolean;
 };
 
+// Retail shops are listed in the client's order (Nov 2026):
+// 京彩堂（ドラッグストア） → Kix Japan drug 泉佐野店 → 小町着物レンタル.
 export const shops: Shop[] = [
   {
-    slug: 'kyosaido-kimono',
+    slug: 'kyosaido-drug',
     section: 'retail',
     name: { ja: '京彩堂', en: 'Kyosaido' },
-    category: { ja: '着物レンタル', en: 'Kimono rental' },
-    romaji: 'Kyosaido — Kimono Rental',
-    // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
-    image: '/images/shops/kyosaido-kimono-v1.webp',
-    imageFocus: 'center 30%',
-    imageSize: { width: 939, height: 1525 },
+    category: { ja: 'ドラッグストア', en: 'Drugstore' },
+    romaji: 'Kyosaido — Drugstore',
     draft: true,
   },
   {
@@ -66,11 +64,15 @@ export const shops: Shop[] = [
     draft: true,
   },
   {
-    slug: 'kyosaido-drug',
+    slug: 'komachi-kimono',
     section: 'retail',
-    name: { ja: '京彩堂', en: 'Kyosaido' },
-    category: { ja: 'ドラッグストア', en: 'Drugstore' },
-    romaji: 'Kyosaido — Drugstore',
+    name: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' },
+    category: { ja: '着物レンタル', en: 'Kimono rental' },
+    romaji: 'Komachi — Kimono Rental',
+    // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
+    image: '/images/shops/kyosaido-kimono-v1.webp',
+    imageFocus: 'center 30%',
+    imageSize: { width: 939, height: 1525 },
     draft: true,
   },
   {
