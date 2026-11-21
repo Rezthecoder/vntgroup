@@ -33,7 +33,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const foodStrip: Strip[] = [
     { href: '/dining/geisyatei', image: '/images/geisya/geisya-01.webp', name: locale === 'ja' ? '芸者亭' : 'Geisha-tei', mincho: true },
     { href: '/dining/warakutei', image: '/images/warakutei/yakiniku-01.webp', name: locale === 'ja' ? '和楽亭' : 'Warakutei', mincho: true },
-    { href: '/retail', image: '/images/ikegami/store-01.webp', name: locale === 'ja' ? 'イケガミストア' : 'Ikegami Store', mincho: true },
+    { href: '/retail/ikegami-store', image: '/images/ikegami/store-01.webp', name: locale === 'ja' ? 'イケガミストア' : 'Ikegami Store', mincho: true },
   ];
 
   return (

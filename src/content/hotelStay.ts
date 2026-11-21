@@ -611,40 +611,28 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     },
     dining: {
       lead: {
-        ja: '味噌カツ、ひつまぶし、手羽先――名古屋は「名古屋めし」の宝庫。旅の楽しみは食事から。',
-        en: 'Miso katsu, hitsumabushi, chicken wings — Nagoya is a treasure trove of local food.',
+        ja: 'ホテルでは、皆さまで囲める夕食と、和洋をそろえた朝食をご用意しています。',
+        en: 'At the hotel we serve a dinner to share around the table and a breakfast with Japanese and Western dishes.',
       },
       items: [
+        // Client's photos of the hotel's own meals (Nov 2026).
+        // Text written from the photos — confirm with the client.
         {
-          label: 'Breakfast',
-          title: { ja: 'ご朝食', en: 'Breakfast' },
-          body: BREAKFAST_NOTE,
-        },
-        {
-          label: 'Nagoya Meshi',
-          title: { ja: '味噌カツ・ひつまぶし', en: 'Miso katsu & hitsumabushi' },
-          image: '/images/spots/nagoya-hitsumabushi-v2.webp',
+          label: 'Hotel Dining',
+          title: { ja: '夕食', en: 'Dinner' },
+          image: '/images/nagoya/nagoya-dining-dinner.webp',
           body: {
-            ja: '濃厚な八丁味噌のタレをかけた味噌カツや、三通りの食べ方で楽しむうなぎのひつまぶしは、名古屋を訪れたらぜひ味わいたい名物です。',
-            en: 'Pork cutlet in rich Hatcho miso sauce, and eel hitsumabushi eaten three ways — must-tries on any Nagoya trip.',
+            ja: 'お刺身の盛り合わせ、きのこと野菜の焼き物、彩りサラダ、汁物など。皆さまで取り分けてお楽しみいただけます。',
+            en: 'A sashimi platter, mushrooms and vegetables baked in foil, a colourful salad, soup and more — made for sharing.',
           },
         },
         {
-          label: 'Nagoya Meshi',
-          title: { ja: '手羽先', en: 'Tebasaki chicken wings' },
-          image: '/images/spots/nagoya-tebasaki.webp',
+          label: 'Hotel Dining',
+          title: { ja: '朝食', en: 'Breakfast' },
+          image: '/images/nagoya/nagoya-dining-breakfast.webp',
           body: {
-            ja: '甘辛いタレとごま、こしょうをまとった名古屋名物の手羽先。カリッと香ばしく、ビールのお供にも欠かせない一品です。',
-            en: 'Nagoya’s famous wings, glazed in a sweet-savoury sauce with sesame and pepper — crisp, fragrant and made for a cold beer.',
-          },
-        },
-        {
-          label: 'Nagoya Meshi',
-          title: { ja: '味噌煮込みうどん', en: 'Miso nikomi udon' },
-          image: '/images/spots/nagoya-misonikomi.webp',
-          body: {
-            ja: 'コシの強い麺を土鍋で豆味噌のだしと煮込む、名古屋の冬の定番。卵や油揚げを添えて、熱々のままお楽しみください。',
-            en: 'Firm udon simmered in a clay pot of soybean-miso broth with egg and fried tofu — a Nagoya winter classic, best eaten piping hot.',
+            ja: 'ラーメンに、パンやトースト、手羽先、卵、牛乳など、和洋をそろえた朝食です。朝食の有無はご宿泊プランにより異なります。',
+            en: 'Ramen with bread rolls and toast, chicken wings, an egg, milk and more — Japanese and Western together. Whether breakfast is included depends on your plan.',
           },
         },
         {
@@ -881,8 +869,8 @@ const stays: Record<Hotel['slug'], HotelStay> = {
     },
     dining: {
       lead: {
-        ja: '京都駅にもほど近く、京料理から気軽な食事処まで、お食事の選択肢が豊富な立地です。',
-        en: 'Close to Kyoto Station, with everything from Kyoto cuisine to casual eateries nearby.',
+        ja: 'ホテルでは、皆さまで鍋を囲めるしゃぶしゃぶのお食事をご用意しています。',
+        en: 'At the hotel we serve shabu-shabu — a hot pot to gather round together.',
       },
       items: [
         {
@@ -890,31 +878,34 @@ const stays: Record<Hotel['slug'], HotelStay> = {
           title: { ja: 'ご朝食', en: 'Breakfast' },
           body: BREAKFAST_NOTE,
         },
+        // Client's photos of the hotel's own meals (shabu-shabu, Nov 2026).
+        // Titles and text written from the photos — confirm with the client.
         {
-          label: 'Kyoto Cuisine',
-          title: { ja: '京料理（会席）', en: 'Kyoto kaiseki' },
-          image: '/images/spots/toji-kaiseki-v2.webp',
+          label: 'Hotel Dining',
+          title: { ja: '二色鍋のしゃぶしゃぶ', en: 'Two-broth shabu-shabu' },
+          image: '/images/toji/toji-dining-shabu.webp',
           body: {
-            ja: '旬の食材を美しい器に少しずつ盛り付ける京料理。目でも季節を味わえる会席は、京都の夜を特別なひとときにしてくれます。京都駅周辺には老舗から新しいお店まで揃っています。',
-            en: 'Seasonal ingredients served a little at a time in beautiful dishes — a kaiseki dinner makes a Kyoto evening special. Around Kyoto Station you will find everything from old houses to new restaurants.',
+            ja: '白湯スープと辛味スープの二色鍋で、牛肉・豚肉とたっぷりの野菜をお楽しみいただけます。',
+            en: 'A split pot of mild white broth and spicy red broth, with beef, pork and plenty of vegetables.',
           },
         },
         {
-          label: 'Kyoto Cuisine',
-          title: { ja: '湯豆腐・湯葉', en: 'Yudofu & yuba' },
-          image: '/images/spots/toji-yudofu.webp',
+          label: 'Hotel Dining',
+          title: { ja: '和牛しゃぶしゃぶ', en: 'Wagyu shabu-shabu' },
+          image: '/images/toji/toji-dining-wagyu.webp',
           body: {
-            ja: '京都の良質な水が生む、なめらかな豆腐と湯葉。昆布だしでやさしく温める湯豆腐は、寒い季節の京都で味わいたい定番の一品です。',
-            en: 'Silky tofu and yuba made with Kyoto’s soft water. Yudofu, gently warmed in kombu broth, is a classic to enjoy on a cold Kyoto day.',
+            ja: '和牛ロースと和牛バラを、季節の野菜やきのこと一緒に。ポン酢とごまだれでどうぞ。',
+            en: 'Wagyu loin and belly with seasonal vegetables and mushrooms, dipped in ponzu or sesame sauce.',
           },
         },
         {
-          label: 'Kyoto Cuisine',
-          title: { ja: '抹茶スイーツ', en: 'Matcha sweets' },
-          image: '/images/spots/toji-matcha.webp',
+          label: 'Hotel Dining',
+          title: { ja: '鍋を囲んで', en: 'Around the pot' },
+          image: '/images/toji/toji-dining-table.webp',
+          focus: 'center 35%',
           body: {
-            ja: '宇治抹茶を使ったゼリーやパフェ、わらび餅など、京都ならではの甘味。京都駅周辺にも茶房が多く、観光の合間のひと休みにぴったりです。',
-            en: 'Uji matcha jellies, parfaits and warabi-mochi — sweets that taste of Kyoto. Tea rooms around Kyoto Station make an easy break between sights.',
+            ja: 'ご家族やグループで鍋を囲み、にぎやかなお食事のひとときを。',
+            en: 'Gather round the pot with family or friends for a lively meal.',
           },
         },
         {

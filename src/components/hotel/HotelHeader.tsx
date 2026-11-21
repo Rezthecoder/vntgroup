@@ -100,7 +100,7 @@ export function HotelHeader({
   }, [open]);
 
   const linkClass =
-    'relative block py-3 text-[0.875rem] tracking-[0.05em] text-ink-mute transition-colors hover:text-ink lg:text-[0.9375rem] lg:tracking-[0.06em]';
+    'relative block whitespace-nowrap py-3 text-[0.875rem] tracking-[0.05em] text-ink-mute transition-colors hover:text-ink lg:text-[0.9375rem] lg:tracking-[0.06em]';
   const drawerLink = 'block border-b border-ink/10 py-3 text-[0.9375rem] tracking-[0.06em] text-ink-mute transition-colors hover:text-ink';
   const menuLabel = ja ? 'メニュー' : 'Menu';
   const homeLabel = ja ? 'ホーム' : 'Home';
@@ -187,8 +187,10 @@ export function HotelHeader({
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
-            <LangSwitch locale={locale} className="hidden lg:inline-flex" />
-            <ThemeToggle className="hidden lg:inline-flex" />
+            {/* Language and theme join the row at xl; below that they are in the menu,
+                so the Japanese section links never have to wrap. */}
+            <LangSwitch locale={locale} className="hidden xl:inline-flex" />
+            <ThemeToggle className="hidden xl:inline-flex" />
             <button
               type="button"
               onClick={() => setOpen(true)}

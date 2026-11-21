@@ -46,31 +46,33 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
           scrolled && !open ? 'glass-bar shadow-[0_2px_16px_rgba(0,0,0,0.06)]' : 'bg-page',
         )}
       >
-        {/* PC: logo | links centred on the page | contact. Smaller screens: logo | contact + menu. */}
-        <div className="flex h-(--header-h) items-center justify-between gap-6 px-5 md:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-          <Link href={localePath(locale)} aria-label="VNT GROUP" className="justify-self-start text-brand transition-opacity hover:opacity-75">
+        {/* PC (xl+): logo | links centred on the page | contact. Below xl: logo | contact + menu.
+            The full row needs about 1,140px in Japanese (お問い合わせ is wider than
+            Contact), so it starts at xl; below that the links are in the menu. */}
+        <div className="flex h-(--header-h) items-center justify-between gap-6 px-5 md:px-10 xl:grid xl:grid-cols-[1fr_auto_1fr]">
+          <Link href={localePath(locale)} aria-label="VNT GROUP" className="shrink-0 justify-self-start text-brand transition-opacity hover:opacity-75">
             <Wordmark className="h-6 w-auto md:h-7" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-7 xl:flex">
             {headerNav.map((item) => (
               <Link
                 key={item.href + item.label.ja}
                 href={localePath(locale, item.href)}
-                className="text-[1.0625rem] font-bold text-ink transition-colors hover:text-brand"
+                className="whitespace-nowrap text-[1.0625rem] font-bold text-ink transition-colors hover:text-brand"
               >
                 {t(item.label, locale)}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 justify-self-end md:gap-5">
+          <div className="flex shrink-0 items-center gap-3 justify-self-end md:gap-5">
             <LangSwitch locale={locale} className="hidden sm:inline-flex" />
             <ThemeToggle />
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 href={localePath(locale, '/contact')}
-                className="rounded-lg bg-brand px-6 py-3.5 text-[1.0625rem] font-bold text-washi shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
+                className="whitespace-nowrap rounded-lg bg-brand px-6 py-3.5 text-[1.0625rem] font-bold text-washi shadow-[0_4px_12px_rgba(183,41,41,0.3)] transition-opacity hover:opacity-85"
               >
                 {labels.contact}
               </Link>
@@ -81,7 +83,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: { menu: str
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label={open ? labels.close : labels.menu}
-              className="relative z-[130] flex h-11 w-11 items-center justify-center lg:hidden"
+              className="relative z-[130] flex h-11 w-11 items-center justify-center xl:hidden"
             >
               <span className="relative block h-3.5 w-7">
                 {[0, 1, 2].map((i) => (
