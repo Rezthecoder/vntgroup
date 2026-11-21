@@ -16,7 +16,7 @@ import { pageMeta } from '@/lib/seo';
 /**
  * 販売店 hub. Every shop is shown in the same format, in the client's order
  * (Nov 2026): イケガミストア → 京彩堂（ドラッグストア） → Kix Japan drug 泉佐野店
- * → 小町着物レンタル. Each block links to the shop's own page.
+ * → 京小町（着物レンタル）. Each block links to the shop's own page.
  */
 type Entry = {
   key: string;
