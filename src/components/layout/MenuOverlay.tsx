@@ -39,6 +39,7 @@ export function MenuOverlay({ locale, onClose }: { locale: Locale; onClose: () =
       />
       <motion.nav
         aria-label="Menu"
+        data-lenis-prevent
         className="absolute inset-y-0 right-0 flex w-[40%] min-w-[11.5rem] flex-col overflow-y-auto overscroll-contain glass-panel px-4 pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
         initial={{ x: '100%' }}
         animate={{ x: '0%' }}

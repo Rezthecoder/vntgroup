@@ -221,6 +221,9 @@ export function HotelHeader({
             />
             <motion.nav
               id="hotel-menu"
+              // Let the wheel/trackpad scroll this panel; Lenis would otherwise
+              // take the event and scroll the page behind it.
+              data-lenis-prevent
               aria-label={menuLabel}
               className="glass-panel absolute inset-y-0 right-0 flex w-[68%] max-w-[22rem] flex-col overflow-y-auto overscroll-contain px-5 pt-[env(safe-area-inset-top)] pb-8 shadow-[-12px_0_32px_rgba(0,0,0,0.12)]"
               initial={{ x: '100%' }}
