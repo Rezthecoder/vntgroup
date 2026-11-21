@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       { source: '/geisyatei', destination: '/ja/dining/geisyatei', permanent: true },
       { source: '/warakutei-yakiniku', destination: '/ja/dining/warakutei-yakiniku', permanent: true },
       { source: '/warakutei-yakitori', destination: '/ja/dining/warakutei-yakitori', permanent: true },
-      { source: '/ikegami', destination: '/ja/retail', permanent: true },
+      { source: '/ikegami', destination: '/ja/retail/ikegami-store', permanent: true },
       { source: '/product', destination: '/ja/business', permanent: true },
       { source: '/company', destination: '/ja/company', permanent: true },
       { source: '/contact', destination: '/ja/contact', permanent: true },
