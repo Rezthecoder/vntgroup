@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Reveal } from '@/components/motion/Reveal';
+import { MapEmbed } from '@/components/ui/MapEmbed';
 import type { Shop } from '@/content/shops';
 import { getDictionary } from '@/content/dictionary';
 import { localePath, t, type Locale } from '@/lib/i18n';
@@ -156,6 +157,16 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
                   <dd>{t(shop.closed, locale)}</dd>
                 </div>
               )}
+              {shop.tel && (
+                <div className="flex gap-4">
+                  <dt className="w-20 shrink-0 text-stone">TEL</dt>
+                  <dd>
+                    <a href={`tel:${shop.tel.replace(/-/g, '')}`} className="underline-offset-4 hover:underline">
+                      {shop.tel}
+                    </a>
+                  </dd>
+                </div>
+              )}
             </dl>
             <Link href={contactHref} className="btn-pill btn-pill-brand liquid-press mt-7">
               {en ? 'Reservations & enquiries' : 'ご予約・お問い合わせ'}
@@ -171,6 +182,13 @@ export function SakaiKagetsuPage({ shop, locale }: { shop: Shop; locale: Locale 
           </Reveal>
         </div>
       </section>
+
+      {/* 5. Map (click-to-load) ------------------------------------------------------ */}
+      {shop.address && shop.mapEmbed && (
+        <section className="mx-auto max-w-[76rem] px-5 py-14 md:py-20">
+          <MapEmbed src={shop.mapEmbed} title={t(shop.name, locale)} address={t(shop.address, locale)} cta={dict.common.openInMaps} />
+        </section>
+      )}
     </div>
   );
 }

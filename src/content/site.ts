@@ -78,7 +78,7 @@ export const navigation: NavItem[] = [
       { href: '/retail/ikegami-store', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
       { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
       { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
-      { href: '/retail/komachi-kimono', label: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' } },
+      { href: '/retail/komachi-kimono', label: { ja: '京小町（着物レンタル）', en: 'Kyo Komachi (Kimono rental)' } },
     ],
   },
   {
@@ -141,7 +141,7 @@ export const footerNav: {
       { href: '/retail/ikegami-store', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
       { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
       { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
-      { href: '/retail/komachi-kimono', label: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' } },
+      { href: '/retail/komachi-kimono', label: { ja: '京小町（着物レンタル）', en: 'Kyo Komachi (Kimono rental)' } },
     ],
   },
   corporate: [

@@ -3,8 +3,8 @@ import type { L10n } from '@/lib/i18n';
 /**
  * New shops and restaurants added under the 2026 quote (items 8–11).
  *
- * DRAFT: VNT has not supplied these shops' details yet, so every factual
- * field (address, hours, closed days, phone, photos, description) is left
+ * Facts come only from VNT. Addresses and phone numbers were sent on
+ * 21 Nov 2026; anything still missing (hours, closed days, photos) is left
  * empty and the page shows 準備中 in its place. Nothing here is invented.
  * Fill the fields in as the client sends them; set `draft: false` once a
  * shop's page is complete so it is indexed by search engines and listed in
@@ -38,14 +38,20 @@ export type Shop = {
 };
 
 // Retail shops are listed in the client's order (Nov 2026):
-// 京彩堂（ドラッグストア） → Kix Japan drug 泉佐野店 → 小町着物レンタル.
+// 京彩堂（ドラッグストア） → Kix Japan drug 泉佐野店 → 京小町（着物レンタル）.
 export const shops: Shop[] = [
   {
     slug: 'kyosaido-drug',
     section: 'retail',
-    name: { ja: '京彩堂', en: 'Kyosaido' },
+    name: { ja: '京彩堂ドラッグ 東寺店', en: 'Kyosaido Drug Toji' },
     category: { ja: 'ドラッグストア', en: 'Drugstore' },
     romaji: 'Kyosaido — Drugstore',
+    address: {
+      ja: '〒601-8474 京都府京都市南区四ツ塚町78 ORYZA東寺106号',
+      en: 'ORYZA Toji 106, 78 Yotsuzuka-chō, Minami-ku, Kyoto 601-8474',
+    },
+    tel: '075-644-9667',
+    mapEmbed: 'https://www.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E5%9B%9B%E3%83%84%E5%A1%9A%E7%94%BA78%20ORYZA%E6%9D%B1%E5%AF%BA&hl=ja&z=17&output=embed',
     draft: true,
   },
   {
@@ -60,15 +66,28 @@ export const shops: Shop[] = [
       en: 'A drugstore with medicines, cosmetics, supplements and everyday goods.',
     },
     image: '/images/shops/kix-japan-drug-izumisano.webp',
-    // Still to come from VNT: address, hours, closed days, phone.
+    address: {
+      ja: '〒598-0012 大阪府泉佐野市高松東1-10-37',
+      en: '1-10-37 Takamatsu-higashi, Izumisano, Osaka 598-0012',
+    },
+    tel: '072-479-6153',
+    mapEmbed: 'https://www.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%B3%89%E4%BD%90%E9%87%8E%E5%B8%82%E9%AB%98%E6%9D%BE%E6%9D%B11-10-37&hl=ja&z=17&output=embed',
+    // Still to come from VNT: hours, closed days.
     draft: true,
   },
   {
     slug: 'komachi-kimono',
     section: 'retail',
-    name: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' },
+    // Name as VNT wrote it on 21 Nov 2026: 着物のレンタル 京小町.
+    name: { ja: '京小町', en: 'Kyo Komachi' },
     category: { ja: '着物レンタル', en: 'Kimono rental' },
-    romaji: 'Komachi — Kimono Rental',
+    romaji: 'Kyo Komachi — Kimono Rental',
+    address: {
+      ja: '〒601-8474 京都府京都市南区四ツ塚町78 ORYZA東寺103号',
+      en: 'ORYZA Toji 103, 78 Yotsuzuka-chō, Minami-ku, Kyoto 601-8474',
+    },
+    tel: '075-748-7065',
+    mapEmbed: 'https://www.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E5%9B%9B%E3%83%84%E5%A1%9A%E7%94%BA78%20ORYZA%E6%9D%B1%E5%AF%BA&hl=ja&z=17&output=embed',
     // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
     image: '/images/shops/kyosaido-kimono-v1.webp',
     imageFocus: 'center 30%',
@@ -88,11 +107,14 @@ export const shops: Shop[] = [
     },
     image: '/images/shops/sakai-kagetsu-card-v2.webp',
     flyer: { src: '/images/shops/sakai-kagetsu-flyer-v2.webp', width: 853, height: 1280 },
-    address: { ja: '大阪府堺市堺区（詳細はお問い合わせください）', en: 'Sakai Ward, Sakai, Osaka (please ask us for details)' },
+    address: { ja: '〒590-0954 大阪府堺市堺区大町東1-2-3', en: '1-2-3 Ōmachi-higashi, Sakai-ku, Sakai, Osaka 590-0954' },
+    tel: '072-268-5596',
+    // Shop name in the query so the map card reads 堺花月 (the bare address
+    // resolves to another business at the same address).
+    mapEmbed: 'https://www.google.com/maps?q=%E5%A0%BA%E8%8A%B1%E6%9C%88%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E5%A4%A7%E7%94%BA%E6%9D%B11-2-3&hl=ja&z=17&output=embed',
     hours: { ja: '11:00〜22:00（L.O. 21:00）', en: '11:00–22:00 (last order 21:00)' },
     closed: { ja: '不定休', en: 'Irregular holidays' },
-    // The flyer's phone number (072-000-0000) is a placeholder, so it is not
-    // shown. Still to come from VNT: real phone number and full address.
+    // Address and phone from VNT (21 Nov 2026); the flyer's 072-000-0000 was a placeholder.
     draft: true,
   },
 ];
