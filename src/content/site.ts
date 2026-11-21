@@ -75,7 +75,7 @@ export const navigation: NavItem[] = [
     index: '05',
     label: { ja: '販売店', en: 'Shop' },
     children: [
-      { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
+      { href: '/retail/ikegami-store', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
       { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
       { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
       { href: '/retail/komachi-kimono', label: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' } },
@@ -138,7 +138,7 @@ export const footerNav: {
       // One entry for both Warakutei restaurants, as on the original (/restaurant).
       { href: '/dining/warakutei', label: { ja: '和楽亭（焼肉、焼鳥）', en: 'Warakutei (Yakiniku, Yakitori)' } },
       { href: '/dining/sakai-kagetsu', label: { ja: '堺花月', en: 'Sakai Kagetsu' } },
-      { href: '/retail', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
+      { href: '/retail/ikegami-store', label: { ja: 'イケガミストア', en: 'Ikegami Store' } },
       { href: '/retail/kyosaido-drug', label: { ja: '京彩堂（ドラッグストア）', en: 'Kyosaido (Drugstore)' } },
       { href: '/retail/kix-japan-drug-izumisano', label: { ja: 'Kix Japan drug 泉佐野店', en: 'Kix Japan drug Izumisano' } },
       { href: '/retail/komachi-kimono', label: { ja: '小町着物レンタル', en: 'Komachi Kimono Rental' } },

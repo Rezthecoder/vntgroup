@@ -12,6 +12,7 @@ const staticPaths = [
   '/dining',
   '/dining/warakutei',
   '/retail',
+  '/retail/ikegami-store',
   '/contact',
   '/news',
 ];

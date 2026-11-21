@@ -1,18 +1,35 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-import { SupplierCall } from '@/components/sections/SupplierCall';
-import { ShopLinks } from '@/components/sections/ShopPage';
-import { retailShops } from '@/content/shops';
 import { Reveal } from '@/components/motion/Reveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { ButtonLink } from '@/components/ui/ArrowLink';
+import { SplitText } from '@/components/motion/SplitText';
+import { ArrowLink } from '@/components/ui/ArrowLink';
 
 import { ikegami } from '@/content/business';
+import { retailShops } from '@/content/shops';
 import { getDictionary } from '@/content/dictionary';
-import { isLocale, localePath, t, type Locale } from '@/lib/i18n';
+import { isLocale, localePath, t, type L10n, type Locale } from '@/lib/i18n';
 import { pageMeta } from '@/lib/seo';
+
+/**
+ * 販売店 hub. Every shop is shown in the same format, in the client's order
+ * (Nov 2026): イケガミストア → 京彩堂（ドラッグストア） → Kix Japan drug 泉佐野店
+ * → 小町着物レンタル. Each block links to the shop's own page.
+ */
+type Entry = {
+  key: string;
+  href: string;
+  romaji: string;
+  category: L10n;
+  name: L10n;
+  lede?: L10n;
+  image?: string;
+  imageFocus?: string;
+};
+
+const TITLE = { ja: '販売店', en: 'Shops' };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale: active,
     path: '/retail',
     image: ikegami.image,
-    title: t(ikegami.name, active),
+    title: t(TITLE, active),
     description: t(ikegami.lede, active),
   });
 }
@@ -31,87 +48,95 @@ export default async function RetailPage({ params }: { params: Promise<{ locale:
   if (!isLocale(locale)) notFound();
   const active = locale as Locale;
   const dict = getDictionary(active);
+  const en = active === 'en';
+
+  const entries: Entry[] = [
+    {
+      key: 'ikegami-store',
+      href: '/retail/ikegami-store',
+      romaji: 'Ikegami Store — Drugstore',
+      category: { ja: 'ドラッグストア', en: 'Drugstore' },
+      name: ikegami.name,
+      lede: ikegami.lede,
+      image: ikegami.image,
+    },
+    ...retailShops.map((s) => ({
+      key: s.slug,
+      href: `/retail/${s.slug}`,
+      romaji: s.romaji,
+      category: s.category,
+      name: s.name,
+      lede: s.lede,
+      image: s.image,
+      imageFocus: s.imageFocus,
+    })),
+  ];
 
   return (
     <>
-      {/* Bright masthead: the storefront photo is shown whole, with no dark
-          scrim, so the full イケガミストア / IKEGAMI STORE sign reads clearly. */}
-      <section className="bg-page-2 pt-14 pb-16 md:pt-20 md:pb-24">
+      <section className="bg-page-2 pt-14 pb-16 md:pt-20 md:pb-20">
         <div className="shell text-center">
-          <p className="type-eyebrow">Ikegami Store</p>
-          <h1 className="type-display mt-4 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(ikegami.name, active)}</h1>
-          {/* No fade-in: this is the first thing on the page, so it shows at full strength at once. */}
-          <div className="mx-auto mt-10 max-w-[62.5rem]">
-            <Image
-              src={ikegami.image}
-              alt={`${t(ikegami.name, active)}（IKEGAMI STORE）の店舗外観`}
-              width={1000}
-              height={601}
-              priority
-              sizes="(max-width: 1024px) 100vw, 62.5rem"
-              className="h-auto w-full shadow-[0_10px_40px_rgba(0,0,0,0.12)]"
-            />
-          </div>
+          <p className="type-eyebrow">Shop</p>
+          <h1 className="type-display mt-4 text-[clamp(1.75rem,4.4vw,3.25rem)] text-ink">{t(TITLE, active)}</h1>
         </div>
       </section>
 
-      <section className="relative py-24 md:py-32">
-        <div className="shell">
-          <Reveal className="mx-auto max-w-3xl">
-            <p className="type-mincho text-[clamp(1rem,2vw,1.35rem)] leading-[2.1] text-ink/90">{t(ikegami.lede, active)}</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Stores ----------------------------------------------------------- */}
-      <section className="relative border-t border-ink/10 py-24 md:py-32">
-        <div className="shell">
-          <SectionHeading eyebrow="Stores" title={dict.common.storeInformation} />
-
-          <div className="mt-14 grid gap-10 md:grid-cols-2">
-            {ikegami.branches.map((branch, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="h-full border border-ink/12 p-8 md:p-10">
-                  <h3 className="type-display text-[1.25rem] leading-snug text-ink">{t(branch.name, active)}</h3>
-                  <dl className="mt-7 space-y-4 text-base">
-                    <div>
-                      <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">{dict.common.address}</dt>
-                      <dd className="mt-1.5 leading-[1.95] text-ink/85">{t(branch.address, active)}</dd>
+      {entries.map((entry, i) => {
+        const href = localePath(active, entry.href);
+        const name = t(entry.name, active);
+        return (
+          <section key={entry.key} id={entry.key} className="relative border-t border-ink/10 py-20 md:py-28">
+            <div className="shell-wide">
+              <div className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+                <Reveal direction={i % 2 === 1 ? 'left' : 'right'}>
+                  <Link href={href} className="group block">
+                    <div className="relative aspect-4/3 w-full overflow-hidden bg-page-3">
+                      {entry.image ? (
+                        <Image
+                          src={entry.image}
+                          alt={name}
+                          fill
+                          priority={i === 0}
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                          style={entry.imageFocus ? { objectPosition: entry.imageFocus } : undefined}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-[0.9375rem] tracking-[0.2em] text-stone">
+                          {en ? 'Photos coming soon' : '写真準備中'}
+                        </div>
+                      )}
                     </div>
-                    {branch.tel && (
-                      <div>
-                        <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">TEL</dt>
-                        <dd className="mt-1.5">
-                          <a href={`tel:${branch.tel.replace(/-/g, '')}`} className="text-ink/85 hover:text-brass">
-                            {branch.tel}
-                          </a>
-                        </dd>
-                      </div>
-                    )}
-                    {branch.hours && (
-                      <div>
-                        <dt className="text-[0.8125rem] tracking-[0.24em] text-stone uppercase">{dict.common.hours}</dt>
-                        <dd className="mt-1.5 text-ink/85">{t(branch.hours, active)}</dd>
-                      </div>
-                    )}
-                  </dl>
+                  </Link>
+                </Reveal>
+
+                <div>
+                  <Reveal>
+                    <p className="type-eyebrow">{entry.romaji}</p>
+                  </Reveal>
+                  <Reveal delay={0.04}>
+                    <p className="type-mincho mt-5 text-[1.0625rem] text-brass">{t(entry.category, active)}</p>
+                  </Reveal>
+                  <SplitText
+                    as="h2"
+                    text={name}
+                    delay={0.06}
+                    className="type-display mt-3 text-[clamp(1.5rem,3.6vw,2.5rem)] text-ink"
+                  />
+                  <Reveal delay={0.2}>
+                    <p className="type-body mt-6 max-w-xl whitespace-pre-line">
+                      {entry.lede ? t(entry.lede, active) : en ? 'Store details coming soon.' : '店舗情報は近日公開予定です。'}
+                    </p>
+                  </Reveal>
+                  <Reveal delay={0.28} className="mt-10">
+                    <ArrowLink href={href}>{dict.common.viewMore}</ArrowLink>
+                  </Reveal>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.2} className="mt-12 text-center">
-            <ButtonLink href={localePath(active, '/contact')} variant="outline">
-              {dict.contact.title}
-            </ButtonLink>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* As on the live Ikegami page: the supplier call follows the stores. */}
-      <SupplierCall locale={active} />
-
-      <ShopLinks shops={retailShops} locale={active} eyebrow="Other Stores" title={active === 'en' ? 'Other stores' : 'その他の店舗'} />
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </>
   );
 }

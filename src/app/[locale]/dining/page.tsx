@@ -117,7 +117,7 @@ export default async function DiningPage({ params }: { params: Promise<{ locale:
           <SectionHeading eyebrow="Shop" title={t(ikegami.name, active)} lead={t(ikegami.lede, active)} />
           <div className="mx-auto mt-14 grid max-w-md gap-5">
             <PropertyCard
-              href={localePath(active, '/retail')}
+              href={localePath(active, '/retail/ikegami-store')}
               image={ikegami.image}
               name={t(ikegami.name, active)}
               ratio="aspect-[1000/601]"
