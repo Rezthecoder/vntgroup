@@ -116,6 +116,14 @@ not, read the current version of any file changed since then. For literal text
 _Update this section at the end of each session._
 
 - Bilingual JA/EN is live, with an animated language switch (loader and glide).
-- Fuji Premium Hotel: the client's room photos (triple and double) and the
-  hotel's own crab meals are in. The local-gourmet items (udon, hoto) were removed.
-- Next: _(add open to-dos here)_
+  Below 1280px the header shows the menu button instead of the link row
+  (Japanese labels would otherwise wrap); menu panels use `data-lenis-prevent`.
+- 販売店 (`/retail`): イケガミストア → 京彩堂ドラッグ 東寺店 → Kix Japan drug
+  泉佐野店 → 京小町, all in the same block. Ikegami's own page is
+  `/retail/ikegami-store`. Shops have address, TEL, map and 年中無休.
+- 飲食店 (`/dining`): 芸者亭 → 和楽亭 (2.1 焼肉, 2.2 焼鳥) → 堺花月; no shops on it.
+- Home FOOD & SHOP shows every restaurant and shop.
+- Hotel お食事 use the client's own meal photos (Fuji crab, Nagoya 夕食/朝食,
+  Toji shabu-shabu); dish names were written from the photos.
+- Next: from the client — opening hours and photos for 京彩堂 / 京小町 /
+  Kix, store descriptions, confirmation of dish names; Toji's review links.
