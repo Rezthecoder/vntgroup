@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return pageMeta({
     locale: ja ? 'ja' : 'en',
     path: '/business',
-    image: '/images/business/product-02.webp',
+    image: '/images/business/product-03.webp',
     title: ja ? '事業内容' : 'Business',
     description: ja
       ? '商品企画・製造販売、ホテル、飲食、輸入出、海外進出支援、観光支援。VNTグループの六つの事業領域。'
@@ -39,7 +39,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ local
       <PageHero
         eyebrow="Business"
         title={active === 'ja' ? '事業内容' : 'Business'}
-        image="/images/business/product-02.webp"
+        image="/images/business/product-03.webp"
       />
 
       {/* Six areas -------------------------------------------------------- */}
