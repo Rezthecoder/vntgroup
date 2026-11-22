@@ -7,7 +7,7 @@ import { businessAreas } from '@/content/business';
 import { localePath, t, type Locale } from '@/lib/i18n';
 
 /** Fills the one slot the live page leaves empty (商品企画・製造販売). */
-const FALLBACK_IMAGE: Record<string, string> = { product: '/images/business/product-02.webp' };
+const FALLBACK_IMAGE: Record<string, string> = { product: '/images/business/product-03.webp' };
 
 /**
  * The six business areas as on the live home page: photo, Mincho title,

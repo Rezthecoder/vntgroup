@@ -14,7 +14,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const PAGE_SOURCES = [
   '/images/brand/hero-group.webp', // home, news (default)
   '/images/brand/hero-main.webp', // company, contact
-  '/images/business/product-02.webp', // business
+  '/images/business/product-03.webp', // business
   '/images/toji/toji-01.webp', // hotels hub
   '/images/geisya/geisya-01.webp', // dining hub
   '/images/ikegami/store-01.webp', // retail (Ikegami Store)
