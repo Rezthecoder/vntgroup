@@ -120,10 +120,10 @@ _Update this section at the end of each session._
   (Japanese labels would otherwise wrap); menu panels use `data-lenis-prevent`.
 - 販売店 (`/retail`): イケガミストア → 京彩堂ドラッグ 東寺店 → Kix Japan drug
   泉佐野店 → 京小町, all in the same block. Ikegami's own page is
-  `/retail/ikegami-store`. Shops have address, TEL, map and 年中無休.
+  `/retail/ikegami-store`. Shops have address, TEL, map, 10:00〜22:00 and 年中無休.
 - 飲食店 (`/dining`): 芸者亭 → 和楽亭 (2.1 焼肉, 2.2 焼鳥) → 堺花月; no shops on it.
 - Home FOOD & SHOP shows every restaurant and shop.
 - Hotel お食事 use the client's own meal photos (Fuji crab, Nagoya 夕食/朝食,
   Toji shabu-shabu); dish names were written from the photos.
-- Next: from the client — opening hours and photos for 京彩堂 / 京小町 /
-  Kix, store descriptions, confirmation of dish names; Toji's review links.
+- Next: from the client — photos for 京彩堂, store descriptions for 京彩堂 /
+  京小町, confirmation of dish names; Toji's review links.

@@ -4,7 +4,7 @@ import type { L10n } from '@/lib/i18n';
  * New shops and restaurants added under the 2026 quote (items 8–11).
  *
  * Facts come only from VNT. Addresses and phone numbers were sent on
- * 21 Nov 2026 (年中無休 on 23 Nov); anything still missing (hours, photos) is left
+ * 21 Nov 2026 (hours and 年中無休 on 23 Nov); anything still missing (photos) is left
  * empty and the page shows 準備中 in its place. Nothing here is invented.
  * Fill the fields in as the client sends them; set `draft: false` once a
  * shop's page is complete so it is indexed by search engines and listed in
@@ -51,6 +51,7 @@ export const shops: Shop[] = [
       en: 'ORYZA Toji 106, 78 Yotsuzuka-chō, Minami-ku, Kyoto 601-8474',
     },
     tel: '075-644-9667',
+    hours: { ja: '10:00〜22:00', en: '10:00–22:00' }, // from VNT, 23 Nov 2026
     closed: { ja: '年中無休', en: 'Open every day' }, // from VNT, 23 Nov 2026
     mapEmbed: 'https://www.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E5%9B%9B%E3%83%84%E5%A1%9A%E7%94%BA78%20ORYZA%E6%9D%B1%E5%AF%BA&hl=ja&z=17&output=embed',
     draft: true,
@@ -72,9 +73,9 @@ export const shops: Shop[] = [
       en: '1-10-37 Takamatsu-higashi, Izumisano, Osaka 598-0012',
     },
     tel: '072-479-6153',
+    hours: { ja: '10:00〜22:00', en: '10:00–22:00' }, // from VNT, 23 Nov 2026
     closed: { ja: '年中無休', en: 'Open every day' }, // from VNT, 23 Nov 2026
     mapEmbed: 'https://www.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%B3%89%E4%BD%90%E9%87%8E%E5%B8%82%E9%AB%98%E6%9D%BE%E6%9D%B11-10-37&hl=ja&z=17&output=embed',
-    // Still to come from VNT: hours.
     draft: true,
   },
   {
@@ -89,6 +90,7 @@ export const shops: Shop[] = [
       en: 'ORYZA Toji 103, 78 Yotsuzuka-chō, Minami-ku, Kyoto 601-8474',
     },
     tel: '075-748-7065',
+    hours: { ja: '10:00〜22:00', en: '10:00–22:00' }, // from VNT, 23 Nov 2026
     closed: { ja: '年中無休', en: 'Open every day' }, // from VNT, 23 Nov 2026
     mapEmbed: 'https://www.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E5%9B%9B%E3%83%84%E5%A1%9A%E7%94%BA78%20ORYZA%E6%9D%B1%E5%AF%BA&hl=ja&z=17&output=embed',
     // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
