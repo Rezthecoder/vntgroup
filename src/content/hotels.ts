@@ -18,7 +18,8 @@ export type Hotel = {
   stars: number;
   /** Rating badges, as on the live page (Google review score + booking-site ranks). */
   reviews?: {
-    google: { score: number; date: string; href?: string };
+    /** Google review score. Leave out when the client gives Google as a hotel rank instead. */
+    google?: { score: number; date: string; href?: string };
     ranks: { site: string; logo?: string; stars: number; href?: string }[];
   };
   rating?: { score: string; asOf: string };
@@ -237,10 +238,11 @@ export const hotels: Hotel[] = [
     stars: 3,
     // From vntgroup.co.jp/premium-toji (dated 2025.5.12). The live page's links
     // point to Fuji's listings by mistake, so no links until the client sends Toji's.
+    // Stars from the client (24 Nov 2026): Google Maps ★3, agoda ★4.
     reviews: {
-      google: { score: 4.5, date: '2025.5.12' },
       ranks: [
-        { site: 'agoda', logo: '/images/brands/agoda.webp', stars: 3 },
+        { site: 'Google Maps', logo: '/images/brands/google-maps.webp', stars: 3 },
+        { site: 'agoda', logo: '/images/brands/agoda.webp', stars: 4 },
         { site: 'Booking.com', logo: '/images/brands/booking.webp', stars: 3 },
       ],
     },
