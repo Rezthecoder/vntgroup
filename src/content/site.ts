@@ -48,7 +48,7 @@ export const navigation: NavItem[] = [
   {
     href: '/business',
     index: '02',
-    label: { ja: '事業', en: 'Business' },
+    label: { ja: '他事業', en: 'Other Business' },
   },
   {
     href: '/hotels',
@@ -88,14 +88,14 @@ export const navigation: NavItem[] = [
   },
 ];
 
-/** Header bar links, in the live site's order and wording. 採用 goes to the
+/** Header bar links, in the order VNT asked for on 25 Nov 2026 (ホーム ホテル 飲食店 販売店 他事業 採用 会社概要). 採用 goes to the
  *  contact form there, as it does on the live site. */
 export const headerNav: { href: string; label: L10n }[] = [
   { href: '/', label: { ja: 'ホーム', en: 'Home' } },
-  { href: '/business', label: { ja: '事業', en: 'Business' } },
   { href: '/hotels', label: { ja: 'ホテル', en: 'Hotels' } },
   { href: '/dining', label: { ja: '飲食店', en: 'Dining' } },
   { href: '/retail', label: { ja: '販売店', en: 'Shop' } },
+  { href: '/business', label: { ja: '他事業', en: 'Other Business' } },
   { href: '/contact', label: { ja: '採用', en: 'Careers' } },
   { href: '/company', label: { ja: '会社概要', en: 'Company' } },
 ];
