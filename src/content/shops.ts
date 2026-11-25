@@ -46,6 +46,10 @@ export const shops: Shop[] = [
     name: { ja: '京彩堂ドラッグ 東寺店', en: 'Kyosaido Drug Toji' },
     category: { ja: 'ドラッグストア', en: 'Drugstore' },
     romaji: 'Kyosaido — Drugstore',
+    // Client's storefront photo (25 Nov 2026).
+    image: '/images/shops/kyosaido-drug-toji.webp',
+    imageFocus: 'center',
+    imageSize: { width: 1280, height: 654 },
     address: {
       ja: '〒601-8474 京都府京都市南区四ツ塚町78 ORYZA東寺106号',
       en: 'ORYZA Toji 106, 78 Yotsuzuka-chō, Minami-ku, Kyoto 601-8474',
@@ -93,10 +97,10 @@ export const shops: Shop[] = [
     hours: { ja: '10:00〜22:00', en: '10:00–22:00' }, // from VNT, 23 Nov 2026
     closed: { ja: '年中無休', en: 'Open every day' }, // from VNT, 23 Nov 2026
     mapEmbed: 'https://www.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E5%9B%9B%E3%83%84%E5%A1%9A%E7%94%BA78%20ORYZA%E6%9D%B1%E5%AF%BA&hl=ja&z=17&output=embed',
-    // Client's photo (Nov 2026); the 'KYOTO / OCTOBER 2026' caption was cropped off.
-    image: '/images/shops/kyosaido-kimono-v1.webp',
-    imageFocus: 'center 30%',
-    imageSize: { width: 939, height: 1525 },
+    // Client's storefront photo (25 Nov 2026), replacing the earlier portrait photo.
+    image: '/images/shops/kyosaido-kimono-v2.webp',
+    imageFocus: 'center',
+    imageSize: { width: 1280, height: 640 },
     draft: true,
   },
   {
