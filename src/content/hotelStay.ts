@@ -97,6 +97,8 @@ export type Feature = { title: L10n; body: L10n; image: string; /** Taller card 
 export type HotelStay = {
   /** Slideshow photos for the full-bleed hero; falls back to the hotel's gallery. */
   heroSlides?: string[];
+  /** Show the two photos beside ホテル概要 side by side instead of overlapping (client request, Fuji). */
+  separatePhotos?: boolean;
   /** Photo cards under ホテルの魅力; derived from services + special blocks when absent. */
   features?: Feature[];
   /** Photo strips: inside the hotel / around the hotel. */
@@ -121,6 +123,7 @@ const BREAKFAST_NOTE: L10n = {
 
 const stays: Record<Hotel['slug'], HotelStay> = {
   fuji: {
+    separatePhotos: true,
     heroSlides: ['/images/live/fuji/u6.jpg', '/images/fuji/fuji-03.webp', '/images/live/fuji/u2.jpg'],
     scenery: {
       inside: ['/images/fuji/fuji-01.webp', '/images/fuji/fuji-02.webp', '/images/fuji/onsen-01.webp', '/images/live/fuji/about-2.webp', '/images/live/fuji/about-1.webp', '/images/fuji/info-top.webp'],
