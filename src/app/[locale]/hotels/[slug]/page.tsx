@@ -246,13 +246,13 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
 
         <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-12 md:mt-16 md:grid-cols-[1fr_1.1fr] md:gap-16">
           {stay.separatePhotos ? (
-            /* Two separate photos side by side, no overlap (client request). */
-            <Reveal from="left" duration={1.1} className="mx-auto grid w-full max-w-[27rem] grid-cols-2 items-center gap-3 md:gap-4">
+            /* Two separate photos, one above the other and full column width (client request). */
+            <Reveal from="left" duration={1.1} className="mx-auto grid w-full max-w-[36rem] gap-4 md:gap-6">
               <div className="relative aspect-[4/3] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                <Image src={collage[0]} alt="" fill sizes="(max-width: 768px) 45vw, 220px" className="object-cover" />
+                <Image src={collage[0]} alt="" fill sizes="(max-width: 768px) 92vw, 576px" className="object-cover" />
               </div>
               <div className="relative aspect-[3/4] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                <Image src={collage[1]} alt="" fill sizes="(max-width: 768px) 45vw, 220px" className="object-cover" />
+                <Image src={collage[1]} alt="" fill sizes="(max-width: 768px) 92vw, 576px" className="object-cover" />
               </div>
             </Reveal>
           ) : (
