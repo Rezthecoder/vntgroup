@@ -245,7 +245,18 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
         <EnHeading en={`EXPERIENCE ${title}`} sub={L(S.overview)} />
 
         <div className="mx-auto mt-12 grid max-w-[72rem] items-center gap-12 md:mt-16 md:grid-cols-[1fr_1.1fr] md:gap-16">
-          {/* Two overlapping photos, as the reference's collage. */}
+          {stay.separatePhotos ? (
+            /* Two separate photos side by side, no overlap (client request). */
+            <Reveal from="left" duration={1.1} className="mx-auto grid w-full max-w-[27rem] grid-cols-2 items-center gap-3 md:gap-4">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                <Image src={collage[0]} alt="" fill sizes="(max-width: 768px) 45vw, 220px" className="object-cover" />
+              </div>
+              <div className="relative aspect-[3/4] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                <Image src={collage[1]} alt="" fill sizes="(max-width: 768px) 45vw, 220px" className="object-cover" />
+              </div>
+            </Reveal>
+          ) : (
+          // Two overlapping photos, as the reference's collage.
           <Reveal from="left" duration={1.1} className="relative mx-auto aspect-[4/4.4] w-full max-w-[27rem]">
             <div className="absolute top-0 left-0 h-[62%] w-[72%] overflow-hidden rounded-md shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
               <Image src={collage[0]} alt="" fill sizes="(max-width: 768px) 70vw, 320px" className="object-cover" />
@@ -254,6 +265,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
               <Image src={collage[1]} alt="" fill sizes="(max-width: 768px) 60vw, 280px" className="object-cover" />
             </div>
           </Reveal>
+          )}
 
           <Reveal delay={0.08} className="text-center md:text-left">
             <h3 className="text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.95] tracking-[0.06em] text-ink">{L(hotel.about.title)}</h3>
@@ -301,7 +313,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <article
                   className={cn(
                     'group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
-                    wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
+                    f.tall ? 'min-h-[28rem]' : wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
                   )}
                 >
                   <Image
@@ -318,7 +330,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-5 pb-6 text-center text-washi [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:px-6 md:pb-7">
                     <h3 className="text-[1.5rem] tracking-[0.06em] md:text-[1.75rem]">{L(f.title)}</h3>
                     <span aria-hidden className="ornament ornament-lit" />
-                    <p className="mx-auto mt-2.5 line-clamp-3 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]">{L(f.body)}</p>
+                    <p className={cn('mx-auto mt-2.5 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]', !f.tall && 'line-clamp-3')}>{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>
@@ -745,7 +757,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           {hotel.info.tel && <>{L(S.telLabel)}{C}{hotel.info.tel}　</>}
           {L(S.groupDesk)}{C}080-4097-9552
           <br />
-          {L(S.frontDesk)}
+          {L(stay.frontDeskNote ?? S.frontDesk)}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.9375rem] md:text-[0.875rem] text-washi/85">
           {links.map((l) => (
