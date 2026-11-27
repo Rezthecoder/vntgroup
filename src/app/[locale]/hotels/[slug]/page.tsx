@@ -301,7 +301,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                 <article
                   className={cn(
                     'group relative overflow-hidden rounded-xl bg-sumi shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)]',
-                    wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
+                    f.tall ? 'min-h-[28rem]' : wide ? 'aspect-[16/8]' : 'aspect-[4/3]',
                   )}
                 >
                   <Image
@@ -318,7 +318,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
                   <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-5 pb-6 text-center text-washi [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:px-6 md:pb-7">
                     <h3 className="text-[1.5rem] tracking-[0.06em] md:text-[1.75rem]">{L(f.title)}</h3>
                     <span aria-hidden className="ornament ornament-lit" />
-                    <p className="mx-auto mt-2.5 line-clamp-3 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]">{L(f.body)}</p>
+                    <p className={cn('mx-auto mt-2.5 max-w-[24rem] text-[0.9375rem] leading-[1.9] text-pretty whitespace-pre-line md:text-[0.875rem]', !f.tall && 'line-clamp-3')}>{L(f.body)}</p>
                   </div>
                 </article>
               </Reveal>

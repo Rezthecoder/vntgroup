@@ -92,7 +92,7 @@ export type Facility = {
 };
 
 /** One of the photo cards in the "8つの魅力" grid (reference: goderehotel's 8つの施設). */
-export type Feature = { title: L10n; body: L10n; image: string };
+export type Feature = { title: L10n; body: L10n; image: string; /** Taller card that shows all of its text (no 3-line cut-off). */ tall?: boolean };
 
 export type HotelStay = {
   /** Slideshow photos for the full-bleed hero; falls back to the hotel's gallery. */
@@ -133,9 +133,10 @@ const stays: Record<Hotel['slug'], HotelStay> = {
       // Client: ご朝食 → 食事, with the hotel's crab photo.
       { title: { ja: 'お食事', en: 'Dining' }, body: { ja: 'タラバガニ・ズワイガニなど、自慢のカニ料理をご堪能ください', en: 'King crab, snow crab and more — our crab dishes' }, image: '/images/fuji/fuji-dining-kingcrab.webp' },
       { title: { ja: '無料Wi-Fi', en: 'Free Wi-Fi' }, body: { ja: '館内全域で無料Wi-Fiをご利用いただけます', en: 'Free Wi-Fi throughout the hotel' }, image: '/images/live/fuji/u6.jpg' },
-      { title: { ja: '24時間フロント', en: '24-hour front desk' }, body: { ja: '深夜のご到着・早朝のご出発も安心', en: 'Late arrivals and early departures made easy' }, image: '/images/live/fuji/building.webp' },
-      { title: { ja: '駐車場', en: 'Parking' }, body: { ja: 'お車でお越しのお客様へ。\n詳しくはお問い合わせください', en: 'For guests arriving by car' }, image: '/images/fuji/info-top.webp' },
-      { title: { ja: '周辺観光の拠点', en: 'A base for sightseeing' }, body: { ja: '河口湖・忍野八海・富士急ハイランドへ車で約12〜20分', en: 'Lake Kawaguchi, Oshino Hakkai and Fuji-Q in 12-20 min' }, image: '/images/live/fuji/u2.jpg' },
+      // Client copy, 27 Nov 2026 (フロントサービス / 無料駐車場 / 富士山観光の拠点).
+      { title: { ja: 'フロントサービス', en: 'Front desk service' }, body: { ja: '快適なご滞在をサポートいたします。\nチェックイン 15:00～22:00\nチェックアウト 11:00まで', en: 'We support a comfortable stay.\nCheck-in 15:00–22:00\nCheck-out until 11:00' }, image: '/images/live/fuji/building.webp' },
+      { title: { ja: '無料駐車場', en: 'Free parking' }, body: { ja: 'ご宿泊のお客様は駐車場無料・予約不要。\n大型観光バスも駐車可能です。', en: 'Free for staying guests, no reservation needed.\nLarge tour buses can park too.' }, image: '/images/fuji/info-top.webp' },
+      { title: { ja: '富士山観光の拠点', en: 'A base for Mt. Fuji sightseeing' }, body: { ja: '富士山周辺の人気観光スポットへのアクセスに便利なロケーション。\n\n河口湖（Lake Kawaguchiko）\n山中湖（Lake Yamanakako）\n忍野八海（Oshino Hakkai）\n新倉山浅間公園・忠霊塔（Chureito Pagoda）\n北口本宮冨士浅間神社（Kitaguchi Hongu Fuji Sengen Shrine）\n富士急ハイランド（Fuji-Q Highland）', en: 'A convenient base for popular sightseeing spots around Mt. Fuji.\n\nLake Kawaguchiko\nLake Yamanakako\nOshino Hakkai\nChureito Pagoda (Arakurayama Sengen Park)\nKitaguchi Hongu Fuji Sengen Shrine\nFuji-Q Highland' }, image: '/images/live/fuji/u2.jpg', tall: true },
     ],
     // 客室: the intro text and サービス内容 box were removed at the client's request.
     rooms: {
