@@ -757,7 +757,7 @@ export default async function HotelPage({ params }: { params: Promise<{ locale: 
           {hotel.info.tel && <>{L(S.telLabel)}{C}{hotel.info.tel}　</>}
           {L(S.groupDesk)}{C}080-4097-9552
           <br />
-          {L(S.frontDesk)}
+          {L(stay.frontDeskNote ?? S.frontDesk)}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.9375rem] md:text-[0.875rem] text-washi/85">
           {links.map((l) => (

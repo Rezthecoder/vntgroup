@@ -99,6 +99,8 @@ export type HotelStay = {
   heroSlides?: string[];
   /** Show the two photos beside ホテル概要 side by side instead of overlapping (client request, Fuji). */
   separatePhotos?: boolean;
+  /** Replaces the default 受付時間：24時間（フロント） line in the contact band. */
+  frontDeskNote?: L10n;
   /** Photo cards under ホテルの魅力; derived from services + special blocks when absent. */
   features?: Feature[];
   /** Photo strips: inside the hotel / around the hotel. */
@@ -124,6 +126,7 @@ const BREAKFAST_NOTE: L10n = {
 const stays: Record<Hotel['slug'], HotelStay> = {
   fuji: {
     separatePhotos: true,
+    frontDeskNote: { ja: 'フロント：チェックイン 15:00～22:00 ／ チェックアウト 11:00まで', en: 'Front desk: check-in 15:00–22:00 / check-out until 11:00' },
     heroSlides: ['/images/live/fuji/u6.jpg', '/images/fuji/fuji-03.webp', '/images/live/fuji/u2.jpg'],
     scenery: {
       inside: ['/images/fuji/fuji-01.webp', '/images/fuji/fuji-02.webp', '/images/fuji/onsen-01.webp', '/images/live/fuji/about-2.webp', '/images/live/fuji/about-1.webp', '/images/fuji/info-top.webp'],
